@@ -1,0 +1,57 @@
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button,
+ul,
+ol,
+li,
+details,
+summary,
+blockquote,
+q,
+p {
+	margin: 0;
+}
+
+ul,
+ol,
+li,
+blockquote {
+	padding: 0;
+}
+
+body {
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-smoothing: antialiased;
+	font-variant-ligatures: common-ligatures;
+}
+
+input[type="range"] {
+	-webkit-appearance: none; // Hides the slider so that custom slider can be made
+	// width: 100%; // Specific width is required for Firefox.
+	background: transparent; // Otherwise white in Chrome
+}
+
+input[type="range"]::-webkit-slider-thumb {
+	-webkit-appearance: none;
+}
+
+input[type="range"]::-ms-track {
+	width: 100%;
+	cursor: pointer;
+
+	// Hides the slider so custom styles can be added
+	background: transparent;
+	border-color: transparent;
+	color: transparent;
+}

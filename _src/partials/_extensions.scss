@@ -1,0 +1,26 @@
+%no-select {
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+%no-drag {
+  -webkit-user-drag: none;
+  -moz-user-drag: none;
+  -ms-user-drag: none;
+  user-drag: none;
+}
+
+%no-tap {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-touch-callout: none;
+  tap-highlight-color: rgba(0, 0, 0, 0);
+  touch-callout: none;
+}
+
+%psuedo {
+  display: block;
+  content: "";
+  position: absolute;
+}

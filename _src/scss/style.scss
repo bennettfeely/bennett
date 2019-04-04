@@ -1,0 +1,453 @@
+// Charset ===============================================================================
+@charset "UTF-8";
+
+// Normalize =============================================================================
+@import "../partials/normalize";
+@import "../partials/reset";
+@import "../partials/extensions";
+@import "../partials/functions";
+@import "../partials/palette";
+
+// Variables =============================================================================
+$radius: 4px;
+$transition: 0.35s;
+
+$tablet: 40em;
+$desktop: 60em;
+
+$space-small: 2.5rem;
+$space-large: 5rem;
+
+$black: #16161d;
+$blue: #1e90ff;
+$purple: #a029de;
+$white: #fff;
+
+// Structual styles ======================================================================
+body {
+	font-family: Nunito, sans-serif;
+	color: $black;
+	background: linear-gradient($white, whitesmoke);
+	overflow-x: hidden;
+}
+
+.header-wrapper {
+	max-width: 35em;
+	margin: 0 auto;
+	text-align: center;
+
+	@media (min-width: $tablet) {
+		max-width: 42em;
+		margin: 5em auto 0;
+	}
+
+	@media (min-width: $desktop) {
+		max-width: 50em;
+		margin: 5em auto 0;
+	}
+}
+
+.main-wrapper {
+	margin: 0 auto;
+	max-width: 35em;
+
+	@media (min-width: $tablet) {
+		margin: 0 auto;
+		max-width: 25em;
+		padding: 2.5rem 0;
+	}
+}
+
+.container {
+	position: relative;
+	margin: 1.5rem;
+
+	.contact-wrapper & {
+		text-align: center;
+		margin: 1.5rem auto;
+		padding: 0 1.5rem;
+
+		@media (min-width: $tablet) {
+			max-width: 42em;
+		}
+
+		@media (min-width: $desktop) {
+			max-width: 50em;
+		}
+	}
+}
+
+// Typography ============================================================================
+h1,
+h2 {
+	font-weight: 400;
+}
+
+h1 {
+	font-size: 1.5em;
+
+	@media (min-width: $desktop) {
+		font-size: 2em;
+	}
+}
+h2 {
+	@extend %no-select;
+	display: none;
+	text-align: center;
+	font-size: 1.25em;
+
+	&.section-heading {
+		@media (min-width: $tablet) {
+			display: block;
+		}
+	}
+}
+
+a {
+	text-decoration: none;
+	color: $black;
+}
+
+img {
+	@extend %no-drag;
+	@extend %no-select;
+}
+
+// Header ================================================================================
+header {
+	.container {
+		text-align: center;
+
+		@media (min-width: $tablet) {
+			display: flex;
+			align-items: center;
+			text-align: left;
+		}
+	}
+
+	h1 {
+		@media (min-width: $tablet) {
+			flex: 1;
+			align-items: center;
+		}
+	}
+
+	img {
+		width: 5em;
+		height: 5em;
+		border-radius: 50%;
+		margin: 0 0 0.5rem 0;
+
+		@media (min-width: $tablet) {
+			width: 6.5em;
+			height: 6.5em;
+			margin: 0 1.5rem 0 0;
+		}
+
+		@media (min-width: $desktop) {
+			width: 8em;
+			height: 8em;
+		}
+	}
+}
+
+// List ==================================================================================
+ul {
+	@extend %no-select;
+	font-size: 1.2em;
+}
+
+li {
+	position: relative;
+	list-style: none;
+}
+
+.projects,
+.contacts {
+	margin: 1rem 0;
+}
+
+.contact-wrapper {
+	padding: 1.5rem 0;
+}
+
+.contacts {
+	border-top: thin solid rgba($black, 0.1);
+	border-bottom: thin solid rgba($black, 0.1);
+
+	@media (min-width: $tablet) {
+		display: flex;
+		flex-wrap: wrap;
+		border: none;
+		margin: 1.5rem 0;
+	}
+}
+
+.project-link,
+.contact-link {
+	position: relative;
+	cursor: pointer;
+	padding: 1.5rem 0;
+
+	.project:nth-child(odd) & {
+		flex-direction: row-reverse;
+	}
+
+	strong {
+		color: $blue;
+	}
+
+	&:visited strong {
+		color: #a029de;
+	}
+
+	@media (min-width: $tablet) {
+		display: block;
+		transition: background-color $transition;
+		border-radius: $radius;
+		margin: 1rem 0;
+		padding: 1.5rem;
+
+		&:hover {
+			background: tint($blue, 90%);
+			transition-duration: $transition * 0.5;
+		}
+	}
+}
+
+.project-link {
+	display: flex;
+	align-items: center;
+}
+
+.contact {
+	flex: 1 0 50%;
+}
+
+.contact-link {
+	display: block;
+	padding: 1rem 1.5rem;
+}
+
+.copyright-wrapper {
+	text-align: center;
+	font-size: smaller;
+}
+
+// Screenshots ===========================================================================
+$space: 5em;
+
+.screenshot {
+	min-width: 50%;
+	max-width: 50%;
+	height: auto;
+	margin: 0 1.5rem 0 0;
+	transition: transform $transition;
+	transform: scale(0.9);
+
+	.project:nth-child(odd) & {
+		margin: 0 0 0 1.5rem;
+	}
+
+	.project-link:hover & {
+		transform: scale(1);
+		transition-duration: $transition * 0.5;
+	}
+
+	img {
+		width: 100%;
+		height: auto;
+		border-radius: $radius;
+		box-shadow: 0 1em 1.5em rgba($black, 0.1);
+	}
+
+	@media (min-width: $tablet) {
+		position: absolute;
+		z-index: 10;
+		width: 12em;
+		height: 9em;
+
+		.project:nth-child(odd) & {
+			margin: 0;
+		}
+
+		img {
+			display: block;
+			width: 100%;
+			height: auto;
+			transition: box-shadow $transition;
+			box-shadow: 0 1em 1.5em rgba($black, 0);
+
+			@at-root .project-link:hover & {
+				box-shadow: 0 1em 1.5em rgba($black, 0.1);
+			}
+		}
+	}
+}
+
+.line {
+	@media (min-width: $tablet) {
+		position: absolute;
+		content: "";
+		width: $space * 2;
+		height: 1px;
+		background: $black;
+		opacity: 0.1;
+		pointer-events: none;
+		top: 50%;
+		transition: opacity $transition;
+
+		.project-link:hover & {
+			opacity: 1;
+		}
+	}
+}
+
+// Left side -----------------------------------------------------------------------------
+$spread: 1.5em;
+
+.project {
+	&:nth-child(odd) {
+		.line {
+			right: 100%;
+			transform-origin: center right;
+		}
+
+		.screenshot {
+			@media (min-width: $tablet) {
+				right: calc(100% + #{$space-small});
+			}
+			@media (min-width: $desktop) {
+				right: calc(100% + #{$space-large});
+			}
+
+			img {
+				transform: rotate(5deg);
+			}
+		}
+	}
+
+	@media (min-width: $tablet) {
+		&:nth-child(1) {
+			.line {
+				transform: rotate(6deg);
+			}
+			.screenshot {
+				top: -40%;
+
+				img {
+					transform: rotate(4deg);
+				}
+			}
+		}
+		&:nth-child(3) {
+			.line {
+				transform: rotate(4deg);
+			}
+			.screenshot {
+				top: -15%;
+
+				img {
+					transform: rotate(-4deg);
+				}
+			}
+		}
+		&:nth-child(5) {
+			.line {
+				transform: rotate(-10deg);
+			}
+			.screenshot {
+				top: -25%;
+
+				img {
+					transform: rotate(8deg);
+				}
+			}
+		}
+		&:nth-child(7) {
+			.line {
+				transform: rotate(5deg);
+			}
+			.screenshot {
+				top: -20%;
+
+				img {
+					transform: rotate(-8deg);
+				}
+			}
+		}
+	}
+}
+
+// Right side ----------------------------------------------------------------------------
+.project {
+	&:nth-child(even) {
+		.line {
+			left: 100%;
+			transform-origin: center left;
+		}
+
+		.screenshot {
+			@media (min-width: $tablet) {
+				left: calc(100% + #{$space-small});
+			}
+			@media (min-width: $desktop) {
+				left: calc(100% + #{$space-large});
+			}
+
+			img {
+				transform: rotate(-5deg);
+			}
+		}
+	}
+
+	@media (min-width: $tablet) {
+		&:nth-child(even) {
+			.line {
+				left: 100%;
+				transform-origin: left center;
+			}
+
+			.screenshot img {
+				transform: rotate(-5deg);
+			}
+		}
+
+		&:nth-child(2) {
+			.line {
+				transform: rotate(-25deg);
+			}
+			.screenshot {
+				top: -80%;
+
+				img {
+					transform: rotate(-8deg);
+				}
+			}
+		}
+		&:nth-child(4) {
+			.line {
+				transform: rotate(-10deg);
+			}
+			.screenshot {
+				top: -40%;
+
+				img {
+					transform: rotate(2deg);
+				}
+			}
+		}
+		&:nth-child(6) {
+			.line {
+				transform: rotate(15deg);
+			}
+			.screenshot {
+				top: 00%;
+
+				img {
+					transform: rotate(8deg);
+				}
+			}
+		}
+	}
+}
