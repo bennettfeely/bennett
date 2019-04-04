@@ -1,0 +1,15 @@
+.pencil-effect {
+  background-image: url(photo.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+@supports (filter: invert(1)) and (background-blend-mode: difference) {
+  .pencil-effect {
+    background-image: url(photo.jpg), url(photo.jpg);
+    background-blend-mode: difference;
+    background-position: calc(50% - 1px) calc(50% - 1px), calc(50% + 1px) calc(50% + 1px);
+    filter: brightness(2) invert(1) grayscale(1);
+    box-shadow: inset 0 0 0 1px black;
+  }
+}

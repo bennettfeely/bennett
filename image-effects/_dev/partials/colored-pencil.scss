@@ -1,0 +1,38 @@
+.colored-pencil-effect {
+	$url : url(photo.jpg);
+
+	background-image: $url;
+	background-size: cover;
+	background-position: center;
+
+	@supports (filter: invert(1)) and (mix-blend-mode: color) {
+		position: relative;
+
+		&:before,
+		&:after {
+			display: block;
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-size: cover;
+			box-shadow: inset 0 0 0 1px black;
+		}
+
+		&:before {
+			background-image: $url, $url;
+			background-blend-mode: difference;
+			background-position:
+				calc(50% - 1px) calc(50% - 1px),
+				calc(50% + 1px) calc(50% + 1px);
+			filter: brightness(2) invert(1) grayscale(1);
+		}
+
+		&:after {
+			background: inherit;
+			mix-blend-mode: color;
+		}
+	}
+}

@@ -1,0 +1,301 @@
+/* Webfonts ==================================================================== */
+    @font-face {
+      font-family: 'Lato';
+      font-style: normal;
+      font-weight: 400;
+      src: local('Lato Regular'), local('Lato-Regular'), url(http://themes.googleusercontent.com/static/fonts/lato/v6/9k-RPmcnxYEPm8CNFsH2gg.woff) format('woff');
+    }
+    @font-face {
+      font-family: 'Lato';
+      font-style: normal;
+      font-weight: 100;
+      src: local('Lato Hairline'), local('Lato-Hairline'), url(http://themes.googleusercontent.com/static/fonts/lato/v6/boeCNmOCCh-EWFLSfVffDg.woff) format('woff');
+    }
+    @font-face {
+      font-family: 'Lato';
+      font-style: normal;
+      font-weight: 300;
+      src: local('Lato Light'), local('Lato-Light'), url(http://themes.googleusercontent.com/static/fonts/lato/v6/KT3KS9Aol4WfR6Vas8kNcg.woff) format('woff');
+    }
+
+
+
+/* Reset ==================================================================== */
+    * { box-sizing:border-box; margin:0; padding:0; }
+    html, body, div, span, h1, h2, h3, p, a, em, i, b, small, strong, input, footer, header, menu, section, figure, ul, li { font-size:100%; vertical-align:baseline; }
+    article, aside, footer, header, menu, section, figure { display:block; }
+
+
+
+
+/* Base styles ============================================================== */
+    body, html { position:relative; min-height:100%; background:whitesmoke }
+    body { font:100%/1 'Lato', 'Trebuchet MS', Helvetica, Arial, sans-serif; color:#222; }
+
+    a { text-decoration:none; }
+    a:hover { text-decoration:underline; }
+
+    .flex { display:flex; }
+
+
+
+/* Containers =============================================================== */
+    .sidebar, .demo { opacity:0; transition:opacity 0 .5s; height:100%; }
+        .go .sidebar, .go .demo { opacity:1; transition:.3s; }
+
+    .sidebar {
+        user-select:none;
+        position:relative;
+        z-index:1000; /* Sometimes the demo can get a little out of control. Make sure the sidebar is always visible */
+        flex-direction:column;
+        width:20rem;
+        background:whitesmoke;
+    }
+        .sidebar.minimized { margin-left:-16.5rem; }
+    .demo { flex:1; padding:.5rem;  }
+    .flex-item { background:#ddd; border-radius:.25rem; }
+
+    .flex-container { overflow: auto; }
+
+
+
+
+/* Sidebar ================================================================== */
+    .hgroup { width:100%; border-right:1px solid #e1e1e1; }
+    .hgroup a, .toggle-controls {
+        display:inline-block;
+        font-size:1.5em;
+        font-weight:400;
+        padding:1rem;
+    }
+
+    .hgroup a { flex:1; color:#222; border-right:1px solid #e1e1e1; }
+
+
+
+
+/* Sidebar toggler ========================================================== */
+    .toggle-controls { display:inline-block; position:relative; z-index:200; font-size:2.5rem; line-height:1rem; width:3.5rem; text-align:center; cursor:pointer;  }
+    .toggle-controls:hover { background:#e1e1e1; }
+    .toggle-controls:active { transition:0; color:whitesmoke; background:#ccc; }
+        .minimized .toggle-controls { transform:rotate(.5turn); }
+
+
+
+
+/* Controls (menu.controls) ================================================= */
+    .controls { flex:1; }
+    .controls { flex-direction:column; }
+    .controls > div {
+        justify-content:flex-end;
+        flex:1;
+        width:100%;
+        padding:1rem;
+        border-top:1px solid #e1e1e1;
+        border-right:1px solid #e1e1e1;
+        background: white;
+
+    }
+
+    .twitter { justify-content }
+
+
+    .controls:hover .indiv-controls {  background:#e1e1e1; }
+
+    .controls code {
+        display:block;
+        text-align:right;
+        align-self:center;
+        font-size:1rem;
+        transition:opacity .5s;
+    }
+        .minimized .controls code { opacity:.2; pointer-events:none; }
+
+
+    .controls select, .controls input, .count-control {
+        display:inline-block;
+        font:1.1rem/1 monospace;
+        background:#e1e1e1;
+        border-radius:.25rem;
+        border:0;
+        text-align:center;
+        padding:.375rem;
+        transition:.25s;
+    }
+    .controls select { font-size:.9rem; width:8rem; }
+
+    select:hover, input:hover, .count-control:hover { background:#ddd; }
+    select:focus, input:focus { background:#ffb; outline:0; }
+        .small { width:3rem; }
+        .mid { width:5rem; }
+
+    .count-control { cursor:pointer; font-weight:bold; }
+    .count-control:active { transition:0; background:#ffb; }
+
+
+    .tip { position:relative; z-index:500; }
+    .tip:hover:before, .tip:hover:after {
+        display:block;
+        position:absolute;
+        background:#555;
+        text-align:center;
+    }
+
+    .tip:hover:before {
+        content:"";
+        width:8px;
+        height:8px;
+        transform:rotate(45deg);
+        top:27px;
+        left:22px;
+    }
+
+    .tip:hover:after {
+        content:attr(data-tip);
+        color:whitesmoke;
+        top:31px;
+        width:90px;
+        font-size:14px;
+        padding:10px;
+        line-height:1.36;
+    }
+
+    .justify-content-tip:hover:before {
+        top:-11px;
+        left:60px;
+    }
+
+    .justify-content-tip:hover:after {
+        top:-65px;
+        width:300px;
+    }
+
+    .flex-basis-tip:hover:after { width:260px; }
+
+
+
+#carbonads {
+  display: block;
+  overflow: hidden;
+  font-family: Lato, "Helvetica Neue", Helvetica, sans-serif;
+  line-height: 1.5;
+  font-size: 12px;
+}
+
+#carbonads a {
+    color: dodgerblue;
+}
+
+#carbonads span {
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+
+.carbon-img {
+  float: left;
+  margin-right: 1em;
+}
+
+.carbon-img img {
+  display: block;
+}
+
+.carbon-text {
+  display: block;
+  float: left;
+  max-width: calc(100% - 130px - 1em);
+  text-align: left;
+}
+
+.carbon-poweredby {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: block;
+  text-transform: uppercase;
+  line-height: 1;
+  font-size: 10px;
+}
+
+
+
+/* Demo flex-items ========================================================== */
+    figure > div {
+        display:inline-flex;
+        position:relative;
+        justify-content:center;
+        margin:.25rem;
+        font-size:1.5em;
+        overflow:hidden;
+    }
+
+    figure div span {
+        display:inline-block;
+        padding:1rem 1.5rem;
+        align-self:center;
+    }
+    span:focus { outline:0; color:rgba(0,0,0,.4); animation:shake .25s infinite; }
+    @keyframes shake { 25%{ transform:rotate(-1deg); } 50%{ transform:translateY(-1px); } 75%{ transform:rotate(2deg); } }
+
+
+    figure div header {
+        font:.9rem/1 monospace;
+        position:absolute;
+        top:0;
+        left:0;
+        width:100%;
+        padding:1rem;
+        height:2rem;
+    }
+
+    div:hover .toggle-indiv-edit { opacity:.3; }
+    div:hover .toggle-indiv-edit:hover, .editing .toggle-indiv-edit { animation:spin-gear 6s linear infinite; opacity:.8; top:-1rem; right:-1rem;  }
+        .editing .toggle-indiv-edit { animation:spin-gear 6s linear infinite; }
+        @keyframes spin-gear { 100%{ transform:rotate(1turn); } }
+
+
+/* Results ================================================================== */
+    .results {
+        background:#555;
+        padding:1.25rem 1rem;
+
+    }
+    .demo-styles, .resources { border-radius:.25rem; color:whitesmoke; padding:2rem;  }
+    .demo-styles {
+        display:block;
+        flex:2;
+        white-space:pre-wrap;
+        background:#444;
+        font:1rem/1.1 monospace;
+        tab-size:4;
+    }
+    .demo-styles:focus { outline:0; background:#404040; }
+
+    .resources { flex:1; margin-left:1rem; line-height:1.7; }
+
+    .resources h1, .resources h2 { font-weight:300; }
+    .resources h1 { font-size:1.4rem; opacity:.3; }
+        .resources h2 a { display:block; font-size:1.6rem; color:whitesmoke; transition:.4s;  }
+            .resources h2 a:hover { text-decoration:none; }
+            .no-support, .resources h2 a.no-support:hover { opacity:.3; cursor:not-allowed; }
+
+        .resources small { font-size:1.2rem; color:#ccc;  }
+
+
+/* Lame browsers ============================================================ */
+    .no-flexbox .demo, .no-flexbox .results, .no-flexbox .toggle-controls { display:none; }
+
+    .no-flexbox .sidebar { display:none; }
+    .no-flexbox .controls { pointer-events:none; user-select:none; cursor:not-allowed; }
+    .no-flexbox .controls code { opacity:.25; }
+    .no-flexbox hgroup a { border-right:0; }
+
+    .no-flexbox .your-browser-sucks { display:block; padding:2rem; font-size:1.1rem; line-height:1.6; }
+    .your-browser-sucks label { display:block; padding-top:2rem; font-size:1rem; }
+
+
+
+
+
+

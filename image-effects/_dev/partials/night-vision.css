@@ -1,0 +1,6 @@
+.night-vision-effect {
+  background-image: url(photo.jpg), radial-gradient(#0F0, #000), repeating-linear-gradient(transparent 0, rgba(0, 0, 0, 0.1) 2.5px, transparent 5px);
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: overlay;
+}

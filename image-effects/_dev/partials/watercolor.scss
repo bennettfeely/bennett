@@ -1,0 +1,40 @@
+.watercolor-effect {
+	$url : url(photo.jpg);
+
+	background-image: $url;
+	background-size: cover;
+	background-position: center;
+
+	@supports (filter: blur(2px)) and (mix-blend-mode: multiply) {
+		position: relative;
+		overflow: hidden;
+
+		&:before, &:after {
+			display: block;
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-size: cover;
+		}
+
+		&:before {
+			background-image: $url, $url;
+			background-blend-mode: difference;
+			background-position:
+				calc(50% - 1px) calc(50% - 1px),
+				calc(50% + 1px) calc(50% + 1px);
+			filter: brightness(2) invert(1) grayscale(1);
+			box-shadow: inset 0 0 0 1px black;
+		}
+
+		&:after {
+			background-image: $url;
+			background-position: center;
+			mix-blend-mode: multiply;
+			filter: brightness(1.3) blur(2px) contrast(2);
+		}
+	}
+}

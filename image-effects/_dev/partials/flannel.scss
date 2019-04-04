@@ -1,0 +1,14 @@
+.flannel-effect {
+	$url : url(photo.jpg);
+
+	background-image: $url;
+	background-size: cover;
+	background-position: center;
+
+	@supports (background-blend-mode: overlay) {
+		background-image: $url, $url, $url;
+	  background-position: center;
+	  background-size: 100%, 100000% 100%, 100% 100000%;
+	  background-blend-mode: overlay;
+	}
+}

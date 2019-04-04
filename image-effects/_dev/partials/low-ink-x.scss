@@ -1,0 +1,13 @@
+.low-ink-x-effect {
+	$url : url(photo.jpg);
+
+	background-image: $url;
+	background-size: cover;
+	background-position: center;
+
+	@supports (background-blend-mode: screen, overlay) {
+		background-image:	 $url, $url, $url;
+		background-size: 100% 100%, 10000% 100%;
+		background-blend-mode: screen, overlay;
+	}
+}

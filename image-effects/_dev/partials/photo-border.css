@@ -1,0 +1,6 @@
+.photo-border-effect {
+  background-image: url(photo.jpg), url(photo.jpg);
+  background-position: center;
+  background-size: 60%, 20%;
+  background-repeat: no-repeat, repeat;
+}

@@ -1,0 +1,14 @@
+.chalkboard-effect {
+  background-image: url(photo.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+@supports (filter: grayscale(1)) and (background-blend-mode: difference) {
+  .chalkboard-effect {
+    background-image: url(photo.jpg), url(photo.jpg);
+    background-blend-mode: difference;
+    background-position: calc(50% - 1px) calc(50% - 1px), calc(50% + 1px) calc(50% + 1px);
+    filter: brightness(1.5) grayscale(1);
+  }
+}

@@ -1,0 +1,14 @@
+.emboss-effect {
+  background-image: url(photo.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+@supports (filter: invert(1)) and (background-blend-mode: difference, screen) {
+  .emboss-effect {
+    background-image: url(photo.jpg), url(photo.jpg), url(photo.jpg);
+    background-blend-mode: difference, screen;
+    background-position: calc(50% - 1px) calc(50% - 1px), calc(50% + 1px) calc(50% + 1px), center;
+    filter: brightness(2) invert(1) grayscale(1);
+  }
+}

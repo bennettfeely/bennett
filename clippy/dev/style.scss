@@ -1,0 +1,1172 @@
+* {
+  box-sizing: border-box;
+  line-height: 1;
+  vertical-align: middle;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+header, section, main, figure { display: block; }
+
+$red : #ff6347;
+$blue : #1e90ff;
+  $linkblue : #0B7FDA;
+$gold : #ffa500;
+$green : #3cb371;
+
+$black : #100a09;
+$white : #fbfcf7;
+$lightgray : #d3d0c9;
+
+$radius : 2px;
+$shadow : 0 1px 2px rgba($black, .15);
+$shadow-hover : 0 2px 3px rgba($black, .3);
+
+$transition : .25s;
+$bounce : cubic-bezier(.15,1,.3,1.1);
+
+$figure-height : 4.625rem;
+$sidebar-width : ($figure-height * 5) + .5rem;
+$tablet : 800px;
+
+
+@mixin overflow-shadow {
+  display: block;
+  position: absolute;
+  content: "";
+  pointer-events: none;
+}
+
+@mixin user-select {
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+@mixin user-drag {
+  -webkit-user-drag: none;
+  -moz-user-drag: none;
+  -ms-user-drag: none;
+  user-drag: none;
+}
+
+@mixin no-tap {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-touch-callout: none;
+  tap-highlight-color: rgba(0,0,0,0);
+  touch-callout: none;
+}
+
+
+html, body {
+  position: relative;
+  height: 100%;
+}
+body {
+  font: 100%/1.5 "Alegreya Sans", sans-serif;
+  background: $lightgray;
+  color: $black;
+
+  @media (min-width: $tablet) {
+    padding: 0 .5rem 0;
+    padding-left: calc(100% - #{$sidebar-width});
+  }
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: $tablet) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    right: $sidebar-width;
+    padding: .25rem .25rem .25rem .75rem;
+    -ms-touch-action: none;
+    touch-action: none;
+  }
+}
+
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba($white, .75);
+  box-shadow: inset 0 -1px rgba($lightgray, .25);
+  padding: .75rem 1rem .75rem;
+
+  @media (min-width: $tablet) {
+    font-size: larger;
+    margin-top: .5rem;
+    padding: .75rem 1rem;
+    border-radius: $radius $radius 0 0;
+  }
+
+  a {
+    display: inline-block;
+    text-decoration: none;
+    color: inherit;
+    padding: .25rem;
+    @include user-select;
+
+    &:hover { text-decoration: underline; }
+  }
+
+  iframe {
+    max-width: 95px;
+    animation: load 1s both;
+  }
+}
+  @keyframes load { from { opacity: 0; } }
+
+
+.demo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  background: $white;
+  box-shadow: $shadow;
+  position: relative;
+  z-index: 100;
+  padding-top: .5rem;
+  @include user-select;
+  @include no-tap;
+
+  @media (min-width: $tablet) {
+    border-radius: 0 0 $radius $radius;
+  }
+}
+
+.demo {
+  position: relative;
+  padding: 0 0 1rem;
+  // overflow: hidden;
+
+  .customizing & {
+    cursor: crosshair;
+  }
+}
+
+.box {
+  position: relative;
+  box-shadow:
+    inset 0 0 0 10px $white,
+    inset 0 0 0 11px $lightgray;
+  -ms-touch-action: none;
+  touch-action: none;
+}
+
+.shadowboard,
+.clipboard {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  background-color: $lightgray;
+  background-image: url(pics/pittsburgh.jpg);
+  background-size: cover;
+  background-position: center center;
+}
+
+.shadowboard {
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity $transition*1.5;
+}
+
+.handles { // container for .handle
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.handle,
+.delete-point {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+}
+
+.handle {
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 10px;
+  opacity: .8;
+  transition:
+    opacity $transition;
+  cursor: grab;
+
+  .customizing & { cursor: crosshair; }
+  .customizing:not(.customizing-no-poly) & {
+    &[data-handle="1"] {
+      cursor: pointer;
+
+      &:hover {
+        border-radius: $radius;
+        color: black;
+
+        &:before {
+          display: block;
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          content: "";
+          -webkit-clip-path: polygon(67% 30%, 43% 54%, 33% 42%, 24% 51%, 44% 72%, 76% 39%);
+          clip-path: polygon(67% 30%, 43% 54%, 33% 42%, 24% 51%, 44% 72%, 76% 39%);
+          background: $lightgray;
+        }
+      }
+
+      &:active {
+        color: #555;
+
+        &:before {
+          background: white;
+        }
+      }
+    }
+  }
+
+  &:after { // expand target area of handle
+    display: block;
+    content: "";
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
+  }
+
+  .demo:hover & { opacity: 1; }
+
+  &.is-dragging { // better than using :hover/:active for touch
+    z-index: 100;
+    box-shadow: inset 0 0 0 3px;
+    cursor: none;
+    transition:
+      box-shadow 0;
+  }
+
+  &.bar {
+    border-radius: 20px;
+
+    &:after {
+      top: -5px;
+      left: -5px;
+      right: -5px;
+      bottom: -5px;
+    }
+  }
+}
+
+
+.delete-point {
+  position: absolute;
+  left: 22px;
+  top: 0;
+  width: 25px;
+  padding-left: 5px;
+  border-radius: 3px;
+  background: $lightgray;
+  transform: scale3d(0,0,0);
+  transform-origin: left center;
+  cursor: pointer;
+  opacity: .75;
+  -webkit-clip-path: polygon(25% 0%, 100% 1%, 100% 100%, 25% 100%, 0% 50%);
+  clip-path: polygon(25% 0%, 100% 1%, 100% 100%, 25% 100%, 0% 50%);
+  transition:
+    transform $transition,
+    opacity $transition;
+
+  .show-delete & {
+    transform: scale3d(.9,.9,.9);
+    transition:
+      transform $transition $bounce,
+      opacity $transition;
+    opacity: 1;
+  }
+
+  &:hover {
+    transform: scale3d(1,1,1);
+    transition: transform $transition $bounce;
+    opacity: 1;
+  }
+
+  &:active {
+    background: $black;
+
+    &:after { background: $lightgray; }
+  }
+
+  &:after {
+    display: block;
+    content: "";
+    position: absolute;
+    top: 4px;
+    left: 9px;
+    right: 4px;
+    bottom: 4px;
+    background: $black;
+    -webkit-clip-path: polygon(20% 10%, 10% 20%, 40% 50%, 10% 80%, 20% 90%, 50% 60%, 80% 90%, 90% 80%, 60% 50%, 90% 20%, 80% 10%, 50% 40%);
+    clip-path: polygon(20% 10%, 10% 20%, 40% 50%, 10% 80%, 20% 90%, 50% 60%, 80% 90%, 90% 80%, 60% 50%, 90% 20%, 80% 10%, 50% 40%);
+  }
+}
+
+.custom-notice {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 1rem;
+  pointer-events: none;
+  opacity: 0;
+  transition:
+    background $transition;
+  background: rgba(white, 0);
+
+  // .customizing-no-poly & { background: rgba(white, .5); }
+  .customizing & { opacity: 1; }
+
+  div {
+    width: 100%;
+    text-align: center;
+    background: rgba(255,255,255,.9);
+    padding: 1rem;
+    margin: 0 2rem;
+    transition: opacity $transition;
+    border-radius: $radius;
+    box-shadow: $shadow;
+    opacity: 0;
+  }
+
+  .start-customizing & div {
+    opacity: 1;
+    animation: pulse 1.5s ease-in-out infinite;
+  }
+}
+
+.touchy {
+  &:after {
+    content: "Tap";
+
+    @media (min-width: $tablet) { content: "Click"; }
+  }
+}
+
+.dark-panel {
+  display: none;
+  background: $black;
+  padding: .75rem;
+  color: white;
+  align-items: center;
+
+  p {
+    color: $lightgray;
+    margin: .5rem 0;
+  }
+
+  h2:first-child { color: $lightgray; }
+}
+
+
+.insetting {
+  @media (max-width: $tablet) {
+    .main .inset {
+      display: block;
+    }
+  }
+
+  @media (min-width: $tablet) {
+    .side .inset {
+      display: block;
+      box-shadow: $shadow;
+      border-radius: $radius;
+      margin: .25rem;
+    }
+  }
+}
+
+
+.customizing {
+  @media (max-width: $tablet) {
+    .main .custom {
+      display: flex;
+    }
+  }
+
+  @media (min-width: $tablet) {
+    .side .custom {
+      display: flex;
+      box-shadow: $shadow;
+      border-radius: $radius;
+      margin: .25rem;
+    }
+  }
+}
+
+.finish, .inset-round {
+  font: inherit;
+  padding: .5rem;
+  border-radius: 5rem;
+  cursor: pointer;
+  flex: 1;
+  background: rgba(white, .35);
+  color: rgba(white, .9);
+
+  &:hover {
+    color: white;
+    background: rgba(white, .4);
+  }
+
+  &:active {
+    animation: none;
+    background: rgba(white, .2);
+    color: rgba(white, .4);
+  }
+
+  &:after { content: "Finish " attr(data-shape); }
+
+  .customizing-no-poly & {
+    animation: none;
+
+    &:after { content: "Close editor"; }
+  }
+
+  &:focus { outline: 0; }
+}
+
+.inset-round {
+  font-family: monospace;
+  text-align: center;
+  cursor: text;
+  color: $lightgray;
+  background: black;
+  box-shadow: inset 0 0 0 .125rem rgba($lightgray, .5);
+  animation: glow 1.5s ease-in-out infinite;
+  opacity: .5;
+
+  &:hover {
+    background: transparent;
+    color: $lightgray;
+    animation: none;
+    opacity: .75;
+  }
+
+  &:focus {
+    color: $lightgray;
+    box-shadow: inset 0 0 0 .125rem rgba($lightgray, .5);
+    animation: none;
+    opacity: 1;
+  }
+}
+  @keyframes glow { 50% { opacity: .75; } }
+
+
+.shapes {
+  position: relative;
+  max-width: 100%;
+  background: $lightgray;
+  white-space: nowrap;
+  overflow-x: hidden;
+
+  &:focus { outline: 0; }
+
+  &.horizontal { display: block; }
+  &.vertical { display: none; }
+
+  @media (min-width: $tablet) {
+    &.horizontal { display: none; }
+    &.vertical {
+      display: block;
+      white-space: normal;
+    }
+  }
+
+  @media (max-width: $tablet) {
+    &:after {
+      @include overflow-shadow;
+
+      bottom: 0;
+      right: 0;
+      top: 0;
+      background: linear-gradient(90deg, rgba($lightgray, 0), $lightgray);
+      width: 1.5rem;
+    }
+  }
+}
+
+
+  ul {
+    width: 100%;
+    padding: .25rem;
+
+    @media (max-width: $tablet) {
+      white-space: nowrap;
+    }
+
+    @media (min-width: $tablet) {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 0;
+      perspective: 400px;
+      overflow-x: hidden;
+    }
+  }
+
+  .flickity-viewport { overflow: hidden; position: relative; }
+
+  figure {
+    display: inline-block;
+    text-align: center;
+    padding: .625rem .25rem;
+    margin: .25rem;
+    background: white;
+    width: $figure-height - .5rem;
+    box-shadow: $shadow;
+    border-radius: $radius;
+    transition:
+      background $transition,
+      transform $transition*2;
+    @include user-select;
+    @include no-tap;
+
+    @media (min-width: $tablet) {
+      flex: $figure-height;
+      transform-origin: top center;
+
+      &:nth-child(n+9) { transform: translateZ(0) rotateX(-18deg); }
+      &:nth-child(n+13) { transform: translateZ(-$figure-height*0.4) rotateX(-36deg); }
+      &:nth-child(n+17) { transform: translateZ(-$figure-height*1.3) rotateX(-54deg); }
+      &:nth-child(n+21) { transform: translateZ(-$figure-height*2) rotateX(-72deg); }
+      &:nth-child(n+25) { transform: translateZ(-$figure-height*2.5) rotateX(-85deg); }
+
+      .shapes:hover &,
+      .shapes:focus & {
+        transform: translateZ(0) rotateX(0);
+        transition:
+          background $transition,
+          transform $transition*1.5 $bounce;
+
+        &:nth-child(n+9) { transition-delay: $transition * .1; }
+        &:nth-child(n+13) { transition-delay: $transition * .2; }
+        &:nth-child(n+17) { transition-delay: $transition * .3; }
+        &:nth-child(n+21) { transition-delay: $transition * .4; }
+        &:nth-child(n+25) { transition-delay: $transition * .5; }
+      }
+    }
+
+    &:hover {
+      cursor: pointer;
+      border-color: transparent;
+      box-shadow: $shadow-hover;
+    }
+
+    &.on, &:active {
+      background: $black;
+
+      figcaption {
+        color: $lightgray;
+      }
+    }
+
+    @media (max-width: $tablet) {
+      &[data-type="custom"] { width: $figure-height * 1.25; }
+    }
+
+    &.disabled {
+      pointer-events: none;
+      opacity: .35;
+    }
+
+    &:nth-last-of-type(-n+2) { flex: .75; }
+
+  .shape {
+    display: inline-block;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: currentColor;
+  }
+
+  figcaption {
+    display: block;
+    font-size: .75rem;
+    color: $black;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-top: .5rem;
+    padding: 0 .25rem;
+  }
+}
+
+
+.clip-path {
+  display: flex;
+  position: relative;
+  font-size: 1.1em;
+  overflow-x: hidden;
+  font-family: monospace;
+  overflow-y: hidden;
+
+  @media (min-width: $tablet) {
+    margin: .5rem 0 .25rem;
+    border-radius: $radius;
+
+    &:focus {
+      outline: 0;
+      box-shadow: 0 0 .5rem gold;
+      background: rgba(gold, .3);
+    }
+  }
+}
+
+.code {
+  background: $black;
+  color: #9a8297;
+  padding: .75rem;
+  box-shadow: $shadow;
+
+  @media (min-width: $tablet) {
+    border-radius: $radius;
+  }
+}
+
+.css-code {
+  flex: 1;
+
+  @media (min-width: $tablet) {
+    margin-right: .5vw;
+    max-height: 160px;
+    overflow-y: auto;
+  }
+}
+
+.edit-in-codepen {
+  width: 4rem;
+  background-image: url(http://blog.codepen.io/wp-content/uploads/2012/06/Button-White-Large.png);
+  background-size: 60%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  transition:
+    opacity $transition,
+    transform $transition,
+    background-size $transition;
+  cursor: pointer;
+  @include user-select;
+
+  &:hover {
+    opacity: .8;
+    transition-duration: $transition/2;
+  }
+
+  &:active {
+    transform: scale(.95);
+    opacity: .5;
+    transition-duration: 0;
+  }
+
+  &:focus { outline: 0; }
+}
+
+.block {
+  display: none;
+  padding: .25rem;
+  line-height: 1.3;
+}
+
+.show {
+  display: block;
+
+  @for $i from 1 through 4 {
+    &:nth-last-of-type(#{$i}) .point.changing {
+      animation-delay: $i * $transition/2;
+    }
+  }
+}
+
+
+.point {
+  display: inline-block;
+  position: relative;
+  vertical-align: baseline;
+
+  .customizing-no-poly & { opacity: .5; }
+
+  &:after {
+    $size : 80px;
+
+    display: block;
+    position: absolute;
+    content: "";
+    width: $size;
+    height: $size;
+    border-radius: 50%;
+    background: currentColor;
+    top: calc(50% - #{($size/2)});
+    left: calc(50% - #{($size/2)});
+    transform: scale(0);
+    will-change: transform, opacity;
+    opacity: 0;
+  }
+
+  &.changing {
+    font-weight: bold;
+
+    &:after {
+      animation: emph $transition*5;
+      animation-delay: inherit;
+    }
+  }
+}
+
+@keyframes emph {
+  20% {
+    transform: none;
+    opacity: .5;
+  }
+  to {
+    opacity: 0;
+    transform: scale(1.2);
+  }
+}
+
+$colors : tomato, mediumseagreen, orange, dodgerblue, orchid, lightgray, darkturquoise, palevioletred, khaki, limegreen, coral, slateblue, indianred, gray, plum, olivedrab, lightgreen, lightsalmon, gold, peru, royalblue, sandybrown, lightseagreen, blueviolet, tomato, goldenrod, limegreen;
+
+.handle, .point, figure {
+  @for $i from 1 through 27 {
+    &:nth-of-type(#{$i}) {
+      color: nth($colors, $i);
+    }
+  }
+}
+
+.side {
+  padding: .25rem .25rem 1.25rem;
+
+  @media (min-width: $tablet) {
+    max-height: 100%;
+    padding: .5rem 0 0 .125rem;
+  }
+}
+
+.panel {
+  flex: auto;
+  display: block;
+  padding: 1rem 1rem 1rem .5rem;
+  background: white;
+  border-radius: $radius;
+  box-shadow: $shadow;
+  margin: .5rem .25rem;
+
+  &[href]:hover {
+    box-shadow: $shadow-hover;
+  }
+
+  &:first-of-type {
+    margin-top: .25rem;
+  }
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+
+@media (min-width: $tablet) {
+  $hide : $figure-height * 4 - .125rem;
+
+  .options {
+    position: relative;
+    background: $lightgray;
+    transform: translate3d(0, -$hide, 0);
+    transition:
+      transform $transition $transition/2 $bounce;
+
+    &:before {
+      @include overflow-shadow;
+
+      left: 0;
+      right: 0;
+      bottom: 100%;
+      height: 4rem;
+      background:
+        linear-gradient(rgba($lightgray,0), $lightgray 90%);
+      transition: inherit;
+      transition-timing-function: ease;
+      transform-origin: center bottom;
+    }
+
+    .shapes:hover + &,
+    .shapes:focus + & {
+      transform: none;
+
+      &:before {
+        transform: scale3d(1, 0, 1);
+      }
+    }
+  }
+}
+
+h2 {
+  display: inline-block;
+  flex: 4rem auto;
+  font-size: 1.2rem;
+  font-weight: 500;
+  pointer-events: none;
+  min-width: 1em;
+  text-align: center;
+  color: darken($lightgray, 10%);
+  @include user-select;
+
+  &.block { display: block; }
+
+  &:first-child {
+    text-align: left;
+    color: $black;
+    font-weight: 300;
+    padding: 0 1.25rem 0 .5rem;
+  }
+
+  .side > & {
+    // font-size: 1.4rem;
+    padding: .75rem 1rem .25rem 1rem;
+
+  }
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  display: none;
+}
+
+label, input[type="number"], input[type="url"] {
+  display: inline-block;
+  font: inherit;
+  position: relative;
+  text-align: center;
+  background: white;
+  flex: 1;
+  min-width: 2rem;
+  padding: .5rem .25rem;
+  border-radius: 2rem;
+  box-shadow:
+    inset 0 .125rem $lightgray,
+    inset -.125rem 0 $lightgray,
+    inset 0 -.125rem $lightgray;
+  cursor: pointer;
+  transition: background $transition;
+  @include no-tap;
+  @include user-select;
+
+  &:hover {
+    background: $lightgray;
+    transition: background 0;
+  }
+
+  &[for="shadowboard-toggle"] {
+    &:before { content: "Off"; }
+    input:checked + &:before { content: "On"; }
+  }
+
+  &[for="webkit"] {
+    &:before {
+      content: "-";
+      font-family: monospace;
+      vertical-align: top;
+    }
+  }
+
+  &:first-of-type {
+    box-shadow:
+      inset 0 .125rem $lightgray,
+      inset .125rem 0 $lightgray,
+      inset -.125rem 0 $lightgray,
+      inset 0 -.125rem $lightgray;
+  }
+
+  &.joined {
+    border-radius: 0;
+
+    &:first-of-type {
+      border-top-left-radius: 2rem;
+      border-bottom-left-radius: 2rem;
+    }
+    &:last-of-type {
+      border-top-right-radius: 2rem;
+      border-bottom-right-radius: 2rem;
+    }
+  }
+
+  input:checked + &,
+  &[type="number"]:focus,
+  &[type="url"]:focus {
+    background: $black;
+    z-index: 100;
+    color: $lightgray;
+    outline: 0;
+    box-shadow:
+      inset 0 0 0 .125rem $black,
+      0 0 0 .125rem $black;
+
+      &:hover { opacity: .8; }
+      &:active { opacity: 1; }
+  }
+}
+
+input[type="url"] {
+  display: block;
+  line-height: 40px;
+  height: 40px;
+  box-shadow:
+    inset 0 .125rem $lightgray,
+    inset .125rem 0 $lightgray,
+    inset -.125rem 0 $lightgray,
+    inset 0 -.125rem $lightgray;
+}
+
+input[type="number"] {
+  font-family: inherit;
+  font-size: 1.1rem;
+  border-radius: 2rem;
+  box-shadow:
+      inset 0 0 0 .125rem $lightgray;
+
+  appearance: textfield;
+  -moz-appearance: textfield;
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+  }
+}
+
+.shadowboard-toggle {
+  margin-top: 1rem;
+}
+
+.backgrounds {
+  overflow: hidden;
+  position: relative;
+  padding: .5rem 0 .75rem .375rem;
+
+  img {
+    cursor: pointer;
+    border-radius: .25rem;
+    float: left;
+    width: calc(25% - .25rem);
+    height: auto;
+    outline: .25rem solid white;
+    margin: .125rem;
+    transition: $transition*2;
+    -ms-interpolation-mode: bicubic;
+    @include user-drag;
+
+    &:hover {
+      opacity: .9;
+    }
+
+    &:active {
+      opacity: .5;
+      transition: 0;
+    }
+  }
+
+  & + input {
+    font: inherit;
+    font-size: 1rem;
+    line-height: 2;
+    width: calc(100% - .375rem);
+    margin-left: .375rem;
+    text-align: left;
+    padding: .25rem 1rem;
+  }
+}
+  @keyframes selected { 10% { opacity: .5; } }
+
+.no-support-message {
+  display: none;
+
+  .no-support & {
+    display: block;
+  }
+}
+
+
+.cite.panel {
+  @include user-select;
+
+  .twitter { margin: .75rem 0 .5rem .5rem; }
+
+  p { font-size: .95rem; }
+  a {
+    text-decoration: none;
+    font-weight: 500;
+    color: inherit;
+    transition: $transition;
+  }
+
+  &:hover a {
+    color: $linkblue;
+
+    &:hover { text-decoration: underline; }
+  }
+}
+
+.warning.panel {
+  background: $red;
+
+  &:active { background: $red; }
+
+  h1 {
+    font-weight: 300;
+    font-size: 2.5rem;
+    padding: 0 .5rem;
+
+    &:before {
+      font: .7em Browsers;
+      content: "\e609";
+      padding-right: .5em;
+    }
+  }
+}
+
+.browser-support {
+  color: inherit;
+  text-decoration: none;
+
+  .no-support &.permanent {
+    display: none;
+  }
+
+  h2 {
+    display: flex;
+    padding-right: 0;
+  }
+
+  small {
+    flex: 1;
+    text-align: right;
+    padding-left: 1em;
+
+    &:before { content: "("; }
+    &:after { content: ")"; }
+  }
+
+  &:hover small {
+    color: $linkblue;
+    text-decoration: underline;
+
+    &:before { content: "www."; }
+    &:after { content: ""; }
+  }
+
+  &:active { background: rgba(white, .5); }
+
+  .table {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: .5rem;
+    padding: .25rem;
+  }
+}
+
+
+.icon {
+  display: inline-block;
+  text-align: center;
+  padding: .25rem;
+  color: $black;
+  transition:
+    color $transition,
+    transform $transition,
+    text-shadow $transition;
+  @include user-select;
+
+  .panel:hover & {
+    &.unsupported {
+      transform: scale(.9);
+      opacity: .15;
+    }
+  }
+
+  &:before {
+    display: block;
+    font-family: Browsers;
+    font-size: 2.5em;
+  }
+    &.chrome:before { content: "\e603"; }
+    &.safari:before { content: "\e607"; }
+    &.opera:before { content: "\e606"; }
+    &.firefox:before { content: "\e604"; }
+    &.ie:before { content: "\e605"; }
+
+  &:after {
+    display: block;
+    font-size: 1.25em;
+    content: attr(data-version);
+    padding-top: .25rem;
+  }
+
+  &.unsupported {
+    opacity: .3;
+  }
+
+  [data-version=""]:after {
+    content: "/u00D7";
+  }
+}
+
+
+p {
+  font-size: 1.1rem;
+  line-height: 1.2;
+  padding: .5rem 0 0 .5rem;
+}
+
+
+
+@font-face {
+  font-family: "Alegreya Sans";
+  font-style: normal;
+  font-weight: 300;
+  src: local('Alegreya Sans Light'), local('AlegreyaSans-Light'), url(http://fonts.gstatic.com/s/alegreyasans/v2/11EDm-lum6tskJMBbdy9aanUXp5W4FLE8OnWB9t-aHo.woff) format('woff');
+}
+@font-face {
+  font-family: 'Alegreya Sans';
+  font-style: italic;
+  font-weight: 300;
+  src: local('Alegreya Sans Light Italic'), local('AlegreyaSans-LightItalic'), url(http://fonts.gstatic.com/s/alegreyasans/v3/WfiXipsmjqRqsDBQ1bA9CjlgAWjU5_zqYf1mnuZ7Lrf3rGVtsTkPsbDajuO5ueQw.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Alegreya Sans";
+  font-style: normal;
+  font-weight: 400;
+  src: local('Alegreya Sans'), local('AlegreyaSans-Regular'), url(http://fonts.gstatic.com/s/alegreyasans/v2/KYNzioYhDai7mTMnx_gDgnt9r5m2YmP5sw3cUAQwL0E.woff) format('woff');
+}
+@font-face {
+  font-family: "Browsers";
+  src: url(fonts/browsers.eot);
+  src: url(fonts/browsers.eot) format('embedded-opentype'),
+    url(fonts/browsers.woff) format('woff'),
+    url(fonts/browsers.ttf) format('truetype'),
+    url(fonts/browsers.svg) format('svg');
+  font-weight: normal;
+  font-style: normal;
+}

@@ -1,0 +1,28 @@
+.mirror-y-effect {
+  background-image: url(photo.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+@supports (transform: scaleY(-1)) {
+  .mirror-y-effect {
+    position: relative;
+  }
+  .mirror-y-effect:before, .mirror-y-effect:after {
+    display: block;
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    background: inherit;
+  }
+  .mirror-y-effect:before {
+    top: 0;
+    bottom: 50%;
+    transform: scaleY(-1);
+  }
+  .mirror-y-effect:after {
+    top: 50%;
+    bottom: 0;
+  }
+}

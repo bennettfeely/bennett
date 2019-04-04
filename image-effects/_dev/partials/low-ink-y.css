@@ -1,0 +1,13 @@
+.low-ink-y-effect {
+  background-image: url(photo.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+@supports (background-blend-mode: screen, overlay) {
+  .low-ink-y-effect {
+    background-image: url(photo.jpg), url(photo.jpg), url(photo.jpg);
+    background-size: 100% 100%, 100% 1000%;
+    background-blend-mode: screen, overlay;
+  }
+}

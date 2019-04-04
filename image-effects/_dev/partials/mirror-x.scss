@@ -1,0 +1,31 @@
+.mirror-x-effect {
+	$url : url(photo.jpg);
+
+	background-image: $url;
+	background-size: cover;
+	background-position: center;
+
+	@supports (transform: scaleX(-1)) {
+		position: relative;
+
+		&:before, &:after {
+			display: block;
+			content: "";
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			background: inherit;
+		}
+
+		&:before {
+			left: 0;
+			right: 50%;
+			transform: scaleX(-1);
+		}
+
+		&:after {
+			left: 50%;
+			right: 0;
+		}
+	}
+}

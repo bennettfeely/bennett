@@ -1,0 +1,25 @@
+.airbrush-effect {
+  $url : url(photo.jpg);
+
+  background-image: $url;
+	background-size: cover;
+	background-position: center;
+
+  @supports (filter: blur(5px) contrast(5)) and (mix-blend-mode: multiply) {
+		position: relative;
+		overflow: hidden;
+
+		&:after {
+			display: block;
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: inherit;
+			filter: brightness(1.5) saturate(100) blur(5px) contrast(5);
+			mix-blend-mode: multiply;
+		}
+	}
+}

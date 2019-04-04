@@ -1,0 +1,14 @@
+.flannel-effect {
+  background-image: url(photo.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+@supports (background-blend-mode: overlay) {
+  .flannel-effect {
+    background-image: url(photo.jpg), url(photo.jpg), url(photo.jpg);
+    background-position: center;
+    background-size: 100%, 100000% 100%, 100% 100000%;
+    background-blend-mode: overlay;
+  }
+}

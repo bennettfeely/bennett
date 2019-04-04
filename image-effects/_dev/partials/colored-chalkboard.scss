@@ -1,0 +1,18 @@
+.colored-chalkboard-effect {
+	$url : url(photo.jpg);
+
+	background-image: $url;
+	background-size: cover;
+	background-position: center;
+
+	@supports (filter: brightness(2)) and (background-blend-mode: color, difference) {
+		background-image: $url, $url, $url;
+		background-size: cover;
+		background-position:
+			calc(50% - 1px) calc(50% - 1px),
+			calc(50% + 1px) calc(50% + 1px),
+			center;
+		background-blend-mode: color, difference;
+		filter: brightness(2);
+	}
+}

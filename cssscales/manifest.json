@@ -1,0 +1,27 @@
+{
+	"name": "CSS Scales",
+	"short_name": "Scales",
+	"version": "1.0",
+	"default_locale": "en",
+	"lang": "en",
+	"dir": "ltr",
+	"display": "fullscreen",
+	"orientation": "portrait",
+	"theme_color": "#d7d5ce",
+	"background_color": "#d7d5ce",
+	"description": "Diverging and sequential color scales from ColorBrewer and van der Walt, Smith and Firing, approximated as accessible CSS gradients.",
+	"author": "Bennett Feely",
+	"offline_enabled": true,
+	"icons": [
+		{
+			"src": "\/android-chrome-192x192.png",
+			"sizes": "192x192",
+			"type": "image\/png"
+		},
+		{
+			"src": "\/android-chrome-512x512.png",
+			"sizes": "512x512",
+			"type": "image\/png"
+		}
+	]
+}

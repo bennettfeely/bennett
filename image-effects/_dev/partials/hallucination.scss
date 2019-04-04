@@ -1,0 +1,40 @@
+.hallucination-effect {
+  $url : url(photo.jpg);
+  $offset : 5px;
+
+  background-image: $url;
+  background-size: cover;
+  background-position: center;
+
+  @supports (mix-blend-mode: multiply) {
+    position: relative;
+    overflow: hidden;
+    background-color: magenta;
+    background-blend-mode: screen;
+
+    &:before, &:after {
+      display: block;
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: inherit;
+      mix-blend-mode: multiply;
+      transform: scale(1.05);
+    }
+
+    &:before {
+      background-color: yellow;
+      background-blend-mode: screen;
+      transform-origin: top left;
+    }
+
+    &:after {
+      background-color: cyan;
+      background-blend-mode: screen;
+      transform-origin: bottom right;
+    }
+  }
+}

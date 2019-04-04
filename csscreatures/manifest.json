@@ -1,0 +1,29 @@
+{
+  "author": "Bennett Feely",
+  "default_locale": "en",
+  "description": "See your creature appear here by tweeting to @csscreatures!",
+  "display": "browser",
+  "icons": [
+    {
+      "src": "img/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "img/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "img/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    }
+  ],
+  "kiosk_enabled": true,
+  "lang": "en-US",
+  "name": "CSS Creatures",
+  "short_name": "CSS Creatures",
+  "theme_color": "#283377",
+  "version": 2.0
+}

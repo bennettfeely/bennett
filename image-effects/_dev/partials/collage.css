@@ -1,0 +1,15 @@
+.collage-effect {
+  background-image: url(photo.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+@supports (background-blend-mode: overlay) {
+  .collage-effect {
+    background-image: url(photo.jpg), url(photo.jpg), url(photo.jpg), url(photo.jpg), url(photo.jpg), url(photo.jpg);
+    background-size: 200%, 80%, 60%, 50%, 40%, 100%;
+    background-position: 50%, 80%, 30%, 0;
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+  }
+}

@@ -1,0 +1,71 @@
+/* Pencil effect ================================================================== */
+	@import 'partials/pencil.scss';
+
+/* Watercolor effect ============================================================== */
+	@import 'partials/watercolor.scss';
+
+/* Emboss effect ================================================================== */
+	@import 'partials/emboss.scss';
+
+/* Colored Pencil effect ========================================================== */
+	@import 'partials/colored-pencil.scss';
+
+/* Chalkboard effect ============================================================== */
+	@import 'partials/chalkboard.scss';
+
+/* Colored chalkboard effect ====================================================== */
+	@import 'partials/colored-chalkboard.scss';
+
+/* Airbrush effect ================================================================ */
+	@import 'partials/airbrush.scss';
+
+/* Hallucination effect =========================================================== */
+	@import 'partials/hallucination.scss';
+
+/* Flannel effect ================================================================= */
+	@import 'partials/flannel.scss';
+
+/* Low ink (horizontal) effect ==================================================== */
+	@import 'partials/low-ink-x.scss';
+
+/* Low ink (vertical) effect ====================================================== */
+	@import 'partials/low-ink-y.scss';
+
+/* Collage effect ================================================================= */
+	@import 'partials/collage.scss';
+
+/* Mosaic effect ================================================================== */
+	@import 'partials/mosaic.scss';
+
+/* Photo border effect ============================================================ */
+	@import 'partials/photo-border.scss';
+
+/* Infrared effect ================================================================ */
+	@import 'partials/infrared.scss';
+
+/* Night vision effect ============================================================ */
+	@import 'partials/night-vision.scss';
+
+/* Warhol effect ================================================================== */
+	@import 'partials/warhol.scss';
+
+/* Selective color effect ========================================================= */
+	@import 'partials/selective-color.scss';
+
+/* Horizontal mirror effect ======================================================= */
+	@import 'partials/mirror-x.scss';
+
+/* Vertical mirror effect ========================================================= */
+	@import 'partials/mirror-y.scss';
+
+/* Hide the image ================================================================= */
+	[class$=-effect] {
+		display: inline-block !important;
+		position: relative !important;
+
+		img {
+		  vertical-align: top !important;
+		  margin: 0 !important;
+		  visibility: hidden !important;
+		}
+	}

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>CSSynth</title>
+  <link rel="stylesheet" type="text/css" href="style.min.css">
+  <link rel="shortcut icon" href="favicon.ico" />
+  <!-- <meta name="viewport" content="width=device-width"> -->
+</head>
+
+<body class="zoom-out">
+
+  <header>
+    <a class="title" href="http://bennettfeely.com/cssynth">
+      CSS<span class="dash"></span>NTH
+    </a>
+
+    <div class="share">
+      <a href="https://twitter.com/share" class="twitter-share-button" data-text="CSSynth: Run CSS animations in order">Tweet</a>
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    </div>
+  </header>
+
+  <main>
+    <section class="sidebar">
+
+      <div class="output preprocessor">
+        <textarea spellcheck="false"></textarea>
+        <form class="codepen" action="http://codepen.io/pen/define" method="POST" target="_blank">
+          <div id="codepen" class="codepen-button">
+            <i class="icon-codepen"></i>
+          </div>
+        </form>
+      </div>
+
+      <ul class="cards">
+        <li class="special grid-alert">
+          <span class="message"></span>
+          <h2 class="block run button">Run the animations</h2>
+        </li>
+
+        <li class="special custom-alert">
+          <span class="message">Click on items in the order you want them to be iterated. When finished, click the button below to generate the code.</span>
+          <h2 class="block generate button">Generate code</h2>
+        </li>
+
+        <li>
+          <h2 class="block">Effect</h2>
+            <span class="column">
+              <div class="half">
+                <input id="none" type="radio" name="effect" />
+                <label for="none">None</label>
+              </div>
+              <div class="half">
+                <input id="simple" type="radio" name="effect" />
+                <label for="simple">Simple</label>
+              </div>
+              <div class="half">
+                <input checked id="random" type="radio" name="effect" />
+                <label for="random">Random</label>
+              </div>
+              <div class="half">
+                <input id="row" type="radio" name="effect" />
+                <label for="row">Row</label>
+              </div>
+              <div class="half">
+                <input id="column" type="radio" name="effect" />
+                <label for="column">Column</label>
+              </div>
+              <div class="half">
+                <input id="custom" type="radio" name="effect" />
+                <label for="custom">Custom</label>
+              </div>
+            </span>
+        </li>
+
+        <li>
+          <h2>Elements</h2>
+          <input placeholder="4" maxlength="2" value="8" id="rows" type="text" class="mini" /> <span class="initial">&times;</span> <input placeholder="6" maxlength="2" value="5" id="columns" type="text" class="mini" />
+        </li>
+
+        <li>
+          <h2>Delay</h2>
+            <input value="150" class="small" type="text" autocomplete="off" spellcheck="false" id="delay" placeholder="150" />
+            <span class="initial">ms</span>
+
+          <div id="negative_delay_tip" class="tip">Try setting this with a negative value.</div>
+        </li>
+
+        <li>
+          <h2>Output</h2>
+             <input id="css" type="radio" name="preprocessor" />
+            <label for="css">css</label>
+
+            <input checked id="scss" type="radio" name="preprocessor" />
+            <label for="scss">scss</label>
+        </li>
+
+        <li>
+          <h2>Prefix</h2>
+          <input checked id="webkit" type="checkbox" name="prefix" />
+          <label for="webkit">webkit</label>
+
+          <input id="moz" type="checkbox" name="prefix" />
+          <label for="moz">moz</label>
+        </li>
+
+        <li>
+          <h2 class="block">Selector</h2>
+          <span class="column">
+            <div class="full">
+              <input checked id="nth_child" type="radio" name="selector" />
+              <label for="nth_child">:nth-child</label>
+            </div>
+            <div class="full">
+              <input id="nth_of_type" type="radio" name="selector" />
+              <label for="nth_of_type">:nth-of-type</label>
+            </div>
+            <div class="full">
+              <input id="nth_last_child" type="radio" name="selector" />
+              <label for="nth_last_child">:nth-last-child</label>
+            </div>
+            <div class="full">
+              <input id="nth_last_of_type" type="radio" name="selector" />
+              <label for="nth_last_of_type">:nth-last-of-type</i></label>
+            </div>
+          </span>
+        </li>
+
+        <li class="credits">
+
+          <h2 class="block">About</h2>
+
+          <a href="https://twitter.com/bennettfeely" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @bennettfeely</a>
+          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+          <p>CSSynth is brought to you by <a href="http://bennettfeely.com">Bennett Feely</a>.</p>
+        </li>
+
+      </ul>
+    </section>
+
+
+    <section class="tester">
+      <figure>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+      </figure>
+
+      <div id="pause" class="tester-text pause"></div>
+      <div class="tester-text sidebar-toggle"></div>
+
+     <div class="mobile-message">
+        CSSynth is a tool to generate nth-child sequences animate elements in order to use on your projects.
+        <br>
+        <br>
+        This tool isn't available on mobile. Try using this on a modern web browser with a bigger screen.
+        </div>
+    </section>
+
+
+    <section class="sidebar">
+      <ul>
+        <li>
+          <h2 class="block">Demo Animation</h2>
+          <span class="column">
+            <div class="full">
+              <input data-animation="zoom-out" checked id="zoom_out_animation" type="radio" name="animation" />
+              <label for="zoom_out_animation">Zoom-out</label>
+            </div>
+            <div class="full">
+              <input data-animation="vertical-flip" id="vertical_flip_animation" type="radio" name="animation" />
+              <label for="vertical_flip_animation">Vertical Flip</label>
+            </div>
+            <div class="full">
+              <input data-animation="horizontal-flip" id="horizontal_flip_animation" type="radio" name="animation" />
+              <label for="horizontal_flip_animation">Horizontal Flip</label>
+            </div>
+            <div class="full">
+              <input data-animation="spin" id="spin_animation" type="radio" name="animation" />
+              <label for="spin_animation">Spin</label>
+            </div>
+            <div class="full">
+              <input data-animation="opacity" id="opacity_animation" type="radio" name="animation" />
+              <label for="opacity_animation">Opacity</label>
+            </div>
+            <div class="full">
+              <input data-animation="disco" id="disco_animation" type="radio" name="animation" />
+              <label for="disco_animation">Disco</label>
+            </div>
+          </span>
+        </li>
+
+        <li>
+          <h2>Duration</h2>
+            <input id="duration" value="2.00" class="small" type="text" autocomplete="off" spellcheck="false" placeholder="2.00" />
+            <span class="initial">sec</span>
+        </li>
+
+        <li>
+          <h2 class="block">Miscellaneous</h2>
+            <span class="column">
+              <div class="full">
+                <input id="pics" type="checkbox" name="misc" />
+                <label for="pics">Use profile pics</label>
+              </div>
+              <div class="full">
+                <input id="dots" type="checkbox" name="misc" />
+                <label for="dots">Use dots</label>
+              </div>
+              <div class="full">
+                <input id="numbers" type="checkbox" name="misc" />
+                <label for="numbers">Show numbers</label>
+              </div>
+              <div class="full">
+                <input id="monochrome" type="checkbox" name="misc" />
+                <label for="monochrome">Monochrome</label>
+              </div>
+            </span>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+
+
+<!-- <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
+<script src="jquery.min.js"></script>
+<script src="modernizr.js"></script>
+<script src="cssynth.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-35724550-1', 'bennettfeely.com');
+  ga('send', 'pageview');
+</script>
+</body>
+</html>

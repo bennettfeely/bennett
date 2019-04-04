@@ -1,0 +1,6 @@
+.infrared-effect {
+  background-image: url(photo.jpg);
+  background-size: cover;
+  background-position: center;
+  filter: hue-rotate(180deg) saturate(2);
+}

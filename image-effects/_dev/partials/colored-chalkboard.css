@@ -1,0 +1,15 @@
+.colored-chalkboard-effect {
+  background-image: url(photo.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+@supports (filter: brightness(2)) and (background-blend-mode: color, difference) {
+  .colored-chalkboard-effect {
+    background-image: url(photo.jpg), url(photo.jpg), url(photo.jpg);
+    background-size: cover;
+    background-position: calc(50% - 1px) calc(50% - 1px), calc(50% + 1px) calc(50% + 1px), center;
+    background-blend-mode: color, difference;
+    filter: brightness(2);
+  }
+}

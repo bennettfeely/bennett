@@ -1,0 +1,766 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta http-equiv="cleartype" content="on"><meta name="msapplication-tap-highlight" content="no"><meta name="application-name" content="Image Effects with CSS"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="google" content="notranslate"><meta name="description" content="A collection of CSS snippets to create fast, complex image effects for websites"><meta name="renderer" content="webkit|ie-comp|ie-stand"><meta name="x5-orientation" content="landscape/portrait"><title>Image Effects with CSS</title><link href="https://fonts.googleapis.com/css?family=Alegreya+Sans:400,400i,500" rel="stylesheet"><link href="css/style.min.css" rel="stylesheet"><link rel="apple-touch-icon" href="img/apple-touch-icon.png" sizes="180x180"><link rel="icon" type="image/png" href="img/favicon-32x32.png" sizes="32x32"><link rel="icon" type="image/png" href="img/favicon-16x16.png" sizes="16x16"><link rel="mask-icon" href="img/safari-pinned-tab.svg" color="#3960ab"><meta name="apple-mobile-web-app-title" content="Image Effects with CSS"><meta name="application-name" content="Image Effects with CSS"><meta name="theme-color" content="#d3d0c9"><meta name="msapplication-TileColor" content="#1d1f21"><meta name="twitter:card" content="summary"><meta name="twitter:creator" content="@bennettfeely"><meta name="twitter:title" content="Image Effects with CSS"><meta name="twitter:description" content="A collection of CSS snippets to create fast, complex image effects for websites"><meta name="twitter:image" content="http://bennettfeely.com/image-effects/img/preview_2x2.jpg"><meta property="og:url" content="http://bennettfeely.com/image-effects"><meta property="og:type" content="website"><meta property="og:title" content="Image Effects with CSS"><meta property="og:image" content="http://bennettfeely.com/image-effects/img/preview_4x2.jpg"><meta property="og:description" content="A collection of CSS snippets to create fast, complex image effects for websites"><meta property="og:site_name" content="Image Effects with CSS"><meta property="og:locale" content="en_US"></head><body onload="layout()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" aria-hidden="true" style="display:none"><symbol id="codepen-icon" viewBox="20 20 80 80"><path fill="currentColor" class="inner-box" d="M97.147 48.319c-0.007-0.047-0.019-0.092-0.026-0.139c-0.016-0.09-0.032-0.18-0.056-0.268 c-0.014-0.053-0.033-0.104-0.05-0.154c-0.025-0.078-0.051-0.156-0.082-0.232c-0.021-0.053-0.047-0.105-0.071-0.156 c-0.033-0.072-0.068-0.143-0.108-0.211c-0.029-0.051-0.061-0.1-0.091-0.148c-0.043-0.066-0.087-0.131-0.135-0.193 c-0.035-0.047-0.072-0.094-0.109-0.139c-0.051-0.059-0.104-0.117-0.159-0.172c-0.042-0.043-0.083-0.086-0.127-0.125 c-0.059-0.053-0.119-0.104-0.181-0.152c-0.048-0.037-0.095-0.074-0.145-0.109c-0.019-0.012-0.035-0.027-0.053-0.039L61.817 23.5 c-1.072-0.715-2.468-0.715-3.54 0L24.34 46.081c-0.018 0.012-0.034 0.027-0.053 0.039c-0.05 0.035-0.097 0.072-0.144 0.1 c-0.062 0.049-0.123 0.1-0.181 0.152c-0.045 0.039-0.086 0.082-0.128 0.125c-0.056 0.055-0.108 0.113-0.158 0.2 c-0.038 0.045-0.075 0.092-0.11 0.139c-0.047 0.062-0.092 0.127-0.134 0.193c-0.032 0.049-0.062 0.098-0.092 0.1 c-0.039 0.068-0.074 0.139-0.108 0.211c-0.024 0.051-0.05 0.104-0.071 0.156c-0.031 0.076-0.057 0.154-0.082 0.2 c-0.017 0.051-0.035 0.102-0.05 0.154c-0.023 0.088-0.039 0.178-0.056 0.268c-0.008 0.047-0.02 0.092-0.025 0.1 c-0.019 0.137-0.029 0.275-0.029 0.416V71.36c0 0.1 0 0.3 0 0.418c0.006 0 0 0.1 0 0.1 c0.017 0.1 0 0.2 0.1 0.268c0.015 0.1 0 0.1 0.1 0.154c0.025 0.1 0.1 0.2 0.1 0.2 c0.021 0.1 0 0.1 0.1 0.154c0.034 0.1 0.1 0.1 0.1 0.213c0.029 0 0.1 0.1 0.1 0.1 c0.042 0.1 0.1 0.1 0.1 0.193c0.035 0 0.1 0.1 0.1 0.139c0.05 0.1 0.1 0.1 0.2 0.2 c0.042 0 0.1 0.1 0.1 0.125c0.058 0.1 0.1 0.1 0.2 0.152c0.047 0 0.1 0.1 0.1 0.1 c0.019 0 0 0 0.1 0.039L58.277 96.64c0.536 0.4 1.2 0.5 1.8 0.537c0.616 0 1.233-0.18 1.77-0.537 l33.938-22.625c0.018-0.012 0.034-0.027 0.053-0.039c0.05-0.035 0.097-0.072 0.145-0.109c0.062-0.049 0.122-0.1 0.181-0.152 c0.044-0.039 0.085-0.082 0.127-0.125c0.056-0.055 0.108-0.113 0.159-0.172c0.037-0.045 0.074-0.09 0.109-0.139 c0.048-0.062 0.092-0.127 0.135-0.193c0.03-0.049 0.062-0.098 0.091-0.146c0.04-0.07 0.075-0.141 0.108-0.213 c0.024-0.051 0.05-0.102 0.071-0.154c0.031-0.078 0.057-0.156 0.082-0.234c0.017-0.051 0.036-0.102 0.05-0.154 c0.023-0.088 0.04-0.178 0.056-0.268c0.008-0.045 0.02-0.092 0.026-0.137c0.018-0.139 0.028-0.277 0.028-0.418V48.735 C97.176 48.6 97.2 48.5 97.1 48.319z M63.238 32.073l25.001 16.666L77.072 56.21l-13.834-9.254V32.073z M56.856 32.1 v14.883L43.023 56.21l-11.168-7.471L56.856 32.073z M29.301 54.708l7.983 5.34l-7.983 5.34V54.708z M56.856 88.022L31.855 71.4 l11.168-7.469l13.833 9.252V88.022z M60.048 67.597l-11.286-7.549l11.286-7.549l11.285 7.549L60.048 67.597z M63.238 88.022V73.14 l13.834-9.252l11.167 7.469L63.238 88.022z M90.794 65.388l-7.982-5.34l7.982-5.34V65.388z"></path></symbol></svg> <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" aria-hidden="true" style="display:none"><symbol id="twitter-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path></symbol></svg> <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" aria-hidden="true" style="display:none"><symbol id="facebook-icon" viewBox="0 0 60.734 60.733"><path fill="currentColor" d="M57.378,0.001H3.352C1.502,0.001,0,1.5,0,3.353v54.026c0,1.853,1.502,3.354,3.352,3.354h29.086V37.214h-7.914v-9.167h7.914 v-6.76c0-7.843,4.789-12.116,11.787-12.116c3.355,0,6.232,0.251,7.071,0.36v8.198l-4.854,0.002c-3.805,0-4.539,1.809-4.539,4.462 v5.851h9.078l-1.187,9.166h-7.892v23.52h15.475c1.852,0,3.355-1.503,3.355-3.351V3.351C60.731,1.5,59.23,0.001,57.378,0.001z"></path></symbol></svg> <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="display:none"><symbol id="copy-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M18 6v-6h-18v18h6v6h18v-18h-6zm-12 10h-4v-14h14v4h-10v10zm16 6h-14v-14h14v14z"></path></symbol></svg><section class="grid"><div class="grid-sizer"></div><header class="grid-item"><div class="container"><h1>Image Effects with CSS</h1><h2>Bennett Feely <a href="http://twitter.com/bennettfeely">Twitter</a> <a href="http://codepen.io/bennettfeely/">CodePen</a></h2><hr><h2>How it works</h2><p>Using one or more newer CSS properties (<code>background-blend-mode</code>, <code>mix-blend-mode</code>, or <code>filter</code>) gives us a surprising amount of possibilities to manipulate a single source image.</p><p><figure class="example"><a href="css/photo.jpg" target="_blank"><img src="css/photo.jpg" width="120" height="90" alt="Image of lighthouse used for CSS image effects demo"></a><figcaption>The unedited background-image manipulated using CSS.</figcaption></figure></p><p data-label="Blending">In most of these effects the single source background-image url is repeated one or more times and blended with itself using CSS blend modes (<code>multiply</code>, <code>overlay</code>, <code>screen</code>, <code>difference</code>, etc.)</p><p data-label="Filtering">In some of these effects, the CSS <code>filter</code> property is used to further refine the output. Functions like <code>grayscale()</code>, <code>brightness()</code>, and <code>contrast()</code> can and should be tweaked to achieve a better result for images you use.</p><p data-label="Implementation">Click on CodePen buttons to see how effects are implemented, or scroll down to the <a href="#implementation">Implementation section</a>.</p><p data-label="Be smart">These effects should be used as a progressive enhancement.</p><p data-label="Fallback">By default, the source image is displayed without any effects. When CSS <code>@supports</code> detects support for the required CSS properties and values for an individual effect, then the effect will be enabled. This amounts to a precise, native, and lightweight feature detection.</p><p data-label="Download">A complete CSS library of these effects can be downloaded <a href="css/all.css">unminified (12.8kb)</a> or <a href="css/all.min.css">minified (8.7kb)</a>. Using <a href="https://css-tricks.com/snippets/htaccess/active-gzip-compression/">gzip</a>, the entire image effects library is less than 1300 bytes.</p><p>This project is available <a href="https://github.com/bennettfeely/image-effects">on GitHub</a>.</p></div></header><article class="grid-item" id="pencil"><figure class="box"><div class="title container"><h2><a data-name="Pencil" href="#pencil"></a></h2></div><div class="preview pencil-effect"><img src="css/photo.jpg" alt="Image of lighthouse"></div><div class="warning">/** Your browser does not yet support the following properties necessary for this image effect:<ul class="support"><li class="filter">filter</li><li class="background-blend-mode">background-blend-mode</li></ul>Browser support is tested with CSS @supports. Image effects will fallback in browsers that do not support necessary CSS features. **/</div><figcaption class="output showing-scss"><pre class="css" id="pencil_css"><code class="language-css container">.pencil-effect {
+  background-image: url(photo.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+@supports (filter: invert(1)) and (background-blend-mode: difference) {
+  .pencil-effect {
+    background-image: url(photo.jpg), url(photo.jpg);
+    background-blend-mode: difference;
+    background-position: calc(50% - 1px) calc(50% - 1px), calc(50% + 1px) calc(50% + 1px);
+    filter: brightness(2) invert(1) grayscale(1);
+    box-shadow: inset 0 0 0 1px black;
+  }
+}
+</code></pre><pre class="scss" id="pencil_scss"><code class="language-scss container">.pencil-effect {
+	$url : url(photo.jpg);
+
+	background-image: $url;
+	background-size: cover;
+	background-position: center;
+
+	@supports (filter: invert(1)) and (background-blend-mode: difference) {
+		background-image: $url, $url;
+		background-blend-mode: difference;
+		background-position:
+			calc(50% - 1px) calc(50% - 1px),
+			calc(50% + 1px) calc(50% + 1px);
+		filter: brightness(2) invert(1) grayscale(1);
+		box-shadow: inset 0 0 0 1px black;
+	}
+}</code></pre><menu class="options expanded"><a class="toggle css-toggle">CSS</a> <a class="toggle scss-toggle on">SCSS</a> <a class="open-in-codepen"><svg class="icon"><use xlink:href="#codepen-icon"></use></svg>CodePen</a> <a data-clipboard-target="#pencil_scss" class="copy"><svg class="icon"><use xlink:href="#copy-icon"></use></svg>Copy</a></menu></figcaption></figure></article><section class="grid-item share-box"><div class="container"><h3>Share this page with others!</h3><hr><div class="share"><a class="share-button twitter" href="http://twitter.com/share?text=CSS%20Image%20Effects%3A%20A%20collection%20of%20CSS%20snippets%20to%20create%20fast%2C%20complex%20image%20effects%20for%20websites&amp;url=http://bennettfeely.com%2Fimage-effects"><svg class="icon"><use xlink:href="#twitter-icon"></use></svg>Tweet</a><div class="shares" id="twitter_shares">412</div></div><div class="share"><a class="share-button twitter facebook" href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fbennettfeely.com%2Fimage-effects"><svg class="icon"><use xlink:href="#facebook-icon"></use></svg>Share</a><div class="shares" id="facebook_shares">339</div></div></div></section><section class="grid-item ad-box"><figure class="box"><div class="container"><script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=bennettfeelycom" id="_carbonads_js"></script></div></figure></section><article class="grid-item" id="watercolor"><figure class="box"><div class="title container"><h2><a data-name="Watercolor" href="#watercolor"></a></h2></div><div class="preview watercolor-effect"><img src="css/photo.jpg" alt="Image of lighthouse"></div><div class="warning">/** Your browser does not yet support one or more of the following properties:<ul class="support"><li class="filter">filter</li><li class="mix-blend-mode">mix-blend-mode</li></ul>Browser support is tested with CSS @supports. Image effects will fallback in browsers that do not support necessary CSS features. **/</div><figcaption class="output showing-scss"><pre class="css" id="watercolor_css"><code class="language-css container">.watercolor-effect {
+  background-image: url(photo.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+@supports (filter: blur(2px)) and (mix-blend-mode: multiply) {
+  .watercolor-effect {
+    position: relative;
+    overflow: hidden;
+  }
+  .watercolor-effect:before, .watercolor-effect:after {
+    display: block;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+  }
+  .watercolor-effect:before {
+    background-image: url(photo.jpg), url(photo.jpg);
+    background-blend-mode: difference;
+    background-position: calc(50% - 1px) calc(50% - 1px), calc(50% + 1px) calc(50% + 1px);
+    filter: brightness(2) invert(1) grayscale(1);
+    box-shadow: inset 0 0 0 1px black;
+  }
+  .watercolor-effect:after {
+    background-image: url(photo.jpg);
+    background-position: center;
+    mix-blend-mode: multiply;
+    filter: brightness(1.3) blur(2px) contrast(2);
+  }
+}
+</code></pre><pre class="scss" id="watercolor_scss"><code class="language-scss container">.watercolor-effect {
+	$url : url(photo.jpg);
+
+	background-image: $url;
+	background-size: cover;
+	background-position: center;
+
+	@supports (filter: blur(2px)) and (mix-blend-mode: multiply) {
+		position: relative;
+		overflow: hidden;
+
+		&:before, &:after {
+			display: block;
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-size: cover;
+		}
+
+		&:before {
+			background-image: $url, $url;
+			background-blend-mode: difference;
+			background-position:
+				calc(50% - 1px) calc(50% - 1px),
+				calc(50% + 1px) calc(50% + 1px);
+			filter: brightness(2) invert(1) grayscale(1);
+			box-shadow: inset 0 0 0 1px black;
+		}
+
+		&:after {
+			background-image: $url;
+			background-position: center;
+			mix-blend-mode: multiply;
+			filter: brightness(1.3) blur(2px) contrast(2);
+		}
+	}
+}</code></pre><menu class="options expanded"><a class="toggle css-toggle">CSS</a> <a class="toggle scss-toggle on">SCSS</a> <a class="open-in-codepen"><svg class="icon"><use xlink:href="#codepen-icon"></use></svg>CodePen</a> <a data-clipboard-target="#watercolor_scss" class="copy"><svg class="icon"><use xlink:href="#copy-icon"></use></svg>Copy</a></menu></figcaption></figure></article><article class="grid-item" id="emboss"><figure class="box"><div class="title container"><h2><a data-name="Emboss" href="#emboss"></a></h2></div><div class="preview emboss-effect"><img src="css/photo.jpg" alt="Image of lighthouse"></div><div class="warning">/** Your browser does not yet support the following properties necessary for this image effect:<ul class="support"><li class="filter">filter</li><li class="background-blend-mode">background-blend-mode</li></ul>Browser support is tested with CSS @supports. Image effects will fallback in browsers that do not support necessary CSS features. **/</div><figcaption class="output showing-scss"><pre class="css" id="emboss_css"><code class="language-css container">.emboss-effect {
+  background-image: url(photo.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+@supports (filter: invert(1)) and (background-blend-mode: difference, screen) {
+  .emboss-effect {
+    background-image: url(photo.jpg), url(photo.jpg), url(photo.jpg);
+    background-blend-mode: difference, screen;
+    background-position: calc(50% - 1px) calc(50% - 1px), calc(50% + 1px) calc(50% + 1px), center;
+    filter: brightness(2) invert(1) grayscale(1);
+  }
+}
+</code></pre><pre class="scss" id="emboss_scss"><code class="language-scss container">.emboss-effect {
+	$url : url(photo.jpg);
+
+	background-image: $url;
+	background-size: cover;
+	background-position: center;
+
+	@supports (filter: invert(1)) and (background-blend-mode: difference, screen) {
+		background-image: $url, $url, $url;
+		background-blend-mode: difference, screen;
+		background-position:
+			calc(50% - 1px) calc(50% - 1px),
+			calc(50% + 1px) calc(50% + 1px),
+			center;
+		filter: brightness(2) invert(1) grayscale(1);
+	}
+}</code></pre><menu class="options expanded"><a class="toggle css-toggle">CSS</a> <a class="toggle scss-toggle on">SCSS</a> <a class="open-in-codepen"><svg class="icon"><use xlink:href="#codepen-icon"></use></svg>CodePen</a> <a data-clipboard-target="#emboss_scss" class="copy"><svg class="icon"><use xlink:href="#copy-icon"></use></svg>Copy</a></menu></figcaption></figure></article><article class="grid-item" id="colored-pencil"><figure class="box"><div class="title container"><h2><a data-name="Colored Pencil" href="#colored-pencil"></a></h2></div><div class="preview colored-pencil-effect"><img src="css/photo.jpg" alt="Image of lighthouse"></div><div class="warning">/** Your browser does not yet support the following properties necessary for this image effect:<ul class="support"><li class="filter">filter</li><li class="mix-blend-mode-color">mix-blend-mode: color;</li></ul>Browser support is tested with CSS @supports. Image effects will fallback in browsers that do not support necessary CSS features. **/</div><figcaption class="output showing-scss"><pre class="css" id="colored-pencil_css"><code class="language-css container">.colored-pencil-effect {
+  background-image: url(photo.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+@supports (filter: invert(1)) and (mix-blend-mode: color) {
+  .colored-pencil-effect {
+    position: relative;
+  }
+  .colored-pencil-effect:before, .colored-pencil-effect:after {
+    display: block;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+    box-shadow: inset 0 0 0 1px black;
+  }
+  .colored-pencil-effect:before {
+    background-image: url(photo.jpg), url(photo.jpg);
+    background-blend-mode: difference;
+    background-position: calc(50% - 1px) calc(50% - 1px), calc(50% + 1px) calc(50% + 1px);
+    filter: brightness(2) invert(1) grayscale(1);
+  }
+  .colored-pencil-effect:after {
+    background: inherit;
+    mix-blend-mode: color;
+  }
+}
+</code></pre><pre class="scss" id="colored-pencil_scss"><code class="language-scss container">.colored-pencil-effect {
+	$url : url(photo.jpg);
+
+	background-image: $url;
+	background-size: cover;
+	background-position: center;
+
+	@supports (filter: invert(1)) and (mix-blend-mode: color) {
+		position: relative;
+
+		&:before,
+		&:after {
+			display: block;
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-size: cover;
+			box-shadow: inset 0 0 0 1px black;
+		}
+
+		&:before {
+			background-image: $url, $url;
+			background-blend-mode: difference;
+			background-position:
+				calc(50% - 1px) calc(50% - 1px),
+				calc(50% + 1px) calc(50% + 1px);
+			filter: brightness(2) invert(1) grayscale(1);
+		}
+
+		&:after {
+			background: inherit;
+			mix-blend-mode: color;
+		}
+	}
+}</code></pre><menu class="options expanded"><a class="toggle css-toggle">CSS</a> <a class="toggle scss-toggle on">SCSS</a> <a class="open-in-codepen"><svg class="icon"><use xlink:href="#codepen-icon"></use></svg>CodePen</a> <a data-clipboard-target="#colored-pencil_scss" class="copy"><svg class="icon"><use xlink:href="#copy-icon"></use></svg>Copy</a></menu></figcaption></figure></article><article class="grid-item" id="chalkboard"><figure class="box"><div class="title container"><h2><a data-name="Chalkboard" href="#chalkboard"></a></h2></div><div class="preview chalkboard-effect"><img src="css/photo.jpg" alt="Image of lighthouse"></div><div class="warning">/** Your browser does not yet support the following properties necessary for this image effect:<ul class="support"><li class="filter">filter</li><li class="background-blend-mode">background-blend-mode</li></ul>Browser support is tested with CSS @supports. Image effects will fallback in browsers that do not support necessary CSS features. **/</div><figcaption class="output showing-scss"><pre class="css" id="chalkboard_css"><code class="language-css container">.chalkboard-effect {
+  background-image: url(photo.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+@supports (filter: grayscale(1)) and (background-blend-mode: difference) {
+  .chalkboard-effect {
+    background-image: url(photo.jpg), url(photo.jpg);
+    background-blend-mode: difference;
+    background-position: calc(50% - 1px) calc(50% - 1px), calc(50% + 1px) calc(50% + 1px);
+    filter: brightness(1.5) grayscale(1);
+  }
+}
+</code></pre><pre class="scss" id="chalkboard_scss"><code class="language-scss container">.chalkboard-effect {
+	$url : url(photo.jpg);
+
+	background-image: $url;
+	background-size: cover;
+	background-position: center;
+
+	@supports (filter: grayscale(1)) and (background-blend-mode: difference) {
+		background-image: $url, $url;
+		background-blend-mode: difference;
+		background-position:
+			calc(50% - 1px) calc(50% - 1px),
+			calc(50% + 1px) calc(50% + 1px);
+		filter: brightness(1.5) grayscale(1);
+	}
+}</code></pre><menu class="options expanded"><a class="toggle css-toggle">CSS</a> <a class="toggle scss-toggle on">SCSS</a> <a class="open-in-codepen"><svg class="icon"><use xlink:href="#codepen-icon"></use></svg>CodePen</a> <a data-clipboard-target="#chalkboard_scss" class="copy"><svg class="icon"><use xlink:href="#copy-icon"></use></svg>Copy</a></menu></figcaption></figure></article><article class="grid-item" id="colored-chalkboard"><figure class="box"><div class="title container"><h2><a data-name="Colored Chalkboard" href="#colored-chalkboard"></a></h2></div><div class="preview colored-chalkboard-effect"><img src="css/photo.jpg" alt="Image of lighthouse"></div><div class="warning">/** Your browser does not yet support the following properties necessary for this image effect:<ul class="support"><li class="filter">filter</li><li class="background-blend-mode-color">background-blend-mode: color;</li></ul>Browser support is tested with CSS @supports. Image effects will fallback in browsers that do not support necessary CSS features. **/</div><figcaption class="output showing-scss"><pre class="css" id="colored-chalkboard_css"><code class="language-css container">.colored-chalkboard-effect {
+  background-image: url(photo.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+@supports (filter: brightness(2)) and (background-blend-mode: color, difference) {
+  .colored-chalkboard-effect {
+    background-image: url(photo.jpg), url(photo.jpg), url(photo.jpg);
+    background-size: cover;
+    background-position: calc(50% - 1px) calc(50% - 1px), calc(50% + 1px) calc(50% + 1px), center;
+    background-blend-mode: color, difference;
+    filter: brightness(2);
+  }
+}
+</code></pre><pre class="scss" id="colored-chalkboard_scss"><code class="language-scss container">.colored-chalkboard-effect {
+	$url : url(photo.jpg);
+
+	background-image: $url;
+	background-size: cover;
+	background-position: center;
+
+	@supports (filter: brightness(2)) and (background-blend-mode: color, difference) {
+		background-image: $url, $url, $url;
+		background-size: cover;
+		background-position:
+			calc(50% - 1px) calc(50% - 1px),
+			calc(50% + 1px) calc(50% + 1px),
+			center;
+		background-blend-mode: color, difference;
+		filter: brightness(2);
+	}
+}</code></pre><menu class="options expanded"><a class="toggle css-toggle">CSS</a> <a class="toggle scss-toggle on">SCSS</a> <a class="open-in-codepen"><svg class="icon"><use xlink:href="#codepen-icon"></use></svg>CodePen</a> <a data-clipboard-target="#colored-chalkboard_scss" class="copy"><svg class="icon"><use xlink:href="#copy-icon"></use></svg>Copy</a></menu></figcaption></figure></article><section class="grid-item implementation-box" id="implementation"><div class="container"><h2>Implementation</h2><hr><p>In each of these CSS/SCSS snippets, replace <code>photo.jpg</code> with the URL of the image you are using.</p><h3>Example HTML</h3><pre class="output"><code class="container"><span class="tag">&lt;div</span> <span class="attribute">class=</span>"emboss-effect"<span class="tag">&gt;<br>&nbsp;&nbsp;&lt;img</span> <span class="attribute">width=</span>"" <span class="attribute">height=</span>"" <span class="attribute">src=</span>"photo.jpg" <span class="attribute">alt=</span>""<span class="tag">&gt;</span><br><span class="tag">&lt;/div&gt;</span></code></pre><p>In this implementation, the <code>&lt;img&gt;</code> tag acts as a placeholder, setting the correct aspect ratio for the effect while being visually hidden with CSS. Setting values for the <code>width</code>, <code>height</code>, and <code>alt</code> attributes is recommended.</p><p>To try out any effect for yourself, click on the CodePen button.</p></div></section><article class="grid-item" id="airbrush"><figure class="box"><div class="title container"><h2><a data-name="Airbrush" href="#airbrush"></a></h2></div><div class="preview airbrush-effect"><img src="css/photo.jpg" alt="Image of lighthouse"></div><div class="warning">/** Your browser does not yet support the following properties necessary for this image effect:<ul class="support"><li class="filter">filter</li><li class="mix-blend-mode">mix-blend-mode</li></ul>Browser support is tested with CSS @supports. Image effects will fallback in browsers that do not support necessary CSS features. **/</div><figcaption class="output showing-scss"><pre class="css" id="airbrush_css"><code class="language-css container">.airbrush-effect {
+  background-image: url(photo.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+@supports (filter: blur(5px) contrast(5)) and (mix-blend-mode: multiply) {
+  .airbrush-effect {
+    position: relative;
+    overflow: hidden;
+  }
+  .airbrush-effect:after {
+    display: block;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: inherit;
+    filter: brightness(1.5) saturate(100) blur(5px) contrast(5);
+    mix-blend-mode: multiply;
+  }
+}
+</code></pre><pre class="scss" id="airbrush_scss"><code class="language-scss container">.airbrush-effect {
+  $url : url(photo.jpg);
+
+  background-image: $url;
+	background-size: cover;
+	background-position: center;
+
+  @supports (filter: blur(5px) contrast(5)) and (mix-blend-mode: multiply) {
+		position: relative;
+		overflow: hidden;
+
+		&:after {
+			display: block;
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: inherit;
+			filter: brightness(1.5) saturate(100) blur(5px) contrast(5);
+			mix-blend-mode: multiply;
+		}
+	}
+}</code></pre><menu class="options expanded"><a class="toggle css-toggle">CSS</a> <a class="toggle scss-toggle on">SCSS</a> <a class="open-in-codepen"><svg class="icon"><use xlink:href="#codepen-icon"></use></svg>CodePen</a> <a data-clipboard-target="#airbrush_scss" class="copy"><svg class="icon"><use xlink:href="#copy-icon"></use></svg>Copy</a></menu></figcaption></figure></article><article class="grid-item" id="hallucination"><figure class="box"><div class="title container"><h2><a data-name="Hallucination" href="#hallucination"></a></h2></div><div class="preview hallucination-effect"><img src="css/photo.jpg" alt="Image of lighthouse"></div><div class="warning">/** Your browser does not yet support the following properties necessary for this image effect:<ul class="support"><li class="background-blend-mode">background-blend-mode</li><li class="mix-blend-mode">mix-blend-mode</li></ul>Browser support is tested with CSS @supports. Image effects will fallback in browsers that do not support necessary CSS features. **/</div><figcaption class="output showing-scss"><pre class="css" id="hallucination_css"><code class="language-css container">.hallucination-effect {
+  background-image: url(photo.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+@supports (mix-blend-mode: multiply) {
+  .hallucination-effect {
+    position: relative;
+    overflow: hidden;
+    background-color: magenta;
+    background-blend-mode: screen;
+  }
+  .hallucination-effect:before, .hallucination-effect:after {
+    display: block;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: inherit;
+    mix-blend-mode: multiply;
+    transform: scale(1.05);
+  }
+  .hallucination-effect:before {
+    background-color: yellow;
+    background-blend-mode: screen;
+    transform-origin: top left;
+  }
+  .hallucination-effect:after {
+    background-color: cyan;
+    background-blend-mode: screen;
+    transform-origin: bottom right;
+  }
+}
+</code></pre><pre class="scss" id="hallucination_scss"><code class="language-scss container">.hallucination-effect {
+  $url : url(photo.jpg);
+  $offset : 5px;
+
+  background-image: $url;
+  background-size: cover;
+  background-position: center;
+
+  @supports (mix-blend-mode: multiply) {
+    position: relative;
+    overflow: hidden;
+    background-color: magenta;
+    background-blend-mode: screen;
+
+    &:before, &:after {
+      display: block;
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: inherit;
+      mix-blend-mode: multiply;
+      transform: scale(1.05);
+    }
+
+    &:before {
+      background-color: yellow;
+      background-blend-mode: screen;
+      transform-origin: top left;
+    }
+
+    &:after {
+      background-color: cyan;
+      background-blend-mode: screen;
+      transform-origin: bottom right;
+    }
+  }
+}</code></pre><menu class="options expanded"><a class="toggle css-toggle">CSS</a> <a class="toggle scss-toggle on">SCSS</a> <a class="open-in-codepen"><svg class="icon"><use xlink:href="#codepen-icon"></use></svg>CodePen</a> <a data-clipboard-target="#hallucination_scss" class="copy"><svg class="icon"><use xlink:href="#copy-icon"></use></svg>Copy</a></menu></figcaption></figure></article><article class="grid-item" id="flannel"><figure class="box"><div class="title container"><h2><a data-name="Flannel" href="#flannel"></a></h2></div><div class="preview flannel-effect"><img src="css/photo.jpg" alt="Image of lighthouse"></div><div class="warning">/** Your browser does not yet support the following properties necessary for this image effect:<ul class="support"><li class="background-blend-mode">background-blend-mode</li></ul>Browser support is tested with CSS @supports. Image effects will fallback in browsers that do not support necessary CSS features. **/</div><figcaption class="output showing-scss"><pre class="css" id="flannel_css"><code class="language-css container">.flannel-effect {
+  background-image: url(photo.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+@supports (background-blend-mode: overlay) {
+  .flannel-effect {
+    background-image: url(photo.jpg), url(photo.jpg), url(photo.jpg);
+    background-position: center;
+    background-size: 100%, 100000% 100%, 100% 100000%;
+    background-blend-mode: overlay;
+  }
+}
+</code></pre><pre class="scss" id="flannel_scss"><code class="language-scss container">.flannel-effect {
+	$url : url(photo.jpg);
+
+	background-image: $url;
+	background-size: cover;
+	background-position: center;
+
+	@supports (background-blend-mode: overlay) {
+		background-image: $url, $url, $url;
+	  background-position: center;
+	  background-size: 100%, 100000% 100%, 100% 100000%;
+	  background-blend-mode: overlay;
+	}
+}</code></pre><menu class="options expanded"><a class="toggle css-toggle">CSS</a> <a class="toggle scss-toggle on">SCSS</a> <a class="open-in-codepen"><svg class="icon"><use xlink:href="#codepen-icon"></use></svg>CodePen</a> <a data-clipboard-target="#flannel_scss" class="copy"><svg class="icon"><use xlink:href="#copy-icon"></use></svg>Copy</a></menu></figcaption></figure></article><article class="grid-item" id="low-ink-x"><figure class="box"><div class="title container"><h2><a data-name="Low Ink (horizontal)" href="#low-ink-x"></a></h2></div><div class="preview low-ink-x-effect"><img src="css/photo.jpg" alt="Image of lighthouse"></div><div class="warning">/** Your browser does not yet support the following properties necessary for this image effect:<ul class="support"><li class="background-blend-mode">background-blend-mode</li></ul>Browser support is tested with CSS @supports. Image effects will fallback in browsers that do not support necessary CSS features. **/</div><figcaption class="output showing-scss"><pre class="css" id="low-ink-x_css"><code class="language-css container">.low-ink-x-effect {
+  background-image: url(photo.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+@supports (background-blend-mode: screen, overlay) {
+  .low-ink-x-effect {
+    background-image: url(photo.jpg), url(photo.jpg), url(photo.jpg);
+    background-size: 100% 100%, 10000% 100%;
+    background-blend-mode: screen, overlay;
+  }
+}
+</code></pre><pre class="scss" id="low-ink-x_scss"><code class="language-scss container">.low-ink-x-effect {
+	$url : url(photo.jpg);
+
+	background-image: $url;
+	background-size: cover;
+	background-position: center;
+
+	@supports (background-blend-mode: screen, overlay) {
+		background-image:	 $url, $url, $url;
+		background-size: 100% 100%, 10000% 100%;
+		background-blend-mode: screen, overlay;
+	}
+}</code></pre><menu class="options expanded"><a class="toggle css-toggle">CSS</a> <a class="toggle scss-toggle on">SCSS</a> <a class="open-in-codepen"><svg class="icon"><use xlink:href="#codepen-icon"></use></svg>CodePen</a> <a data-clipboard-target="#low-ink-x_scss" class="copy"><svg class="icon"><use xlink:href="#copy-icon"></use></svg>Copy</a></menu></figcaption></figure></article><article class="grid-item" id="low-ink-y"><figure class="box"><div class="title container"><h2><a data-name="Low Ink (vertical)" href="#low-ink-y"></a></h2></div><div class="preview low-ink-y-effect"><img src="css/photo.jpg" alt="Image of lighthouse"></div><div class="warning">/** Your browser does not yet support the following properties necessary for this image effect:<ul class="support"><li class="background-blend-mode">background-blend-mode</li></ul>Browser support is tested with CSS @supports. Image effects will fallback in browsers that do not support necessary CSS features. **/</div><figcaption class="output showing-scss"><pre class="css" id="low-ink-y_css"><code class="language-css container">.low-ink-y-effect {
+  background-image: url(photo.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+@supports (background-blend-mode: screen, overlay) {
+  .low-ink-y-effect {
+    background-image: url(photo.jpg), url(photo.jpg), url(photo.jpg);
+    background-size: 100% 100%, 100% 1000%;
+    background-blend-mode: screen, overlay;
+  }
+}
+</code></pre><pre class="scss" id="low-ink-y_scss"><code class="language-scss container">.low-ink-y-effect {
+	$url : url(photo.jpg);
+
+	background-image: $url;
+	background-size: cover;
+	background-position: center;
+
+	@supports (background-blend-mode: screen, overlay) {
+		background-image:	 $url, $url, $url;
+		background-size: 100% 100%, 100% 1000%;
+		background-blend-mode: screen, overlay;
+	}
+}</code></pre><menu class="options expanded"><a class="toggle css-toggle">CSS</a> <a class="toggle scss-toggle on">SCSS</a> <a class="open-in-codepen"><svg class="icon"><use xlink:href="#codepen-icon"></use></svg>CodePen</a> <a data-clipboard-target="#low-ink-y_scss" class="copy"><svg class="icon"><use xlink:href="#copy-icon"></use></svg>Copy</a></menu></figcaption></figure></article><section class="grid-item follow-box"><div class="container"><h3>Do you follow me on Twitter?</h3><hr><a class="share-button twitter" href="https://twitter.com/bennettfeely"><svg class="icon"><use xlink:href="#twitter-icon"></use></svg>@bennettfeely</a><div class="shares">3800 followers</div></div></section><article class="grid-item" id="collage"><figure class="box"><div class="title container"><h2><a data-name="Collage" href="#collage"></a></h2></div><div class="preview collage-effect"><img src="css/photo.jpg" alt="Image of lighthouse"></div><div class="warning">/** Your browser does not yet support the following properties necessary for this image effect:<ul class="support"><li class="background-blend-mode">background-blend-mode</li></ul>Browser support is tested with CSS @supports. Image effects will fallback in browsers that do not support necessary CSS features. **/</div><figcaption class="output showing-scss"><pre class="css" id="collage_css"><code class="language-css container">.collage-effect {
+  background-image: url(photo.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+@supports (background-blend-mode: overlay) {
+  .collage-effect {
+    background-image: url(photo.jpg), url(photo.jpg), url(photo.jpg), url(photo.jpg), url(photo.jpg), url(photo.jpg);
+    background-size: 200%, 80%, 60%, 50%, 40%, 100%;
+    background-position: 50%, 80%, 30%, 0;
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+  }
+}
+</code></pre><pre class="scss" id="collage_scss"><code class="language-scss container">.collage-effect {
+	$url : url(photo.jpg);
+
+	background-image: $url;
+	background-size: cover;
+	background-position: center;
+
+	@supports (background-blend-mode: overlay) {
+		background-image: $url, $url, $url, $url, $url, $url;
+		background-size: 200%, 80%, 60%, 50%, 40%, 100%;
+		background-position: 50%, 80%, 30%, 0;
+		background-blend-mode: overlay;
+		background-repeat: no-repeat;
+	}
+}</code></pre><menu class="options expanded"><a class="toggle css-toggle">CSS</a> <a class="toggle scss-toggle on">SCSS</a> <a class="open-in-codepen"><svg class="icon"><use xlink:href="#codepen-icon"></use></svg>CodePen</a> <a data-clipboard-target="#collage_scss" class="copy"><svg class="icon"><use xlink:href="#copy-icon"></use></svg>Copy</a></menu></figcaption></figure></article><article class="grid-item" id="mosaic"><figure class="box"><div class="title container"><h2><a data-name="Mosaic" href="#mosaic"></a></h2></div><div class="preview mosaic-effect"><img src="css/photo.jpg" alt="Image of lighthouse"></div><div class="warning">/** Your browser does not yet support the following properties necessary for this image effect:<ul class="support"><li class="background-blend-mode">background-blend-mode</li></ul>Browser support is tested with CSS @supports. Image effects will fallback in browsers that do not support necessary CSS features. **/</div><figcaption class="output showing-scss"><pre class="css" id="mosaic_css"><code class="language-css container">.mosaic-effect {
+  background-image: url(photo.jpg), url(photo.jpg);
+  background-size: cover, 5% 5%;
+  background-position: center;
+  background-blend-mode: overlay;
+}
+</code></pre><pre class="scss" id="mosaic_scss"><code class="language-scss container">.mosaic-effect {
+	$url : url(photo.jpg);
+
+	background-image: $url, $url;
+	background-size: cover, 5% 5%;
+	background-position: center;
+  background-blend-mode: overlay;
+}</code></pre><menu class="options expanded"><a class="toggle css-toggle">CSS</a> <a class="toggle scss-toggle on">SCSS</a> <a class="open-in-codepen"><svg class="icon"><use xlink:href="#codepen-icon"></use></svg>CodePen</a> <a data-clipboard-target="#mosaic_scss" class="copy"><svg class="icon"><use xlink:href="#copy-icon"></use></svg>Copy</a></menu></figcaption></figure></article><article class="grid-item" id="photo-border"><figure class="box"><div class="title container"><h2><a data-name="Photo Border" href="#photo-border"></a></h2></div><div class="preview photo-border-effect"><img src="css/photo.jpg" alt="Image of lighthouse"></div><figcaption class="output showing-scss"><pre class="css" id="photo-border_css"><code class="language-css container">.photo-border-effect {
+  background-image: url(photo.jpg), url(photo.jpg);
+  background-position: center;
+  background-size: 60%, 20%;
+  background-repeat: no-repeat, repeat;
+}
+</code></pre><pre class="scss" id="photo-border_scss"><code class="language-scss container">.photo-border-effect {
+  $url : url(photo.jpg);
+
+  background-image: $url, $url;
+  background-position: center;
+  background-size: 60%, 20%;
+  background-repeat: no-repeat, repeat;
+}</code></pre><menu class="options expanded"><a class="toggle css-toggle">CSS</a> <a class="toggle scss-toggle on">SCSS</a> <a class="open-in-codepen"><svg class="icon"><use xlink:href="#codepen-icon"></use></svg>CodePen</a> <a data-clipboard-target="#photo-border_scss" class="copy"><svg class="icon"><use xlink:href="#copy-icon"></use></svg>Copy</a></menu></figcaption></figure></article><article class="grid-item" id="infrared"><figure class="box"><div class="title container"><h2><a data-name="Infrared" href="#infrared"></a> <a href="http://una.im/infrared/#💁" class="created-by">Una Kravets</a></h2></div><div class="preview infrared-effect"><img src="css/photo.jpg" alt="Image of lighthouse"></div><div class="warning">/** Your browser does not yet support the following properties necessary for this image effect:<ul class="support"><li class="filter">filter</li></ul>Browser support is tested with CSS @supports. Image effects will fallback in browsers that do not support necessary CSS features. **/</div><figcaption class="output showing-scss"><pre class="css" id="infrared_css"><code class="language-css container">.infrared-effect {
+  background-image: url(photo.jpg);
+  background-size: cover;
+  background-position: center;
+  filter: hue-rotate(180deg) saturate(2);
+}
+</code></pre><pre class="scss" id="infrared_scss"><code class="language-scss container">.infrared-effect {
+  $url : url(photo.jpg);
+
+  background-image: $url;
+  background-size: cover;
+  background-position: center;
+  filter: hue-rotate(180deg) saturate(2);
+}</code></pre><menu class="options expanded"><a class="toggle css-toggle">CSS</a> <a class="toggle scss-toggle on">SCSS</a> <a class="open-in-codepen"><svg class="icon"><use xlink:href="#codepen-icon"></use></svg>CodePen</a> <a data-clipboard-target="#infrared_scss" class="copy"><svg class="icon"><use xlink:href="#copy-icon"></use></svg>Copy</a></menu></figcaption></figure></article><article class="grid-item" id="night-vision"><figure class="box"><div class="title container"><h2><a data-name="Night Vision" href="#night-vision"></a></h2></div><div class="preview night-vision-effect"><img src="css/photo.jpg" alt="Image of lighthouse"></div><figcaption class="output showing-scss"><pre class="css" id="night-vision_css"><code class="language-css container">.night-vision-effect {
+  background-image: url(photo.jpg), radial-gradient(#0F0, #000), repeating-linear-gradient(transparent 0, rgba(0, 0, 0, 0.1) 2.5px, transparent 5px);
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: overlay;
+}
+</code></pre><pre class="scss" id="night-vision_scss"><code class="language-scss container">.night-vision-effect {
+	$url : url(photo.jpg);
+  $line-width: 5px;
+
+  background-image:
+    $url,
+    radial-gradient(
+      #0F0,
+      #000
+    ),
+    repeating-linear-gradient(
+      transparent 0,
+      rgba(0,0,0,0.1) $line-width/2,
+      transparent $line-width
+    );
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: overlay;
+}</code></pre><menu class="options expanded"><a class="toggle css-toggle">CSS</a> <a class="toggle scss-toggle on">SCSS</a> <a class="open-in-codepen"><svg class="icon"><use xlink:href="#codepen-icon"></use></svg>CodePen</a> <a data-clipboard-target="#night-vision_scss" class="copy"><svg class="icon"><use xlink:href="#copy-icon"></use></svg>Copy</a></menu></figcaption></figure></article><article class="grid-item" id="warhol"><figure class="box"><div class="title container"><h2><a data-name="Warhol" href="#warhol"></a></h2></div><div class="preview warhol-effect"><img src="css/photo.jpg" alt="Image of lighthouse"></div><div class="warning">/** Your browser does not yet support the following properties necessary for this image effect:<ul class="support"><li class="background-blend-mode-color">background-blend-mode: color;</li></ul>Browser support is tested with CSS @supports. Image effects will fallback in browsers that do not support necessary CSS features. **/</div><figcaption class="output showing-scss"><pre class="css" id="warhol_css"><code class="language-css container">.warhol-effect {
+  background-image: url(photo.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+@supports (background-blend-mode: color) {
+  .warhol-effect {
+    background-image: linear-gradient(#14EBFF 0, #14EBFF 50%, #FFFF70 50%, #FFFF70 100%), linear-gradient(#FF85DA 0, #FF85DA 50%, #AAA 50%, #AAA 100%), url(photo.jpg);
+    background-size: 50% 100%, 50% 100%, 50% 50%;
+    background-position: top left, top right;
+    background-repeat: no-repeat, no-repeat, repeat;
+    background-blend-mode: color;
+  }
+}
+</code></pre><pre class="scss" id="warhol_scss"><code class="language-scss container">.warhol-effect {
+  $url : url(photo.jpg);
+
+  background-image: $url;
+	background-size: cover;
+	background-position: center;
+
+  @supports (background-blend-mode: color) {
+		background-image:
+	    linear-gradient(
+	      #14EBFF 0,
+	      #14EBFF 50%,
+	      #FFFF70 50%,
+	      #FFFF70 100%
+	    ),
+	    linear-gradient(
+	      #FF85DA 0,
+	      #FF85DA 50%,
+	      #AAA 50%,
+	      #AAA 100%
+	    ),
+	    $url;
+		background-size: 50% 100%, 50% 100%, 50% 50%;
+	  background-position: top left, top right;
+	  background-repeat: no-repeat, no-repeat, repeat;
+	  background-blend-mode: color;
+	}
+}</code></pre><menu class="options expanded"><a class="toggle css-toggle">CSS</a> <a class="toggle scss-toggle on">SCSS</a> <a class="open-in-codepen"><svg class="icon"><use xlink:href="#codepen-icon"></use></svg>CodePen</a> <a data-clipboard-target="#warhol_scss" class="copy"><svg class="icon"><use xlink:href="#copy-icon"></use></svg>Copy</a></menu></figcaption></figure></article><article class="grid-item" id="selective-color"><figure class="box"><div class="title container"><h2><a data-name="Selective color" href="#selective-color"></a></h2></div><div class="preview selective-color-effect"><img src="css/photo.jpg" alt="Image of lighthouse"></div><div class="warning">/** Your browser does not yet support the following properties necessary for this image effect:<ul class="support"><li class="filter">filter</li><li class="background-blend-mode">background-blend-mode</li><li class="mix-blend-mode-color">mix-blend-mode: color;</li></ul>Browser support is tested with CSS @supports. Image effects will fallback in browsers that do not support necessary CSS features. **/</div><figcaption class="output showing-scss"><pre class="css" id="selective-color_css"><code class="language-css container">.selective-color-effect {
+  background-image: url(photo.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+@supports (filter: brightness(3)) and (mix-blend-mode: color) {
+  .selective-color-effect {
+    position: relative;
+  }
+  .selective-color-effect:before, .selective-color-effect:after {
+    display: block;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: inherit;
+    background-color: red;
+    background-blend-mode: screen;
+    mix-blend-mode: color;
+    filter: brightness(3);
+  }
+}
+</code></pre><pre class="scss" id="selective-color_scss"><code class="language-scss container">.selective-color-effect {
+  $url : url(photo.jpg);
+
+  background-image: $url;
+  background-size: cover;
+  background-position: center;
+
+  @supports (filter: brightness(3)) and (mix-blend-mode: color) {
+    position: relative;
+
+    &:before, &:after {
+      display: block;
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: inherit;
+      background-color: red;
+      background-blend-mode: screen;
+      mix-blend-mode: color;
+      filter: brightness(3);
+    }
+  }
+}</code></pre><menu class="options expanded"><a class="toggle css-toggle">CSS</a> <a class="toggle scss-toggle on">SCSS</a> <a class="open-in-codepen"><svg class="icon"><use xlink:href="#codepen-icon"></use></svg>CodePen</a> <a data-clipboard-target="#selective-color_scss" class="copy"><svg class="icon"><use xlink:href="#copy-icon"></use></svg>Copy</a></menu></figcaption></figure></article><article class="grid-item" id="mirror-x"><figure class="box"><div class="title container"><h2><a data-name="Mirror (horizontal)" href="#mirror-x"></a></h2></div><div class="preview mirror-x-effect"><img src="css/photo.jpg" alt="Image of lighthouse"></div><div class="warning">/** Your browser does not yet support the following properties necessary for this image effect:<ul class="support"><li class="filter">filter</li><li class="background-blend-mode">background-blend-mode</li><li class="background-blend-mode-color">background-blend-mode: color;</li><li class="mix-blend-mode">mix-blend-mode</li><li class="mix-blend-mode-color">mix-blend-mode: color;</li>li.transform transform</ul>Browser support is tested with CSS @supports. Image effects will fallback in browsers that do not support necessary CSS features. **/</div><figcaption class="output showing-scss"><pre class="css" id="mirror-x_css"><code class="language-css container">.mirror-x-effect {
+  background-image: url(photo.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+@supports (transform: scaleX(-1)) {
+  .mirror-x-effect {
+    position: relative;
+  }
+  .mirror-x-effect:before, .mirror-x-effect:after {
+    display: block;
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    background: inherit;
+  }
+  .mirror-x-effect:before {
+    left: 0;
+    right: 50%;
+    transform: scaleX(-1);
+  }
+  .mirror-x-effect:after {
+    left: 50%;
+    right: 0;
+  }
+}
+</code></pre><pre class="scss" id="mirror-x_scss"><code class="language-scss container">.mirror-x-effect {
+	$url : url(photo.jpg);
+
+	background-image: $url;
+	background-size: cover;
+	background-position: center;
+
+	@supports (transform: scaleX(-1)) {
+		position: relative;
+
+		&:before, &:after {
+			display: block;
+			content: "";
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			background: inherit;
+		}
+
+		&:before {
+			left: 0;
+			right: 50%;
+			transform: scaleX(-1);
+		}
+
+		&:after {
+			left: 50%;
+			right: 0;
+		}
+	}
+}</code></pre><menu class="options expanded"><a class="toggle css-toggle">CSS</a> <a class="toggle scss-toggle on">SCSS</a> <a class="open-in-codepen"><svg class="icon"><use xlink:href="#codepen-icon"></use></svg>CodePen</a> <a data-clipboard-target="#mirror-x_scss" class="copy"><svg class="icon"><use xlink:href="#copy-icon"></use></svg>Copy</a></menu></figcaption></figure></article><article class="grid-item" id="mirror-y"><figure class="box"><div class="title container"><h2><a data-name="Mirror (vertical)" href="#mirror-y"></a></h2></div><div class="preview mirror-y-effect"><img src="css/photo.jpg" alt="Image of lighthouse"></div><div class="warning">/** Your browser does not yet support the following properties necessary for this image effect:<ul class="support"><li class="transform">transform</li></ul>Browser support is tested with CSS @supports. Image effects will fallback in browsers that do not support necessary CSS features. **/</div><figcaption class="output showing-scss"><pre class="css" id="mirror-y_css"><code class="language-css container">.mirror-y-effect {
+  background-image: url(photo.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+@supports (transform: scaleY(-1)) {
+  .mirror-y-effect {
+    position: relative;
+  }
+  .mirror-y-effect:before, .mirror-y-effect:after {
+    display: block;
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    background: inherit;
+  }
+  .mirror-y-effect:before {
+    top: 0;
+    bottom: 50%;
+    transform: scaleY(-1);
+  }
+  .mirror-y-effect:after {
+    top: 50%;
+    bottom: 0;
+  }
+}
+</code></pre><pre class="scss" id="mirror-y_scss"><code class="language-scss container">.mirror-y-effect {
+	$url : url(photo.jpg);
+
+	background-image: $url;
+	background-size: cover;
+	background-position: center;
+
+	@supports (transform: scaleY(-1)) {
+		position: relative;
+
+		&:before, &:after {
+			display: block;
+			content: "";
+			position: absolute;
+			left: 0;
+			right: 0;
+			background: inherit;
+		}
+
+		&:before {
+			top: 0;
+			bottom: 50%;
+			transform: scaleY(-1);
+		}
+
+		&:after {
+			top: 50%;
+			bottom: 0;
+		}
+	}
+}</code></pre><menu class="options expanded"><a class="toggle css-toggle">CSS</a> <a class="toggle scss-toggle on">SCSS</a> <a class="open-in-codepen"><svg class="icon"><use xlink:href="#codepen-icon"></use></svg>CodePen</a> <a data-clipboard-target="#mirror-y_scss" class="copy"><svg class="icon"><use xlink:href="#copy-icon"></use></svg>Copy</a></menu></figcaption></figure></article><footer class="grid-item"><div class="container"><h1>More CSS fun...</h1><ul><hr><li><h3><a href="https://una.im/CSSgram/"><span>CSSgram: Instagram filters recreated with CSS filters and blend modes <cite>by Una Kravets</cite></span></a></h3></li><hr><li><h3><a href="https://css-tricks.com/basics-css-blend-modes/"><span>Basics of CSS Blend Modes <cite>by Chris Coyier</cite></span></a></h3></li><hr><li><h3><a href="http://una.im/vintage-washout/#💁"><span><cite>Una Kravets'</cite> 6-part CSS image effects series</span></a></h3></li><hr><li><h3><a href="http://alistapart.com/article/blending-modes-demystified"><span>Blending Modes Demystified <cite>by Justin McDowell</cite></span></a></h3></li><hr><li><h3><a href="http://lea.verou.me/css3patterns/"><span>CSS3 Patterns Gallery <cite>by Lea Verou</cite></span></a></h3></li><hr><li><h3><a href="http://bennettfeely.com/gradients/"><span>New CSS gradient possibilities with the background-blend-mode property <cite>by Bennett Feely</cite></span></a></h3></li><hr><li><h3><a href="http://bennettfeely.com/filters"><span>CSS Filters Playground <cite>by Bennett Feely</cite> (2013)</span></a></h3></li><hr><li><h3><a href="https://medium.com/@bennettfeely/css-blend-modes-could-be-the-next-big-thing-in-web-design-6b51bf53743a#.gwfmepwa0"><span>CSS Blend Modes could be the next big thing in Web Design <cite>by Bennett Feely</cite> (2013)</span></a></h3></li><hr><small>&copy;2016 Bennett Feely</small></ul></div></footer><section class="grid-item suggestion-box"><div class="container"><h3>Add your image effect on this page</h3><hr><p><a href="http://twitter.com/bennettfeely">Tweet</a> or <a href="mailto:bfeelyweb@gmail.com?Subject=Image%20effect%20suggestion">email</a> a link to your CSS image effect demo. If it's neat and unique I'll be happy to add it to this page with your name and a link to your website.</p></div></section></section><script src="js/masonry.min.js"></script><script src="js/prism.min.js"></script><script src="js/clipboard.min.js"></script><script src="js/sketch.js"></script><script>!function(e,t,a,n,c,s,o){e.GoogleAnalyticsObject=c,e[c]=e[c]||function(){(e[c].q=e[c].q||[]).push(arguments)},e[c].l=1*new Date,s=t.createElement(a),o=t.getElementsByTagName(a)[0],s.async=1,s.src=n,o.parentNode.insertBefore(s,o)}(window,document,"script","https://www.google-analytics.com/analytics.js","ga"),ga("create","UA-35724550-1","auto"),ga("send","pageview");</script><noscript><style>.preview img{display:none}.css,\.scss{display:block}.scss{border-top:10px solid #fff}.options{display:none}.grid-item{width:100%!important;max-width:600px;margin-left:auto;margin-right:auto}</style></noscript></body></html>

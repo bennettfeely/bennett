@@ -1,0 +1,8 @@
+.photo-border-effect {
+  $url : url(photo.jpg);
+
+  background-image: $url, $url;
+  background-position: center;
+  background-size: 60%, 20%;
+  background-repeat: no-repeat, repeat;
+}

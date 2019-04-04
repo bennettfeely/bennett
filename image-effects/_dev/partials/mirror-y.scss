@@ -1,0 +1,31 @@
+.mirror-y-effect {
+	$url : url(photo.jpg);
+
+	background-image: $url;
+	background-size: cover;
+	background-position: center;
+
+	@supports (transform: scaleY(-1)) {
+		position: relative;
+
+		&:before, &:after {
+			display: block;
+			content: "";
+			position: absolute;
+			left: 0;
+			right: 0;
+			background: inherit;
+		}
+
+		&:before {
+			top: 0;
+			bottom: 50%;
+			transform: scaleY(-1);
+		}
+
+		&:after {
+			top: 50%;
+			bottom: 0;
+		}
+	}
+}

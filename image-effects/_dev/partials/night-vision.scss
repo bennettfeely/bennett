@@ -1,0 +1,19 @@
+.night-vision-effect {
+	$url : url(photo.jpg);
+  $line-width: 5px;
+
+  background-image:
+    $url,
+    radial-gradient(
+      #0F0,
+      #000
+    ),
+    repeating-linear-gradient(
+      transparent 0,
+      rgba(0,0,0,0.1) $line-width/2,
+      transparent $line-width
+    );
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: overlay;
+}

@@ -1,0 +1,26 @@
+.selective-color-effect {
+  $url : url(photo.jpg);
+
+  background-image: $url;
+  background-size: cover;
+  background-position: center;
+
+  @supports (filter: brightness(3)) and (mix-blend-mode: color) {
+    position: relative;
+
+    &:before, &:after {
+      display: block;
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: inherit;
+      background-color: red;
+      background-blend-mode: screen;
+      mix-blend-mode: color;
+      filter: brightness(3);
+    }
+  }
+}
