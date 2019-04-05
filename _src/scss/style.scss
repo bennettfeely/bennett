@@ -427,10 +427,10 @@ $spread: 1.5em;
 		}
 		&:nth-child(4) {
 			.line {
-				transform: rotate(-10deg);
+				transform: rotate(-25deg);
 			}
 			.screenshot {
-				top: -40%;
+				top: -100%;
 
 				img {
 					transform: rotate(2deg);
@@ -439,10 +439,10 @@ $spread: 1.5em;
 		}
 		&:nth-child(6) {
 			.line {
-				transform: rotate(15deg);
+				transform: rotate(-18deg);
 			}
 			.screenshot {
-				top: 00%;
+				top: -70%;
 
 				img {
 					transform: rotate(8deg);
