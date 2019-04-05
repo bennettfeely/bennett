@@ -342,13 +342,13 @@ $spread: 1.5em;
 		}
 		&:nth-child(3) {
 			.line {
-				transform: rotate(4deg);
+				transform: rotate(14deg);
 			}
 			.screenshot {
-				top: -15%;
+				top: -45%;
 
 				img {
-					transform: rotate(-4deg);
+					transform: rotate(-2deg);
 				}
 			}
 		}
