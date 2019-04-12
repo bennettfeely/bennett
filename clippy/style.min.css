@@ -1725,6 +1725,7 @@ p {
 }
 .ad-box {
   background: #1d1f21;
+  padding: 1em;
 }
 #carbonads {
   cursor: pointer;
