@@ -1715,10 +1715,15 @@ p {
 
 /*# sourceMappingURL=style.css.map */
 
-.ad-box:hover .box {
+.shapes figure:nth-last-child(-n + 27) {
+  display: none !important;
+  outline: thick soli dblue;
+}
+
+.ad-box:hover {
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.25);
 }
-.ad-box .box {
+.ad-box {
   background: #1d1f21;
 }
 #carbonads {
