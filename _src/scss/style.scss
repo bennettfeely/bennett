@@ -451,3 +451,33 @@ $spread: 1.5em;
 		}
 	}
 }
+
+// Jobs -----------------------------------------------------------------------------
+.job-wrapper {
+	text-align: center;
+	max-width: 35em;
+	margin: 0 auto;
+}
+.job {
+	display: flex;
+	align-items: center;
+	padding: 1.5rem;
+	background: tint(gold, 50%);
+	line-height: 1.4;
+
+	time {
+		white-space: nowrap;
+	}
+
+	p {
+		padding-left: 1rem;
+		text-align: left;
+	}
+
+	a {
+		text-decoration: underline;
+	}
+}
+time {
+	font-weight: bold;
+}

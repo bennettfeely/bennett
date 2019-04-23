@@ -20,7 +20,6 @@ html(lang="en")
 				.container
 					img.me(src="_img/me.jpg", width="250", height="250", alt="Headshot of Bennett Feely")
 					h1 Hello! My name is Bennett Feely. <br>I make websites so you don't have to.
-
 		.main-wrapper
 			section
 				.container
@@ -62,6 +61,12 @@ html(lang="en")
 									img(src="_img/cssscales_1200x900.png", width="600", height="450", alt="")
 								.line
 								.caption <strong>CSS Scales</strong>, accessible CSS gradients
+		.job-wrapper
+			section
+				.container
+					.job 
+						<time id="job_notice">New (Updated April 22, 2019): </time> 
+						p I'm currently looking for a full-time job. <br>Here's my <a href="/bennett_feely_resume_public.pdf" target="_blank">resume</a>. <a href="mailto:bfeelyweb@gmail.com">Let's talk!</a>
 		.contact-wrapper
 			section
 				.container
@@ -76,13 +81,18 @@ html(lang="en")
 						li.contact
 							a.contact-link(href="https://codepen.io/bennettfeely") <strong>CodePen</strong> /bennettfeely
 						li.contact
-							a.contact-link(href="https://www.linkedin.com/in/bennettfeely/") <strong>LinkedIn</strong> /bennettfeely
+							a.contact-link(href="https://www.linkedin.com/in/bennettfeely/") <strong>LinkedIn</strong> /in/bennettfeely
 						li.contact
 							a.contact-link(href="mailto:bfeelyweb@gmail.com") <strong>Email</strong> bfeelyweb@gmail.com
 		.copyright-wrapper
 			.container
 				p &copy 2019 Bennett Feely
-		script(src="bennett.js")
-
+		script
+			| let date = new Date();
+			| var day = date.getDate();
+			| if (day > 2) { var day = day - 2; }
+			| var month = date.getMonth();
+			| var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+			| document.querySelector("time").innerHTML = "New (" + months[month] + " " + day + "): ";
 
 
