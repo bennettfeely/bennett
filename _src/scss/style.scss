@@ -132,6 +132,12 @@ header {
 		}
 	}
 
+	br {
+		@media (max-width: $tablet) {
+			display: none;
+		}
+	}
+
 	img {
 		width: 5em;
 		height: 5em;
