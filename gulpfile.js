@@ -40,6 +40,30 @@ gulp.task("jade", function() {
     );
 });
 
+gulp.task("jade-article", function() {
+  return gulp
+    .src("_src/articles/*/index.jade")
+    .pipe(
+      jade({
+        pretty: true
+      })
+    )
+    .pipe(
+      htmlmin({
+        collapseWhitespace: true,
+        removeComments: true,
+        minifyCSS: true,
+        minifyJS: true
+      })
+    )
+    .pipe(gulp.dest("./"))
+    .pipe(
+      browserSync.reload({
+        stream: true
+      })
+    );
+});
+
 // Compile CSS ===========================================================================
 gulp.task("scss", function() {
   return gulp
@@ -80,6 +104,10 @@ gulp.task("default", function() {
 
   gulp.watch(["_src/*.jade"], function() {
     return gulp.run("jade");
+  });
+
+  gulp.watch(["_src/articles/*/*.jade"], function() {
+    return gulp.run("jade-article");
   });
 
   gulp.watch("_src/scss/*.scss", function() {

@@ -460,13 +460,20 @@ $spread: 1.5em;
 
 // Jobs -----------------------------------------------------------------------------
 .job-wrapper {
-	text-align: center;
-	max-width: 35em;
-	margin: 0 auto;
+	max-width: 33em;
+	margin: 2em auto 0;
+
+	@media (min-width: $tablet) {
+		text-align: center;
+		margin: 3em auto 0;
+	}
 }
 .job {
-	display: flex;
-	align-items: center;
+	@media (min-width: $tablet) {
+		display: flex;
+		align-items: center;
+	}
+
 	padding: 1.5rem;
 	background: tint(gold, 50%);
 	line-height: 1.4;
@@ -476,8 +483,11 @@ $spread: 1.5em;
 	}
 
 	p {
-		padding-left: 1rem;
 		text-align: left;
+
+		@media (min-width: $tablet) {
+			padding-left: 1rem;
+		}
 	}
 
 	a {
