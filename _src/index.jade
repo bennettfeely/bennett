@@ -20,16 +20,26 @@ html(lang="en")
 				.container
 					img.me(src="_img/me.jpg", width="250", height="250", alt="Headshot of Bennett Feely")
 					h1 Hello! My name is Bennett Feely.&nbsp;<br>I make websites so you don't have to.
-		.job-wrapper
-			section
-				.container
-					.job 
-						<time id="job_notice">New (Updated May 4): </time> 
-						p I'm currently looking for a full-time job. <br>Here's my <a href="/bennett_feely_resume_public.pdf" target="_blank">resume</a>. <a href="mailto:bfeelyweb@gmail.com">Let's talk!</a>
+		//- .job-wrapper
+		//- 	section
+		//- 		.container
+		//- 			.job 
+		//- 				<time id="job_notice">New (Updated May 4): </time> 
+		//- 				p I'm currently looking for a full-time job. <br>Here's my <a href="/bennett_feely_resume_public.pdf" target="_blank">resume</a>. <a href="mailto:bfeelyweb@gmail.com">Let's talk!</a>
 		.main-wrapper
 			section
 				.container
-					h2.section-heading Recent Projects
+					h2.section-heading 
+						span Recent Work
+					ul.works
+						li.project
+							a.project-link(href="https://openbrainproject.org", data-img="openbrainproject")
+								.screenshot
+									img(src="_img/openbrainproject_1200x900.png", width="600", height="450", alt="")
+								.line
+								.caption <strong>The Open Brain Project</strong>, at Carnegie Mellon University
+					h2.section-heading 
+						span Recent Personal Projects
 					ul.projects
 						li.project
 							a.project-link(href="/clippy", data-img="clippy")
@@ -70,7 +80,8 @@ html(lang="en")
 		.contact-wrapper
 			section
 				.container
-					h2.section-heading Contact
+					h2.section-heading 
+						span Contact
 					ul.contacts
 						li.contact
 							a.contact-link(href="https://twitter.com/bennettfeely") <strong>Twitter</strong> @bennettfeely
@@ -87,12 +98,12 @@ html(lang="en")
 		.copyright-wrapper
 			.container
 				p &copy 2019 Bennett Feely
-		script
-			| let date = new Date();
-			| var day = date.getDate();
-			| if (day > 2) { var day = day - 2; }
-			| var month = date.getMonth();
-			| var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-			| document.querySelector("time").innerHTML = "New (" + months[month] + " " + day + "): ";
+		//- script
+		//- 	| let date = new Date();
+		//- 	| var day = date.getDate();
+		//- 	| if (day > 2) { var day = day - 2; }
+		//- 	| var month = date.getMonth();
+		//- 	| var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+		//- 	| document.querySelector("time").innerHTML = "New (" + months[month] + " " + day + "): ";
 
 

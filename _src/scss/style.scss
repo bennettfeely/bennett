@@ -101,6 +101,12 @@ h2 {
 			display: block;
 		}
 	}
+
+	span {
+		border: thin solid rgba($black, 0.1);
+		color: rgba($black, 0.6);
+		padding: 0 0.5em;
+	}
 }
 
 a {
@@ -168,9 +174,14 @@ li {
 	list-style: none;
 }
 
+.works,
 .projects,
 .contacts {
 	margin: 1rem 0;
+}
+
+.works {
+	margin-bottom: 5em;
 }
 
 .contact-wrapper {
