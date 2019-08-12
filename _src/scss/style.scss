@@ -48,7 +48,7 @@ body {
 }
 
 .main-wrapper {
-	margin: 0 auto;
+	margin: 4em auto 0;
 	max-width: 35em;
 
 	@media (min-width: $tablet) {
@@ -92,13 +92,12 @@ h1 {
 }
 h2 {
 	@extend %no-select;
-	display: none;
 	text-align: center;
 	font-size: 1.25em;
+	display: block;
 
 	&.section-heading {
 		@media (min-width: $tablet) {
-			display: block;
 		}
 	}
 
@@ -181,7 +180,9 @@ li {
 }
 
 .works {
-	margin-bottom: 5em;
+	@media (min-width: $tablet) {
+		margin-bottom: 5em;
+	}
 }
 
 .contact-wrapper {
@@ -189,9 +190,6 @@ li {
 }
 
 .contacts {
-	border-top: thin solid rgba($black, 0.1);
-	border-bottom: thin solid rgba($black, 0.1);
-
 	@media (min-width: $tablet) {
 		display: flex;
 		flex-wrap: wrap;
