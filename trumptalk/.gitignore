@@ -1,0 +1,12 @@
+# ignore Mac OS X Desktop Service Store
+.DS_Store
+
+# ignore .htaccess
+.htaccess
+.htpasswd
+
+# Ignore SASS
+.sass-cache/
+
+# Ignore node modules
+node_modules

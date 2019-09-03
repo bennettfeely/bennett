@@ -1,0 +1,80 @@
+!!! 5
+%html
+  %head
+    / Charset
+    %meta{ charset: "utf-8" }
+    / IE metadata
+    %meta{ http-equiv: "x-ua-compatible", content: "ie=edge" }
+    %meta{ http-equiv: "cleartype", content: "on" }
+    %meta{ name: "msapplication-tap-highlight", content: "no" }
+    / Browser metadata
+    %meta{ name: "viewport", content: "width=device-width,initial-scale=1" }
+    %meta{ name: "description", content: "Wondering what Trump might say at the inauguration? Generate your own speech with the President Trump Inaugural Address Generator" }
+    %meta{ name: "renderer", content: "webkit|ie-comp|ie-stand" }
+    %meta{ name: "x5-orientation", content: "landscape/portrait" }
+    / The page title
+    %title President Trump Inaugural Address Generator
+    / IE/Android/iOS meta
+    %meta{ name: "apple-mobile-web-app-title", content: "Trump Talk" }
+    %meta{ name: "application-name", content: "President Trump Inaugural Address Generator" }
+    %meta{ name: "theme-color", content: "#f1f1eb" }
+    / Favicons/Icons
+    %link{ rel: "apple-touch-icon", sizes: "180x180", href: "img/apple-touch-icon.png" }
+    %link{ rel: "icon", type: "image/png", href: "img/favicon-32x32.png?v=1", sizes: "32x32" }
+    %link{ rel: "icon", type: "image/png", href: "img/favicon-16x16.png?v=1", sizes: "16x16" }
+    %link{ rel: "mask-icon", href: "img/safari-pinned-tab.svg", color: "#e82218" }
+    / Stylesheets
+    %link{ href: "https://fonts.googleapis.com/css?family=Alegreya+Sans:400i,500|Merriweather", rel: "stylesheet" }
+    // Facebook metadata
+    %meta{ property: "og:url", content: "http://bennettfeely.com/trumptalk" }
+    %meta{ property: "og:type", content: "article" }
+    %meta{ property: "og:title", content: "President Trump Inaugural Address Generator" }
+    %meta{ property: "og:description", content: "Wondering what Trump might say at the inauguration? Generate your own speech with the President Trump Inaugural Address Generator" }
+    %meta{ property: "og:image", content: "img/preview.png" }
+    / The CSS
+    %style
+        / inject: ../../css/style.min.css
+
+  %body
+    .wrapper
+        %img.capitol.no-print{ src: "img/capitol.svg", width: 900, height: "auto", alt: "Decorative drawing of U.S. Capitol building" }
+        %header
+            .container
+                %h1 President Trump
+                    %br
+                    Inaugural Address
+                    %br
+                    Generator
+                %button.generate.button.no-print Generate a new speech
+        %main
+            .paper.container
+                .shadow.sheet.no-print
+                .red.sheet.no-print
+                .blue.sheet.no-print
+                .white.sheet.no-print
+                .speech
+                    %p United States Capitol
+                    %p January 20, 2017. 11:55 A.M. EST
+                    %img{ class: "flourish", width: 190, height: 40, src: "img/flourish.svg", alt: "Decorative flourish" }
+                    %span.speech-text
+            .share
+                %a.twitter.button.no-print{ href: "http://twitter.com/share?text=Wondering%20what%20Trump%20might%20say%20at%20the%20inauguration%3F%20Find%20out%20with%20the%20President%20Trump%20Inaugural%20Address%20Generator"} Share on Twitter
+                %a.facebook.button.no-print{ href: "http://www.facebook.com/sharer.php?u=http%3A%2F%2Fbennettfeely.com%2Ftrumptalk"} Share on Facebook
+        %footer
+            .container
+                %button.generate.button.no-print Generate another speech
+
+                %p &copy;2017 <a href="http://bennettfeely.com">Bennett Feely</a>
+                %p Find this project on <a href="https://github.com/bennettfeely/trumptalk">Github</a>
+                %p Follow me on Twitter <a href="http://twitter.com/bennettfeely">@bennettfeely</a>
+
+    %script{ src: "https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" }
+    %script
+        / inject: ../../js/trump.js
+    %script (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-35724550-1', 'auto');
+        ga('send', 'pageview');
