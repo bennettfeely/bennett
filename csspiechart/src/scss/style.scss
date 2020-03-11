@@ -1,0 +1,355 @@
+// Charset =============================================================
+@charset "UTF-8";
+
+// Normalize ===========================================================
+@import "normalize";
+@import "reset";
+@import "extensions";
+@import "functions";
+
+// Variables ===========================================================
+$mobile: 44em;
+$tablet: 44em;
+$desktop: 66em;
+
+:root {
+	--small: 0.5em;
+	--medium: 1em;
+	--large: 1.5em;
+
+	--black: #100a09;
+	--lightblack: #333536;
+	--lighterblack: #565a5d;
+	--white: #fbfcf7;
+	--blue: #1e88e5;
+	--lightgray: #d3d0c9;
+	--darkgray: #aaa;
+
+	--radius: 3px;
+	--shadow: 0 1px 2px rgba(16, 10, 9, 0.15);
+	--shadow-hover: 0 2px 3px rgba(16, 10, 9, 0.3);
+
+	--transition: 0.25s;
+	--bounce: cubic-bezier(0.15, 1, 0.3, 1.1);
+
+	--monospace: 13px/1.4 Monaco, monospace;
+}
+
+// Base Styles =========================================================
+body {
+	font: 100%/1.5 Helvtica Neue, Helvetica, sans-serif;
+	background: var(--lightgray);
+	padding: var(--large) 0;
+}
+
+h1,
+h2 {
+	font-weight: 300;
+	margin: 0;
+}
+
+h2 {
+	@extend %no-select;
+	font-size: 1.3em;
+}
+
+h3 {
+	font-weight: 500;
+	line-height: 1;
+	font-size: 0.9em;
+	margin-bottom: 0.25em;
+}
+
+.icon {
+	display: inline-block;
+	width: 0.8em;
+	height: 0.8em;
+	margin-right: 0.25rem;
+	vertical-align: baseline;
+
+	path {
+		stroke: currentColor;
+		stroke-width: 1;
+		stroke: currentColor;
+		stroke-linecap: round;
+		fill: none;
+	}
+}
+
+header {
+	padding: 0 var(--small);
+}
+
+section {
+	display: inline-block;
+	margin: var(--small);
+}
+
+.wrapper {
+	display: flex;
+	flex-wrap: wrap;
+	max-width: 65em;
+	margin: 0 auto;
+}
+
+.box {
+	background: white;
+	border-radius: var(--radius);
+	box-shadow: var(--shadow);
+
+	header {
+		margin-bottom: var(--medium);
+		padding: 0;
+	}
+}
+
+.container {
+	max-width: 80em;
+	margin: 0 auto;
+	padding: var(--medium);
+}
+
+// Preview =============================================================
+.pie-chart-wrapper {
+	font: initial;
+	font-family: sans-serif;
+	width: 100%;
+
+	@media (min-width: $tablet) {
+		width: 60%;
+	}
+
+	.pie-chart {
+		border-radius: var(--radius);
+		box-shadow: var(--shadow);
+	}
+}
+
+.output {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	background: var(--black);
+	color: var(--lightgray);
+	border-radius: var(--radius);
+	box-shadow: var(--shadow);
+
+	textarea {
+		font: var(--monospace);
+		font-size: 12px;
+		tab-size: 2;
+		color: var(--white);
+		flex: 1;
+		width: 100%;
+		min-height: 20em;
+		background: transparent;
+		border: 0;
+		resize: none;
+		padding: var(--medium) var(--medium) var(--large);
+	}
+}
+
+.output-controls {
+	@extend %no-select;
+	position: relative;
+	padding: var(--small);
+	border-radius: var(--radius);
+	box-shadow: var(--shadow);
+	border-top: thin solid var(--lightblack);
+
+	&:before {
+		position: absolute;
+		display: block;
+		content: "";
+		left: 0;
+		right: 0;
+		bottom: 100%;
+		height: var(--large);
+		background: linear-gradient(transparent, var(--black));
+		pointer-events: none;
+	}
+}
+
+.output-button {
+	font-size: 1em;
+	line-height: 1;
+	display: inline-block;
+	border-radius: var(--radius);
+	background: var(--lightblack);
+	color: var(--white);
+	padding: var(--small);
+	border: 0;
+	margin-right: var(--small);
+	cursor: pointer;
+	transition: background var(--transition);
+
+	&:hover {
+		background: var(--lighterblack);
+		transition-duration: var(--transition-hover);
+	}
+
+	&:active {
+		background: var(--white);
+		color: var(--black);
+		transition-duration: 0s;
+	}
+}
+
+.output-copy {
+	box-shadow: var(--shadow);
+}
+
+.output-minify {
+	display: none;
+
+	&:checked + .output-button {
+		background: var(--white);
+		color: var(--black);
+	}
+}
+
+.output-codepen {
+	display: inline-block;
+}
+
+.output-bytecount {
+	display: inline-block;
+	font-size: smaller;
+	color: var(--lightgray);
+	line-height: 2rem;
+}
+
+// Data ================================================================
+.data {
+	width: 60%;
+}
+
+table {
+	width: 100%;
+	text-align: left;
+	border-collapse: collapse;
+	background: white;
+	color: var(--black);
+
+	input,
+	button {
+		display: block;
+		width: 100%;
+		height: 2em;
+		color: inherit;
+		vertical-align: top;
+		border: 0;
+		background: transparent;
+		cursor: pointer;
+	}
+
+	input[type="text"] {
+		padding: 0 var(--small);
+	}
+}
+
+tbody {
+	// font: var(--monospace);
+}
+
+th {
+	@extend %no-select;
+	border-bottom: thin solid;
+
+	h3 {
+		padding: 0 var(--small);
+	}
+}
+
+tr {
+	border-bottom: thin solid var(--lightgray);
+
+	&:last-child {
+		border-color: var(--black);
+	}
+
+	// &:focus-within {
+	// 	background: highlight;
+	// }
+}
+
+// .color-column {
+// 	// width: 5em;
+// }
+
+// .name-column {
+// 	width: 50%;
+// }
+
+.value-column input {
+	// width: calc(50% - 3em);
+	font: 100%/1.4 monospace;
+}
+
+// .remove-row-column {
+// 	width: 3em;
+// }
+
+.remove-row {
+	// width: 100%;
+	// line-height: 1.5em;
+	// border-radius: var(--radius);
+	// opacity: 0.25;
+	// vertical-align: top;
+	// cursor: pointer;
+	// border-radius: var(--radius);
+	// border: 0;
+	cursor: pointer;
+}
+
+.add-row {
+	@extend %no-select;
+	font-weight: 500;
+	background: white;
+	color: var(--black);
+	border: 0;
+	padding: 0;
+	margin: var(--small) 0 0;
+	padding: var(--small) var(--medium);
+	cursor: pointer;
+	box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2);
+	line-height: 1;
+	border-radius: var(--radius);
+
+	&:hover {
+		background: var(--black);
+		color: var(--white);
+	}
+}
+
+// Pie Chart ===========================================================
+.pie-chart {
+	background: rgba(white, 0.8);
+}
+
+// Options =============================================================
+.options {
+	flex: 1;
+
+	label {
+		display: block;
+		margin-top: var(--medium);
+	}
+
+	input {
+		border: thin solid var(--lightgray);
+		padding: var(--small);
+		border-radius: var(--radius);
+		display: block;
+		width: 100%;
+	}
+}
+
+.chart-size-wrapper {
+	display: flex;
+}
+
+.chart-size-range {
+	padding: 0 !important;
+	margin: var(--small) 0;
+}

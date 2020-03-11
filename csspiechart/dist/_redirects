@@ -1,0 +1,2 @@
+# Redirect default Netlify subdomain to primary domain
+https://soteriaradar.netlify.com/* https://soteriaradar.com/:splat 301!

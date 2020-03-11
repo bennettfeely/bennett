@@ -1,0 +1,30 @@
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button,
+blockquote,
+q,
+em,
+p {
+	margin: 0;
+}
+
+body {
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-smoothing: antialiased;
+	font-variant-ligatures: common-ligatures;
+}
+
+video::-internal-media-controls-overlay-cast-button {
+	display: none;
+}

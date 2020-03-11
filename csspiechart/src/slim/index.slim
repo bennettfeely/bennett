@@ -1,0 +1,66 @@
+doctype html
+html lang="en"
+	head
+		meta charset="utf-8"
+		meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"
+		title CSS Pie Chart
+		meta name="description" content="Generate a pie chart with CSS gradients."
+		link href="/css/style.min.css" rel="stylesheet"
+		link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@300;400;500&display=swap" rel="stylesheet"
+		/ link rel="apple-touch-icon" sizes="180x180" href="img/icons/apple-touch-icon.png"
+		/ link rel="icon" type="image/png" sizes="16x16" href="img/icons/favicon-16x16.png"
+		/ link rel="icon" type="image/png" sizes="32x32" href="img/icons/favicon-32x32.png"
+	body.container
+		.wrapper
+			header
+				h1 CSS Pie Chart Generator
+		.wrapper
+			section.pie-chart-wrapper
+			section.output
+				textarea autocomplete="off" spellcheck="false"
+					| .pie-chart { }
+				.output-controls
+					button.output-button.output-copy 
+						svg.icon.copy-icon width="20" height="20" viewbox="0 0 12 12"
+							path d="M 1 4 L 8 4 L 8 11 L 1 11 L 1 4 M 4 4 L 4 1 L 11 1 L 11 8 L 8 8"
+						| Copy
+					.output-codepen
+					input#output_minify.output-minify type="checkbox" onchange="collectData()"
+					label.output-button for="output_minify"
+						svg.icon.minify-icon width="20" height="20" viewbox="0 0 12 12"
+							path d="M 4 4 L 1 6 L 4 8 M 5 3 L 7 9 M 8 4 L 11 6 L 8 8 M 11 1 L 1 11"
+						| Minify
+					.output-bytecount 0 bytes
+		.wrapper
+			section.options
+				.box.container
+					header
+						h2 Options
+					.options-wrapper
+						label
+							h3 Chart title (leave blank to omit)
+							input.chart-title type="text" onkeyup="collectData()" value="World electricity generation by source"
+						label
+							h3 Chart source (leave blank to omit)
+							input.chart-source type="text" onkeyup="collectData()" value="International Energy Agency"
+						label
+							h3 Pie chart size
+							input.chart-size-range type="range" min="0" max="100" value="75" oninput="collectData()"
+			section.data
+				.box.container
+					header
+						h2 Data
+					.data-table
+						table
+							thead
+								tr
+									th.color-column
+										h3 Color
+									th.name-column
+										h3 Name
+									th.value-column 
+										h3 Value
+									th
+							tbody
+						button.add-row + Add Row
+		script src="js/pie.js"
