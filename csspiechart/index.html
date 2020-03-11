@@ -1,1 +1,119 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta content="width=device-width,initial-scale=1,shrink-to-fit=no" name="viewport"><title>CSS Pie Chart</title><meta content="Generate a pie chart with CSS gradients." name="description"><link href="/css/style.min.css" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@300;400;500&amp;display=swap" rel="stylesheet"></head><body class="container"><div class="wrapper"><header><h1>CSS Pie Chart Generator</h1></header></div><div class="wrapper"><section class="pie-chart-wrapper"></section><section class="output"><textarea autocomplete="off" spellcheck="false">.pie-chart { }</textarea><div class="output-controls"><button class="output-button output-copy"><svg class="icon copy-icon" height="20" viewbox="0 0 12 12" width="20"><path d="M 1 4 L 8 4 L 8 11 L 1 11 L 1 4 M 4 4 L 4 1 L 11 1 L 11 8 L 8 8"></path></svg>Copy</button><div class="output-codepen"></div><input class="output-minify" id="output_minify" onchange="collectData()" type="checkbox"><label class="output-button" for="output_minify"><svg class="icon minify-icon" height="20" viewbox="0 0 12 12" width="20"><path d="M 4 4 L 1 6 L 4 8 M 5 3 L 7 9 M 8 4 L 11 6 L 8 8 M 11 1 L 1 11"></path></svg>Minify</label><div class="output-bytecount">0 bytes</div></div></section></div><div class="wrapper"><section class="options"><div class="box container"><header><h2>Options</h2></header><div class="options-wrapper"><label><h3>Chart title (leave blank to omit)</h3><input class="chart-title" onkeyup="collectData()" type="text" value="World electricity generation by source"></label><label><h3>Chart source (leave blank to omit)</h3><input class="chart-source" onkeyup="collectData()" type="text" value="International Energy Agency"></label><label><h3>Pie chart size</h3><input class="chart-size-range" max="100" min="0" oninput="collectData()" type="range" value="75"></label></div></div></section><section class="data"><div class="box container"><header><h2>Data</h2></header><div class="data-table"><table><thead><tr><th class="color-column"><h3>Color</h3></th><th class="name-column"><h3>Name</h3></th><th class="value-column"><h3>Value</h3></th><th></th></tr></thead><tbody></tbody></table><button class="add-row">+ Add Row</button></div></div></section></div><script src="js/pie.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta
+			content="width=device-width,initial-scale=1,shrink-to-fit=no"
+			name="viewport"
+		/>
+		<title>CSS Pie Chart</title>
+		<meta
+			content="Generate a pie chart with CSS gradients."
+			name="description"
+		/>
+		<link href="css/style.min.css" rel="stylesheet" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@300;400;500&amp;display=swap"
+			rel="stylesheet"
+		/>
+	</head>
+	<body class="container">
+		<div class="wrapper">
+			<header><h1>CSS Pie Chart Generator</h1></header>
+		</div>
+		<div class="wrapper">
+			<section class="pie-chart-wrapper"></section>
+			<section class="output">
+				<textarea autocomplete="off" spellcheck="false">
+.pie-chart { }</textarea
+				>
+				<div class="output-controls">
+					<button class="output-button output-copy">
+						<svg
+							class="icon copy-icon"
+							height="20"
+							viewbox="0 0 12 12"
+							width="20"
+						>
+							<path
+								d="M 1 4 L 8 4 L 8 11 L 1 11 L 1 4 M 4 4 L 4 1 L 11 1 L 11 8 L 8 8"
+							></path></svg
+						>Copy
+					</button>
+					<div class="output-codepen"></div>
+					<input
+						class="output-minify"
+						id="output_minify"
+						onchange="collectData()"
+						type="checkbox"
+					/><label class="output-button" for="output_minify"
+						><svg
+							class="icon minify-icon"
+							height="20"
+							viewbox="0 0 12 12"
+							width="20"
+						>
+							<path
+								d="M 4 4 L 1 6 L 4 8 M 5 3 L 7 9 M 8 4 L 11 6 L 8 8 M 11 1 L 1 11"
+							></path></svg
+						>Minify</label
+					>
+					<div class="output-bytecount">0 bytes</div>
+				</div>
+			</section>
+		</div>
+		<div class="wrapper">
+			<section class="options">
+				<div class="box container">
+					<header><h2>Options</h2></header>
+					<div class="options-wrapper">
+						<label
+							><h3>Chart title (leave blank to omit)</h3>
+							<input
+								class="chart-title"
+								onkeyup="collectData()"
+								type="text"
+								value="World electricity generation by source"/></label
+						><label
+							><h3>Chart source (leave blank to omit)</h3>
+							<input
+								class="chart-source"
+								onkeyup="collectData()"
+								type="text"
+								value="International Energy Agency"/></label
+						><label
+							><h3>Pie chart size</h3>
+							<input
+								class="chart-size-range"
+								max="100"
+								min="0"
+								oninput="collectData()"
+								type="range"
+								value="75"
+						/></label>
+					</div>
+				</div>
+			</section>
+			<section class="data">
+				<div class="box container">
+					<header><h2>Data</h2></header>
+					<div class="data-table">
+						<table>
+							<thead>
+								<tr>
+									<th class="color-column"><h3>Color</h3></th>
+									<th class="name-column"><h3>Name</h3></th>
+									<th class="value-column"><h3>Value</h3></th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody></tbody>
+						</table>
+						<button class="add-row">+ Add Row</button>
+					</div>
+				</div>
+			</section>
+		</div>
+		<script src="js/pie.js"></script>
+	</body>
+</html>
