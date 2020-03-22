@@ -425,7 +425,7 @@ section {
 				height: var(--extra-large);
 				border-radius: var(--large);
 				background: var(--gray-100);
-				border: var(--small) solid var(--blue-200);
+				border: 2px solid var(--gray-500);
 				cursor: ew-resize;
 				transition: border-color var(--transition);
 
@@ -435,12 +435,13 @@ section {
 				}
 
 				&:hover {
-					border-color: var(--blue-300);
+					border-color: var(--blue-200);
 					transition-duration: var(--transition-hover);
 				}
 
 				&:active {
-					transform: scale(1.2);
+					border-color: var(--blue-300);
+					background: var(--blue-300);
 				}
 			}
 			&::-moz-range-track {
