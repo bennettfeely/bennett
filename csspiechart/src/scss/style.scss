@@ -127,8 +127,14 @@ code {
 	font-size: small;
 	font-weight: 600;
 	text-decoration: none;
-	border-radius: var(--radius);
-	text-decoration: none;
+
+	a {
+		text-decoration: none;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
 }
 
 .icon {
@@ -463,18 +469,18 @@ section {
 				height: var(--large);
 				border-radius: var(--large);
 				background: var(--gray-100);
-				box-shadow: inset 0 0 0 var(--small) var(--blue-200);
 				border: 0;
+				box-shadow: inset 0 0 0 2px var(--gray-500);
 				cursor: ew-resize;
 				transition: box-shadow var(--transition);
 
 				&:hover {
-					box-shadow: inset 0 0 0 var(--small) var(--blue-300);
+					box-shadow: inset 0 0 0 2px var(--blue-300);
 					transition-duration: var(--transition-hover);
 				}
 
 				&:active {
-					transform: scale(1.2);
+					background: var(--blue-300);
 				}
 			}
 		}
@@ -484,11 +490,7 @@ section {
 .options {
 	label {
 		display: block;
-		margin-bottom: var(--large);
-
-		&:last-child {
-			margin: 0;
-		}
+		margin-top: var(--medium);
 	}
 }
 

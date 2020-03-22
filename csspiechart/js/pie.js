@@ -108,7 +108,7 @@ function appendRow(data, i) {
 				+ '<input onkeyup="collectData()" type="text" value="' + data.name +'" spellcheck="false" autocomplete="off">'
 			+ '</td>'
 			+ '<td class="value-column">'
-				+ '<input onkeyup="collectData()" type="text" value="' + data.value +'" spellcheck="false" autocomplete="off" inputmode="numeric" pattern="[0-9]+([,\.][0-9]+)?">'
+				+ '<input onkeyup="collectData()" type="text" value="' + data.value +'" spellcheck="false" autocomplete="off" inputmode="numeric" pattern="[0-9]+([,\.][0-9]+)?%?">'
 			+ '</td>'
 			+ '<td class="remove-row-column">'
 				+ '<button onclick="removeRow(\'' + row_id + '\');collectData();" class="remove-row">&times;</button>'
@@ -137,7 +137,9 @@ function collectData() {
 		var color = data.children[0].children[0].value;
 		var name = data.children[1].children[0].value;
 		var value = parseFloat(
-			data.children[2].children[0].value.replace(/\,/g, "")
+			data.children[2].children[0].value
+				.replace(/\,/g, "")
+				.replace(/\%/g, "")
 		);
 
 		// Prevent negative values
@@ -267,7 +269,7 @@ function buildChart(dataset, sum) {
 
 	// Display rotation
 	document.querySelector(".chart-rotation-display").innerHTML =
-		chart_rotation + " deg";
+		chart_rotation + "°";
 
 	if (chart_rotation > 0 && chart_rotation < 360) {
 		var temp_rotation = "\t\t\t\tfrom " + chart_rotation + "deg,\n";
