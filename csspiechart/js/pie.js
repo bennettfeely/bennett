@@ -278,7 +278,7 @@ function buildChart(dataset, sum) {
 	// Generate CSS for pie chart background
 	// prettier-ignore
 	if (minify == true) {
-		var chart_css = '.pie-chart{background:radial-gradient(circle closest-side,transparent ' + chart_size + ',white 0),conic-gradient(' + temp_rotation_min + temp_gradient + ');position:relative;margin:0;font-family:sans-serif;width:500px;min-height:350px;outline:1px solid lightgray}';
+		var chart_css = '.pie-chart{background:radial-gradient(circle closest-side,transparent ' + chart_size + ',#fff 0),conic-gradient(' + temp_rotation_min + temp_gradient + ');position:relative;width:500px;min-height:350px;margin:0;outline:1px solid #ccc}';
 	} else {
 	var chart_css = '.pie-chart {\n' 
 		+ '\t\tbackground:\n'
@@ -292,11 +292,10 @@ function buildChart(dataset, sum) {
 		+ temp_gradient + '\n'
 		+ '\t\t);\n'
 		+ '\t\tposition: relative;\n'
-		+ '\t\tmargin: 0;\n'
-		+ '\t\tfont-family: sans-serif;\n'
 		+ '\t\twidth: 500px;\n'		
 		+ '\t\tmin-height: 350px;\n'		
-		+ '\t\toutline: 1px solid lightgray;\n'		
+		+ '\t\tmargin: 0;\n'
+		+ '\t\toutline: 1px solid #ccc;\n'		
 		+ '\t}\n';
 	}
 
