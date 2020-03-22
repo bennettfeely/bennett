@@ -13,7 +13,7 @@ const fs = require("fs");
 // BrowserSync
 gulp.task("sync", function() {
   return browserSync({
-    server: "dist"
+    server: ""
   });
 });
 
@@ -34,32 +34,7 @@ gulp.task("slim", function() {
         minifyJS: true
       })
     )
-    .pipe(gulp.dest("./dist"))
-    .pipe(
-      browserSync.reload({
-        stream: true
-      })
-    );
-});
-
-// Compile HTML from a subfolder
-gulp.task("slim-subfolder", function() {
-  return gulp
-    .src("src/slim/*/*.slim")
-    .pipe(
-      slim({
-        pretty: true
-      })
-    )
-    .pipe(
-      htmlmin({
-        collapseWhitespace: true,
-        removeComments: true,
-        minifyCSS: true,
-        minifyJS: true
-      })
-    )
-    .pipe(gulp.dest("./dist/"))
+    .pipe(gulp.dest(""))
     .pipe(
       browserSync.reload({
         stream: true
@@ -86,7 +61,7 @@ gulp.task("scss", function() {
         path.extname = ".css";
       })
     )
-    .pipe(gulp.dest("./dist/css"))
+    .pipe(gulp.dest("./css"))
     .pipe(
       browserSync.reload({
         stream: true
@@ -97,11 +72,6 @@ gulp.task("scss", function() {
 // Move JS
 gulp.task("js", function() {
   browserSync.reload();
-  // return gulp.pipe(
-  //   browserSync.reload({
-  //     stream: true
-  //   })
-  // );
 });
 
 gulp.task("default", function() {
@@ -111,15 +81,11 @@ gulp.task("default", function() {
     return gulp.run("slim");
   });
 
-  gulp.watch("src/slim/*/*.slim", function() {
-    return gulp.run("slim-subfolder");
-  });
-
   gulp.watch("src/scss/*.scss", function() {
     return gulp.run("scss");
   });
 
-  gulp.watch("dist/js/*.js", function() {
+  gulp.watch("js/*.js", function() {
     return gulp.run("js");
   });
 });

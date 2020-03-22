@@ -84,6 +84,7 @@ document.querySelector(".add-row").addEventListener("click", appendRow);
 function appendRow(data, i) {
 	// If adding another row, count the number of rows we already have to set a color
 	if (i === undefined) {
+		var manual_add = true;
 		var i = document.querySelectorAll("tbody tr").length;
 	}
 
@@ -107,7 +108,7 @@ function appendRow(data, i) {
 				+ '<input onkeyup="collectData()" type="text" value="' + data.name +'" spellcheck="false" autocomplete="off">'
 			+ '</td>'
 			+ '<td class="value-column">'
-				+ '<input onkeyup="collectData()" type="text" value="' + data.value +'" spellcheck="false" autocomplete="off" inputmode="numeric" pattern="[0-9]*">'
+				+ '<input onkeyup="collectData()" type="text" value="' + data.value +'" spellcheck="false" autocomplete="off" inputmode="numeric" pattern="[0-9]+([,\.][0-9]+)?">'
 			+ '</td>'
 			+ '<td class="remove-row-column">'
 				+ '<button onclick="removeRow(\'' + row_id + '\');collectData();" class="remove-row">&times;</button>'
@@ -115,6 +116,10 @@ function appendRow(data, i) {
 		+ '</tr>';
 
 	document.querySelector("tbody").insertAdjacentHTML("beforeend", row);
+
+	if (manual_add == true) {
+		document.querySelector("tr:last-child .name-column input").focus();
+	}
 }
 
 function removeRow(row_id) {
@@ -204,13 +209,13 @@ function buildChart(dataset, sum) {
 		if (minify == true) {
 			var figure_title = "<h2>" + figure_title + "</h2>";
 			var figure_title_css =
-				".pie-chart h2{position: absolute;padding:1rem}";
+				".pie-chart h2{position:absolute;margin:1rem}";
 		} else {
 			var figure_title = "\t<h2>" + figure_title + "</h2>\n";
 			// prettier-ignore
 			var figure_title_css = '\t.pie-chart h2 {\n'
 				+ '\t\tposition: absolute;\n'
-				+ '\t\tpadding: 1rem;\n'
+				+ '\t\tmargin: 1rem;\n'
 				+'\t}\n';
 		}
 	} else {
@@ -244,29 +249,54 @@ function buildChart(dataset, sum) {
 	// Remove trailing comma in conical gradient value
 	var temp_gradient = temp_gradient.slice(0, -2);
 
-	// Get size of Pie chart
-	var chart_size = document.querySelector(".chart-size-range").value;
+	// Get size of pie chart
+	var chart_size = document.querySelector(".chart-size").value;
+
+	document.querySelector(".chart-size-display").innerHTML = chart_size + "%";
+
+	if (chart_size > 0) {
+		chart_size += "%";
+	}
+	if (chart_size < 10) {
+		chart_size += "%";
+	}
+
+	// Get rotation of pie chart
+	var chart_rotation = document.querySelector(".chart-rotation").value;
+
+	document.querySelector(".chart-rotation-display").innerHTML =
+		chart_rotation + " deg";
+
+	if (chart_rotation > 0 && chart_rotation < 360) {
+		var temp_rotation = "\t\t\t\tfrom " + chart_rotation + "deg,\n";
+		var temp_rotation_min = "from " + chart_rotation + "deg,";
+	} else {
+		var temp_rotation = "";
+		var temp_rotation_min = "";
+	}
 
 	// Generate CSS for pie chart background
 	// prettier-ignore
 	if (minify == true) {
-		var chart_css = '.pie-chart{background:radial-gradient(circle closest-side,transparent ' + chart_size + '%,white 0),conic-gradient(' + temp_gradient + ');position:relative;margin:0;font-family:sans-serif;width:100%;padding-bottom:75%}';
+		var chart_css = '.pie-chart{background:radial-gradient(circle closest-side,transparent ' + chart_size + ',white 0),conic-gradient(' + temp_rotation_min + temp_gradient + ');position:relative;margin:0;font-family:sans-serif;width:500px;min-height:350px;outline:1px solid lightgray}';
 	} else {
 	var chart_css = '.pie-chart {\n' 
 		+ '\t\tbackground:\n'
 		+ '\t\t\tradial-gradient(\n'
 		+ '\t\t\t\tcircle closest-side,\n' 
-		+ '\t\t\t\ttransparent ' + chart_size + '%,\n'
+		+ '\t\t\t\ttransparent ' + chart_size + ',\n'
 		+ '\t\t\t\twhite 0\n'
 		+ '\t\t\t),\n'
 		+ '\t\t\tconic-gradient(\n'
+		+ temp_rotation 
 		+ temp_gradient + '\n'
 		+ '\t\t);\n'
 		+ '\t\tposition: relative;\n'
 		+ '\t\tmargin: 0;\n'
 		+ '\t\tfont-family: sans-serif;\n'
-		+ '\t\twidth: 100%;\n'
-		+ '\t\tpadding-bottom: 75%;\n'
+		+ '\t\twidth: 500px;\n'		
+		+ '\t\tmin-height: 350px;\n'		
+		+ '\t\toutline: 1px solid lightgray;\n'		
 		+ '\t}\n';
 	}
 
@@ -316,11 +346,12 @@ function buildChart(dataset, sum) {
 
 	var kb = (pie_preview.length / 1000).toFixed(2);
 
-	document.querySelector(".output-bytecount").innerHTML = kb + " kb";
+	document.querySelector(".output-bytes").innerHTML = kb + " kb";
 
 	// Add generated HTML to textarea and output
 	document.querySelector(".output textarea").value = pie_preview;
 	document.querySelector(".pie-chart-wrapper").innerHTML = pie_preview;
+	// document.querySelector(".pie-chart-wrapper-mini").innerHTML = pie_preview;
 
 	// Gather Data for CodePen export
 	// prettier-ignore
@@ -349,13 +380,12 @@ function setupCodePenExport(codepen_obj) {
 		.replace(/"/g, "&quot;")
 		.replace(/'/g, "&apos;");
 
-	console.log(codepen_obj);
-	console.log(JSONstring);
-
 	// prettier-ignore
 	var form = '<form action="https://codepen.io/pen/define" method="POST" target="_blank">' 
 	+ '<input type="hidden" name="data" value=\'' + JSONstring + '\'>'
-	+ '<button type="submit" class="output-button"><svg class="icon codepen-icon" height="20" viewBox="0 0 12 12" width="20"><path d="M 1 4 L 6 1 L 11 4 L 11 7.5 L 6 11 L 1 7.5 L 1 4 L 6 7.5 L 11 4 L 11 7.5 L 6 4 L 6 1 L 6 4 L 1 7.5 L 6 11 L 6 7.5"></path></svg>Open</button>'
+	+ '<button type="submit" class="button"><svg class="codepen-icon icon" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="m24 7.598c-.044-.264-.08-.47-.36-.641-11.449-6.791-11.287-7.297-12.03-6.848-8.677 5.394-11.092 6.597-11.439 7.017-.315.323-.171.818-.171 8.298-.021.851 7.743 5.462 11.519 8.404.333.237.752.199 1.003-.029 11.224-7.956 11.497-7.636 11.478-8.375 0 0-.012-7.927 0-7.826zm-1.5 6.491-3.876-2.359 3.876-2.697zm-5.277-3.212-4.473-2.722v-6.07l9.126 5.555zm-5.223 3.633-3.876-2.697 3.876-2.359 3.876 2.359zm-.75-12.426v6.074c-1.739 1.079-3.209 1.98-4.451 2.734l-4.675-3.252zm-5.857 9.658c-1.874 1.127-3.098 1.843-3.893 2.32v-5.029zm1.33.924 4.527 3.149v5.999l-9.126-6.349zm6.027 9.149v-5.999l4.527-3.149 4.599 2.799z"/></svg>' 
+	+ 'Open'
+	+ '</button>'
   	+ '</form>';
 
 	// Update CodePen button

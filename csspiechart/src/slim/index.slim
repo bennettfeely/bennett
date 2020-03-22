@@ -4,49 +4,66 @@ html lang="en"
 		meta charset="utf-8"
 		meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"
 		title CSS Pie Chart
-		meta name="description" content="Generate a pie chart with CSS gradients."
-		link href="/css/style.min.css" rel="stylesheet"
+		meta name="description" content="Generate a pie chart with CSS conic gradients."
+		link href="css/style.min.css" rel="stylesheet"
 		link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@300;400;500&display=swap" rel="stylesheet"
-		/ link rel="apple-touch-icon" sizes="180x180" href="img/icons/apple-touch-icon.png"
-		/ link rel="icon" type="image/png" sizes="16x16" href="img/icons/favicon-16x16.png"
-		/ link rel="icon" type="image/png" sizes="32x32" href="img/icons/favicon-32x32.png"
-	body.container
-		.wrapper
-			header
-				h1 CSS Pie Chart Generator
-		.wrapper
+		link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png"
+		link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png"
+		link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png"
+		meta name="msapplication-TileColor" content="#d3d0c9"
+		meta name="theme-color" content="#d3d0c9"
+	body.wrapper
+		.side.left-side
+			header.header-wrapper
+				h1 
+					a href="/" CSS Pie Chart Generator				
+				a.tweet.button href="https://twitter.com/intent/tweet?text=Generate%20a%20pie%20chart%20with%20CSS%20https%3A//bennettfeely.com/csspiechart"
+					svg.icon viewBox="0 0 24 24"
+						path fill="currentColor" d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"
+					| Tweet
 			section.pie-chart-wrapper
-			section.output
-				textarea autocomplete="off" spellcheck="false"
-					| .pie-chart { }
-				.output-controls
-					button.output-button.output-copy 
-						svg.icon.copy-icon width="20" height="20" viewbox="0 0 12 12"
-							path d="M 1 4 L 8 4 L 8 11 L 1 11 L 1 4 M 4 4 L 4 1 L 11 1 L 11 8 L 8 8"
-						| Copy
-					.output-codepen
-					input#output_minify.output-minify type="checkbox" onchange="collectData()"
-					label.output-button for="output_minify"
-						svg.icon.minify-icon width="20" height="20" viewbox="0 0 12 12"
-							path d="M 4 4 L 1 6 L 4 8 M 5 3 L 7 9 M 8 4 L 11 6 L 8 8 M 11 1 L 1 11"
-						| Minify
-					.output-bytecount 0 bytes
-		.wrapper
-			section.options
-				.box.container
+			section.output-wrapper
+				.output
+					textarea autocomplete="off" spellcheck="false"
+					.output-controls
+						.output-codepen
+						input#output_minify.output-minify type="checkbox" onchange="collectData()"
+						label.button tabindex="0" for="output_minify"
+							svg.icon.minify-icon width="20" height="20" viewbox="0 0 12 12"
+								path fill="none" stroke="currentColor" stroke-width=".8" d="M 4 4 L 1 6 L 4 8 M 5 3 L 7 9 M 8 4 L 11 6 L 8 8"
+							| Minify
+						.output-bytes 0 bytes
+		.side.right-side
+			section.options-wrapper
+				.box.container.options
 					header
 						h2 Options
-					.options-wrapper
-						label
-							h3 Chart title (leave blank to omit)
-							input.chart-title type="text" onkeyup="collectData()" value="World electricity generation by source"
-						label
-							h3 Chart source (leave blank to omit)
-							input.chart-source type="text" onkeyup="collectData()" value="International Energy Agency"
-						label
-							h3 Pie chart size
-							input.chart-size-range type="range" min="0" max="100" value="75" oninput="collectData()"
-			section.data
+					label
+						h3
+							| Chart title 
+							small Leave blank to omit
+						input.full.chart-title type="text" onkeyup="collectData()" value="World electricity generation by source"
+					label
+						h3
+							| Chart source
+							small Leave blank to omit 
+						input.full.chart-source type="text" onkeyup="collectData()" value="International Energy Agency"
+					label
+						h3 
+							| Chart size
+							code 
+								small.chart-size-display
+						input.chart-size oninput="collectData()" type="range" value="75" min="0" max="100"
+					label
+						h3 
+							| Chart rotation
+							code 
+								small.chart-rotation-display
+						input.chart-rotation oninput="collectData()" type="range" value="0" min="0" max="360"
+			section.add-wrapper
+				.box.container.add-box
+					script async="async" type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CKYIL27N&placement=bennettfeelycom" id="_carbonads_js"
+			section.data-wrapper
 				.box.container
 					header
 						h2 Data
@@ -62,5 +79,49 @@ html lang="en"
 										h3 Value
 									th
 							tbody
-						button.add-row + Add Row
+						button.button.add-row + Add Row
+			section.about-wrapper
+				.box.container
+					header
+						h2 About CSS Pie Charts
+					p The <code><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/conic-gradient">conic-gradient()</a></code> CSS function creates a background gradient with color transitions rotated around a center point.
+					p We can use this new feature to create things like pie charts or color wheels in CSS.
+			section.about-wrapper
+				.box.container
+					header
+						h2 Browser Support
+						p From <a href="https://caniuse.com/#feat=css-conic-gradients">Caniuse</a>. Updated 21 March 2020.
+					.browser-support.supported
+						h3 Supported
+						.chrome.browser
+							img.browser-icon src="img/browsers/chrome.png" width="128" height="128" alt="Chrome icon"
+							| Chrome 80+
+						.safari.browser
+							img.browser-icon src="img/browsers/safari.png" width="128" height="128" alt="Safari icon"
+							| Safari 12.2+
+						.edge.browser
+							img.browser-icon src="img/browsers/edge.png" width="128" height="128" alt="Edge icon"
+							| Edge 79+
+						.samsung.browser
+							img.browser-icon src="img/browsers/samsung.png" width="128" height="128" alt="Samsung browser icon"
+							| Samsung 10.1+
+					.browser-support.not-supported-by-default
+						h3 Not supported by default
+						.firefox.browser
+							img.browser-icon src="img/browsers/firefox.png" width="128" height="128" alt="Firefox icon"
+							| Firefox 75+
+					.browser-support.not-supported
+						h3 Not supported
+						.ie.browser
+							img.browser-icon src="img/browsers/ie.png" width="128" height="128" alt="Internet Explorer icon"
+							| Internet Explorer
+						.uc.browser
+							img.browser-icon src="img/browsers/uc.png" width="128" height="128" alt="UC Browser icon"
+							| UC Browser
+			section.about-wrapper
+				.box.container
+					a href="https://twitter.com/bennettfeely?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-dnt="true" data-show-count="true" Follow @bennettfeely
+					script async="async" src="https://platform.twitter.com/widgets.js" charset="utf-8"
+					p &copy; 2020 Bennett Feely
+			// section.pie-chart-wrapper-mini
 		script src="js/pie.js"
