@@ -196,7 +196,7 @@ function buildChart(dataset, sum) {
 
 		// prettier-ignore
 		var figcaption_fraction = '\t\t' + data.name + ' ' + data.value 
-			+ '<span style=\"color:' + data.color + '\">&#x025FC;</span>'
+			+ '<span style=\"color:' + data.color + '\"></span>'
 			+ '<br>\n';
 
 		temp_gradient += gradient_fraction;
@@ -302,7 +302,7 @@ function buildChart(dataset, sum) {
 	// Generate CSS for figcaption
 	if (minify == true) {
 		var figcaption_css =
-			".pie-chart figcaption{position:absolute;bottom:1em;right:1em;font-size:smaller;text-align:right}";
+			'.pie-chart figcaption{position:absolute;bottom:1em;right:1em;font-size:smaller;text-align:right}.pie-chart span:after{display:inline-block;content:"";width:.8em;height:.8em;margin-left:.4em;height:.8em;border-radius:.2em;background:currentColor}';
 	} else {
 		// prettier-ignore
 		var figcaption_css = '\t.pie-chart figcaption {\n'
@@ -311,7 +311,17 @@ function buildChart(dataset, sum) {
 				+ '\t\tright: 1em;\n'
 				+ '\t\tfont-size: smaller;\n'
 				+ '\t\ttext-align: right;\n'
-				+ '\t}';
+				+ '\t}\n'
+				+ '\t.pie-chart span:after {\n'
+				+ '\t\tdisplay: inline-block;\n' 
+				+ '\t\tcontent: "";\n' 
+				+ '\t\twidth: 0.8em;\n' 
+				+ '\t\theight: 0.8em;\n'
+				+ '\t\tmargin-left: 0.4em;\n'
+				+ '\t\theight: 0.8em;\n'
+				+ '\t\tborder-radius: 0.2em;\n'
+				+ '\t\tbackground: currentColor;\n' 
+				+ "\t}";
 	}
 
 	// Group all CSS together for insertion in <style> tag

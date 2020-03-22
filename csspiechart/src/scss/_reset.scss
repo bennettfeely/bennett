@@ -28,3 +28,8 @@ body {
 video::-internal-media-controls-overlay-cast-button {
 	display: none;
 }
+
+input[type="text"] {
+	// Fix iOS Safari
+	-webkit-appearance: none;
+}

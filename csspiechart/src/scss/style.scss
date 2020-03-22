@@ -16,7 +16,7 @@ $desktop: 66em;
 	--small: 0.5em;
 	--medium: 1em;
 	--large: 1.5em;
-	--extra-large: 3em;
+	--extra-large: 2.5em;
 
 	--green: #58a14e;
 	--orange: #f28d2c;
@@ -421,13 +421,18 @@ section {
 			}
 			&::-webkit-slider-thumb {
 				-webkit-appearance: none;
-				width: var(--large);
-				height: var(--large);
+				width: var(--extra-large);
+				height: var(--extra-large);
 				border-radius: var(--large);
 				background: var(--gray-100);
 				border: var(--small) solid var(--blue-200);
 				cursor: ew-resize;
 				transition: border-color var(--transition);
+
+				@media (min-width: $tablet) {
+					width: var(--large);
+					height: var(--large);
+				}
 
 				&:hover {
 					border-color: var(--blue-300);
