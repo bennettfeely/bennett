@@ -196,7 +196,7 @@ function buildChart(dataset, sum) {
 
 		// prettier-ignore
 		var figcaption_fraction = '\t\t' + data.name + ' ' + data.value 
-			+ '<span style=\"color:' + data.color + '\">&FilledSmallSquare;</span>'
+			+ '<span style=\"color:' + data.color + '\">&#x025FC;</span>'
 			+ '<br>\n';
 
 		temp_gradient += gradient_fraction;
