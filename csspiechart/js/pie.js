@@ -191,7 +191,7 @@ function buildChart(dataset, sum) {
 		var gradient_fraction =
 			'\t\t\t\t' + data.color + ' 0,'
 			+ '\n\t\t\t\t' + data.color +
-			' ' + Math.round(temp_pct_sum * 1000)/1000 +
+			' ' + round(temp_pct_sum) +
 			'%,\n';
 
 		// prettier-ignore
@@ -252,18 +252,20 @@ function buildChart(dataset, sum) {
 	// Get size of pie chart
 	var chart_size = document.querySelector(".chart-size").value;
 
+	// Display size
 	document.querySelector(".chart-size-display").innerHTML = chart_size + "%";
 
+	// Add pct symbol
 	if (chart_size > 0) {
-		chart_size += "%";
-	}
-	if (chart_size < 10) {
-		chart_size += "%";
+		var chart_size_pct = chart_size + "%";
+	} else {
+		var chart_size_pct = "";
 	}
 
 	// Get rotation of pie chart
 	var chart_rotation = document.querySelector(".chart-rotation").value;
 
+	// Display rotation
 	document.querySelector(".chart-rotation-display").innerHTML =
 		chart_rotation + " deg";
 
@@ -275,16 +277,38 @@ function buildChart(dataset, sum) {
 		var temp_rotation_min = "";
 	}
 
+	// Get donut hole
+	var donut_hole = document.querySelector(".donut-hole").value;
+	var donut_hole_adj = round((donut_hole / 100) * chart_size) + "%";
+
+	console.log(donut_hole_adj);
+
+	// Display donut hole
+	document.querySelector(".donut-hole-display").innerHTML = donut_hole + "%";
+
+	if (donut_hole > 0 && chart_size > 0) {
+		// prettier-ignore
+		var temp_donut = '\t\t\t\twhite 0,\n'
+			+ '\t\t\t\twhite ' + donut_hole_adj + ',\n'
+			+ '\t\t\t\ttransparent ' + donut_hole_adj + ',\n';
+		// prettier-ignore
+		var temp_donut_min = '#fff 0,#fff ' + donut_hole_adj + ',transparent ' + donut_hole_adj + ',';
+	} else {
+		var temp_donut = "";
+		var temp_donut_min = "";
+	}
+
 	// Generate CSS for pie chart background
 	// prettier-ignore
 	if (minify == true) {
-		var chart_css = '.pie-chart{background:radial-gradient(circle closest-side,transparent ' + chart_size + ',#fff 0),conic-gradient(' + temp_rotation_min + temp_gradient + ');position:relative;width:500px;min-height:350px;margin:0;outline:1px solid #ccc}';
+		var chart_css = '.pie-chart{background:radial-gradient(circle closest-side,' + temp_donut_min + 'transparent ' + chart_size_pct + ',#fff 0),conic-gradient(' + temp_rotation_min + temp_gradient + ');position:relative;width:500px;min-height:350px;margin:0;outline:1px solid #ccc}';
 	} else {
 	var chart_css = '.pie-chart {\n' 
 		+ '\t\tbackground:\n'
 		+ '\t\t\tradial-gradient(\n'
 		+ '\t\t\t\tcircle closest-side,\n' 
-		+ '\t\t\t\ttransparent ' + chart_size + ',\n'
+		+ temp_donut
+		+ '\t\t\t\ttransparent ' + chart_size_pct + ',\n'
 		+ '\t\t\t\twhite 0\n'
 		+ '\t\t\t),\n'
 		+ '\t\t\tconic-gradient(\n'
@@ -399,6 +423,10 @@ function setupCodePenExport(codepen_obj) {
 
 	// Update CodePen button
 	document.querySelector(".output-codepen").innerHTML = form;
+}
+
+function round(int) {
+	return Math.round(int * 1000) / 1000;
 }
 
 function stringify(data) {
