@@ -40,7 +40,7 @@ $desktop: 66em;
 	--gray-200: #fbfcf7;
 	--gray-100: #fff;
 	--gray-250a: rgba(51, 53, 54, 0.25);
-	--gray-100a: rgba(51, 53, 54, 0.1);
+	--gray-100a: rgba(71, 73, 74, 0.1);
 
 	--twitter: #1da1f2;
 	--twitter-hover: #1880bf;
@@ -255,7 +255,7 @@ section {
 	flex: 1;
 	font: initial;
 	font-family: sans-serif;
-	background: var(--gray-300);
+	background: var(--gray-200);
 	border-radius: 0 0 var(--radius) var(--radius);
 	margin-bottom: var(--small);
 	box-shadow: var(--shadow);
@@ -276,7 +276,7 @@ section {
 
 	@media (min-width: $tablet) {
 		max-width: 45vw;
-		box-shadow: var(--shadow);
+		box-shadow: var(--shadow), 0 0 3px var(--gray-300);
 	}
 }
 
