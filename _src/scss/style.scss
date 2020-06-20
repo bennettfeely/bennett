@@ -29,7 +29,7 @@ $offwhite: #fcfaf7;
 body {
 	font-family: Nunito, sans-serif;
 	color: $black;
-	background: $offwhite;
+	background: $white;
 	overflow-x: hidden;
 }
 
@@ -383,10 +383,10 @@ $spread: 1.5em;
 		}
 		&:nth-child(5) {
 			.line {
-				transform: rotate(-10deg);
+				transform: rotate(-5deg);
 			}
 			.screenshot {
-				top: -25%;
+				top: -35%;
 
 				img {
 					transform: rotate(8deg);
@@ -459,7 +459,7 @@ $spread: 1.5em;
 				transform: rotate(-25deg);
 			}
 			.screenshot {
-				top: -100%;
+				top: -60%;
 
 				img {
 					transform: rotate(2deg);
