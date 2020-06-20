@@ -20,14 +20,16 @@ $space-large: 5rem;
 
 $black: #16161d;
 $blue: #1e90ff;
+
 $purple: #a029de;
 $white: #fff;
+$offwhite: #fcfaf7;
 
 // Structual styles ======================================================================
 body {
 	font-family: Nunito, sans-serif;
 	color: $black;
-	background: linear-gradient($white, whitesmoke);
+	background: $offwhite;
 	overflow-x: hidden;
 }
 
@@ -96,15 +98,13 @@ h2 {
 	font-size: 1.25em;
 	display: block;
 
-	&.section-heading {
-		@media (min-width: $tablet) {
-		}
-	}
-
 	span {
-		border: thin solid rgba($black, 0.1);
+		display: inline-block;
+		border: thin solid rgba($black, 0.15);
 		color: rgba($black, 0.6);
-		padding: 0 0.5em;
+		padding: 0.5em 1em;
+		border-radius: 1em;
+		background: transparent;
 	}
 }
 
@@ -210,10 +210,25 @@ li {
 
 	strong {
 		color: $blue;
+		transition: color $transition;
 	}
 
-	&:visited strong {
-		color: #a029de;
+	&:hover {
+		strong {
+			color: shade($blue, 25%);
+		}
+	}
+
+	&:visited {
+		strong {
+			color: $purple;
+		}
+
+		&:hover {
+			strong {
+				color: shade($purple, 25%);
+			}
+		}
 	}
 
 	@media (min-width: $tablet) {
@@ -225,7 +240,7 @@ li {
 
 		&:hover {
 			background: tint($blue, 90%);
-			transition-duration: $transition * 0.5;
+			transition-duration: $transition * 0.1;
 		}
 	}
 }
@@ -273,7 +288,7 @@ $space: 5em;
 		width: 100%;
 		height: auto;
 		border-radius: $radius;
-		box-shadow: 0 1em 1.5em rgba($black, 0.1);
+		box-shadow: 0 0.5em 1.5em rgba($black, 0.2);
 	}
 
 	@media (min-width: $tablet) {
@@ -291,10 +306,9 @@ $space: 5em;
 			width: 100%;
 			height: auto;
 			transition: box-shadow $transition;
-			box-shadow: 0 1em 1.5em rgba($black, 0);
 
 			@at-root .project-link:hover & {
-				box-shadow: 0 1em 1.5em rgba($black, 0.1);
+				box-shadow: 0 1em 2em rgba($black, 0.2);
 			}
 		}
 	}
@@ -307,7 +321,7 @@ $space: 5em;
 		width: $space * 2;
 		height: 1px;
 		background: $black;
-		opacity: 0.1;
+		opacity: 0.15;
 		pointer-events: none;
 		top: 50%;
 		transition: opacity $transition;
