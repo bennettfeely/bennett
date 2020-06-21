@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CSS Gradients with background-blend-mode</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=9">
+	<link id="favicon" rel="shortcut icon" href="img/favicon.png">
+	<link rel="stylesheet" type="text/css" href="style.min.css">
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <h1>New CSS gradient possibilities with the <code>background-blend-mode</code> property.</h1>
+      <span class="twitter">
+        <a href="https://twitter.com/share" class="twitter-share-button" data-text="New CSS gradient possibilities with background-blend-mode" data-via="bennettfeely" data-size="large">Tweet</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+      </span>
+    </div>
+    <section class="no-support-message">
+      <div class="container flex">
+        <i class="icon alert left"></i>
+        <p>The browser you are using does not support CSS blend modes. Many of these gradients depend heavily on this feature and unfortunately will not render to their full potential in your browser. <a href="img/reference.png">Reference</a>.</p>
+      </div>
+    </section>
+  </header>
+
+  <div class="underlay tap"></div>
+
+  <div class="container background-container flex"></div>
+
+  <footer>
+    <section class="container add">
+      <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CKYIL27N&placement=bennettfeelycom" id="_carbonads_js"></script>
+    </section>
+
+    <section class="container heading">
+        <h1>About these backgrounds</h1>
+        <h1 class="small">Fully supported in</h1>
+
+        <a href="http://caniuse.com/#feat=css-backgroundblendmode" class="support">
+          <div class="browser">
+            <i class="icon chrome"></i>
+            <h1>35+</h1>
+          </div>
+          <div class="browser">
+            <i class="icon firefox"></i>
+            <h1>30+</h1>
+          </div>
+          <div class="browser">
+            <i class="icon opera"></i>
+            <h1>22+</h1>
+          </div>
+          <div class="browser">
+            <i class="icon safari"></i>
+            <h1>8+</h1>
+          </div>
+          <div class="browser no-support">
+            <i class="icon ie"></i>
+            <h1>--</h1>
+          </div>
+        </a><!-- .support -->
+      </section>
+
+        <section class="container">
+          <p>The CSS <code>background-blend-mode</code> property blends the backgrounds of an element: colors, images, and gradients, together with Photoshop-like blend modes (multiply, screen, overlay, etc). It is very new and is curently supported by the latest releases of Chrome, Firefox, and Opera. The property is coming to Safari soon but not available in Internet Explorer.</p>
+
+          <p>CSS gradients are already immensely powerful in creating patterns, as shown in Lea Verou's <a href="http://lea.verou.me/css3patterns/">CSS Patterns Gallery</a>. With the new <code>background-blend-mode</code> property, the possibilities expand once more.</p>
+
+          <p>CSS gradients are completely resolution-independent and faster to modify than images. With performance considerations in mind, animations and transitions are possible through the <code>background-size</code> or <code>background-position</code> properties.</p>
+
+          <p>The downside to <code>background-blend-mode</code> along with many very new CSS properties is the added work in providing a good looking alternative for browsers with no support for the property. Fortunately, it's not too hard. With a tiny bit of Javascript we can detect if there is no support:</p>
+
+          <pre><code>if(!("backgroundBlendMode" in document.body.style)) {
+    <span class="light">// No support for background-blend-mode</span>
+  var html = document.getElementsByTagName("html")[0];
+  html.className = html.className + " no-background-blend-mode";
+}</code></pre>
+
+          <p>In your CSS file, you can now specify different styles for unsupported browsers with <code>.no-background-blend-mode</code> class. There are <a href="http://dev.opera.com/articles/getting-to-know-css-blend-modes/#feature-detection-for-blend-modes">other ways of detecting support</a>, with Modernizr or even with CSS <code>@supports</code>. However, you may find yourself with a case where this extra work is not even necessary and leaving an unsupported browser to render the CSS gradients without <code>background-blend-mode</code> looks alright.</p>
+
+          <p>The gradients <span class="hint" data-new="below">above</span> are most likely not possible to exactly replicate in CSS without <code>background-blend-mode</code>. However, using a CSS gradient instead of an image not only saves you an HTTP request, but they are incredibly smaller in size<span class="hint" data-new=" as seen below"></span>. CSS gradients sizes are calculated unprefixed, which all the latest browsers support.</p>
+        </section>
+
+        <div id="test_holder"></div>
+
+          <section class="container">
+
+            <p><br>If you have a cool gradient I would be happy to include it in this collection with a link to you. Let me know!</p>
+
+            <p class="me">Brought to you by <a href="http://bennettfeely.com">Bennett Feely</a>.
+              <br>
+              <a href="https://twitter.com/bennettfeely" class="twitter-follow-button" data-show-count="true">Follow @bennettfeely</a>
+              <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+            </p>
+        </section>
+      </div>
+  </footer>
+
+
+<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
+<script src="dev/jquery.min.js"></script>
+<script src="dev/jquery.textchange.js"></script>
+<script src="dev/blendground.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-35724550-1', 'bennettfeely.com');
+  ga('send', 'pageview');
+</script>
+</body>
+</html>
