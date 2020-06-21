@@ -141,4 +141,13 @@ html(lang="en")
 		//- 	| var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 		//- 	| document.querySelector("time").innerHTML = "New (" + months[month] + " " + day + "): ";
 
+		script.
+			let now = new Date();
+			let hours = now.getHours();
+
+			if (hours < 6 || hours > 21) {
+				console.log('nighty night');
+				document.querySelector('html').classList.add('dark');
+			}
+
 

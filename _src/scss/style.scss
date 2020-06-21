@@ -9,27 +9,58 @@
 @import "../partials/palette";
 
 // Variables =============================================================================
-$radius: 4px;
-$transition: 0.35s;
-
 $tablet: 40em;
 $desktop: 60em;
 
 $space-small: 2.5rem;
 $space-large: 5rem;
 
-$black: #16161d;
-$blue: #1e90ff;
+:root {
+	--radius: 4px;
+	--transition: 0.35s;
+	--transition-hover: 0.1s;
 
-$purple: #a029de;
-$white: #fff;
-$offwhite: #fcfaf7;
+	--black: #16161d;
+	--black-a: rgba(22, 22, 29, 0.15);
+	--gray: #909099;
+
+	--blue: #1e90ff;
+	--blue-a: rgb(30, 144, 255, 0.1);
+	--blue-dark: #005cb8;
+	--blue-light: #52c3fb;
+	--purple: #a029de;
+	--purple-dark: #5f267d;
+	--purple-muted: #a377d2;
+	--white: #fff;
+	--offwhite: #ccc;
+
+	// Light Mode
+	--background: var(--white);
+	--text-color: var(--black);
+	--text-color-a: var(--gray);
+	--link-color: var(--blue);
+	--link-color-hover: var(--blue-dark);
+	--link-color-visited: var(--purple);
+	--link-color-visited-hover: var(--purple-dark);
+}
+
+.dark {
+	// Dark Mode
+	--background: var(--black);
+	--text-color: var(--offwhite);
+	--link-color: var(--blue);
+	--link-color-hover: var(--blue);
+	--link-color-visited: var(--purple-muted);
+	--link-color-visited-hover: var(--purple-muted);
+	--link-color-hover-shadow: 0 0 1em var(--blue);
+	--link-color-visited-hover-shadow: 0 0 1em var(--purple-muted);
+}
 
 // Structual styles ======================================================================
 body {
 	font-family: Nunito, sans-serif;
-	color: $black;
-	background: $white;
+	color: var(--text-color);
+	background: var(--background);
 	overflow-x: hidden;
 }
 
@@ -100,17 +131,17 @@ h2 {
 
 	span {
 		display: inline-block;
-		border: thin solid rgba($black, 0.15);
-		color: rgba($black, 0.6);
+		border: thin solid var(--text-color-a);
+		color: var(--text-color);
+		opacity: 0.5;
 		padding: 0.5em 1em;
 		border-radius: 1em;
-		background: transparent;
 	}
 }
 
 a {
 	text-decoration: none;
-	color: $black;
+	color: var(--text-color);
 }
 
 img {
@@ -209,38 +240,40 @@ li {
 	}
 
 	strong {
-		color: $blue;
-		transition: color $transition;
+		color: var(--link-color);
+		transition: color var(--transition);
 	}
 
 	&:hover {
 		strong {
-			color: shade($blue, 25%);
+			color: var(--link-color-hover);
+			text-shadow: var(--link-color-hover-shadow);
 		}
 	}
 
 	&:visited {
 		strong {
-			color: $purple;
+			color: var(--link-color-visited);
 		}
 
 		&:hover {
 			strong {
-				color: shade($purple, 25%);
+				color: var(--link-color-visited-hover);
+				text-shadow: var(--link-color-hover-visited-shadow);
 			}
 		}
 	}
 
 	@media (min-width: $tablet) {
 		display: block;
-		transition: background-color $transition;
-		border-radius: $radius;
+		transition: background-color var(--transition);
+		border-radius: var(--radius);
 		margin: 1rem 0;
 		padding: 1.5rem;
 
 		&:hover {
-			background: tint($blue, 90%);
-			transition-duration: $transition * 0.1;
+			background: var(--blue-a);
+			transition-duration: var(--transition-hover);
 		}
 	}
 }
@@ -272,7 +305,7 @@ $space: 5em;
 	max-width: 50%;
 	height: auto;
 	margin: 0 1.5rem 0 0;
-	transition: transform $transition;
+	transition: transform var(--transition);
 	transform: scale(0.9);
 
 	.project:nth-child(odd) & {
@@ -281,14 +314,14 @@ $space: 5em;
 
 	.project-link:hover & {
 		transform: scale(1);
-		transition-duration: $transition * 0.5;
+		transition-duration: var(--transition-hover);
 	}
 
 	img {
 		width: 100%;
 		height: auto;
-		border-radius: $radius;
-		box-shadow: 0 0.5em 1.5em rgba($black, 0.2);
+		border-radius: var(--radius);
+		box-shadow: 0 0.5em 1.5em var(--black-a);
 	}
 
 	@media (min-width: $tablet) {
@@ -305,10 +338,10 @@ $space: 5em;
 			display: block;
 			width: 100%;
 			height: auto;
-			transition: box-shadow $transition;
+			transition: box-shadow var(--transition);
 
 			@at-root .project-link:hover & {
-				box-shadow: 0 1em 2em rgba($black, 0.2);
+				box-shadow: 0 1em 2em var(--black-a);
 			}
 		}
 	}
@@ -320,11 +353,11 @@ $space: 5em;
 		content: "";
 		width: $space * 2;
 		height: 1px;
-		background: $black;
+		background: var(--text-color);
 		opacity: 0.15;
 		pointer-events: none;
 		top: 50%;
-		transition: opacity $transition;
+		transition: opacity var(--transition);
 
 		.project-link:hover & {
 			opacity: 1;
