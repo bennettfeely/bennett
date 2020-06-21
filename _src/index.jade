@@ -133,21 +133,20 @@ html(lang="en")
 		.copyright-wrapper
 			.container
 				p &copy 2020 Bennett Feely
-		//- script
-		//- 	| let date = new Date();
-		//- 	| var day = date.getDate();
-		//- 	| if (day > 2) { var day = day - 2; }
-		//- 	| var month = date.getMonth();
-		//- 	| var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-		//- 	| document.querySelector("time").innerHTML = "New (" + months[month] + " " + day + "): ";
-
 		script.
 			let now = new Date();
 			let hours = now.getHours();
 
-			if (hours < 6 || hours > 21) {
+			if (hours <= 6 || hours >= 21) {
 				console.log('nighty night');
 				document.querySelector('html').classList.add('dark');
 			}
+		//- script.
+		//- 	let date = new Date();
+		//- 	var day = date.getDate();
+		//- 	if (day > 2) { var day = day - 2; }
+		//- 	var month = date.getMonth();
+		//- 	var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+		//- 	document.querySelector("time").innerHTML = "New (" + months[month] + " " + day + "): ";
 
 
