@@ -137,9 +137,9 @@ html(lang="en")
 			let now = new Date();
 			let hours = now.getHours();
 
-			if (hours <= 6 || hours >= 21) {
-				console.log('nighty night');
+			if (hours <= 6 || hours >= 21) {				
 				document.querySelector('html').classList.add('dark');
+				document.querySelector('meta[name="theme-color"]').setAttribute("content", "#16161d")
 			}
 		//- script.
 		//- 	let date = new Date();
