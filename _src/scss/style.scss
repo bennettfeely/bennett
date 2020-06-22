@@ -370,8 +370,12 @@ $space: 5em;
 		height: auto;
 		transition: box-shadow var(--transition);
 	}
+}
 
-	.project-link:hover & {
+.project-link:hover .screenshot {
+	box-shadow: 0 0.5em 3em var(--gray);
+
+	@at-root .dark & {
 		box-shadow: 0 0.5em 3em var(--sky-100);
 	}
 }
