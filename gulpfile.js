@@ -1,5 +1,6 @@
 gulp = require("gulp");
 jade = require("gulp-jade");
+slim = require("gulp-slim");
 htmlmin = require("gulp-htmlmin");
 sass = require("gulp-sass");
 autoprefixer = require("gulp-autoprefixer");
@@ -16,12 +17,12 @@ fs = require("fs");
 del = require("del");
 
 // Compile Jade to HTML ==================================================================
-gulp.task("jade", function() {
+gulp.task("slim", function () {
   return gulp
-    .src("_src/index.jade")
+    .src("_src/*.slim")
     .pipe(
-      jade({
-        pretty: true
+      slim({
+        pretty: true,
       })
     )
     .pipe(
@@ -29,23 +30,23 @@ gulp.task("jade", function() {
         collapseWhitespace: true,
         removeComments: true,
         minifyCSS: true,
-        minifyJS: true
+        minifyJS: true,
       })
     )
-    .pipe(gulp.dest("./"))
+    .pipe(gulp.dest(""))
     .pipe(
       browserSync.reload({
-        stream: true
+        stream: true,
       })
     );
 });
 
-gulp.task("jade-article", function() {
+gulp.task("jade", function () {
   return gulp
-    .src("_src/articles/*/index.jade")
+    .src("_src/index.jade")
     .pipe(
       jade({
-        pretty: true
+        pretty: true,
       })
     )
     .pipe(
@@ -53,19 +54,19 @@ gulp.task("jade-article", function() {
         collapseWhitespace: true,
         removeComments: true,
         minifyCSS: true,
-        minifyJS: true
+        minifyJS: true,
       })
     )
     .pipe(gulp.dest("./"))
     .pipe(
       browserSync.reload({
-        stream: true
+        stream: true,
       })
     );
 });
 
 // Compile CSS ===========================================================================
-gulp.task("scss", function() {
+gulp.task("scss", function () {
   return gulp
     .src("_src/scss/*.scss")
     .pipe(sass())
@@ -73,12 +74,12 @@ gulp.task("scss", function() {
     .pipe(
       autoprefixer({
         browsers: ["last 2 versions"],
-        cascade: false
+        cascade: false,
       })
     )
     .pipe(cssnano())
     .pipe(
-      rename(function(path) {
+      rename(function (path) {
         path.basename += ".min";
         path.extname = ".css";
       })
@@ -86,31 +87,35 @@ gulp.task("scss", function() {
     .pipe(gulp.dest("./"))
     .pipe(
       browserSync.reload({
-        stream: true
+        stream: true,
       })
     );
 });
 
 // Browser sync ==========================================================================
-gulp.task("sync", function() {
+gulp.task("sync", function () {
   return browserSync({
-    server: ""
+    server: "",
   });
 });
 
 // Init ==================================================================================
-gulp.task("default", function() {
+gulp.task("default", function () {
   gulp.run("sync");
 
-  gulp.watch(["_src/*.jade"], function() {
+  gulp.watch(["_src/*.jade"], function () {
     return gulp.run("jade");
   });
 
-  gulp.watch(["_src/articles/*/*.jade"], function() {
+  gulp.watch(["_src/*.slim"], function () {
+    return gulp.run("slim");
+  });
+
+  gulp.watch(["_src/articles/*/*.jade"], function () {
     return gulp.run("jade-article");
   });
 
-  gulp.watch("_src/scss/*.scss", function() {
+  gulp.watch("_src/scss/*.scss", function () {
     return gulp.run("scss");
   });
 });

@@ -1,14 +1,14 @@
-// Charset ===============================================================================
+// Charset =============================================================
 @charset "UTF-8";
 
-// Normalize =============================================================================
+// Normalize ===========================================================
 @import "../partials/normalize";
 @import "../partials/reset";
 @import "../partials/extensions";
 @import "../partials/functions";
 @import "../partials/palette";
 
-// Variables =============================================================================
+// Variables ===========================================================
 $tablet: 40em;
 $desktop: 60em;
 
@@ -34,6 +34,10 @@ $space-large: 5rem;
 	--white: #fff;
 	--offwhite: #ccc;
 
+	--sky-100: #3b2f4a;
+	--sky-200: #1f1f3a;
+	--sky-300: #16161d;
+
 	// Light Mode
 	--background: var(--white);
 	--text-color: var(--black);
@@ -52,31 +56,39 @@ $space-large: 5rem;
 	--link-color-hover: var(--blue);
 	--link-color-visited: var(--purple-muted);
 	--link-color-visited-hover: var(--purple-muted);
-	--link-color-hover-shadow: 0 0 1em var(--blue);
-	--link-color-visited-hover-shadow: 0 0 1em var(--purple-muted);
 }
 
-// Structual styles ======================================================================
+// Structual styles ====================================================
 body {
+	position: relative;
 	font-family: Nunito, sans-serif;
 	color: var(--text-color);
 	background: var(--background);
 	overflow-x: hidden;
+
+	.dark & {
+		background: radial-gradient(
+			circle at center bottom,
+			var(--sky-100),
+			var(--sky-200),
+			var(--sky-300)
+		);
+	}
 }
 
 .header-wrapper {
 	max-width: 35em;
 	margin: 0 auto;
 	text-align: center;
+	padding-top: 3em;
 
 	@media (min-width: $tablet) {
 		max-width: 42em;
-		margin: 5em auto 0;
+		padding-top: 5em;
 	}
 
 	@media (min-width: $desktop) {
 		max-width: 50em;
-		margin: 5em auto 0;
 	}
 }
 
@@ -95,6 +107,12 @@ body {
 	position: relative;
 	margin: 1.5rem;
 
+	.header-wrapper &,
+	.footer-wrapper & {
+		padding: 1.5em 0;
+		margin: 0 1.5em;
+	}
+
 	.contact-wrapper & {
 		text-align: center;
 		margin: 1.5rem auto;
@@ -110,7 +128,7 @@ body {
 	}
 }
 
-// Typography ============================================================================
+// Typography ==========================================================
 h1,
 h2 {
 	font-weight: 400;
@@ -131,9 +149,9 @@ h2 {
 
 	span {
 		display: inline-block;
-		border: thin solid var(--text-color-a);
+		border: thin solid rgba(128, 128, 128, 0.3);
 		color: var(--text-color);
-		opacity: 0.6;
+		opacity: 0.75;
 		padding: 0.5em 1em;
 		border-radius: 1em;
 	}
@@ -149,7 +167,7 @@ img {
 	@extend %no-select;
 }
 
-// Header ================================================================================
+// Header ==============================================================
 header {
 	.container {
 		text-align: center;
@@ -193,7 +211,47 @@ header {
 	}
 }
 
-// List ==================================================================================
+// Jobs ================================================================
+.job-wrapper {
+	max-width: 33em;
+	margin: 2em auto 0;
+
+	@media (min-width: $tablet) {
+		text-align: center;
+		margin: 3em auto 0;
+	}
+}
+.job {
+	@media (min-width: $tablet) {
+		display: flex;
+		align-items: center;
+	}
+
+	padding: 1.5rem;
+	background: tint(gold, 50%);
+	line-height: 1.4;
+
+	time {
+		white-space: nowrap;
+	}
+
+	p {
+		text-align: left;
+
+		@media (min-width: $tablet) {
+			padding-left: 1rem;
+		}
+	}
+
+	a {
+		text-decoration: underline;
+	}
+}
+time {
+	font-weight: bold;
+}
+
+// List ================================================================
 ul {
 	@extend %no-select;
 	font-size: 1.2em;
@@ -247,7 +305,6 @@ li {
 	&:hover {
 		strong {
 			color: var(--link-color-hover);
-			text-shadow: var(--link-color-hover-shadow);
 		}
 	}
 
@@ -259,7 +316,6 @@ li {
 		&:hover {
 			strong {
 				color: var(--link-color-visited-hover);
-				text-shadow: var(--link-color-hover-visited-shadow);
 			}
 		}
 	}
@@ -292,12 +348,12 @@ li {
 	padding: 1rem 1.5rem;
 }
 
-.copyright-wrapper {
+.copyright {
 	text-align: center;
 	font-size: smaller;
 }
 
-// Screenshots ===========================================================================
+// Screenshots =========================================================
 $space: 5em;
 
 .screenshot {
@@ -343,6 +399,10 @@ $space: 5em;
 			@at-root .project-link:hover & {
 				box-shadow: 0 1em 2em var(--black-a);
 			}
+
+			@at-root .dark .project-link:hover & {
+				box-shadow: 0 1em 2em var(--sky-100);
+			}
 		}
 	}
 }
@@ -365,7 +425,7 @@ $space: 5em;
 	}
 }
 
-// Left side -----------------------------------------------------------------------------
+// Left side -----------------------------------------------------------
 $spread: 1.5em;
 
 .project {
@@ -441,7 +501,7 @@ $spread: 1.5em;
 	}
 }
 
-// Right side ----------------------------------------------------------------------------
+// Right side ----------------------------------------------------------
 .project {
 	&:nth-child(even) {
 		.line {
@@ -514,42 +574,60 @@ $spread: 1.5em;
 	}
 }
 
-// Jobs -----------------------------------------------------------------------------
-.job-wrapper {
-	max-width: 33em;
-	margin: 2em auto 0;
+// Stars ===============================================================
+.stars-wrapper {
+	display: none;
 
-	@media (min-width: $tablet) {
-		text-align: center;
-		margin: 3em auto 0;
+	.dark & {
+		display: block;
 	}
 }
-.job {
-	@media (min-width: $tablet) {
-		display: flex;
-		align-items: center;
+
+.stars-wrapper,
+.stars {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+.stars-wrapper {
+	pointer-events: none;
+}
+.stars {
+	$duration: 4s;
+	animation: twinkle $duration ease-in-out infinite;
+
+	&:nth-child(2) {
+		animation-delay: $duration * -0.33;
+	}
+	&:nth-child(3) {
+		animation-delay: $duration * -0.66;
 	}
 
-	padding: 1.5rem;
-	background: tint(gold, 50%);
-	line-height: 1.4;
-
-	time {
-		white-space: nowrap;
-	}
-
-	p {
-		text-align: left;
-
-		@media (min-width: $tablet) {
-			padding-left: 1rem;
+	@keyframes twinkle {
+		25% {
+			opacity: 0;
 		}
 	}
 
-	a {
-		text-decoration: underline;
+	circle {
+		fill: white;
+
+		&:nth-child(3n) {
+			opacity: 0.66;
+		}
+
+		&:nth-child(4n) {
+			fill: cornflowerblue;
+		}
+
+		&:nth-child(6n) {
+			fill: skyblue;
+		}
+
+		&:nth-child(5n) {
+			opacity: 0.33;
+		}
 	}
-}
-time {
-	font-weight: bold;
 }

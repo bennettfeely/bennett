@@ -133,6 +133,10 @@ html(lang="en")
 		.copyright-wrapper
 			.container
 				p &copy 2020 Bennett Feely
+		- var n = 0;
+		.stars
+			while n < 15
+				ul
 		script.
 			let now = new Date();
 			let hours = now.getHours();
@@ -148,5 +152,4 @@ html(lang="en")
 		//- 	var month = date.getMonth();
 		//- 	var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 		//- 	document.querySelector("time").innerHTML = "New (" + months[month] + " " + day + "): ";
-
 
