@@ -644,12 +644,12 @@ html lang="en"
 						li.project
 							a.project-link href="https://openbrainproject.org" data-img="openbrainproject"
 								.screenshot-wrapper
-									img.screenshot src="_img/screenshots/openbrainproject.png" width="600" height="450" alt=""
 								.line
 								.caption <strong>The Open Brain Project</strong>, at Carnegie Mellon University
 						li.project
 							a.project-link href="https://soteriaradar.netlify.com" data-img="soteriaradar"
 								.screenshot-wrapper
+									img.screenshot src="_img/screenshots/openbrainproject.png" width="600" height="450" alt=""
 									img.screenshot src="_img/screenshots/soteriaradar.jpg" width="600" height="450" alt=""
 								.line
 								.caption <strong>Soteria Radar</strong>, a website for a startup
@@ -743,17 +743,33 @@ html lang="en"
 		.footer-wrapper
 			footer
 				.container
-					p.copyright.outline &copy 2020 Bennett Feely
+					p.copyright &copy 2020 Bennett Feely
+					button.dark-toggle.outline Turn on <strong>Dark Mode</strong>
 		javascript:
+			let html = 	document.querySelector('html');
+			let meta = document.querySelector('meta[name="theme-color"]');
+			let toggle = document.querySelector('.dark-toggle');
 			let now = new Date();
 			let hours = now.getHours();
 
+			// Set dark theme class and change <meta> tag
 			if (hours <= 6 || hours >= 21) {
-				var html = 	document.querySelector('html');
-				var meta = document.querySelector('meta[name="theme-color"]');
-				
-				// Set dark theme class and change <meta> tag
-				html.classList.add('dark');
-				meta.setAttribute("content", "#16161d");
+				toggleDark();
+			}
+
+			toggle.addEventListener("click", toggleDark);
+
+			function toggleDark() {
+				html.classList.toggle('dark');
+
+				if (!html.classList.contains('dark')) {
+					// Turn on Dark Mode
+					meta.setAttribute("content", "#16161d");
+					toggle.innerHTML = "Turn on <strong>Dark Mode</strong>";
+				} else {
+					// Turn off Dark Mode
+					meta.setAttribute("content", "#ffffff");
+					toggle.innerHTML = "Turn off <strong>Dark Mode</strong>";
+				}
 			}
 		

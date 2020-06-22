@@ -37,11 +37,20 @@ $space-large: 5rem;
 	--offwhite: #ccc;
 
 	--sky-100: #3b2f4a;
+	--sky-150: #302944;
 	--sky-200: #1f1f3a;
 	--sky-300: #16161d;
 
+	--background-gradient: radial-gradient(
+		circle at center bottom,
+		var(--sky-100),
+		var(--sky-200),
+		var(--sky-300)
+	);
+
 	// Light Mode
 	--background: var(--white);
+	--toggle-background: var(--sky-300);
 	--text-color: var(--black);
 	--text-color-a: var(--gray);
 	--link-color: var(--blue);
@@ -52,12 +61,8 @@ $space-large: 5rem;
 
 .dark {
 	// Dark Mode
-	--background: radial-gradient(
-		circle at center bottom,
-		var(--sky-100),
-		var(--sky-200),
-		var(--sky-300)
-	);
+	--background: var(--background-gradient);
+	--toggle-background: var(--sky-150);
 	--text-color: var(--offwhite);
 	--link-color: var(--blue);
 	--link-color-hover: var(--blue);
@@ -572,13 +577,37 @@ $spread: 1.5em;
 // Footer ===============================================================
 .footer-wrapper {
 	text-align: center;
+	font-size: smaller;
+	text-align: center;
 }
 
 .copyright {
 	@extend %no-select;
 	cursor: default;
-	text-align: center;
-	font-size: smaller;
+	margin: 0 0 1.5rem;
+}
+
+.dark-toggle {
+	@extend %no-select;
+	cursor: pointer;
+	background: transparent;
+	transition: opacity var(--transition), color var(--transition),
+		background var(--transition);
+
+	strong {
+		color: var(--blue);
+	}
+
+	footer:hover & {
+		background: var(--toggle-background);
+		box-shadow: 0 0.5em 1em var(--black-a);
+		color: var(--offwhite);
+		opacity: 1;
+	}
+
+	&:focus {
+		outline: 0;
+	}
 }
 
 // Stars ===============================================================
