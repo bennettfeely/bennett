@@ -618,19 +618,16 @@ $spread: 1.5em;
 		fill: white;
 
 		&:nth-child(3n) {
-			opacity: 0.66;
+			opacity: 0.8;
 		}
-
-		&:nth-child(4n) {
-			fill: cornflowerblue;
+		&:nth-child(7n) {
+			opacity: 0.6;
 		}
-
-		&:nth-child(6n) {
-			fill: skyblue;
+		&:nth-child(13n) {
+			opacity: 0.4;
 		}
-
-		&:nth-child(5n) {
-			opacity: 0.33;
+		&:nth-child(19n) {
+			opacity: 0.2;
 		}
 	}
 }
