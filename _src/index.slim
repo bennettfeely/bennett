@@ -644,12 +644,12 @@ html lang="en"
 						li.project
 							a.project-link href="https://openbrainproject.org" data-img="openbrainproject"
 								.screenshot-wrapper
+									img.screenshot src="_img/screenshots/openbrainproject.png" width="600" height="450" alt=""
 								.line
 								.caption <strong>The Open Brain Project</strong>, at Carnegie Mellon University
 						li.project
 							a.project-link href="https://soteriaradar.netlify.com" data-img="soteriaradar"
 								.screenshot-wrapper
-									img.screenshot src="_img/screenshots/openbrainproject.png" width="600" height="450" alt=""
 									img.screenshot src="_img/screenshots/soteriaradar.jpg" width="600" height="450" alt=""
 								.line
 								.caption <strong>Soteria Radar</strong>, a website for a startup
@@ -752,11 +752,6 @@ html lang="en"
 			let now = new Date();
 			let hours = now.getHours();
 
-			// Set dark theme class and change <meta> tag
-			if (hours <= 6 || hours >= 21) {
-				toggleDark();
-			}
-
 			toggle.addEventListener("click", toggleDark);
 
 			function toggleDark() {
@@ -764,12 +759,14 @@ html lang="en"
 
 				if (!html.classList.contains('dark')) {
 					// Turn on Dark Mode
-					meta.setAttribute("content", "#16161d");
+					meta.setAttribute("content", "#ffffff");
 					toggle.innerHTML = "Turn on <strong>Dark Mode</strong>";
+					localStorage.removeItem("bennettfeely-dark-mode");
 				} else {
 					// Turn off Dark Mode
-					meta.setAttribute("content", "#ffffff");
+					meta.setAttribute("content", "#16161d");
 					toggle.innerHTML = "Turn off <strong>Dark Mode</strong>";
+					localStorage.setItem("bennettfeely-dark-mode", "enabled");
 				}
 			}
 		

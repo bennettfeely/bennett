@@ -21,6 +21,7 @@ $space-large: 5rem;
 	--radius-large: 1em;
 	--transition: 0.35s;
 	--transition-hover: 0.1s;
+	--duration: 4s;
 
 	--black: #16161d;
 	--black-a: rgba(22, 22, 29, 0.15);
@@ -61,8 +62,7 @@ $space-large: 5rem;
 
 .dark {
 	// Dark Mode
-	--background: var(--background-gradient);
-	--toggle-background: var(--sky-150);
+	--toggle-background: var(--sky-100);
 	--text-color: var(--offwhite);
 	--link-color: var(--blue);
 	--link-color-hover: var(--blue);
@@ -598,7 +598,8 @@ $spread: 1.5em;
 		color: var(--blue);
 	}
 
-	footer:hover & {
+	.contact-wrapper:hover + .footer-wrapper &,
+	.footer-wrapper:hover & {
 		background: var(--toggle-background);
 		box-shadow: 0 0.5em 1em var(--black-a);
 		color: var(--offwhite);
@@ -612,7 +613,9 @@ $spread: 1.5em;
 
 // Stars ===============================================================
 .stars-wrapper {
+	background: var(--background-gradient);
 	display: none;
+	pointer-events: none;
 
 	.dark & {
 		display: block;
@@ -627,18 +630,16 @@ $spread: 1.5em;
 	right: 0;
 	bottom: 0;
 }
-.stars-wrapper {
-	pointer-events: none;
-}
 .stars {
-	$duration: 4s;
-	animation: twinkle $duration ease-in-out infinite;
+	.dark & {
+		animation: twinkle var(--duration) ease-in-out infinite;
+	}
 
 	&:nth-child(2) {
-		animation-delay: $duration * -0.33;
+		animation-delay: calc(var(--duration) * -0.33);
 	}
 	&:nth-child(3) {
-		animation-delay: $duration * -0.66;
+		animation-delay: calc(var(--duration) * -0.66);
 	}
 
 	@keyframes twinkle {
