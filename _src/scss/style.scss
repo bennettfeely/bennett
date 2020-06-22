@@ -143,6 +143,7 @@ h1 {
 }
 h2 {
 	@extend %no-select;
+	cursor: default;
 	text-align: center;
 	font-size: 1.25em;
 	display: block;
@@ -349,6 +350,8 @@ li {
 }
 
 .copyright {
+	pointer-events: none;
+	cursor: default;
 	text-align: center;
 	font-size: smaller;
 }
