@@ -50,7 +50,12 @@ $space-large: 5rem;
 
 .dark {
 	// Dark Mode
-	--background: var(--black);
+	--background: radial-gradient(
+		circle at center bottom,
+		var(--sky-100),
+		var(--sky-200),
+		var(--sky-300)
+	);
 	--text-color: var(--offwhite);
 	--link-color: var(--blue);
 	--link-color-hover: var(--blue);
@@ -65,22 +70,13 @@ body {
 	color: var(--text-color);
 	background: var(--background);
 	overflow-x: hidden;
-
-	.dark & {
-		background: radial-gradient(
-			circle at center bottom,
-			var(--sky-100),
-			var(--sky-200),
-			var(--sky-300)
-		);
-	}
 }
 
 .header-wrapper {
 	max-width: 35em;
 	margin: 0 auto;
 	text-align: center;
-	padding-top: 3em;
+	padding-top: 1.5em;
 
 	@media (min-width: $tablet) {
 		max-width: 42em;
@@ -93,13 +89,13 @@ body {
 }
 
 .main-wrapper {
-	margin: 4em auto 0;
+	margin: 1.5em auto 0;
 	max-width: 35em;
 
 	@media (min-width: $tablet) {
 		margin: 0 auto;
 		max-width: 25em;
-		padding: 2.5rem 0;
+		padding: 2.5em 0;
 	}
 }
 
@@ -147,15 +143,6 @@ h2 {
 	text-align: center;
 	font-size: 1.25em;
 	display: block;
-
-	span {
-		display: inline-block;
-		border: thin solid rgba(128, 128, 128, 0.3);
-		color: var(--text-color);
-		opacity: 0.75;
-		padding: 0.5em 1em;
-		border-radius: 1em;
-	}
 }
 
 a {
@@ -166,6 +153,15 @@ a {
 img {
 	@extend %no-drag;
 	@extend %no-select;
+}
+
+.outline {
+	display: inline-block;
+	border: thin solid rgba(128, 128, 128, 0.3);
+	color: var(--text-color);
+	opacity: 0.75;
+	padding: 0.5em 1em;
+	border-radius: 1em;
 }
 
 // Header ==============================================================
@@ -192,23 +188,23 @@ header {
 			display: none;
 		}
 	}
+}
 
-	img {
-		width: 5em;
-		height: 5em;
-		border-radius: 50%;
-		margin: 0 0 0.5rem 0;
+.me {
+	width: 6em;
+	height: 6em;
+	border-radius: 50%;
+	margin: 0 0 0.5rem 0;
 
-		@media (min-width: $tablet) {
-			width: 6.5em;
-			height: 6.5em;
-			margin: 0 1.5rem 0 0;
-		}
+	@media (min-width: $tablet) {
+		width: 7em;
+		height: 7em;
+		margin: 0 1.5rem 0 0;
+	}
 
-		@media (min-width: $desktop) {
-			width: 8em;
-			height: 8em;
-		}
+	@media (min-width: $desktop) {
+		width: 8em;
+		height: 8em;
 	}
 }
 
@@ -275,28 +271,13 @@ li {
 	}
 }
 
-.contact-wrapper {
-	padding: 1.5rem 0;
-}
-
-.contacts {
-	@media (min-width: $tablet) {
-		display: flex;
-		flex-wrap: wrap;
-		border: none;
-		margin: 1.5rem 0;
-	}
-}
-
+// Links ===============================================================
 .project-link,
 .contact-link {
+	display: block;
 	position: relative;
 	cursor: pointer;
 	padding: 1.5rem 0;
-
-	.project:nth-child(odd) & {
-		flex-direction: row-reverse;
-	}
 
 	strong {
 		color: var(--link-color);
@@ -322,7 +303,6 @@ li {
 	}
 
 	@media (min-width: $tablet) {
-		display: block;
 		transition: background-color var(--transition);
 		border-radius: var(--radius);
 		margin: 1rem 0;
@@ -338,28 +318,16 @@ li {
 .project-link {
 	display: flex;
 	align-items: center;
-}
 
-.contact {
-	flex: 1 0 50%;
-}
-
-.contact-link {
-	display: block;
-	padding: 1rem 1.5rem;
-}
-
-.copyright {
-	pointer-events: none;
-	cursor: default;
-	text-align: center;
-	font-size: smaller;
+	.project:nth-child(odd) & {
+		flex-direction: row-reverse;
+	}
 }
 
 // Screenshots =========================================================
 $space: 5em;
 
-.screenshot {
+.screenshot-wrapper {
 	min-width: 50%;
 	max-width: 50%;
 	height: auto;
@@ -376,13 +344,6 @@ $space: 5em;
 		transition-duration: var(--transition-hover);
 	}
 
-	img {
-		width: 100%;
-		height: auto;
-		border-radius: var(--radius);
-		box-shadow: 0 0.5em 1.5em var(--black-a);
-	}
-
 	@media (min-width: $tablet) {
 		position: absolute;
 		z-index: 10;
@@ -392,21 +353,24 @@ $space: 5em;
 		.project:nth-child(odd) & {
 			margin: 0;
 		}
+	}
+}
 
-		img {
-			display: block;
-			width: 100%;
-			height: auto;
-			transition: box-shadow var(--transition);
+.screenshot {
+	width: 100%;
+	height: auto;
+	border-radius: var(--radius);
+	box-shadow: 0 0.5em 1.5em var(--black-a);
 
-			@at-root .project-link:hover & {
-				box-shadow: 0 1em 2em var(--black-a);
-			}
+	@media (min-width: $tablet) {
+		display: block;
+		width: 100%;
+		height: auto;
+		transition: box-shadow var(--transition);
+	}
 
-			@at-root .dark .project-link:hover & {
-				box-shadow: 0 1em 2em var(--sky-100);
-			}
-		}
+	.project-link:hover & {
+		box-shadow: 0 0.5em 3em var(--sky-100);
 	}
 }
 
@@ -434,11 +398,11 @@ $spread: 1.5em;
 .project {
 	&:nth-child(odd) {
 		.line {
-			right: 100%;
+			right: calc(100% + 0.5em);
 			transform-origin: center right;
 		}
 
-		.screenshot {
+		.screenshot-wrapper {
 			@media (min-width: $tablet) {
 				right: calc(100% + #{$space-small});
 			}
@@ -446,7 +410,7 @@ $spread: 1.5em;
 				right: calc(100% + #{$space-large});
 			}
 
-			img {
+			.screenshot {
 				transform: rotate(5deg);
 			}
 		}
@@ -457,10 +421,10 @@ $spread: 1.5em;
 			.line {
 				transform: rotate(6deg);
 			}
-			.screenshot {
+			.screenshot-wrapper {
 				top: -40%;
 
-				img {
+				.screenshot {
 					transform: rotate(4deg);
 				}
 			}
@@ -469,10 +433,10 @@ $spread: 1.5em;
 			.line {
 				transform: rotate(14deg);
 			}
-			.screenshot {
+			.screenshot-wrapper {
 				top: -45%;
 
-				img {
+				.screenshot {
 					transform: rotate(-2deg);
 				}
 			}
@@ -481,10 +445,10 @@ $spread: 1.5em;
 			.line {
 				transform: rotate(-5deg);
 			}
-			.screenshot {
+			.screenshot-wrapper {
 				top: -35%;
 
-				img {
+				.screenshot {
 					transform: rotate(8deg);
 				}
 			}
@@ -493,10 +457,10 @@ $spread: 1.5em;
 			.line {
 				transform: rotate(5deg);
 			}
-			.screenshot {
+			.screenshot-wrapper {
 				top: -20%;
 
-				img {
+				.screenshot {
 					transform: rotate(-8deg);
 				}
 			}
@@ -508,11 +472,11 @@ $spread: 1.5em;
 .project {
 	&:nth-child(even) {
 		.line {
-			left: 100%;
+			left: calc(100% + 0.5em);
 			transform-origin: center left;
 		}
 
-		.screenshot {
+		.screenshot-wrapper {
 			@media (min-width: $tablet) {
 				left: calc(100% + #{$space-small});
 			}
@@ -520,7 +484,7 @@ $spread: 1.5em;
 				left: calc(100% + #{$space-large});
 			}
 
-			img {
+			.screenshot {
 				transform: rotate(-5deg);
 			}
 		}
@@ -529,7 +493,6 @@ $spread: 1.5em;
 	@media (min-width: $tablet) {
 		&:nth-child(even) {
 			.line {
-				left: 100%;
 				transform-origin: left center;
 			}
 
@@ -542,10 +505,10 @@ $spread: 1.5em;
 			.line {
 				transform: rotate(-25deg);
 			}
-			.screenshot {
+			.screenshot-wrapper {
 				top: -80%;
 
-				img {
+				.screenshot {
 					transform: rotate(-8deg);
 				}
 			}
@@ -554,10 +517,10 @@ $spread: 1.5em;
 			.line {
 				transform: rotate(-25deg);
 			}
-			.screenshot {
+			.screenshot-wrapper {
 				top: -60%;
 
-				img {
+				.screenshot {
 					transform: rotate(2deg);
 				}
 			}
@@ -566,15 +529,50 @@ $spread: 1.5em;
 			.line {
 				transform: rotate(-18deg);
 			}
-			.screenshot {
+			.screenshot-wrapper {
 				top: -70%;
 
-				img {
+				.screenshot {
 					transform: rotate(8deg);
 				}
 			}
 		}
 	}
+}
+
+// Contact =========================================================
+.contact-wrapper {
+	padding: 1.5rem 0;
+}
+
+.contacts {
+	@media (min-width: $tablet) {
+		display: flex;
+		flex-wrap: wrap;
+		border: none;
+		margin: 1.5rem 0;
+	}
+}
+
+.contact {
+	flex: 1 0 50%;
+}
+
+.contact-link {
+	display: block;
+	padding: 1rem 1.5rem;
+}
+
+// Footer ===============================================================
+.footer-wrapper {
+	text-align: center;
+}
+
+.copyright {
+	@extend %no-select;
+	cursor: default;
+	text-align: center;
+	font-size: smaller;
 }
 
 // Stars ===============================================================
