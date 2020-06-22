@@ -16,7 +16,9 @@ $space-small: 2.5rem;
 $space-large: 5rem;
 
 :root {
-	--radius: 4px;
+	--radius-small: 0.25em;
+	--radius-medium: 0.5em;
+	--radius-large: 1em;
 	--transition: 0.35s;
 	--transition-hover: 0.1s;
 
@@ -161,7 +163,7 @@ img {
 	color: var(--text-color);
 	opacity: 0.75;
 	padding: 0.5em 1em;
-	border-radius: 1em;
+	border-radius: var(--radius-large);
 }
 
 // Header ==============================================================
@@ -304,7 +306,7 @@ li {
 
 	@media (min-width: $tablet) {
 		transition: background-color var(--transition);
-		border-radius: var(--radius);
+		border-radius: var(--radius-medium);
 		margin: 1rem 0;
 		padding: 1.5rem;
 
@@ -359,7 +361,7 @@ $space: 5em;
 .screenshot {
 	width: 100%;
 	height: auto;
-	border-radius: var(--radius);
+	border-radius: var(--radius-small);
 	box-shadow: 0 0.5em 1.5em var(--black-a);
 
 	@media (min-width: $tablet) {
