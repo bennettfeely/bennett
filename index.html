@@ -5,11 +5,7 @@
       let now = new Date();
       let hours = now.getHours();
       
-      toggle.addEventListener("click", function(){
-          // Scroll to top of page
-          window.scrollTo({top: 0, behavior: 'smooth'});
-          toggleDark();
-      });
+      toggle.addEventListener("click", toggleDark);
       
       function toggleDark() {
           html.classList.toggle('dark');
