@@ -1,5 +1,5 @@
 doctype html
-html lang="en"
+html.dark lang="en"
 	head
 		meta charset="utf-8"
 		meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"
@@ -618,6 +618,26 @@ html lang="en"
 				circle.star cx="65.23%" cy="22.69%" r=".9"
 				circle.star cx="10.08%" cy="63.88%" r="1.4"
 				circle.star cx="91.54%" cy="70.18%" r=".9"
+			.extras-wrapper
+				svg.comet.comet-a width="150" height="150" preserveAspectRatio="none"
+					defs
+						radialGradient#comet-gradient cx="0" cy=".5" r=".5"
+							stop offset="0%" stop-color="rgba(255,255,255,.8)"
+							stop offset="100%" stop-color="rgba(255,255,255,0)"
+					ellipse fill="url(#comet-gradient)" cx="100%" cy="50%" rx="150" ry="3"
+				svg.comet.comet-b width="150" height="150" preserveAspectRatio="none"
+					defs
+						radialGradient#comet-gradient cx="0" cy=".5" r=".5"
+							stop offset="0%" stop-color="rgba(255,255,255,.8)"
+							stop offset="100%" stop-color="rgba(255,255,255,0)"
+					ellipse fill="url(#comet-gradient)" cx="100%" cy="50%" rx="150" ry="3"
+				svg.comet.comet-c width="150" height="150" preserveAspectRatio="none"
+					defs
+						radialGradient#comet-gradient cx="0" cy=".5" r=".5"
+							stop offset="0%" stop-color="rgba(255,255,255,.8)"
+							stop offset="100%" stop-color="rgba(255,255,255,0)"
+					ellipse fill="url(#comet-gradient)" cx="100%" cy="50%" rx="150" ry="3"
+
 		.header-wrapper
 			header
 				.container
@@ -749,10 +769,15 @@ html lang="en"
 			let html = 	document.querySelector('html');
 			let meta = document.querySelector('meta[name="theme-color"]');
 			let toggle = document.querySelector('.dark-toggle');
+			let comet = document.querySelector('.comet');
 			let now = new Date();
 			let hours = now.getHours();
 
-			toggle.addEventListener("click", toggleDark);
+			toggle.addEventListener("click", function(){
+				// Scroll to top of page
+				window.scrollTo({top: 0, behavior: 'smooth'});
+				toggleDark();
+			});
 
 			function toggleDark() {
 				html.classList.toggle('dark');

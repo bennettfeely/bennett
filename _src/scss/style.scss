@@ -51,7 +51,7 @@ $space-large: 5rem;
 
 	// Light Mode
 	--background: var(--white);
-	--toggle-background: var(--sky-300);
+	--toggle-background: var(--white);
 	--text-color: var(--black);
 	--text-color-a: var(--gray);
 	--link-color: var(--blue);
@@ -590,20 +590,18 @@ $spread: 1.5em;
 .dark-toggle {
 	@extend %no-select;
 	cursor: pointer;
-	background: transparent;
-	transition: opacity var(--transition), color var(--transition),
-		background var(--transition);
+	background: var(--toggle-background);
+	transition: opacity var(--transition), background var(--transition);
 
 	strong {
 		color: var(--blue);
 	}
 
-	.contact-wrapper:hover + .footer-wrapper &,
 	.footer-wrapper:hover & {
-		background: var(--toggle-background);
 		box-shadow: 0 0.5em 1em var(--black-a);
 		color: var(--offwhite);
 		opacity: 1;
+		background: var(--sky-100);
 	}
 
 	&:focus {
@@ -612,24 +610,25 @@ $spread: 1.5em;
 }
 
 // Stars ===============================================================
-.stars-wrapper {
-	background: var(--background-gradient);
-	display: none;
-	pointer-events: none;
-
-	.dark & {
-		display: block;
-	}
-}
 
 .stars-wrapper,
 .stars {
+	display: none;
 	position: absolute;
 	top: 0;
 	left: 0;
 	right: 0;
 	bottom: 0;
+	overflow: hidden;
+
+	.dark & {
+		display: block;
+	}
 }
+.stars-wrapper {
+	background: var(--background-gradient);
+}
+
 .stars {
 	.dark & {
 		animation: twinkle var(--duration) ease-in-out infinite;
@@ -647,21 +646,93 @@ $spread: 1.5em;
 			opacity: 0;
 		}
 	}
+}
 
-	circle {
-		fill: white;
+.star {
+	fill: white;
 
-		&:nth-child(3n) {
-			opacity: 0.8;
+	&:nth-child(3n) {
+		opacity: 0.8;
+	}
+	&:nth-child(7n) {
+		opacity: 0.6;
+	}
+	&:nth-child(13n) {
+		opacity: 0.4;
+	}
+	&:nth-child(19n) {
+		opacity: 0.2;
+	}
+}
+
+.comet {
+	position: absolute;
+	left: calc(50% - 75px);
+
+	.dark & {
+		animation: 10s linear infinite both;
+	}
+
+	&.comet-a {
+		top: 50vh;
+		animation-name: comet-a;
+		animation-delay: 1s;
+	}
+
+	&.comet-b {
+		top: 50%;
+		animation-name: comet-b;
+		animation-delay: 4.3s;
+	}
+
+	&.comet-c {
+		top: calc(100% - 50vh);
+		animation-name: comet-c;
+		animation-delay: 7.6s;
+	}
+
+	@keyframes comet-a {
+		0% {
+			transform: rotate(-135deg) translate(50vmax);
+			opacity: 0;
 		}
-		&:nth-child(7n) {
-			opacity: 0.6;
+		20% {
+			opacity: 1;
 		}
-		&:nth-child(13n) {
-			opacity: 0.4;
+		40%,
+		100% {
+			transform: rotate(-135deg) translate(-50vmax);
+			opacity: 0;
 		}
-		&:nth-child(19n) {
-			opacity: 0.2;
+	}
+
+	@keyframes comet-b {
+		0% {
+			transform: rotate(35deg) translate(50vmax);
+			opacity: 0;
+		}
+		20% {
+			opacity: 1;
+		}
+		40%,
+		100% {
+			transform: rotate(35deg) translate(-50vmax);
+			opacity: 0;
+		}
+	}
+
+	@keyframes comet-c {
+		0% {
+			transform: rotate(120deg) translate(50vmax);
+			opacity: 0;
+		}
+		20% {
+			opacity: 1;
+		}
+		40%,
+		100% {
+			transform: rotate(120deg) translate(-50vmax);
+			opacity: 0;
 		}
 	}
 }
