@@ -7,6 +7,10 @@
       
       toggle.addEventListener("click", toggleDark);
       
+      if (hours >= 21 || hours < 7) {
+          toggleDark();
+      }
+      
       function toggleDark() {
           html.classList.toggle('dark');
       

@@ -682,7 +682,7 @@ $spread: 1.5em;
 	&.comet-b {
 		top: 50%;
 		animation-name: comet-b;
-		animation-delay: 4.3s;
+		animation-delay: 6.6s;
 	}
 
 	&.comet-c {
@@ -693,7 +693,7 @@ $spread: 1.5em;
 
 	@keyframes comet-a {
 		0% {
-			transform: rotate(-135deg) translate(50vmax);
+			transform: rotate(-135deg) translate3d(50vmax, 0, 0);
 			opacity: 0;
 		}
 		20% {
@@ -701,14 +701,14 @@ $spread: 1.5em;
 		}
 		40%,
 		100% {
-			transform: rotate(-135deg) translate(-50vmax);
+			transform: rotate(-135deg) translate3d(-50vmax, 0, 0);
 			opacity: 0;
 		}
 	}
 
 	@keyframes comet-b {
 		0% {
-			transform: rotate(35deg) translate(50vmax);
+			transform: rotate(35deg) translate3d(50vmax, 0, 0);
 			opacity: 0;
 		}
 		20% {
@@ -716,14 +716,14 @@ $spread: 1.5em;
 		}
 		40%,
 		100% {
-			transform: rotate(35deg) translate(-50vmax);
+			transform: rotate(35deg) translate3d(-50vmax, 0, 0);
 			opacity: 0;
 		}
 	}
 
 	@keyframes comet-c {
 		0% {
-			transform: rotate(120deg) translate(50vmax);
+			transform: rotate(120deg) translate3d(50vmax, 0, 0);
 			opacity: 0;
 		}
 		20% {
@@ -731,7 +731,7 @@ $spread: 1.5em;
 		}
 		40%,
 		100% {
-			transform: rotate(120deg) translate(-50vmax);
+			transform: rotate(120deg) translate3d(-50vmax, 0, 0);
 			opacity: 0;
 		}
 	}
