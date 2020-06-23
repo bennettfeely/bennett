@@ -615,6 +615,7 @@ html lang="en"
 				.container
 					p.copyright &copy 2020 Bennett Feely
 					button.dark-toggle.outline Turn on <strong>Dark Mode</strong>
+		script async="true" src="https://www.googletagmanager.com/gtag/js?id=UA-35724550-1"
 		javascript:
 			let html = 	document.querySelector('html');
 			let meta = document.querySelector('meta[name="theme-color"]');
@@ -644,4 +645,9 @@ html lang="en"
 					localStorage.setItem("bennettfeely-dark-mode", "enabled");
 				}
 			}
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+			gtag('config', 'UA-35724550-1');
+
 		
