@@ -1,152 +1,312 @@
-
 <html>
-<head>
-    <title>Flexplorer</title>
-    <link rel="icon" href="/flexplorer/flexfavicon.png" type="image/x-icon">
-    <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <meta name="description" content="Dive in to and explore the wonders of the CSS3 Flexible Box model." />
-</head>
-<body>
+    <head>
+        <title>Flexplorer</title>
+        <link
+            rel="icon"
+            href="/flexplorer/flexfavicon.png"
+            type="image/x-icon"
+        />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="style.css"
+            media="screen"
+        />
+        <script
+            type="text/javascript"
+            src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"
+        ></script>
+        <meta
+            name="description"
+            content="Explore the CSS Flexbox properties and how they work with lists."
+        />
+    </head>
+    <body>
+        <section class="flex">
+            <!-- Sidebar -->
+            <aside id="sidebar" class="sidebar flex">
+                <hgroup class="hgroup flex">
+                    <a href="http://bennettfeely.com/flexplorer">flexplorer</a>
+                    <span class="toggle-controls" id="toggle-controls"
+                        >&lsaquo;</span
+                    >
+                </hgroup>
+                <menu class="controls flex">
+                    <div>
+                        <code
+                            >flex:
+                            <span class="tip" data-tip="flex-grow"
+                                ><input
+                                    id="flex-grow-control"
+                                    class="small"
+                                    value="1"
+                            /></span>
+                            <span class="tip" data-tip="flex-shrink"
+                                ><input
+                                    id="flex-shrink-control"
+                                    class="small"
+                                    value="0"
+                            /></span>
+                            <span
+                                class="tip flex-basis-tip"
+                                data-tip="flex-basis (try 300px or 20%)"
+                                ><input
+                                    id="flex-basis-control"
+                                    class="mid"
+                                    value="auto"
+                            /></span>
+                        </code>
+                    </div>
+                    <div>
+                        <code
+                            ># of flex items:
+                            <span
+                                id="count-increase"
+                                class="count-control small"
+                                >+</span
+                            >
+                            <span
+                                id="count-decrease"
+                                class="count-control small"
+                                >-</span
+                            >
+                        </code>
+                    </div>
+                    <div>
+                        <code
+                            >flex-direction:
+                            <select id="flex-direction-control">
+                                <option value="row">row</option>
+                                <option value="row-reverse">row-reverse</option>
+                                <option value="column">column</option>
+                                <option value="column-reverse"
+                                    >column-reverse</option
+                                >
+                            </select>
+                        </code>
+                    </div>
+                    <div>
+                        <code
+                            >flex-wrap:
+                            <select id="flex-wrap-control">
+                                <option value="wrap">wrap</option>
+                                <option value="wrap-reverse"
+                                    >wrap-reverse</option
+                                >
+                                <option value="nowrap">nowrap</option>
+                            </select>
+                        </code>
+                    </div>
+                    <div>
+                        <code
+                            class="tip justify-content-tip"
+                            data-tip="To see a change, set 'flex' property to something like 'flex: 0 1 auto'"
+                            >justify-content:
+                            <select id="justify-content-control">
+                                <option value="flex-start">flex-start</option>
+                                <option value="flex-end">flex-end</option>
+                                <option value="center">center</option>
+                                <option value="space-between"
+                                    >space-between</option
+                                >
+                                <option value="space-around"
+                                    >space-around</option
+                                >
+                            </select>
+                        </code>
+                    </div>
+                    <div>
+                        <script
+                            async
+                            type="text/javascript"
+                            src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=bennettfeelycom"
+                            id="_carbonads_js"
+                        ></script>
+                    </div>
+                    <div>
+                        <code class="twitter">
+                            <a
+                                href="https://twitter.com/bennettfeely"
+                                class="twitter-follow-button"
+                                data-show-count="false"
+                                >Follow @bennettfeely</a
+                            >
+                            <a
+                                href="https://twitter.com/share"
+                                class="twitter-share-button"
+                                data-text="Flexplorer: the CSS3 Flexible box layout explorer"
+                                data-via="bennettfeely"
+                                >Tweet</a
+                            >
+                            <script>
+                                !(function (d, s, id) {
+                                    var js,
+                                        fjs = d.getElementsByTagName(s)[0];
+                                    if (!d.getElementById(id)) {
+                                        js = d.createElement(s);
+                                        js.id = id;
+                                        js.src =
+                                            "//platform.twitter.com/widgets.js";
+                                        fjs.parentNode.insertBefore(js, fjs);
+                                    }
+                                })(document, "script", "twitter-wjs");
+                            </script>
+                        </code>
+                    </div>
+                </menu>
+            </aside>
 
-<section class="flex">
+            <!-- .demo -->
+            <figure id="demo" class="flex-container demo">
+                <div class="flex-item">
+                    <span contenteditable="true">Lorem ipsum</span>
+                </div>
+                <div class="flex-item">
+                    <span contenteditable="true">dolor</span>
+                </div>
+                <div class="flex-item">
+                    <span contenteditable="true">sit</span>
+                </div>
+                <div class="flex-item">
+                    <span contenteditable="true">amet</span>
+                </div>
+                <div class="flex-item">
+                    <span contenteditable="true">consectetur</span>
+                </div>
+                <div class="flex-item">
+                    <span contenteditable="true">adipiscing elit</span>
+                </div>
+                <div class="flex-item">
+                    <span contenteditable="true">nunc</span>
+                </div>
+                <div class="flex-item">
+                    <span contenteditable="true">enim</span>
+                </div>
+                <div class="flex-item">
+                    <span contenteditable="true">nunc</span>
+                </div>
+                <div class="flex-item">
+                    <span contenteditable="true">volutpat eget</span>
+                </div>
+                <div class="flex-item">
+                    <span contenteditable="true">aliquam</span>
+                </div>
+                <div class="flex-item">
+                    <span contenteditable="true">nec</span>
+                </div>
+                <div class="flex-item">
+                    <span contenteditable="true">accumsan rutrum</span>
+                </div>
+                <div class="flex-item">
+                    <span contenteditable="true">bacon</span>
+                </div>
+                <div class="flex-item">
+                    <span contenteditable="true">maecenas</span>
+                </div>
+                <div class="flex-item">
+                    <span contenteditable="true">nunc</span>
+                </div>
+                <div class="flex-item">
+                    <span contenteditable="true">voldermere</span>
+                </div>
+                <div class="flex-item">
+                    <span contenteditable="true">it</span>
+                </div>
+                <div class="flex-item">
+                    <span contenteditable="true">las</span>
+                </div>
+                <div class="flex-item">
+                    <span contenteditable="true">quid</span>
+                </div>
+                <div class="flex-item">
+                    <span contenteditable="true">tostidos</span>
+                </div>
+                <div class="flex-item">
+                    <span contenteditable="true">gray</span>
+                </div>
+            </figure>
+        </section>
 
-    <!-- Sidebar -->
-    <aside id="sidebar" class="sidebar flex">
-        <hgroup class="hgroup flex">
-            <a href="http://bennettfeely.com/flexplorer">flexplorer</a>
-            <span class="toggle-controls" id="toggle-controls">&lsaquo;</span>
-        </hgroup>
-        <menu class="controls flex">
-            <div>
-                <code>flex:
-                    <span class="tip" data-tip="flex-grow"><input id="flex-grow-control" class="small" value="1" /></span>
-                    <span class="tip" data-tip="flex-shrink"><input id="flex-shrink-control" class="small" value="0" /></span>
-                    <span class="tip flex-basis-tip" data-tip="flex-basis (try 300px or 20%)"><input id="flex-basis-control" class="mid" value="auto" /></span>
-                </code>
+        <!-- Results-->
+        <section class="results flex">
+            <style
+                data-noprefix
+                class="demo-styles"
+                id="demo_styles"
+                contenteditable="true"
+            >
+                .flex-container {
+                    display: -webkit-flex;
+                    display: flex;
+                    -webkit-flex-flow: row wrap;
+                    flex-flow: row wrap;
+                }
+
+                .flex-item {
+                    -webkit-flex: 1 auto;
+                    flex: 1 auto;
+                }
+            </style>
+
+            <!-- Resources -->
+            <div class="resources">
+                <h1>Flexbox support (July 2014):</h1>
+
+                <h2>
+                    <a
+                        href="http://ie.microsoft.com/testdrive/info/downloads/default.html"
+                        >IE 11+ <small>unprefixed</small></a
+                    >
+                </h2>
+                <h2>
+                    <a href="https://www.google.com/intl/en/chrome/browser/"
+                        >Chrome 29+ <small>unprefixed</small></a
+                    >
+                </h2>
+                <h2>
+                    <a href="http://www.mozilla.org/en-US/firefox/new/"
+                        >Firefox 28+ <small>unprefixed</small></a
+                    >
+                </h2>
+                <h2>
+                    <a href="http://www.opera.com/download/"
+                        >Opera 12.1+ <small>unprefixed</small></a
+                    >
+                </h2>
+                <h2>
+                    <a href="http://www.apple.com/safari/"
+                        >Safari 6.1+ <small>prefixed</small></a
+                    >
+                </h2>
+                <h2>
+                    <a href="http://www.apple.com/safari/"
+                        >Safari 6.1+ <small>prefixed</small></a
+                    >
+                </h2>
             </div>
-            <div>
-                <code># of flex items:
-                    <span id="count-increase" class="count-control small">+</span>
-                    <span id="count-decrease" class="count-control small">-</span>
-                </code>
-            </div>
-            <div>
-                <code>flex-direction:
-                    <select id="flex-direction-control">
-                      <option value="row">row</option>
-                      <option value="row-reverse">row-reverse</option>
-                      <option value="column">column</option>
-                      <option value="column-reverse">column-reverse</option>
-                    </select>
-                </code>
-            </div>
-            <div>
-                <code>flex-wrap:
-                    <select id="flex-wrap-control">
-                      <option value="wrap">wrap</option>
-                      <option value="wrap-reverse">wrap-reverse</option>
-                      <option value="nowrap">nowrap</option>
-                    </select>
-                </code>
-            </div>
-            <div>
-                <code class="tip justify-content-tip" data-tip="To see a change, set 'flex' property to something like 'flex: 0 1 auto'">justify-content:
-                    <select id="justify-content-control">
-                      <option value="flex-start">flex-start</option>
-                      <option value="flex-end">flex-end</option>
-                      <option value="center">center</option>
-                      <option value="space-between">space-between</option>
-                      <option value="space-around">space-around</option>
-                    </select>
-                </code>
-            </div>
-            <div>
-                <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=bennettfeelycom" id="_carbonads_js"></script>
+        </section>
 
-            </div>
-            <div>
-                <code class="twitter">
-                    <a href="https://twitter.com/bennettfeely" class="twitter-follow-button" data-show-count="false">Follow @bennettfeely</a>
-                    <a href="https://twitter.com/share" class="twitter-share-button" data-text="Flexplorer: the CSS3 Flexible box layout explorer" data-via="bennettfeely">Tweet</a>
-                    <script>
-                        !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
-                    </script>
-                </code>
-            </div>
-
-        </menu>
-    </aside>
-
-    <!-- .demo -->
-    <figure id="demo" class="flex-container demo">
-        <div class="flex-item"><span contenteditable="true">Lorem ipsum</span></div>
-        <div class="flex-item"><span contenteditable="true">dolor</span></div>
-        <div class="flex-item"><span contenteditable="true">sit</span></div>
-        <div class="flex-item"><span contenteditable="true">amet</span></div>
-        <div class="flex-item"><span contenteditable="true">consectetur</span></div>
-        <div class="flex-item"><span contenteditable="true">adipiscing elit</span></div>
-        <div class="flex-item"><span contenteditable="true">nunc</span></div>
-        <div class="flex-item"><span contenteditable="true">enim</span></div>
-        <div class="flex-item"><span contenteditable="true">nunc</span></div>
-        <div class="flex-item"><span contenteditable="true">volutpat eget</span></div>
-        <div class="flex-item"><span contenteditable="true">aliquam</span></div>
-        <div class="flex-item"><span contenteditable="true">nec</span></div>
-        <div class="flex-item"><span contenteditable="true">accumsan rutrum</span></div>
-        <div class="flex-item"><span contenteditable="true">bacon</span></div>
-        <div class="flex-item"><span contenteditable="true">maecenas</span></div>
-        <div class="flex-item"><span contenteditable="true">nunc</span></div>
-        <div class="flex-item"><span contenteditable="true">voldermere</span></div>
-        <div class="flex-item"><span contenteditable="true">it</span></div>
-        <div class="flex-item"><span contenteditable="true">las</span></div>
-        <div class="flex-item"><span contenteditable="true">quid</span></div>
-        <div class="flex-item"><span contenteditable="true">tostidos</span></div>
-        <div class="flex-item"><span contenteditable="true">gray</span></div>
-    </figure>
-
-</section>
-
-<!-- Results-->
-<section class="results flex">
-
-<style data-noprefix class="demo-styles" id="demo_styles" contenteditable="true">.flex-container {
-    display: -webkit-flex;
-    display: flex;
-    -webkit-flex-flow: row wrap;
-    flex-flow: row wrap;
-}
-
-.flex-item {
-    -webkit-flex: 1 auto;
-    flex: 1 auto;
-}</style>
-
-    <!-- Resources -->
-    <div class="resources">
-        <h1>Flexbox support (July 2014):</h1>
-
-        <h2><a href="http://ie.microsoft.com/testdrive/info/downloads/default.html">IE 11+ <small>unprefixed</small></a></h2>
-        <h2><a href="https://www.google.com/intl/en/chrome/browser/">Chrome 29+ <small>unprefixed</small></a></h2>
-        <h2><a href="http://www.mozilla.org/en-US/firefox/new/">Firefox 28+ <small>unprefixed</small></a></h2>
-        <h2><a href="http://www.opera.com/download/">Opera 12.1+ <small>unprefixed</small></a></h2>
-        <h2><a href="http://www.apple.com/safari/">Safari 6.1+ <small>prefixed</small></a></h2>
-        <h2><a href="http://www.apple.com/safari/">Safari 6.1+ <small>prefixed</small></a></h2>
-
-    </div>
-</section>
-
-
-<script src="js/flexplorer.js"></script>
-<script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-35724550-1']);
-  _gaq.push(['_trackPageview']);
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-</script>
-<a style="display:none" href="https://plus.google.com/102233754358513450834?rel=author">Google</a>
-</body>
+        <script src="js/flexplorer.js"></script>
+        <script type="text/javascript">
+            var _gaq = _gaq || [];
+            _gaq.push(["_setAccount", "UA-35724550-1"]);
+            _gaq.push(["_trackPageview"]);
+            (function () {
+                var ga = document.createElement("script");
+                ga.type = "text/javascript";
+                ga.async = true;
+                ga.src =
+                    ("https:" == document.location.protocol
+                        ? "https://ssl"
+                        : "http://www") + ".google-analytics.com/ga.js";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(ga, s);
+            })();
+        </script>
+        <a
+            style="display: none;"
+            href="https://plus.google.com/102233754358513450834?rel=author"
+            >Google</a
+        >
+    </body>
 </html>
