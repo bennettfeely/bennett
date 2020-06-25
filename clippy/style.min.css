@@ -1727,14 +1727,22 @@ p {
   position: relative;
   background: #1d1f21;
   padding: 1em;
-  min-height: 130px;
+  min-height: 100px;
 }
 .beg {
   position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   font-size: 0.9em;
-  line-height: 1.2;
-  color: #ccc;
+  line-height: 1.3;
+  color: #aaa;
   text-align: center;
+  padding: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 #carbonads {
   position: relative;
