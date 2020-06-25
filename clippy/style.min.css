@@ -1745,6 +1745,9 @@ p {
   align-items: center;
   justify-content: center;
 }
+.beg div {
+  margin: 0.125em 0;
+}
 #carbonads {
   position: relative;
   z-index: 10;
