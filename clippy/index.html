@@ -1,24 +1,14 @@
 <!DOCTYPE html>
+<!-- prettier-ignore -->
 <html class="insetting">
 	<head>
 		<meta charset="UTF-8" />
 		<title>Clippy — CSS clip-path maker</title>
-		<link
-			href="https://fonts.googleapis.com/css?family=Alegreya+Sans:300,300i,400,400i"
-			rel="stylesheet"
-		/>
+		<link href="https://fonts.googleapis.com/css?family=Alegreya+Sans:300,300i,400,400i" rel="stylesheet" />
 		<link rel="stylesheet" type="text/css" href="style.min.css" />
 		<link rel="shortcut icon" href="pics/favicon.png" />
-		<link
-			rel="apple-touch-icon"
-			sizes="120x120"
-			href="pics/apple-touch-icon-120x120.png"
-		/>
-		<link
-			rel="apple-touch-icon"
-			sizes="152x152"
-			href="pics/apple-touch-icon-152x152.png"
-		/>
+		<link rel="apple-touch-icon" sizes="120x120" href="pics/apple-touch-icon-120x120.png" />
+		<link rel="apple-touch-icon" sizes="152x152" href="pics/apple-touch-icon-152x152.png" />
 		<link rel="icon" sizes="196x196" href="homescreen-196x196.png" />
 		<meta name="viewport" content="width=device-width" />
 	</head>
@@ -26,23 +16,8 @@
 		<div class="main">
 			<header class="fade-content">
 				<a href="http://bennettfeely.com/clippy">CSS clip-path maker</a>
-				<a
-					href="https://twitter.com/share"
-					class="twitter-share-button"
-					data-via="bennettfeely"
-					>Tweet</a
-				>
-				<script>
-					!(function (t, e, r) {
-						var n,
-							s = t.getElementsByTagName(e)[0],
-							i = /^http:/.test(t.location) ? "http" : "https";
-						t.getElementById(r) ||
-							(((n = t.createElement(e)).id = r),
-							(n.src = i + "://platform.twitter.com/widgets.js"),
-							s.parentNode.insertBefore(n, s));
-					})(document, "script", "twitter-wjs");
-				</script>
+				<a href="https://twitter.com/share" class="twitter-share-button" data-via="bennettfeely">Tweet</a>
+				<script>!function(t,e,r){var n,s=t.getElementsByTagName(e)[0],i=/^http:/.test(t.location)?"http":"https";t.getElementById(r)||((n=t.createElement(e)).id=r,n.src=i+"://platform.twitter.com/widgets.js",s.parentNode.insertBefore(n,s))}(document,"script","twitter-wjs");</script>
 			</header>
 			<div class="demo-container fade-content">
 				<section class="demo">
@@ -53,7 +28,7 @@
 					</div>
 					<div class="custom-notice">
 						<div>
-							<span class="touchy"></span> to add points<br />to
+							<span class="touchy"></span> to add points<br>to
 							custom polygon.
 						</div>
 					</div>
@@ -66,11 +41,7 @@
 			<section class="dark-panel inset">
 				<div class="flex">
 					<h2>Round edges</h2>
-					<input
-						value="5% 20% 0 10%"
-						class="inset-round"
-						type="text"
-					/>
+					<input value="5% 20% 0 10%" class="inset-round" type="text" />
 				</div>
 				<p>
 					The <code>inset()</code> shape optionally allows values
@@ -90,9 +61,7 @@
 						<span class="functions"></span>;</code
 					>
 					-->
-					<code class="unprefixed block show"
-						>clip-path: <span class="functions"></span>;</code
-					>
+					<code class="unprefixed block show">clip-path: <span class="functions"></span>;</code>
 				</div>
 				<!-- <button class="edit-in-codepen code"></button> -->
 			</section>
@@ -104,21 +73,12 @@
 					<div>Consider whitelisting this page.</div>
 					<div>Thank you for visiting either way.</div>
 				</div>
-				<script
-					async
-					type="text/javascript"
-					src="//cdn.carbonads.com/carbon.js?serve=CKYIL27N&placement=bennettfeelycom"
-					id="_carbonads_js"
-				></script>
+				<script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CKYIL27N&placement=bennettfeelycom" id="_carbonads_js"></script>
 			</section>
 			<section class="dark-panel inset">
 				<div class="flex">
 					<h2>Round edges</h2>
-					<input
-						value="5% 20% 0 10%"
-						class="inset-round"
-						type="text"
-					/>
+					<input value="5% 20% 0 10%" class="inset-round" type="text" />
 				</div>
 				<p>
 					The <code>inset()</code> shape optionally allows values
@@ -162,40 +122,22 @@
 						<img src="pics/sparkler.jpg" />
 						<img src="pics/miami.jpg" />
 					</div>
-					<input
-						placeholder="Custom URL..."
-						id="custom_url"
-						type="url"
-						name="background"
-					/>
+					<input placeholder="Custom URL..." id="custom_url" type="url" name="background" />
 					<style id="custom_background"></style>
 					<div class="flex shadowboard-toggle">
 						<h2>Show outside clip-path</h2>
-						<input
-							name="prefix"
-							type="checkbox"
-							id="shadowboard-toggle"
-						/>
+						<input name="prefix" type="checkbox" id="shadowboard-toggle" />
 						<label class="joined" for="shadowboard-toggle"></label>
 					</div>
 				</div>
 				<div class="grid panel fade-content">
 					<h2>About Clip Paths</h2>
-					<p>
-						The <code>clip-path</code> property allows you to make
-						complex shapes in CSS by clipping an element to a basic
-						shape (circle, ellipse, polygon, or inset), or to an SVG
-						source.
-					</p>
-					<p>
-						CSS Animations and transitions are possible with two or
-						more clip-path shapes with the same number of points.
-					</p>
+					<p> The <code>clip-path</code> property allows you to make complex shapes in CSS by clipping an element to a basic shape (circle, ellipse, polygon, or inset), or to an SVG source.</p>
+					<p>CSS Animations and transitions are possible with two or more clip-path shapes with the same number of points.</p>
+					<p>Check out the current browser support for the <code>clip-path</code> property on <a href="http://caniuse.com/#search=clip-path">Can I Use</a>.</p>
 				</div>
-				<a
-					href="http://caniuse.com/#search=clip-path"
-					class="grid panel browser-support permanent fade-content"
-				>
+				<!--
+				<a href="http://caniuse.com/#search=clip-path" class="grid panel browser-support permanent fade-content">
 					<h2 class="block">
 						Browser Support <small>caniuse.com</small>
 					</h2>
@@ -203,59 +145,18 @@
 						<span class="icon chrome" data-version="24+"></span>
 						<span class="icon safari" data-version="8+"></span>
 						<span class="icon opera" data-version="15+"></span>
-						<span
-							class="icon ie unsupported"
-							data-version=""
-						></span>
-						<span
-							class="icon firefox"
-							data-version="54+"
-						></span></div
-				></a>
+						<span class="icon ie unsupported" data-version=""></span>
+						<span class="icon firefox" data-version="54+"></span>
+					</div>
+				</a>
+				-->
 				<div class="grid panel cite fade-content">
 					<h2 class="block">Brought to you by Bennett Feely</h2>
 					<div class="twitter">
-						<a
-							href="https://twitter.com/bennettfeely"
-							class="twitter-follow-button"
-							data-show-count="true"
-							>Follow @bennettfeely</a
-						>
-						<script>
-							!(function (t, e, r) {
-								var n,
-									s = t.getElementsByTagName(e)[0],
-									i = /^http:/.test(t.location)
-										? "http"
-										: "https";
-								t.getElementById(r) ||
-									(((n = t.createElement(e)).id = r),
-									(n.src =
-										i +
-										"://platform.twitter.com/widgets.js"),
-									s.parentNode.insertBefore(n, s));
-							})(document, "script", "twitter-wjs");
-						</script>
+						<a href="https://twitter.com/bennettfeely" class="twitter-follow-button" data-show-count="true">Follow @bennettfeely</a>
 					</div>
-					<p>
-						Find this project on
-						<a href="https://github.com/bennettfeely/Clippy"
-							>Github</a
-						>. <br />This demo uses
-						<a href="http://draggabilly.desandro.com/"
-							>Draggabilly</a
-						>
-						by
-						<a href="http://http://desandro.com/">Dave Desandro</a>.
-					</p>
-					<p>
-						Want a list of the name of every polygon? Check out my
-						new site,
-						<a
-							href="https://copypastelist.com/math/list-of-polygons/"
-							>Copy Paste List</a
-						>.
-					</p>
+					<p>Find this project on <a href="https://github.com/bennettfeely/Clippy">Github</a>.</p>
+					<p>Want a list of the name of every polygon? Check out my new site, <a href="https://copypastelist.com/math/list-of-polygons/">Copy Paste List</a>.</p>
 				</div>
 			</section>
 		</div>
@@ -264,17 +165,7 @@
 		<script src="dev/flickity.pkgd.min.js"></script>
 		<script src="dev/clip.js"></script>
 		<script src="clip.min.js"></script>
-		<script
-			async
-			src="https://www.googletagmanager.com/gtag/js?id=UA-35724550-1"
-		></script>
-		<script>
-			function gtag() {
-				dataLayer.push(arguments);
-			}
-			(window.dataLayer = window.dataLayer || []),
-				gtag("js", new Date()),
-				gtag("config", "UA-35724550-1");
-		</script>
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-35724550-1"></script>
+		<script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","UA-35724550-1");</script>
 	</body>
 </html>
