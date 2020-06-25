@@ -1727,6 +1727,7 @@ p {
   position: relative;
   background: #1d1f21;
   padding: 1em;
+  min-height: 130px;
 }
 .beg {
   position: absolute;
