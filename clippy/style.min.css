@@ -1717,7 +1717,7 @@ p {
 
 .shapes figure:nth-last-child(-n + 27) {
   display: none !important;
-  outline: thick soli dblue;
+  outline: thick solid blue;
 }
 
 .ad-box:hover {
