@@ -1724,16 +1724,20 @@ p {
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.25);
 }
 .ad-box {
+  position: relative;
   background: #1d1f21;
   padding: 1em;
 }
 .beg {
+  position: absolute;
   font-size: 0.9em;
   line-height: 1.2;
   color: #ccc;
   text-align: center;
 }
 #carbonads {
+  position: relative;
+  z-index: 10;
   cursor: pointer;
   background: #1d1f21;
 }
