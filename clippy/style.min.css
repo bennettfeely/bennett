@@ -1727,8 +1727,15 @@ p {
   background: #1d1f21;
   padding: 1em;
 }
+.beg {
+  font-size: 0.9em;
+  line-height: 1.2;
+  color: #ccc;
+  text-align: center;
+}
 #carbonads {
   cursor: pointer;
+  background: #1d1f21;
 }
 #carbonads,
 #carbonads span {
