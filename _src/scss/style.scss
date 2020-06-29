@@ -224,6 +224,19 @@ header {
 		text-align: center;
 		margin: 3em auto 0;
 	}
+
+	p {
+		font-size: 1.1em;
+
+		& + p {
+			margin-top: 0.5em;
+		}
+
+		a {
+			color: var(--link-color);
+			text-decoration: underline;
+		}
+	}
 }
 .job {
 	@media (min-width: $tablet) {

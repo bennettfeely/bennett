@@ -499,6 +499,13 @@ html.dark lang="en"
 		/ 			.job 
 		/ 				<time id="job_notice">New  Updated May 4: </time> 
 		/ 				p I'm currently looking for a full-time job. <br>Here's my <a href="/bennett_feely_resume_public.pdf" target="_blank">resume</a>. <a href="mailto:bfeelyweb@gmail.com">Let's talk!</a>
+		.job-wrapper
+			section
+				.container
+					p 
+						strong Update July 2020:
+					p I'm currently available for freelance web design and development work.
+					p <a href="#contact">Let's get in touch</a>!
 		.main-wrapper
 			section
 				.container
@@ -580,7 +587,7 @@ html.dark lang="en"
 									img.screenshot src="_img/screenshots/cssscales.png" width="600" height="450" alt=""
 								.line
 								.caption <strong>CSS Scales</strong>, accessible CSS gradients
-		.contact-wrapper
+		.contact-wrapper#contact
 			section
 				.container
 					h2
@@ -619,10 +626,6 @@ html.dark lang="en"
 			let hours = now.getHours();
 
 			toggle.addEventListener("click", toggleDark);
-
-			// if (hours >= 21 || hours < 7) {
-			// 	toggleDark();
-			// }
 
 			function toggleDark() {
 				html.classList.toggle('dark');
