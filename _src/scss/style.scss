@@ -146,10 +146,11 @@ h1 {
 }
 h2 {
 	@extend %no-select;
+	display: block;
 	cursor: default;
 	text-align: center;
 	font-size: 1.25em;
-	display: block;
+	opacity: 0.75;
 }
 
 a {
@@ -166,7 +167,6 @@ img {
 	display: inline-block;
 	border: thin solid rgba(128, 128, 128, 0.4);
 	color: var(--text-color);
-	opacity: 0.75;
 	padding: 0.5em 1em;
 	border-radius: var(--radius-large);
 }
@@ -217,55 +217,37 @@ header {
 
 // Jobs ================================================================
 .job-wrapper {
-	max-width: 33em;
+	max-width: 40em;
 	margin: 2em auto 0;
+	text-align: center;
 
-	@media (min-width: $tablet) {
-		text-align: center;
-		margin: 3em auto 0;
+	.outline {
+		margin: 0 1.5em;
+		border-radius: var(--radius-large);
+		padding: 1.5em;
+		border-color: rgba(128, 128, 128, 0.3);
 	}
 
 	p {
-		font-size: 1.1em;
-
-		& + p {
-			margin-top: 0.5em;
-		}
-
-		a {
-			color: var(--link-color);
-			text-decoration: underline;
-		}
-	}
-}
-.job {
-	@media (min-width: $tablet) {
-		display: flex;
-		align-items: center;
-	}
-
-	padding: 1.5rem;
-	background: tint(gold, 50%);
-	line-height: 1.4;
-
-	time {
-		white-space: nowrap;
-	}
-
-	p {
-		text-align: left;
-
-		@media (min-width: $tablet) {
-			padding-left: 1rem;
-		}
+		font-size: 1em;
+		margin-top: 1em;
 	}
 
 	a {
-		text-decoration: underline;
+		display: inline-block;
+		margin-top: 1em;
+		font-weight: bold;
+		color: var(--link-color);
+		padding: 0.5em 1.5em;
+		border-radius: var(--radius-medium);
+		transition: background var(--transition-hover),
+			color var(--transition-hover);
+
+		&:hover {
+			background: var(--blue-a);
+			color: var(--link-color-hover);
+		}
 	}
-}
-time {
-	font-weight: bold;
 }
 
 // List ================================================================
