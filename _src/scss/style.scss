@@ -569,6 +569,16 @@ $spread: 1.5em;
 	padding: 1rem 1.5rem;
 }
 
+.email-link {
+	span {
+		user-select: initial;
+	}
+
+	strong {
+		user-select: none;
+	}
+}
+
 // Footer ===============================================================
 .footer-wrapper {
 	text-align: center;
