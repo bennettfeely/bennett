@@ -1147,11 +1147,16 @@ canvas {
 		}
 	}
 
+	p {
+		user-select: initial;
+	}
+
 	a {
 		color: nth($colors_full, 3);
 	}
 
 	button {
+		@extend %no-select;
 		font-size: 2em;
 		padding: 0;
 		line-height: 2rem;
