@@ -70,18 +70,12 @@ html lang="en"
 									.loading-spinner-wrapper
 										.loading-spinner
 							.sorry-folks
-								h2 Update (6/3/2020)
-								p Antiweather has gone viral and unfortunately the cost of running this website far, far exceeds the revenue I'm getting from ads. Why Google's APIs are so costly I don't know.
-								p Entering your own location has been disabled until I figure out a workaround.
+								h2 Update 6/3/2020, 2:30 AM EST
+								p Entering your own location has been disabled.
+								p Antiweather has gone viral and unfortunately the cost of running that function of the website far, far exceeds the revenue I'm getting from ads. Why Google's APIs are so costly I don't know.
 								p You can still check out the current weather from the opposite locations below by clicking those buttons.
-								p Thanks for your understanding.
-							.units-wrapper
-								p Units:
-								input id="c_toggle" type="radio" name="units-toggle" class="c-input" value="si"
-								label for="c_toggle" class="unit-toggle c-toggle" &deg;C
-								input id="f_toggle" type="radio" name="units-toggle" class="f-input" value="us" checked="checked"
-								label for="f_toggle" class="unit-toggle f-toggle" &deg;F
-						p Or try these opposite points on Earth:
+								p Thank you for your understanding. I'm hoping to get this site fully functional again very soon.
+						p Try these opposite points on Earth:
 						nav.pre-location-wrapper role="navigation"
 							button.pre-location type="button" onclick="getWeather('home', 90, 0, 'North Pole');getWeather('away', -90, 0, 'South Pole');" 
 								span North Pole
@@ -107,6 +101,12 @@ html lang="en"
 								span Rio
 								span.dash &ndash;
 								span Tokyo
+						.units-wrapper
+							p Units:
+							input id="c_toggle" type="radio" name="units-toggle" class="c-input" value="si"
+							label for="c_toggle" class="unit-toggle c-toggle" &deg;C
+							input id="f_toggle" type="radio" name="units-toggle" class="f-input" value="us" checked="checked"
+							label for="f_toggle" class="unit-toggle f-toggle" &deg;F
 					.quick-wrapper
 						.quick-card-heading Quick Summary
 						.quick-card-wrapper
