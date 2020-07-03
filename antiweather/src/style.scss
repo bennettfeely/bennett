@@ -1168,3 +1168,13 @@ canvas {
 		border-radius: 0 $radius 0 $radius;
 	}
 }
+
+details {
+	h3:after {
+		content: " more";
+	}
+
+	&[open] h3:after {
+		content: " less";
+	}
+}

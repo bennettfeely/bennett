@@ -201,6 +201,8 @@ function getWeather(location, lat, lng, pre_placename) {
 	JSONP({
 		url: request_url,
 		success: function (data) {
+			console.log(data);
+
 			// We got the weather
 			extractWeather(location, lat, lng, pre_placename, data);
 		},
