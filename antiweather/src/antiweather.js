@@ -318,7 +318,8 @@ function fillCurrentlyCard(card_data) {
 	} else {
 		// Get the away placename using the reverse geocoding API
 		if (location == "away") {
-			getPlacename("away", card_data.lat, card_data.lng);
+			// getPlacename("away", card_data.lat, card_data.lng);
+			setLocation("away", "Opposite point on Earth");
 		}
 	}
 

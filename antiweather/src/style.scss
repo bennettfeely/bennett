@@ -1,20 +1,21 @@
 // Partials ==========================================================================
-@import 'functions';
-@import 'extensions';
-@import 'reset';
-@import 'variables';
+@import "functions";
+@import "extensions";
+@import "reset";
+@import "variables";
 
 // Card Color ========================================================
 @for $i from 0 through 10 {
 	.temp-#{$i} {
-		$color : nth($colors_full, $i + 1);
-		
+		$color: nth($colors_full, $i + 1);
+
 		color: $color;
 
-		::selection { background: tint($color, 50%); }
+		::selection {
+			background: tint($color, 50%);
+		}
 	}
 }
-
 
 // Base Styles =======================================================================
 body {
@@ -24,7 +25,7 @@ body {
 	// color: $white;
 	// ---------------------------------------------------------- //
 	font: 500 100%/1.4 Nunito, sans-serif;
-	padding: .5rem 0 0;
+	padding: 0.5rem 0 0;
 }
 
 h1 {
@@ -36,10 +37,11 @@ h2 {
 	@extend %no-select;
 	font-size: 1.1rem;
 	font-weight: normal;
-	margin: .5rem 0;
+	margin: 0.5rem 0;
 }
 
-p, .location-finder {
+p,
+.location-finder {
 	@extend %no-select;
 	display: block;
 	margin-top: 1rem;
@@ -53,32 +55,39 @@ p, .location-finder {
 	text-shadow: $shadow;
 }
 
-button, .share-button, .unit-toggle {
+button,
+.share-button,
+.unit-toggle {
 	@extend %no-select;
 	@extend %no-tap;
-	font: bold .8rem/1.4 Nunito, sans-serif;
+	font: bold 0.8rem/1.4 Nunito, sans-serif;
 	border-radius: $radius;
 	color: $white;
 	background: $black_light;
 	cursor: pointer;
-	transition: 
-		opacity $transition,
-		background $transition;
-	padding: 0 .75rem;
+	transition: opacity $transition, background $transition;
+	padding: 0 0.75rem;
 	text-decoration: none;
 	text-shadow: $shadow;
 	line-height: 2rem;
 
-	@media (min-width: $mobile) { line-height: 2.25rem; }
+	@media (min-width: $mobile) {
+		line-height: 2.25rem;
+	}
 
 	@media (min-width: $tablet) {
 		line-height: 2.5rem;
 		padding: 0 1rem;
 	}
 
-	&:hover, &:active { transition-duration: 0s; }
-	&:active { transform: scale3d(.9,.9,.9); }
-	&:focus { 
+	&:hover,
+	&:active {
+		transition-duration: 0s;
+	}
+	&:active {
+		transform: scale3d(0.9, 0.9, 0.9);
+	}
+	&:focus {
 		outline: 0;
 	}
 }
@@ -86,9 +95,15 @@ button, .share-button, .unit-toggle {
 @mixin button($color) {
 	background: shade($color, 15%);
 
-	&:hover { background: tint($color, 5%); }
-	&:focus { box-shadow: inset 0 0 0 .25rem $color; }
-	&:active { background: shade($color, 50%); }
+	&:hover {
+		background: tint($color, 5%);
+	}
+	&:focus {
+		box-shadow: inset 0 0 0 0.25rem $color;
+	}
+	&:active {
+		background: shade($color, 50%);
+	}
 }
 
 .main {
@@ -98,17 +113,22 @@ button, .share-button, .unit-toggle {
 	padding: 1rem;
 	background: $black;
 
-	@media (min-width: $tablet) { flex-direction: row; }
+	@media (min-width: $tablet) {
+		flex-direction: row;
+	}
 }
 
 .card-wrapper {
 	position: relative;
 	border-radius: $radius;
-	margin: .5rem;
+	margin: 0.5rem;
 
-	@media (min-width: $desktop) { margin: 1rem; }
+	@media (min-width: $desktop) {
+		margin: 1rem;
+	}
 
-	&.home, &.away {
+	&.home,
+	&.away {
 		min-width: 15rem;
 		flex: 1;
 	}
@@ -119,227 +139,246 @@ button, .share-button, .unit-toggle {
 	flex-wrap: wrap;
 }
 
-
 // Loading ===========================================================
-	.loading {
-		display: flex;
-		align-items: center;
-		font: bold 1.2rem/1 Nunito, sans-serif;
-		position: absolute;
-		top: 1rem;
-		left: 1rem;
-		padding: .5rem 1rem;
-		border-radius: $radius;
-		background: $gray_dark;
-		color: $white;
-		z-index: 10;
-		pointer-events: none;
-		box-shadow: $shadow;
-		transform: scale3d(.9,.9,.9);
-		transition: transform $transition, opacity $transition;
+.loading {
+	display: flex;
+	align-items: center;
+	font: bold 1.2rem/1 Nunito, sans-serif;
+	position: absolute;
+	top: 1rem;
+	left: 1rem;
+	padding: 0.5rem 1rem;
+	border-radius: $radius;
+	background: $gray_dark;
+	color: $white;
+	z-index: 10;
+	pointer-events: none;
+	box-shadow: $shadow;
+	transform: scale3d(0.9, 0.9, 0.9);
+	transition: transform $transition, opacity $transition;
+	opacity: 0;
+
+	.is-loading-home &,
+	.is-loading-away & {
+		transform: scale3d(1, 1, 1);
+		opacity: 1;
+	}
+
+	.has-weather & {
 		opacity: 0;
+		transform: scale(0.9, 0.9, 0.9);
+	}
+}
 
-		.is-loading-home &,
-		.is-loading-away & {
-			transform: scale3d(1,1,1);
-			opacity: 1;
-		}
+.loading-spinner {
+	display: inline-block;
+	width: 1.25em;
+	height: 1.25em;
+	margin-right: 0.5em;
+	border: 0.15em solid;
+	border-color: $white $white transparent transparent;
+	border-radius: 50%;
+	animation: spin 0.8s linear infinite;
 
-		.has-weather & {
-			opacity: 0;
-			transform: scale(.9,.9,.9)
-		}
+	.away & {
+		animation-delay: 0.4s;
 	}
 
-	.loading-spinner {
-		display: inline-block;
-		width: 1.25em;
-		height: 1.25em;
-		margin-right: .5em;
-		border: .15em solid;
-		border-color: $white $white transparent transparent;
-		border-radius: 50%;
-		animation: spin .8s linear infinite;
-
-		.away & { animation-delay: .4s; }
-
-		@keyframes spin { to { transform: rotate3d(0,0,1,1turn); } }
+	@keyframes spin {
+		to {
+			transform: rotate3d(0, 0, 1, 1turn);
+		}
 	}
-
+}
 
 // Start Card=========================================================
-	.start {
+.start {
+	display: block;
+	flex: 0 0 18em;
+	color: white;
+	text-align: center;
+
+	@media (min-width: $mobile) {
+		margin-bottom: 1rem;
+		text-align: left;
+
+		br {
+			display: none;
+		}
+	}
+
+	@media (min-width: $tablet) {
+		text-align: left;
+		padding: 0.5rem;
+	}
+}
+
+.page-title {
+	line-height: 1;
+
+	a {
+		display: inline-block;
+		position: relative;
+		color: $white;
+		text-decoration: none;
+
+		&:hover {
+			transition-duration: 0s;
+			color: $gray_light;
+		}
+
+		&:active {
+			transform: scale3d(0.9, 0.9, 0.9);
+			color: $gray_dark;
+		}
+	}
+}
+
+.columns {
+	@media (min-width: $mobile) {
+		display: flex;
+		align-items: flex-end;
+
+		.search-wrapper {
+			flex: 1;
+		}
+	}
+
+	@media (min-width: $tablet) {
 		display: block;
-		flex: 0 0 18em;
-		color: white;
-		text-align: center;
-
-		@media (min-width: $mobile) {
-			margin-bottom: 1rem;
-			text-align: left;
-
-			br { display: none; }
-		}
-
-		@media (min-width: $tablet) {
-			text-align: left;
-			padding: .5rem;
-		}
 	}
-
-	.page-title {
-		line-height: 1;
-
-		a {
-			display: inline-block;
-			position: relative;
-			color: $white;
-			text-decoration: none;
-
-			&:hover {
-				transition-duration: 0s;
-				color: $gray_light;
-			}
-
-			&:active { 
-				transform: scale3d(.9,.9,.9);
-				color: $gray_dark;
-			}
-		}
-	}
-
-	.columns {
-		@media (min-width: $mobile) {
-			display: flex;
-			align-items: flex-end;
-
-			.search-wrapper { flex: 1; }
-		}
-
-		@media (min-width: $tablet) { display: block; }
-	}
-
+}
 
 // Location finder ===================================================
-	.location-finder {
-		position: relative;
-		margin: .5rem 0 0;
-		border-radius: $radius;
+.location-finder {
+	position: relative;
+	margin: 0.5rem 0 0;
+	border-radius: $radius;
 
-		p { margin: 0 0 .5rem; }
-
-		@media (min-width: $mobile) { 
-			margin: 0 .5rem 0 0;
-		}
-
-		@media (min-width: $tablet) {
-			display: block;
-			width: 150%;
-			z-index: 20;
-			margin: 0;
-		}
+	p {
+		margin: 0 0 0.5rem;
 	}
 
-	.search-input-wrapper {
+	@media (min-width: $mobile) {
+		margin: 0 0.5rem 0 0;
+	}
+
+	@media (min-width: $tablet) {
 		display: block;
-		width: 100%;
-		position: relative;
-	}
-
-	.search-input {
-		font: inherit;
-		border-radius: $radius;
-		border: 0;
-		box-shadow: $shadow;
-		transition: background-color $transition;
-		-webkit-appearance: none;
-		appearance: none;
-		line-height: 1.5rem;
-		width: 100%;
-		padding: .5rem 3rem .5rem 1rem;
-
-		&:focus { 
-			box-shadow: inset 0 0 0 .25rem $blue_light, $shadow;
-			outline: 0;
-		}
-	}
-
-	.loading-spinner-wrapper {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		position: absolute;
-		top: 0;
-		right: .5rem;
-		bottom: 0;
-		z-index: 10;
-		opacity: 0;
-		transform: scale3d(.9,.9,.9);
-		pointer-events: none;
-		transition: transform $transition, opacity $transition;
-
-		.loading-spinner {
-			border-color: $black $black transparent transparent;
-		}
-
-		.is-loading & {
-			opacity: 1;
-			transform: scale3d(1,1,1);
-		}
-	}
-
-	.pac-container {
-		font: inherit;
-		font-size: smaller;
-		text-align: left;
-		width: 100%;
-		border-radius: $radius;
-		box-shadow: 0 .25rem 1rem rgba($black, .5);
-		margin-top: .5rem;
-		color: $black;
-		border: 0;
-		transform-origin: top left;
-		background: shade($white, 10%);
-		animation: dropdown $transition/2;
-
-		@keyframes dropdown {
-			0% {
-				transform: scale3d(.9,.9,.9);
-				opacity: 0;
-			}
-		}
-	}
-
-	.pac-item {
-		padding: 0 1rem;
+		width: 150%;
+		z-index: 20;
 		margin: 0;
-		line-height: 3em;
-		background: $white;
-		cursor: pointer;
+	}
+}
 
-		&:first-child { border: 0; }
-		&:last-child { border-bottom: 1px solid $off_white; }
+.search-input-wrapper {
+	display: block;
+	width: 100%;
+	position: relative;
+}
 
-		&:hover,
-		&.pac-item-selected {
-			background: mix($blue_light, $white);
+.search-input {
+	font: inherit;
+	border-radius: $radius;
+	border: 0;
+	box-shadow: $shadow;
+	transition: background-color $transition;
+	-webkit-appearance: none;
+	appearance: none;
+	line-height: 1.5rem;
+	width: 100%;
+	padding: 0.5rem 3rem 0.5rem 1rem;
+
+	&:focus {
+		box-shadow: inset 0 0 0 0.25rem $blue_light, $shadow;
+		outline: 0;
+	}
+}
+
+.loading-spinner-wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	top: 0;
+	right: 0.5rem;
+	bottom: 0;
+	z-index: 10;
+	opacity: 0;
+	transform: scale3d(0.9, 0.9, 0.9);
+	pointer-events: none;
+	transition: transform $transition, opacity $transition;
+
+	.loading-spinner {
+		border-color: $black $black transparent transparent;
+	}
+
+	.is-loading & {
+		opacity: 1;
+		transform: scale3d(1, 1, 1);
+	}
+}
+
+.pac-container {
+	font: inherit;
+	font-size: smaller;
+	text-align: left;
+	width: 100%;
+	border-radius: $radius;
+	box-shadow: 0 0.25rem 1rem rgba($black, 0.5);
+	margin-top: 0.5rem;
+	color: $black;
+	border: 0;
+	transform-origin: top left;
+	background: shade($white, 10%);
+	animation: dropdown $transition/2;
+
+	@keyframes dropdown {
+		0% {
+			transform: scale3d(0.9, 0.9, 0.9);
+			opacity: 0;
 		}
 	}
+}
 
-	.pac-matched {
-		background: $blue_light;
+.pac-item {
+	padding: 0 1rem;
+	margin: 0;
+	line-height: 3em;
+	background: $white;
+	cursor: pointer;
+
+	&:first-child {
+		border: 0;
+	}
+	&:last-child {
+		border-bottom: 1px solid $off_white;
 	}
 
-	.pac-icon { display: none; }
+	&:hover,
+	&.pac-item-selected {
+		background: mix($blue_light, $white);
+	}
+}
 
+.pac-matched {
+	background: $blue_light;
+}
+
+.pac-icon {
+	display: none;
+}
 
 // Switch units ======================================================
 .units-wrapper {
 	margin: 0 0 1rem;
 
-	input { display: none; }
+	input {
+		display: none;
+	}
 
-	p, label {
+	p,
+	label {
 		display: inline-block;
 		line-height: 2rem;
 	}
@@ -355,68 +394,73 @@ input:checked + .unit-toggle {
 }
 
 .c-toggle {
-	margin: 0 .5rem;
+	margin: 0 0.5rem;
 }
-
 
 // Pre-set locations ==================================================
 .pre-location-wrapper {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
-	width: calc(100% + .5rem);
-	margin: .25rem 0 0 -.25rem;
+	width: calc(100% + 0.5rem);
+	margin: 0.25rem 0 0 -0.25rem;
 
 	@media (min-width: $mobile) {
 		width: initial;
 		margin: 0;
 	}
 
-	@media (min-width: $tablet) { display: block; }
+	@media (min-width: $tablet) {
+		display: block;
+	}
 }
 
 .pre-location {
 	display: block;
 	flex: 1 0 auto;
-	width: calc(50% - .5rem);
-	margin: .25rem;
+	width: calc(50% - 0.5rem);
+	margin: 0.25rem;
 	font-size: smaller;
 	line-height: 1.25;
-	padding: .25rem 0;
+	padding: 0.25rem 0;
 
 	span {
 		display: block;
-		padding: 0 .5rem;
+		padding: 0 0.5rem;
 	}
 
-	.dash { display: none; }
+	.dash {
+		display: none;
+	}
 
 	@media (min-width: $mobile) {
 		line-height: 2.25rem;
-		margin: .5rem .5rem 0 0;
-		padding: 0 .75rem;
+		margin: 0.5rem 0.5rem 0 0;
+		padding: 0 0.75rem;
 
 		span {
 			display: inline;
 			padding: initial;
 
-			&:last-child { border: 0; }
+			&:last-child {
+				border: 0;
+			}
 		}
 
 		.dash {
 			display: inline-block;
-			padding: 0 .25rem;
+			padding: 0 0.25rem;
 		}
 	}
-	@media (min-width: $tablet) { 
+	@media (min-width: $tablet) {
 		width: initial;
 		flex: 1 0 auto;
-		margin: .5rem 0;
+		margin: 0.5rem 0;
 	}
 
 	@for $i from 1 through 6 {
 		&:nth-child(#{$i}) {
-			@include button(nth($colors_short, $i))
+			@include button(nth($colors_short, $i));
 		}
 	}
 
@@ -425,7 +469,6 @@ input:checked + .unit-toggle {
 		background: $black;
 	}
 }
-
 
 // Quick Card ========================================================
 .quick-wrapper {
@@ -438,23 +481,23 @@ input:checked + .unit-toggle {
 	margin: 1rem 0 0;
 	box-shadow: $shadow;
 	overflow: hidden;
-	opacity: .1;
-	transform: scale3d(.9,.9,.9);
+	opacity: 0.1;
+	transform: scale3d(0.9, 0.9, 0.9);
 	transition: opacity $transition, transform $transition;
 
 	.is-loading & {
 		display: block;
-		opacity: .1;
-		transform: scale3d(.9,.9,.9);
+		opacity: 0.1;
+		transform: scale3d(0.9, 0.9, 0.9);
 	}
 
 	&.has-weather {
 		display: block;
 		opacity: 1;
-		transform: scale3d(1,1,1);
+		transform: scale3d(1, 1, 1);
 	}
 
-	@media (min-width: $mobile) { 
+	@media (min-width: $mobile) {
 		.is-loading &,
 		&.has-weather {
 			display: none;
@@ -471,15 +514,17 @@ input:checked + .unit-toggle {
 .quick-card-heading {
 	font-weight: bold;
 	border-bottom: 1px solid $off_white;
-	padding: .5rem;
+	padding: 0.5rem;
 }
 
-.quick-card-wrapper { display: flex; }
+.quick-card-wrapper {
+	display: flex;
+}
 
 .quick-card {
 	display: flex;
 	flex: 1;
-	border-bottom: .75rem solid;
+	border-bottom: 0.75rem solid;
 }
 
 .quick-card-content {
@@ -487,41 +532,43 @@ input:checked + .unit-toggle {
 	flex-direction: column;
 	justify-content: space-between;
 	flex: 1;
-	padding: .5rem .75rem;
+	padding: 0.5rem 0.75rem;
 	font-size: smaller;
 }
 
-.quick-home .quick-card-content { border-right: 1px solid $off_white; }
-.quick-location {font-weight: bold; }
+.quick-home .quick-card-content {
+	border-right: 1px solid $off_white;
+}
+.quick-location {
+	font-weight: bold;
+}
 
 .quick-temperature {
 	font-size: 3rem;
 	line-height: 1;
-	padding: .25rem 0;
+	padding: 0.25rem 0;
 	font-weight: bold;
 }
-
 
 // Advertisment ======================================================
 #carbonads {
 	@extend %no-select;
 	display: inline-block;
 	position: relative;
-	margin: 1rem 0 .25rem;
+	margin: 1rem 0 0.25rem;
 	text-align: left;
-	padding: .5rem;
+	padding: 0.5rem;
 	max-width: 18rem;
 	border-radius: $radius;
 
-	$stripe-width: .25rem;
-	background: 
-		repeating-linear-gradient(45deg,
-			$black 0,
-			$black $stripe_width,
-			$black_light $stripe_width,
-			$black_light $stripe-width*2
-		);
-
+	$stripe-width: 0.25rem;
+	background: repeating-linear-gradient(
+		45deg,
+		$black 0,
+		$black $stripe_width,
+		$black_light $stripe_width,
+		$black_light $stripe-width * 2
+	);
 
 	@media (min-width: $mobile) {
 		text-align: center;
@@ -530,7 +577,7 @@ input:checked + .unit-toggle {
 		margin: 1rem 0 0 1rem;
 	}
 
-	@media (min-width: $tablet) { 
+	@media (min-width: $tablet) {
 		margin: 1rem 0 1.25rem;
 		max-width: calc(130px + 4rem);
 	}
@@ -552,7 +599,9 @@ input:checked + .unit-toggle {
 .carbon-wrap {
 	display: flex;
 
-	@media (min-width: $mobile) { display: block; }
+	@media (min-width: $mobile) {
+		display: block;
+	}
 }
 
 .carbon-text,
@@ -566,13 +615,18 @@ input:checked + .unit-toggle {
 }
 
 .carbon-text {
-	padding: .25rem 0;
+	padding: 0.25rem 0;
 	text-shadow: $shadow;
 
-	@media (min-width: $mobile) { padding: .5rem 0; }
-	@media (min-width: $tablet) { padding: .75rem 0; }
+	@media (min-width: $mobile) {
+		padding: 0.5rem 0;
+	}
+	@media (min-width: $tablet) {
+		padding: 0.75rem 0;
+	}
 
-	&:hover, .carbon-img:hover + & {
+	&:hover,
+	.carbon-img:hover + & {
 		color: $blue_light;
 		transition-duration: 0s;
 	}
@@ -584,7 +638,6 @@ input:checked + .unit-toggle {
 	line-height: 1;
 }
 
-
 // Results Cards =====================================================
 .card {
 	position: relative;
@@ -594,20 +647,19 @@ input:checked + .unit-toggle {
 	pointer-events: none;
 	text-align: center;
 	pointer-events: auto;
-	opacity: .1;
+	opacity: 0.1;
 
 	.is-loading-home &,
 	.is-loading-away & {
-		transform: scale3d(.9,.9,.9);
-		opacity: .1;
+		transform: scale3d(0.9, 0.9, 0.9);
+		opacity: 0.1;
 	}
 
 	.has-weather & {
 		opacity: 1;
-		transform: scale3d(1,1,1);
+		transform: scale3d(1, 1, 1);
 	}
 }
-
 
 // Map =======================================================================
 .map-wrapper {
@@ -620,20 +672,23 @@ input:checked + .unit-toggle {
 	transition: transform $transition;
 	transform-origin: center bottom;
 
-	@media (min-height: 30rem) { padding-bottom: 75%; }
+	@media (min-height: 30rem) {
+		padding-bottom: 75%;
+	}
 
 	.is-loading-home &,
 	.is-loading-away & {
-		transform: scale3d(.9,.9,.9);
+		transform: scale3d(0.9, 0.9, 0.9);
 	}
 
 	.has-weather & {
-		transform: scale3d(1,1,1);
-		transition-duration: $transition*2;
+		transform: scale3d(1, 1, 1);
+		transition-duration: $transition * 2;
 	}
 }
 
-.map, .marker {
+.map,
+.marker {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -652,28 +707,31 @@ canvas {
 .marker {
 	$marker-size: 5rem;
 	svg {
-		transform: scale3d(0,0,0);
+		transform: scale3d(0, 0, 0);
 		width: $marker-size;
 		height: $marker-size;
-		margin-bottom: $marker-size*.7;
+		margin-bottom: $marker-size * 0.7;
 		transition: transform $transition, opacity $transition;
 		transform-origin: center bottom;
 		opacity: 0;
 
 		@at-root .has-weather & {
-			transform: scale3d(1,1,1);
+			transform: scale3d(1, 1, 1);
 			opacity: 1;
-			transition-delay: $transition*.5;
+			transition-delay: $transition * 0.5;
 		}
 		@at-root .has-weather.away & {
 			transition-delay: $transition;
 		}
 
-		ellipse, path {
+		ellipse,
+		path {
 			transform-origin: center center;
 			animation: 2s ease-in-out infinite;
 
-			@at-root .home & { animation-delay: -1s; }
+			@at-root .home & {
+				animation-delay: -1s;
+			}
 		}
 
 		ellipse {
@@ -681,8 +739,8 @@ canvas {
 
 			@keyframes ellipse {
 				50% {
-					transform: scale3d(.8,.8,.8);
-					opacity: .4;
+					transform: scale3d(0.8, 0.8, 0.8);
+					opacity: 0.4;
 				}
 			}
 		}
@@ -691,53 +749,64 @@ canvas {
 			animation-name: path;
 
 			@keyframes path {
-				50% { transform: translate3d(0,-10%,0); }
+				50% {
+					transform: translate3d(0, -10%, 0);
+				}
 			}
 		}
 	}
 }
 
-
 // Sub-cards =========================================================
 .currently-wrapper {
 	border-radius: $radius;
 	background: $white;
-	border-top: .75rem solid $gray;
-	border-bottom: .75rem solid $gray;
-	margin-top: .5rem;
+	border-top: 0.75rem solid $gray;
+	border-bottom: 0.75rem solid $gray;
+	margin-top: 0.5rem;
 	overflow: hidden;
 	transition: border-top-color $transition;
 	border-color: currentColor;
 }
 
-
 // Current Weather Data ==============================================
 .geo-wrapper {
 	border-bottom: 1px solid $off_white;
-	padding: .5rem;
+	padding: 0.5rem;
 }
 
-.coordinates, .elevation, .location, .summary, .grid-item {
+.coordinates,
+.elevation,
+.location,
+.summary,
+.grid-item {
 	color: $black;
 	opacity: 0;
 	transition: opacity $transition;
 
-	.has-weather & { opacity: 1; }
+	.has-weather & {
+		opacity: 1;
+	}
 }
 
-.coordinates, .elevation { 
+.coordinates,
+.elevation {
 	font-size: smaller;
 }
 
-.prefix { font-weight: bold; }
+.prefix {
+	font-weight: bold;
+}
 
 .location {
 	margin: 1rem;
 	font-size: 1.5rem;
 	line-height: 1;
-	padding: 0 .5rem;
+	padding: 0 0.5rem;
 
-	@media (min-width: $mobile) { font-size: 2rem; }
+	@media (min-width: $mobile) {
+		font-size: 2rem;
+	}
 }
 
 .temperature {
@@ -749,9 +818,13 @@ canvas {
 	opacity: 0;
 	transition: opacity $transition;
 
-	@media (min-width: $mobile) { font-size: 6rem; }
+	@media (min-width: $mobile) {
+		font-size: 6rem;
+	}
 
-	.has-weather & { opacity: 1; }
+	.has-weather & {
+		opacity: 1;
+	}
 
 	svg {
 		@extend %no-drag;
@@ -764,29 +837,32 @@ canvas {
 .summary {
 	font-size: 1rem;
 	margin: 1rem;
-	padding: 0 .75rem;
+	padding: 0 0.75rem;
 
-	@media (min-width: $mobile) { font-size: 1.25rem; }
+	@media (min-width: $mobile) {
+		font-size: 1.25rem;
+	}
 }
-
 
 // Forecast ==========================================================
 .forecast-wrapper {
 	overflow: hidden;
-	margin-top: .5rem;
+	margin-top: 0.5rem;
 	border-radius: $radius;
 }
 
 .forecast-heading-wrapper {
 	@extend %no-select;
 	display: none;
-	padding: .5rem 1rem;
-	margin-bottom: .5rem;
+	padding: 0.5rem 1rem;
+	margin-bottom: 0.5rem;
 	border-radius: $radius;
-	margin: .5rem 0;
+	margin: 0.5rem 0;
 	background: $gray_dark;
 
-	.has-weather & { display: block; }
+	.has-weather & {
+		display: block;
+	}
 }
 
 .forecast-heading {
@@ -799,16 +875,20 @@ canvas {
 	text-align: left;
 	background: $white;
 	overflow: hidden;
-	border-left: .75rem solid;
+	border-left: 0.75rem solid;
 
-	&:first-child { border-radius: $radius $radius 0 0; }
+	&:first-child {
+		border-radius: $radius $radius 0 0;
+	}
 
 	&:last-child {
 		border-radius: 0 0 $radius $radius;
 		border-bottom: 0;
 	}
 
-	&:focus { outline: 0; }
+	&:focus {
+		outline: 0;
+	}
 }
 
 .forecast-item {
@@ -816,7 +896,9 @@ canvas {
 	flex-wrap: wrap;
 	color: $black;
 
-	.forecast-item-wrapper:last-child & { border: 0; }
+	.forecast-item-wrapper:last-child & {
+		border: 0;
+	}
 }
 
 .forecast-day-wrapper,
@@ -832,26 +914,28 @@ canvas {
 	align-items: center;
 	justify-content: flex-start;
 	min-width: 8rem;
-	padding: .5rem .5rem .5rem 1rem;
+	padding: 0.5rem 0.5rem 0.5rem 1rem;
 }
 
-.forecast-day { font-weight: bold; }
+.forecast-day {
+	font-weight: bold;
+}
 
 .forecast-temperature-wrapper {
 	display: inline-flex;
 	flex: 1;
 	align-items: center;
 	justify-content: flex-end;
-	padding: .5rem 0;
+	padding: 0.5rem 0;
 }
 
 .forecast-icon {
-	$size : 2rem;
+	$size: 2rem;
 	min-width: $size;
 	min-height: $size;
 	width: $size;
 	height: $size;
-	margin: 0 .5rem 0 .75rem;
+	margin: 0 0.5rem 0 0.75rem;
 }
 
 .forecast-temperature {
@@ -861,7 +945,7 @@ canvas {
 
 	@media (min-width: $desktop) {
 		width: initial;
-		padding: 0 .5rem;
+		padding: 0 0.5rem;
 	}
 
 	&:before {
@@ -870,16 +954,17 @@ canvas {
 
 		@media (min-width: $desktop) {
 			display: inline-block;
-			margin-right: .25rem;
+			margin-right: 0.25rem;
 		}
-
 	}
 
 	&.high {
 		border: solid $off_white;
 		border-width: 0 1px;
 
-		&:before { content: 'High:'; }
+		&:before {
+			content: "High:";
+		}
 	}
 
 	&.low {
@@ -887,36 +972,41 @@ canvas {
 
 		@media (min-width: $desktop) {
 			width: initial;
-			padding: 0 1rem 0 .5rem;
+			padding: 0 1rem 0 0.5rem;
 		}
 
-		&:before { content: 'Low:'; }
+		&:before {
+			content: "Low:";
+		}
 	}
 }
-
 
 // Grid ==============================================================
 .grid-item {
 	display: block;
-	padding: .5rem;
+	padding: 0.5rem;
 	border-top: 1px solid $off_white;
 
 	&.half {
 		float: left;
 		width: 50%;
 
-		&:nth-of-type(odd) { border-right: 1px solid $off_white; }
+		&:nth-of-type(odd) {
+			border-right: 1px solid $off_white;
+		}
 	}
 
 	&.full {
 		width: 100%;
-		padding: .5rem 1rem;
+		padding: 0.5rem 1rem;
 
 		@media (min-width: $desktop) {
 			width: 50%;
 			float: left;
 
-			&:nth-of-type(odd) { border-right: 1px solid $off_white; }
+			&:nth-of-type(odd) {
+				border-right: 1px solid $off_white;
+			}
 		}
 	}
 }
@@ -929,15 +1019,14 @@ canvas {
 
 .grid-value {
 	display: block;
-	
+
 	.half & {
 		@media (min-width: $mobile*1.2) {
 			display: inline-block;
-			margin-left: .25rem;
+			margin-left: 0.25rem;
 		}
 	}
 }
-
 
 // Credits ===========================================================
 .credits-wrapper {
@@ -957,9 +1046,11 @@ canvas {
 
 	p {
 		display: inline-block;
-		margin: 0 0 .25rem;
+		margin: 0 0 0.25rem;
 
-		@media (min-width: $mobile) { display: inline-block; }
+		@media (min-width: $mobile) {
+			display: inline-block;
+		}
 	}
 
 	a:not(.share-button) {
@@ -969,34 +1060,42 @@ canvas {
 		line-height: 1;
 		transition: border-color $transition;
 
-		&:hover { border-color: $white; }
+		&:hover {
+			border-color: $white;
+		}
 	}
 }
 
-.share-wrapper { 
+.share-wrapper {
 	display: block;
 
 	@media (min-width: $mobile) {
 		display: inline-block;
 	}
 
-	@media (min-width: $tablet) { float: right; }
+	@media (min-width: $tablet) {
+		float: right;
+	}
 }
 
 .share-button {
 	display: inline-block;
-	padding: 0 .75rem;
+	padding: 0 0.75rem;
 	line-height: 1.75rem;
-	margin-left: .5rem;
+	margin-left: 0.5rem;
 }
 
-.twitter { @include button($twitter); }
-.facebook {  @include button($facebook); }
+.twitter {
+	@include button($twitter);
+}
+.facebook {
+	@include button($facebook);
+}
 
 .share-icon {
-	$size : 1em;
+	$size: 1em;
 	width: 1em;
 	height: 1em;
-	margin-right: .5rem;
+	margin-right: 0.5rem;
 	vertical-align: middle;
 }
