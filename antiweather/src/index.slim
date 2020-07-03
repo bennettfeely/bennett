@@ -63,11 +63,18 @@ html lang="en"
 					.search-wrapper role="search"
 						.form
 							label.location-finder
-								p Enter your location to find out:
+								p 
+									del Enter your location to find out:
 								.search-input-wrapper
-									input#search.search-input type="text" placeholder="Your location..." spellcheck="false" autocomplete="off"
+									input#search.search-input type="text" disabled="true" placeholder="Your location..." spellcheck="false" autocomplete="off"
 									.loading-spinner-wrapper
 										.loading-spinner
+							.sorry-folks
+								h2 Update (6/3/2020)
+								p Antiweather has gone viral and unfortunately the cost of running this website far, far exceeds the revenue I'm getting from ads. Why Google's APIs are so costly I don't know.
+								p Entering your own location has been disabled until I figure out a workaround.
+								p You can still check out the current weather from the opposite locations below by clicking those buttons.
+								p Thanks for your understanding.
 							.units-wrapper
 								p Units:
 								input id="c_toggle" type="radio" name="units-toggle" class="c-input" value="si"

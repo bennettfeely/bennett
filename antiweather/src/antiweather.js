@@ -1,10 +1,9 @@
-console.log("v2");
+console.log("v3");
 
 // Anyone using this code on their own please feel free!
 // But please have the courtesy to register your own API keys (there's two)
 // Thank you!
 var dark_sky_api_key = "e6c964e768708278b2dd1e5393296b2e";
-var google_places_api_key = "AIzaSyBwmxzDlhMqLhObyOGd8ai-hnxmQO8k1Bs";
 
 // Let's get this party started
 document.addEventListener("DOMContentLoaded", init, false);
@@ -61,16 +60,21 @@ function changeUnits() {
 
 // Get the location of the user using Google Places API
 function getLocation() {
+	console.log("getLocation();");
 	var search = document.getElementById("search");
 	var autocomplete = new google.maps.places.Autocomplete(search, {
 		types: ["(cities)"],
 		placeIdOnly: true,
 	});
+
 	var geocoder = new google.maps.Geocoder();
 
 	// When a item from the dropdown is selected, get the coordinates
 	autocomplete.addListener("place_changed", function () {
 		var place = autocomplete.getPlace();
+
+		console.log("place");
+		console.log(place);
 
 		// Google makes things complicated as usual, now we will geocode the result
 		geocoder.geocode({ placeId: place.place_id }, function (
@@ -115,32 +119,32 @@ function initSearch(lat, lng) {
 }
 
 // Get the placename with the Google Reverse Geocoding API
-function getPlacename(location, lat, lng) {
-	// Format coords into object Google likes
-	var lat_lng = { lat: lat, lng: lng };
+// function getPlacename(location, lat, lng) {
+// 	// Format coords into object Google likes
+// 	var lat_lng = { lat: lat, lng: lng };
 
-	console.log(location);
-	console.log(lat + ", " + lng);
+// 	console.log(location);
+// 	console.log(lat + ", " + lng);
 
-	var geocoder = new google.maps.Geocoder();
-	geocoder.geocode({ location: lat_lng }, function (results, status) {
-		if (status === "OK") {
-			if (results[0]) {
-				setLocation(location, results[0].formatted_address);
-			} else {
-				// We still don't have a result, must be in the middle of the ocean
-				setLocation(location, "Middle of Nowhere");
-			}
-		} else if (status == "ZERO_RESULTS") {
-			// We don't have a result, must be in the middle of the ocean
-			setLocation(location, "Middle of Nowhere");
-		} else {
-			// Something went terribly wrong
-			setLocation(location, "Somewhere");
-			console.log("Geocoder failed due to: " + status);
-		}
-	});
-}
+// 	var geocoder = new google.maps.Geocoder();
+// 	geocoder.geocode({ location: lat_lng }, function (results, status) {
+// 		if (status === "OK") {
+// 			if (results[0]) {
+// 				setLocation(location, results[0].formatted_address);
+// 			} else {
+// 				// We still don't have a result, must be in the middle of the ocean
+// 				setLocation(location, "Middle of Nowhere");
+// 			}
+// 		} else if (status == "ZERO_RESULTS") {
+// 			// We don't have a result, must be in the middle of the ocean
+// 			setLocation(location, "Middle of Nowhere");
+// 		} else {
+// 			// Something went terribly wrong
+// 			setLocation(location, "Somewhere");
+// 			console.log("Geocoder failed due to: " + status);
+// 		}
+// 	});
+// }
 
 // Because there's several ways of getting a location name and three places to put it, this fills in everything for a given location
 function setLocation(location, place_name) {

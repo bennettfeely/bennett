@@ -1099,3 +1099,15 @@ canvas {
 	margin-right: 0.5rem;
 	vertical-align: middle;
 }
+
+.sorry-folks {
+	font-size: smaller;
+	margin: 1em 0;
+	padding: 1em;
+	border-radius: $radius;
+	background: rgba(white, 0.1);
+
+	h2 {
+		margin: 0;
+	}
+}
