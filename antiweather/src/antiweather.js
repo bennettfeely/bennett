@@ -69,11 +69,11 @@ function getLocation() {
 	var geocoder = new google.maps.Geocoder();
 
 	// When a item from the dropdown is selected, get the coordinates
-	autocomplete.addListener("place_changed", function() {
+	autocomplete.addListener("place_changed", function () {
 		var place = autocomplete.getPlace();
 
 		// Google makes things complicated as usual, now we will geocode the result
-		geocoder.geocode({ placeId: place.place_id }, function(
+		geocoder.geocode({ placeId: place.place_id }, function (
 			results,
 			status
 		) {
@@ -123,7 +123,7 @@ function getPlacename(location, lat, lng) {
 	console.log(lat + ", " + lng);
 
 	var geocoder = new google.maps.Geocoder();
-	geocoder.geocode({ location: lat_lng }, function(results, status) {
+	geocoder.geocode({ location: lat_lng }, function (results, status) {
 		if (status === "OK") {
 			if (results[0]) {
 				setLocation(location, results[0].formatted_address);
@@ -196,13 +196,13 @@ function getWeather(location, lat, lng, pre_placename) {
 
 	JSONP({
 		url: request_url,
-		success: function(data) {
+		success: function (data) {
 			// We got the weather
 			extractWeather(location, lat, lng, pre_placename, data);
 		},
-		error: function(error) {
+		error: function (error) {
 			// We have an error, let's stop showing loading indicators
-			setTimeout(function() {
+			setTimeout(function () {
 				document.querySelector("html").classList.remove("is-loading");
 				document
 					.querySelector(".home")
@@ -221,29 +221,29 @@ function getWeather(location, lat, lng, pre_placename) {
 }
 
 // Get the elevation of the location
-function getElevation(location, lat, lng, units) {
-	var elevator = new google.maps.ElevationService();
-	elevator.getElevationForLocations(
-		{
-			locations: [{ lat: lat, lng: lng }],
-		},
-		function(results, status) {
-			if (status === "OK") {
-				if (results[0]) {
-					var elevation = formatElevation(
-						results[0].elevation,
-						units
-					);
-					fill(location, "elevation", elevation);
-				} else {
-					fill(location, "elevation", "N/A");
-				}
-			} else {
-				fill(location, "elevation", "N/A");
-			}
-		}
-	);
-}
+// function getElevation(location, lat, lng, units) {
+// 	var elevator = new google.maps.ElevationService();
+// 	elevator.getElevationForLocations(
+// 		{
+// 			locations: [{ lat: lat, lng: lng }],
+// 		},
+// 		function(results, status) {
+// 			if (status === "OK") {
+// 				if (results[0]) {
+// 					var elevation = formatElevation(
+// 						results[0].elevation,
+// 						units
+// 					);
+// 					fill(location, "elevation", elevation);
+// 				} else {
+// 					fill(location, "elevation", "N/A");
+// 				}
+// 			} else {
+// 				fill(location, "elevation", "N/A");
+// 			}
+// 		}
+// 	);
+// }
 
 // Extract only the data we need for the cards
 function extractWeather(location, lat, lng, pre_placename, data) {
@@ -309,7 +309,7 @@ function fillCurrentlyCard(card_data) {
 	}
 
 	// Elevation
-	getElevation(location, card_data.lat, card_data.lng, card_data.units);
+	// getElevation(location, card_data.lat, card_data.lng, card_data.units);
 
 	// Set placename
 	if (card_data.pre_placename !== undefined) {
@@ -461,7 +461,7 @@ function fillCurrentlyCard(card_data) {
 	}
 
 	// Remove loading indicators, waiting for transition to complete
-	setTimeout(function() {
+	setTimeout(function () {
 		document.querySelector("html").classList.remove("is-loading");
 		document
 			.querySelector("." + location)
@@ -592,22 +592,13 @@ function setupMap(location, lat, lng) {
 
 	var context = canvas.node().getContext("2d");
 
-	var path = d3.geo
-		.path()
-		.projection(projection)
-		.context(context);
+	var path = d3.geo.path().projection(projection).context(context);
 
-	var λ = d3.scale
-		.linear()
-		.domain([0, size])
-		.range([-180, 180]);
+	var λ = d3.scale.linear().domain([0, size]).range([-180, 180]);
 
-	var φ = d3.scale
-		.linear()
-		.domain([0, size])
-		.range([90, -90]);
+	var φ = d3.scale.linear().domain([0, size]).range([90, -90]);
 
-	d3.json("src/world-110m.json", function(error, topo) {
+	d3.json("src/world-110m.json", function (error, topo) {
 		if (error) {
 			throw error;
 		}
@@ -728,14 +719,14 @@ function makeForecastCard(card_data) {
 // Utilities =======================================================================================
 
 // JSONP by larryosborn https://github.com/larryosborn/JSONP
-(function() {
+(function () {
 	var e, n, r, o, t, l, u, d;
-	(r = function(e) {
+	(r = function (e) {
 		return window.document.createElement(e);
 	}),
 		(o = window.encodeURIComponent),
 		(u = Math.random),
-		(e = function(e) {
+		(e = function (e) {
 			var o, l, u, i, a, c, f;
 			if (
 				(null == e && (e = {}),
@@ -757,7 +748,7 @@ function makeForecastCard(card_data) {
 					((u = e.callbackName || "callback"),
 					(l = e.callbackFunc || "jsonp_" + d(15)),
 					(o = c.data[u] = l),
-					(window[o] = function(e) {
+					(window[o] = function (e) {
 						return (
 							(window[o] = null),
 							c.success(e, c),
@@ -767,13 +758,13 @@ function makeForecastCard(card_data) {
 					(f = r("script")),
 					(f.src = n(c)),
 					(f.async = !0),
-					(f.onerror = function(e) {
+					(f.onerror = function (e) {
 						return (
 							c.error({ url: f.src, event: e }),
 							c.complete({ url: f.src, event: e }, c)
 						);
 					}),
-					(f.onload = f.onreadystatechange = function() {
+					(f.onload = f.onreadystatechange = function () {
 						var e, n;
 						if (
 							!(
@@ -797,15 +788,13 @@ function makeForecastCard(card_data) {
 						window.document.documentElement),
 					a.insertBefore(f, a.firstChild)),
 				{
-					abort: function() {
+					abort: function () {
 						return (
-							(window[o] = function() {
+							(window[o] = function () {
 								return (window[o] = null);
 							}),
 							(i = !0),
-							(null != f
-							? f.parentNode
-							: void 0)
+							(null != f ? f.parentNode : void 0)
 								? ((f.onload = f.onreadystatechange = null),
 								  f.parentNode.removeChild(f),
 								  (f = null))
@@ -815,8 +804,8 @@ function makeForecastCard(card_data) {
 				}
 			);
 		}),
-		(t = function() {}),
-		(n = function(e) {
+		(t = function () {}),
+		(n = function (e) {
 			var n;
 			return (
 				(n = e.url),
@@ -824,18 +813,15 @@ function makeForecastCard(card_data) {
 				(n += l(e.data))
 			);
 		}),
-		(d = function(e) {
+		(d = function (e) {
 			var n;
-			for (n = ""; n.length < e; )
-				n += u()
-					.toString(36)
-					.slice(2, 3);
+			for (n = ""; n.length < e; ) n += u().toString(36).slice(2, 3);
 			return n;
 		}),
-		(l = function(e) {
+		(l = function (e) {
 			var n, r, t;
 			return (
-				(n = (function() {
+				(n = (function () {
 					var n;
 					n = [];
 					for (r in e) (t = e[r]), n.push(o(r) + "=" + o(t));
@@ -844,15 +830,15 @@ function makeForecastCard(card_data) {
 				n.join("&")
 			);
 		}),
-		("undefined" != typeof define && null !== define
-		? define.amd
-		: void 0)
-			? define(function() {
+		("undefined" != typeof define && null !== define ? define.amd : void 0)
+			? define(function () {
 					return e;
 			  })
-			: ("undefined" != typeof module && null !== module
-				? module.exports
-				: void 0)
+			: (
+					"undefined" != typeof module && null !== module
+						? module.exports
+						: void 0
+			  )
 			? (module.exports = e)
 			: (this.JSONP = e);
 }.call(this));
@@ -965,33 +951,33 @@ function formatDistance(distance, units) {
 }
 
 // Format elevation value
-function formatElevation(elevation, units) {
-	if (elevation >= 0) {
-		var prefix = '<span class="prefix">Elevation: </span>';
-	} else {
-		var prefix = '<span class="prefix">Ground Elevation: </span>';
-	}
+// function formatElevation(elevation, units) {
+// 	if (elevation >= 0) {
+// 		var prefix = '<span class="prefix">Elevation: </span>';
+// 	} else {
+// 		var prefix = '<span class="prefix">Ground Elevation: </span>';
+// 	}
 
-	if (units == "us") {
-		// Convert Google-returned elevation in meters to feet, and round
-		return (
-			prefix + Math.round(elevation * 3.28084).toLocaleString() + " ft"
-		);
-	} else if (units == "si") {
-		// Show more precise elevation if necessary
-		if (elevation < -10 || elevation > 10) {
-			// Round elevation to whole number
-			return prefix + Math.round(elevation).toLocaleString() + " m";
-		} else {
-			// Format elevation to one decimal point (e.g. 4.2 m)
-			return (
-				prefix +
-				(Math.round(elevation * 10) / 10).toLocaleString() +
-				" m"
-			);
-		}
-	}
-}
+// 	if (units == "us") {
+// 		// Convert Google-returned elevation in meters to feet, and round
+// 		return (
+// 			prefix + Math.round(elevation * 3.28084).toLocaleString() + " ft"
+// 		);
+// 	} else if (units == "si") {
+// 		// Show more precise elevation if necessary
+// 		if (elevation < -10 || elevation > 10) {
+// 			// Round elevation to whole number
+// 			return prefix + Math.round(elevation).toLocaleString() + " m";
+// 		} else {
+// 			// Format elevation to one decimal point (e.g. 4.2 m)
+// 			return (
+// 				prefix +
+// 				(Math.round(elevation * 10) / 10).toLocaleString() +
+// 				" m"
+// 			);
+// 		}
+// 	}
+// }
 
 // Format and convert degrees bearing to cardinal direction
 function formatBearing(deg) {
