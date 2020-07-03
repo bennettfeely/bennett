@@ -13,6 +13,7 @@ function init() {
 	var query_string = _getUrlParameter("units-toggle");
 	if (query_string == "us" || query_string == "si") {
 		document.querySelector('[value="' + query_string + '"]').checked = true;
+		var unit = query_string;
 	} else {
 		// If the URL has no query string, see if we have localstorage saved
 		var stored_unit = store.get("antiweather-units");

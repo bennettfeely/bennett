@@ -494,6 +494,10 @@ input:checked + .unit-toggle {
 	transform: scale3d(0.9, 0.9, 0.9);
 	transition: opacity $transition, transform $transition;
 
+	.nearest {
+		display: none;
+	}
+
 	.is-loading & {
 		display: block;
 		opacity: 0.1;
