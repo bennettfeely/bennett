@@ -1108,6 +1108,7 @@ canvas {
 }
 
 .sorry-folks {
+	position: relative;
 	font-size: smaller;
 	margin: 1em 0;
 	padding: 1em;
@@ -1116,9 +1117,21 @@ canvas {
 	border: 1px solid rgba(white, 0.2);
 
 	h2 {
-		font-size: 1.1em;
+		font-size: 1em;
 		font-weight: bold;
 		margin: 0;
 		color: nth($colors_full, 9);
+	}
+
+	button {
+		font-size: 2em;
+		padding: 0;
+		line-height: 2rem;
+		width: 2rem;
+		text-align: center;
+		position: absolute;
+		top: 0;
+		right: 0;
+		border-radius: 0 $radius 0 $radius;
 	}
 }
