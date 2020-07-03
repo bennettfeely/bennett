@@ -1126,13 +1126,13 @@ canvas {
 	h3 {
 		display: inline-block;
 		font-size: 1em;
+		padding-top: 1em;
 		@extend %no-select;
 	}
 
 	details {
 		margin-top: 1em;
 		border-top: 1px solid rgba(white, 0.2);
-		padding-top: 1rem;
 	}
 
 	summary {
