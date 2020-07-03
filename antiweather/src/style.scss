@@ -465,9 +465,9 @@ input:checked + .unit-toggle {
 		margin: 0.5rem 0;
 	}
 
-	@for $i from 1 through 6 {
+	@for $i from 1 through length($colors_full) {
 		&:nth-child(#{$i}) {
-			@include button(nth($colors_short, $i));
+			@include button(nth($colors_full, $i));
 		}
 	}
 
