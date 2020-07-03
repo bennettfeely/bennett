@@ -72,9 +72,16 @@ html lang="en"
 							.sorry-folks
 								h2 Update 6/3/2020, 2:30 AM EST
 								p Entering your own location has been disabled.
-								p Antiweather has gone viral and unfortunately the cost of running that function of the website far, far exceeds the revenue I'm getting from ads. Why Google's APIs are so costly I don't know.
 								p You can still check out the current weather from the opposite locations below by clicking those buttons.
-								p Thank you for your understanding. I'm hoping to get this site fully functional again very soon.
+								details
+									summary 
+										h3 Read more
+
+									p Antiweather has gone viral and unfortunately the cost of running Google's APIs for geocoding far exceeds the revenue I'm getting from ads.
+									p Why it costs <a href="https://developers.google.com/maps/documentation/geocoding/start">50x more</a> to get the name of a location (thanks Google) than it does to get full weather conditions and forecast for any point on Earth (Dark Sky), I don't know.
+									p All I know is I've flushed a couple hundred dollars down the drain after this misjudgement.
+									p Thank you for your understanding. 
+									p I'm hoping to get this site fully functional again very soon!
 								button onclick="document.querySelector('.sorry-folks').style.display='none'" &times;
 						p Try these opposite points on Earth:
 						nav.pre-location-wrapper role="navigation"
