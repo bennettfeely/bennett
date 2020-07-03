@@ -441,9 +441,8 @@ input:checked + .unit-toggle {
 	}
 
 	@media (min-width: $mobile) {
-		line-height: 2.25rem;
 		margin: 0.5rem 0.5rem 0 0;
-		padding: 0 0.75rem;
+		padding: 0.75rem;
 
 		span {
 			display: inline;
@@ -465,9 +464,12 @@ input:checked + .unit-toggle {
 		margin: 0.5rem 0;
 	}
 
-	@for $i from 1 through length($colors_full) {
+	$colors_buttons: #4169e1, #3d93ec, #5c9bb3, #91a073, #daa520, #f0a511,
+		#ff991e, #ff7240, #f14a43, #dc143c;
+
+	@for $i from 1 through length($colors_buttons) {
 		&:nth-child(#{$i}) {
-			@include button(nth($colors_full, $i));
+			@include button(nth($colors_buttons, $i));
 		}
 	}
 
