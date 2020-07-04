@@ -55,8 +55,9 @@ h1 {
 
 h2 {
 	font-size: 0.16in;
-	margin: 0.1776in 0;
+	margin: 0.1776in auto;
 	line-height: 1.776;
+	max-width: 80%;
 }
 
 p {
