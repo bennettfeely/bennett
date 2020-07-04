@@ -37,6 +37,10 @@ body {
 	margin: 0.1776in 0;
 }
 
+.banner {
+	height: 1in;
+}
+
 header,
 footer {
 	text-align: center;
@@ -197,6 +201,7 @@ em {
 // Footer ==============================================================
 footer {
 	font-size: smaller;
+	line-height: 1.776;
 }
 
 // Ad ==================================================================
