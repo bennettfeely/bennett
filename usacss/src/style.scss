@@ -68,6 +68,7 @@ a {
 }
 
 .button {
+	user-select: none;
 	display: inline-block;
 	color: $blue;
 	background: $white;
