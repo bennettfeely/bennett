@@ -50,11 +50,12 @@ main {
 
 // Typography ==========================================================
 h1 {
-	font: bold 17.76vmin Libre Baskerville, Georgia;
+	font: bold 0.5in Libre Baskerville, Georgia;
 }
 
 h2 {
-	margin: 0 0 0.1776in;
+	font-size: 0.16in;
+	margin: 0.1776in 0;
 	line-height: 1.776;
 }
 
@@ -83,21 +84,23 @@ a {
 	}
 }
 
+.downloads {
+	margin: 0.1776in 0;
+}
+
 .download {
+	display: inline-block;
 	text-decoration: none;
 	border-bottom: 1px solid;
 }
 
-.bytecount {
-	color: $red;
+.bytes {
+	display: inline-block;
+	margin-left: 0.1776in;
 }
 
-.share {
+.shares {
 	margin-top: 0.1776in;
-
-	.twitter-share-button {
-		margin-top: 0.1776in;
-	}
 }
 
 pre,
@@ -167,7 +170,7 @@ em {
 	display: none;
 	flex: 1;
 	white-space: pre;
-	tab-size: 4;
+	tab-size: 2;
 	padding: 0;
 	border: 1px solid $gray;
 	border-top: 0;
@@ -192,11 +195,6 @@ em {
 // Footer ==============================================================
 footer {
 	font-size: smaller;
-
-	p {
-		display: flex;
-		justify-content: space-between;
-	}
 }
 
 // Ad ==================================================================
