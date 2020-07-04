@@ -79,7 +79,6 @@ a {
 
 		&:hover {
 			background: $blue;
-			box-shadow: 0 0 0.1776in rgba($black, 0.1776);
 		}
 	}
 }
@@ -120,16 +119,15 @@ em {
 
 	&.is-showing-code {
 		flex-direction: column;
-		box-shadow: 0 0 0.1776in rgba($black, 0.1776);
 		margin: 0.1776in 0;
 		background: $white;
+		border: 1px solid $gray;
 	}
 }
 
 .pattern-block {
 	flex: 1 0 50%;
 	min-height: 1.776in;
-	box-shadow: 0 0 0.1776in rgba($black, 0.1776);
 
 	.is-showing-code & {
 		width: 100%;
@@ -148,7 +146,7 @@ em {
 	}
 }
 
-.show-css {
+.pattern-show-css {
 	font: inherit;
 	font-size: 100%;
 	display: block;
@@ -162,7 +160,6 @@ em {
 
 	&:hover {
 		border-color: $black;
-		box-shadow: 0 0 0.1776in rgba($black, 0.1776);
 	}
 }
 

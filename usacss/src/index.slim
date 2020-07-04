@@ -5,7 +5,6 @@ html lang="en"
 		meta charset="utf-8"
 		meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"
 		title USA.css
-		/ Manifest
 		/ Android
 		meta name="theme-color" content="#ffffff"
 		meta name="description" content="The American CSS stylesheet. Style your webpage with the stars and stripes as CSS backgrounds. All units are set in inches."
@@ -42,7 +41,7 @@ html lang="en"
 						figcaption.pattern-meta 
 							code.pattern-snippet
 								| .usa-stars {
-								button.show-css data-show=".usa-stars-css" Show CSS
+								button.pattern-show-css data-show=".usa-stars-css" Show CSS
 								| }
 							pre.pattern-css
 								div .usa-stars {
@@ -66,7 +65,7 @@ html lang="en"
 						figcaption.pattern-meta 
 							code.pattern-snippet 
 								| .usa-stripes-horizontal {
-								button.show-css Show CSS
+								button.pattern-show-css Show CSS
 								| }
 							pre.pattern-css.
 								div .usa-stripes-horizontal {
@@ -82,7 +81,7 @@ html lang="en"
 						figcaption.pattern-meta 
 							code.pattern-snippet 
 								| .usa-stripes-vertical {
-								button.show-css Show CSS
+								button.pattern-show-css Show CSS
 								| }
 							pre.pattern-css
 								div .usa-stripes-vertical {
@@ -101,7 +100,7 @@ html lang="en"
 						figcaption.pattern-meta 
 							code.pattern-snippet 
 								| .usa-diamond {
-								button.show-css Show CSS
+								button.pattern-show-css Show CSS
 								| }
 							pre.pattern-css
 								div .usa-diamond {
@@ -129,7 +128,7 @@ html lang="en"
 						figcaption.pattern-meta 
 							code.pattern-snippet 
 								| .usa-radial {
-								button.show-css Show CSS
+								button.pattern-show-css Show CSS
 								| }
 							pre.pattern-css
 								div .usa-radial {
@@ -156,7 +155,7 @@ html lang="en"
 						figcaption.pattern-meta 
 							code.pattern-snippet 
 								| .usa-plaid {
-								button.show-css Show CSS
+								button.pattern-show-css Show CSS
 								| }
 							pre.pattern-css.usa-stripes-plaid-css
 								div .usa-plaid {
@@ -185,7 +184,7 @@ html lang="en"
 						figcaption.pattern-meta 
 							code.pattern-snippet 
 								| .usa-conic { 
-								button.show-css Show CSS
+								button.pattern-show-css Show CSS
 								| }
 							pre.pattern-css.usa-stripes-conic-css
 								div .usa-conic {
@@ -209,7 +208,7 @@ html lang="en"
 						small Released July 4, 2020.
 
 		javascript:
-			const buttons = document.querySelectorAll(".show-css");
+			const buttons = document.querySelectorAll(".pattern-show-css");
 			buttons.forEach((button) => {
 				button.addEventListener('click', () => {
 					var figure = button.parentNode.parentNode.parentNode;
