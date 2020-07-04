@@ -19,6 +19,8 @@ html lang="en"
 		/ Fonts
 		link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"
 	body
+		#fb-root
+		<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v7.0&appId=247433128675302" nonce="Gy2FThBp"></script>
 		.usa-radial.banner
 		header
 			.wrapper
@@ -32,8 +34,9 @@ html lang="en"
 						a.button href="src/usa.css" 
 							span.download Download usa.css
 					.shares
-						a.twitter-share-button href="https://twitter.com/share?ref_src=twsrc%5Etfw" data-size="large" data-text="USA.css – The most American CSS stylesheet. All units in inches, only 1776 bytes" data-dnt="true" data-show-count="true" Tweet
-						script async="true" src="https://platform.twitter.com/widgets.js" charset="utf-8"
+						a.twitter-share-button.share href="https://twitter.com/share?ref_src=twsrc%5Etfw" data-size="large" data-text="USA.css – The most American CSS stylesheet. All units in inches, only 1776 bytes" data-dnt="true" data-show-count="true" Tweet
+						<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+						.fb-like.facebook-share-button.share data-href="https://bennettfeely.com/usacss" data-width="100" data-layout="button_count" data-action="like" data-size="large" data-share="true"
 		main
 			.wrapper
 				.container
