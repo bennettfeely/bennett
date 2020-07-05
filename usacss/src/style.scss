@@ -4,29 +4,27 @@
 @import "extensions";
 
 $tablet: 4in;
-$radius: 0.1776in;
-$radius: 0;
 
 $black: #1a1a1a;
-$offwhite: #f0f0f0;
+$gray: #ccc;
+$white: #fff;
 
 $red: #b22234;
-$white: #fff;
 $blue: #3c3b6e;
 
 $blue-code: #7aa6da;
 $red-code: #d54e53;
+$gray-code: $gray;
 $white-code: $white;
 
-$gray: #ccc;
+$blue-link: #0366d6;
 
-* {
-	box-sizing: border-box;
-}
+$radius-small: 4px;
+$radius-large: 8px;
 
 // Base ================================================================
 body {
-	font: 100%/1.2 Libre Baskerville, Georgia;
+	font: 100%/1.1776 Libre Baskerville, Georgia;
 	background: $white;
 	color: $black;
 	text-align: center;
@@ -39,23 +37,19 @@ body {
 
 .container {
 	padding: 0.1776in;
-	margin: 0.1776in 0;
 }
 
 .banner {
-	height: 0.8in;
+	height: 1in;
 }
-
-// main {
-// 	background: linear-gradient(#eee, $white, #eee);
-// }
 
 // Typography ==========================================================
 h1 {
-	font: bold 0.55in Libre Baskerville, Georgia;
+	font-size: 0.55in;
 }
 
 h2 {
+	font-weight: normal;
 	font-size: 0.16in;
 	margin: 0.1776in auto;
 	line-height: 1.776;
@@ -67,9 +61,18 @@ p {
 }
 
 a {
-	color: $blue;
+	color: $blue-link;
+
+	&:hover {
+		color: shade($blue-link, 50%);
+	}
 }
 
+code {
+	font: 100% Monaco, monospace;
+}
+
+// Header ==============================================================
 .button {
 	user-select: none;
 	display: inline-block;
@@ -77,7 +80,7 @@ a {
 	background: $white;
 	padding: 0.1776in;
 	text-decoration: none;
-	border-radius: 8px;
+	border-radius: $radius-large;
 
 	&.primary {
 		background: $red;
@@ -89,23 +92,20 @@ a {
 	}
 }
 
-.downloads {
-	margin: 0.1776in 0;
-}
-
-.download {
-	display: inline-block;
-	text-decoration: none;
-	border-bottom: 1px solid;
-}
-
 .bytes {
 	display: inline-block;
 	margin-left: 0.1776in;
 }
 
-.shares {
+.download-wrapper,
+.share-wrapper {
 	margin: 0.1776in 0 0;
+}
+
+.download {
+	display: inline-block;
+	text-decoration: none;
+	border-bottom: thin solid;
 }
 
 .share {
@@ -113,17 +113,9 @@ a {
 	margin: 0 0.1776in;
 }
 
-code {
-	font: 100% Monaco, monospace;
-}
-
-em {
-	font-style: italic;
-}
-
 // Patterns ============================================================
 .pattern {
-	font-size: 11px;
+	font-size: 12px;
 	display: flex;
 	flex-direction: row;
 	padding: 0.1776in 0;
@@ -131,7 +123,6 @@ em {
 
 	&.is-showing-code {
 		flex-direction: column;
-		margin: 0.1776in 0;
 	}
 
 	@media (min-width: $tablet) {
@@ -139,14 +130,11 @@ em {
 	}
 }
 
-.pattern-block {
+.pattern-preview {
 	flex: 1 0 50%;
 	min-height: 1.776in;
-	border-radius: 8px;
-
-	.is-showing-code & {
-		width: 100%;
-	}
+	border-radius: $radius-large;
+	background: $gray;
 }
 
 .pattern-meta {
@@ -156,8 +144,8 @@ em {
 	background: $black;
 	color: $white;
 	padding: 0.1776in;
-	border-radius: 8px;
-	color: shade($gray, 20%);
+	border-radius: $radius-large;
+	color: $gray-code;
 
 	.is-showing-code & {
 		width: 100%;
@@ -165,17 +153,18 @@ em {
 	}
 }
 
-.pattern-show-css {
-	font: inherit;
+.pattern-show-css-button {
 	display: block;
+	font: inherit;
+	line-height: 1.776;
+	user-select: none;
+	border: 1px solid;
 	padding: 0 1ch;
 	background: transparent;
-	border: 1px solid;
-	line-height: 1.776;
 	cursor: pointer;
 	color: $white;
-	border-radius: 4px;
-	margin: 8px 2ch;
+	border-radius: $radius-small;
+	margin: $radius-large 2ch;
 
 	&:hover {
 		color: $gray;
@@ -224,8 +213,13 @@ em {
 
 // Footer ==============================================================
 footer {
-	font-size: smaller;
+	font-size: 85%;
 	line-height: 1.776;
+
+	a {
+		text-decoration: none;
+		border-bottom: thin solid;
+	}
 }
 
 // Ad ==================================================================
@@ -238,9 +232,9 @@ footer {
 	width: 100%;
 	margin: 0.1776in auto;
 	overflow: hidden;
-	background: linear-gradient(to bottom right, #eee, $white, $white, #eee);
-	border-radius: 8px;
-	font: 80% Monaco, monospace;
+	border-radius: $radius-large;
+	font: 80%/1.4 Monaco, monospace;
+	background: linear-gradient(#ddd, $white);
 }
 
 #carbonads {
@@ -257,7 +251,7 @@ footer {
 	margin: 0 auto;
 
 	img {
-		border-radius: $radius;
+		border-radius: $radius-small;
 		vertical-align: middle;
 	}
 }
