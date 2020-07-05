@@ -25,6 +25,7 @@ body {
 	font: 100%/1.2 Libre Baskerville, Georgia;
 	background: $white;
 	color: $black;
+	text-align: center;
 }
 
 .wrapper {
@@ -38,18 +39,7 @@ body {
 }
 
 .banner {
-	height: 1in;
-}
-
-header,
-footer {
-	text-align: center;
-}
-
-main {
-	border-top: 1px solid $gray;
-	border-bottom: 1px solid $gray;
-	background: ghostwhite;
+	height: 0.8in;
 }
 
 // Typography ==========================================================
@@ -79,6 +69,7 @@ a {
 	background: $white;
 	padding: 0.1776in;
 	text-decoration: none;
+	border-radius: 8px;
 
 	&.primary {
 		background: $red;
@@ -106,7 +97,7 @@ a {
 }
 
 .shares {
-	margin-top: 0.1776in;
+	margin: 0.1776in 0 0;
 }
 
 .share {
@@ -114,7 +105,6 @@ a {
 	margin: 0 0.1776in;
 }
 
-pre,
 code {
 	font: 100% Monaco, monospace;
 }
@@ -128,24 +118,22 @@ em {
 	font-size: 90%;
 	display: flex;
 	flex-direction: row;
-	align-items: center;
 	padding: 0.1776in 0;
+	text-align: left;
 
 	&.is-showing-code {
 		flex-direction: column;
 		margin: 0.1776in 0;
-		background: $white;
-		border: 1px solid $gray;
 	}
 }
 
 .pattern-block {
 	flex: 1 0 50%;
 	min-height: 1.776in;
+	border-radius: 8px;
 
 	.is-showing-code & {
 		width: 100%;
-		box-shadow: inset -0.1776in 0 $white, inset 0.1776in 0 $white;
 	}
 }
 
@@ -153,6 +141,11 @@ em {
 	width: 50%;
 	line-height: 1.776;
 	margin: 0 0 0 0.1776in;
+	background: $black;
+	color: $white;
+	padding: 0.1776in;
+	border-radius: 8px;
+	color: shade($gray, 20%);
 
 	.is-showing-code & {
 		width: 100%;
@@ -164,33 +157,27 @@ em {
 	font: inherit;
 	font-size: 100%;
 	display: block;
-	margin: 0 0 0 3ch;
+	margin: 1.776px 0 1.776px 3ch;
 	padding: 0 1ch;
-	background: white;
-	border: 1px solid $gray;
+	background: transparent;
+	border: 1px solid;
 	line-height: 1.776;
 	cursor: pointer;
-	background: $white;
+	color: $white;
+	border-radius: 4px;
 
 	&:hover {
-		border-color: $black;
+		color: $gray;
 	}
 }
 
 .pattern-css {
 	display: none;
 	flex: 1;
-	white-space: pre;
 	tab-size: 2;
-	padding: 0;
-	border: 1px solid $gray;
-	border-top: 0;
 	overflow: hidden;
-	word-break: break-word;
 	min-width: 100%;
-	padding: 0 0.1776in 0.1776in;
 	overflow-x: scroll;
-	border: 0;
 }
 
 .is-showing-code {
@@ -201,6 +188,31 @@ em {
 	.pattern-css {
 		display: block;
 	}
+}
+
+// Code ================================================================
+$red-code: #7aa6da;
+$blue-code: #d54e53;
+$white-code: $white;
+
+.class {
+	color: $blue-code;
+}
+
+.property {
+	color: $red-code;
+}
+
+.function {
+	color: $blue-code;
+}
+
+.color {
+	color: $red-code;
+}
+
+.unit {
+	color: $code-white;
 }
 
 // Footer ==============================================================
@@ -217,16 +229,21 @@ footer {
 	min-height: 120px;
 	max-width: 300px;
 	width: 100%;
-	font-size: 90%;
 	margin: 0.1776in auto;
 	overflow: hidden;
-	border: 1px solid $gray;
+	background: linear-gradient(to bottom right, #eee, $white, $white, #eee);
+	border-radius: 8px;
+	font: 80% Monaco, monospace;
 }
 
 #carbonads {
 	position: relative;
 	z-index: 10;
 	min-height: 100px;
+
+	&:hover {
+		color: $red;
+	}
 }
 
 .carbon-img {
@@ -241,15 +258,22 @@ footer {
 .carbon-text,
 .carbon-poweredby {
 	display: block;
-	color: $blue !important;
 	text-decoration: none;
+	color: inherit;
 }
 
 .carbon-text {
-	padding: 0.75rem 0;
+	padding: 0.1776in 0;
 }
 
 .carbon-poweredby {
 	font-size: smaller;
 	opacity: 0.5;
+
+	&:before {
+		content: "/* ";
+	}
+	&:after {
+		content: " */";
+	}
 }
