@@ -14,6 +14,10 @@ $red: #b22234;
 $white: #fff;
 $blue: #3c3b6e;
 
+$blue-code: #7aa6da;
+$red-code: #d54e53;
+$white-code: $white;
+
 $gray: #ccc;
 
 * {
@@ -139,7 +143,6 @@ em {
 	flex: 1 0 50%;
 	min-height: 1.776in;
 	border-radius: 8px;
-	// box-shadow: 0 0.1776in 1.765em rgba($black, 0.1776);
 
 	.is-showing-code & {
 		width: 100%;
@@ -155,7 +158,6 @@ em {
 	padding: 0.1776in;
 	border-radius: 8px;
 	color: shade($gray, 20%);
-	// box-shadow: 0 0.1776in 1.765em rgba($black, 0.1776);
 
 	.is-showing-code & {
 		width: 100%;
@@ -165,9 +167,7 @@ em {
 
 .pattern-show-css {
 	font: inherit;
-	font-size: 100%;
 	display: block;
-	margin: 4px 0 4px 2ch;
 	padding: 0 1ch;
 	background: transparent;
 	border: 1px solid;
@@ -175,6 +175,7 @@ em {
 	cursor: pointer;
 	color: $white;
 	border-radius: 4px;
+	margin: 8px 2ch;
 
 	&:hover {
 		color: $gray;
@@ -201,24 +202,20 @@ em {
 }
 
 // Code ================================================================
-$red-code: #7aa6da;
-$blue-code: #d54e53;
-$white-code: $white;
-
 .class {
-	color: $blue-code;
+	color: $red-code;
 }
 
 .property {
-	color: $red-code;
-}
-
-.function {
 	color: $blue-code;
 }
 
-.color {
+.function {
 	color: $red-code;
+}
+
+.color {
+	color: $blue-code;
 }
 
 .unit {
