@@ -76,7 +76,7 @@ code {
 .button {
 	user-select: none;
 	display: inline-block;
-	color: $blue;
+	color: $blue-link;
 	background: $white;
 	padding: 0.1776in;
 	text-decoration: none;
@@ -143,7 +143,6 @@ code {
 	margin: 0 0 0 0.1776in;
 	background: $black;
 	color: $white;
-	padding: 0.1776in;
 	border-radius: $radius-large;
 	color: $gray-code;
 
@@ -151,6 +150,11 @@ code {
 		width: 100%;
 		margin: 0.1776in 0 0 0;
 	}
+}
+
+.pattern-snippet {
+	display: block;
+	padding: 0.1776in;
 }
 
 .pattern-show-css-button {
@@ -178,6 +182,7 @@ code {
 	overflow: hidden;
 	min-width: 100%;
 	overflow-x: scroll;
+	padding: 0.1776in;
 }
 
 .is-showing-code {
