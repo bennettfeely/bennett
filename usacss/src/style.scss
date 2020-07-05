@@ -42,6 +42,10 @@ body {
 	height: 0.8in;
 }
 
+// main {
+// 	background: linear-gradient(#eee, $white, #eee);
+// }
+
 // Typography ==========================================================
 h1 {
 	font: bold 0.55in Libre Baskerville, Georgia;
@@ -115,7 +119,7 @@ em {
 
 // Patterns ============================================================
 .pattern {
-	font-size: 90%;
+	font-size: 11px;
 	display: flex;
 	flex-direction: row;
 	padding: 0.1776in 0;
@@ -124,6 +128,10 @@ em {
 	&.is-showing-code {
 		flex-direction: column;
 		margin: 0.1776in 0;
+	}
+
+	@media (min-width: $tablet) {
+		font-size: 90%;
 	}
 }
 
@@ -140,7 +148,7 @@ em {
 
 .pattern-meta {
 	width: 50%;
-	line-height: 1.776;
+	line-height: 1.4;
 	margin: 0 0 0 0.1776in;
 	background: $black;
 	color: $white;
@@ -159,7 +167,7 @@ em {
 	font: inherit;
 	font-size: 100%;
 	display: block;
-	margin: 1.776px 0 1.776px 3ch;
+	margin: 4px 0 4px 2ch;
 	padding: 0 1ch;
 	background: transparent;
 	border: 1px solid;
