@@ -253,7 +253,13 @@ footer {
 	overflow: hidden;
 	border-radius: $radius-large;
 	font: 80%/1.4 Monaco, monospace;
-	background: linear-gradient(#ddd, $white);
+	background: linear-gradient(
+		to bottom right,
+		#dadada,
+		$white 33%,
+		$white 66%,
+		#dadada
+	);
 }
 
 #carbonads {
@@ -262,7 +268,7 @@ footer {
 	min-height: 100px;
 
 	&:hover {
-		color: $red;
+		color: $blue-link;
 	}
 }
 
@@ -284,6 +290,10 @@ footer {
 
 .carbon-text {
 	padding: 0.1776in 0;
+
+	&:hover {
+		color: $blue-link;
+	}
 }
 
 .carbon-poweredby {
