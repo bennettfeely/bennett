@@ -131,6 +131,7 @@ em {
 	flex: 1 0 50%;
 	min-height: 1.776in;
 	border-radius: 8px;
+	// box-shadow: 0 0.1776in 1.765em rgba($black, 0.1776);
 
 	.is-showing-code & {
 		width: 100%;
@@ -146,6 +147,7 @@ em {
 	padding: 0.1776in;
 	border-radius: 8px;
 	color: shade($gray, 20%);
+	// box-shadow: 0 0.1776in 1.765em rgba($black, 0.1776);
 
 	.is-showing-code & {
 		width: 100%;
@@ -212,7 +214,7 @@ $white-code: $white;
 }
 
 .unit {
-	color: $code-white;
+	color: $white-code;
 }
 
 // Footer ==============================================================
