@@ -211,6 +211,20 @@ code {
 	color: $white-code;
 }
 
+.comment {
+	color: $white-code;
+	opacity: 0.5;
+
+	a {
+		color: inherit;
+		text-decoration: none;
+
+		.pattern-css:hover & {
+			text-decoration: underline;
+		}
+	}
+}
+
 // Footer ==============================================================
 footer {
 	font-size: 85%;
