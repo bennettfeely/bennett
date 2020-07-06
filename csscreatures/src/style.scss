@@ -1,35 +1,32 @@
 // Partials ==========================================================================
-@import 'functions';
-@import 'extensions';
-@import 'reset';
-
+@import "functions";
+@import "extensions";
+@import "reset";
 
 // Variables =========================================================================
 $mobile: 30em;
 $tablet: 50em;
 $easing: ease-in-out;
 
-$purple : #181236;
-	$purple_dark : shade($purple, 40%);
-$brown : #3F1F13;
-$gold : #EDBF68;
-	$gold_light : tint($gold, 30%);
-	$gold_dark : rgba($gold, .5);
-$blue : #283377;
-	$blue_twitter : #1da1f2;
-	$blue_dark : shade($blue, 40%);
-$black : shade($blue, 85%);
-$white : #fafafa;
-	$shadow : rgba($purple_dark, .2);
-	$gray : mix($white, $black);
+$purple: #181236;
+$purple_dark: shade($purple, 40%);
+$brown: #3f1f13;
+$gold: #edbf68;
+$gold_light: tint($gold, 30%);
+$gold_dark: rgba($gold, 0.5);
+$blue: #283377;
+$blue_twitter: #1da1f2;
+$blue_dark: shade($blue, 40%);
+$black: shade($blue, 85%);
+$white: #fafafa;
+$shadow: rgba($purple_dark, 0.2);
+$gray: mix($white, $black);
 
 $transition: 1s;
 $radius: 1rem;
 
-
 // Partials width variable access ====================================================
-@import 'keyframes';
-
+@import "keyframes";
 
 // Base Styles =======================================================================
 body {
@@ -47,9 +44,13 @@ body {
 	}
 }
 
-
 // Typography ========================================================================
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
 	font-weight: normal;
 }
 
@@ -81,14 +82,12 @@ a {
 	}
 }
 
-
 // Structural Styles =================================================================
 .container {
 	max-width: 70em;
 	margin: 0 auto;
 	padding: 1em;
 }
-
 
 // Header ============================================================================
 header {
@@ -104,7 +103,8 @@ header {
 	}
 }
 
-.logo, .directions-toggle {
+.logo,
+.directions-toggle {
 	@extend %no-select;
 	font-size: 1.5em;
 	cursor: pointer;
@@ -119,7 +119,8 @@ header {
 	margin-right: 1rem;
 	color: $gold;
 
-	&, &:hover {
+	&,
+	&:hover {
 		border: 0;
 	}
 
@@ -127,21 +128,20 @@ header {
 		font-size: 2em;
 	}
 
-
 	@media (min-width: $tablet) {
 		font-size: 3em;
 		line-height: 1;
 
 		.showing-directions & {
 			transform-origin: top left;
-			transform: scale(.75);
+			transform: scale(0.75);
 		}
 	}
 }
 
-
 // Directions ==========================================================================
-.directions-toggle, .directions-box {
+.directions-toggle,
+.directions-box {
 	background: $blue;
 	color: $white;
 	border-radius: $radius;
@@ -152,9 +152,14 @@ header {
 	display: inline-block;
 	position: relative;
 	cursor: pointer;
-	padding: 1rem .75em;
+	padding: 1rem 0.75em;
 	margin-bottom: 1rem;
-	box-shadow: inset .3rem -.3rem $shadow;
+	box-shadow: inset 0.3rem -0.3rem $shadow;
+
+	&.off {
+		pointer-events: none;
+		opacity: 0.3;
+	}
 
 	header & {
 		margin-bottom: 0;
@@ -171,8 +176,8 @@ header {
 		&:after {
 			@extend %psuedo;
 			position: absolute;
-			width: $radius*2;
-			height: $radius*2;
+			width: $radius * 2;
+			height: $radius * 2;
 			background: transparent;
 			bottom: 0;
 			right: 100%;
@@ -196,7 +201,7 @@ header {
 		border-radius: $radius $radius 0 0;
 		text-align: center;
 		vertical-align: middle;
-		background: rgba($blue, .9);
+		background: rgba($blue, 0.9);
 		background: linear-gradient(90deg, rgba($blue, 0), $blue 66%);
 
 		path {
@@ -220,16 +225,17 @@ header {
 .directions-box {
 	display: none;
 	position: relative;
-	box-shadow: inset .3rem -.3rem $shadow;
+	box-shadow: inset 0.3rem -0.3rem $shadow;
 
-	h2, h3 {
+	h2,
+	h3 {
 		margin: 0;
 	}
 
 	.showing-directions & {
 		display: block;
 		border-radius: $radius 0 $radius $radius;
-		padding-bottom: .3rem;
+		padding-bottom: 0.3rem;
 
 		@media (min-width: $tablet) {
 			display: flex;
@@ -253,50 +259,65 @@ header {
 .example-tweet {
 	display: block;
 	position: relative;
-	padding: .5rem 1rem .5rem 1.75em;
+	padding: 0.5rem 1rem 0.5rem 1.75em;
 	vertical-align: middle;
 	background: $white;
 	font-size: 1.5em;
 	color: $black;
 	border: 0;
-	margin-top: .25em;
+	margin-top: 0.25em;
 	cursor: text;
 	border-radius: $radius;
 }
 
-.handle-highlight, .color-highlight, .more-highlight, .personality-highlight {
-	border-radius: .25em;
+.handle-highlight,
+.color-highlight,
+.more-highlight,
+.personality-highlight {
+	border-radius: 0.25em;
 	font-weight: bold;
-	box-shadow: -.1em 0 rgba($gold, 0), .1em 0 rgba($gold, 0);
+	box-shadow: -0.1em 0 rgba($gold, 0), 0.1em 0 rgba($gold, 0);
 }
 
 .showing-directions {
-	$highlight-duration : 12s;
+	$highlight-duration: 12s;
 
-	.handle-highlight, .color-highlight, .more-highlight, .personality-highlight {
-		animation: highlight-light-on-dark $highlight-duration ease-in-out infinite;
+	.handle-highlight,
+	.color-highlight,
+	.more-highlight,
+	.personality-highlight {
+		animation: highlight-light-on-dark $highlight-duration ease-in-out
+			infinite;
 	}
 
 	.instructions {
-		.handle-highlight, .color-highlight, .more-highlight, .personality-highlight {
+		.handle-highlight,
+		.color-highlight,
+		.more-highlight,
+		.personality-highlight {
 			animation-name: highlight-dark-on-light;
 			color: $gold;
 		}
 	}
 
-	.color-highlight { animation-delay: $highlight-duration * .25; }
-	.personality-highlight { animation-delay: $highlight-duration * .5; }
-	.more-highlight { animation-delay: $highlight-duration * .75; }
+	.color-highlight {
+		animation-delay: $highlight-duration * 0.25;
+	}
+	.personality-highlight {
+		animation-delay: $highlight-duration * 0.5;
+	}
+	.more-highlight {
+		animation-delay: $highlight-duration * 0.75;
+	}
 }
-
 
 .twitter-logo {
 	width: 1.5em;
 	height: 1.5em;
 	vertical-align: middle;
 	position: absolute;
-	top: .125em;
-	left: .125em;
+	top: 0.125em;
+	left: 0.125em;
 
 	path {
 		fill: $blue_twitter;
@@ -307,14 +328,13 @@ header {
 	display: block;
 }
 
-
 // Creature structure ================================================================
 .creatures {
 	min-height: 25vh;
 	text-align: center;
 
 	.showing-directions & {
-		opacity: .25;
+		opacity: 0.25;
 
 		a {
 			pointer-events: none;
@@ -324,7 +344,7 @@ header {
 
 .item {
 	@extend %no-select;
-	animation: load .5s ease-out both;
+	animation: load 0.5s ease-out both;
 	display: inline-block;
 	width: 50%;
 	vertical-align: middle;
@@ -334,20 +354,20 @@ header {
 	// Animation delay
 	@for $i from 1 through 16 {
 		&:nth-child(#{$i}) {
-			animation-delay: $i*.15s;
+			animation-delay: $i * 0.15s;
 		}
 	}
 
 	// Media queries for sizing creatures
 	@for $i from 3 through 8 {
 		@media (min-width: 14em * $i) {
-			width: 100%/$i;
+			width: 100% / $i;
 		}
 	}
 
 	// Limit number of creatures for performance
 	@media (max-width: 14em * 3) {
-		&:nth-last-child(-n+4) {
+		&:nth-last-child(-n + 4) {
 			display: none;
 		}
 	}
@@ -357,12 +377,12 @@ header {
 		}
 	}
 	@media (min-width: 14em * 4) and (max-width: 14em * 5) {
-		&:nth-last-child(-n+2) {
+		&:nth-last-child(-n + 2) {
 			display: none;
 		}
 	}
 	@media (min-width: 14em * 5) and (max-width: 14em * 5) {
-		&:nth-last-child(-n+4) {
+		&:nth-last-child(-n + 4) {
 			display: none;
 		}
 	}
@@ -397,8 +417,10 @@ header {
 	}
 }
 
-
 // Creature ==========================================================================
+$colors_list: #1e8fff, #d8a635, #5aa959, #3cb9b9, #5a31bb, #785cbb, #f44336,
+	#d8a635, #5aa959, #3cb9b9;
+
 .creature {
 	animation: wobble 3s ease-in-out infinite;
 	animation-delay: inherit;
@@ -408,27 +430,24 @@ header {
 	margin: 0 auto;
 	border-radius: 50%;
 	transform-origin: center bottom;
-	box-shadow: inset .3rem -.5rem $shadow;
+	box-shadow: inset 0.3rem -0.5rem $shadow;
 	transition: box-shadow $transition;
 
-	$colors_list: #f44336, #d8a635, #5aa959, #3cb9b9, #5a31bb, #785cbb, #f44336, #d8a635, #5aa959, #3cb9b9;
-
 	@for $i from 1 through length($colors_list) {
-		.creature-box:nth-last-child(#{$i}) & {
+		.creature-box:nth-child(#{$i}) & {
 			background-color: nth($colors_list, $i);
 		}
 	}
 
 	.creature-box:hover & {
-		box-shadow: inset .3rem -.75rem $shadow;
-		transition-duration: $transition*.25;
+		box-shadow: inset 0.3rem -0.75rem $shadow;
+		transition-duration: $transition * 0.25;
 	}
 
 	.showing-directions & {
 		filter: grayscale(1);
 	}
 }
-
 
 // Face ------------------------------------------------------------------------------
 .face {
@@ -442,11 +461,10 @@ header {
 	transition: transform $transition;
 
 	.creature-box:hover & {
-		transform: translateY(-5%) scale(.95);
-		transition: transform $transition*.25;
+		transform: translateY(-5%) scale(0.95);
+		transition: transform $transition * 0.25;
 	}
 }
-
 
 // Eyes ------------------------------------------------------------------------------
 .eyes {
@@ -472,7 +490,6 @@ header {
 	}
 }
 
-
 // Moustache -------------------------------------------------------------------------
 .moustache {
 	position: absolute;
@@ -481,7 +498,6 @@ header {
 	width: 64%;
 	height: 14%;
 }
-
 
 // Mouth -----------------------------------------------------------------------------
 .mouth {
@@ -494,10 +510,10 @@ header {
 	border-radius: 20% 20% 50% 50%;
 	transform-origin: center top;
 	overflow: hidden;
-	transition: transform $transition*.25;
+	transition: transform $transition * 0.25;
 
 	.creature-box:hover & {
-		transform: scale3d(.95,.75,1);
+		transform: scale3d(0.95, 0.75, 1);
 	}
 }
 
@@ -516,7 +532,6 @@ header {
 		right: 32%;
 	}
 }
-
 
 // Modifiers =========================================================================
 .mod-angry {
@@ -549,7 +564,8 @@ header {
 }
 
 .mod-dark {
-	.mouth, .eye {
+	.mouth,
+	.eye {
 		background: #333;
 	}
 }
@@ -601,10 +617,13 @@ header {
 }
 
 .mod-jack-o-lantern {
-	.creature, .tooth {
+	.creature,
+	.tooth {
 		background: shade(darkorange, 50%) !important;
 	}
-	.mouth, .eye, .moustache path {
+	.mouth,
+	.eye,
+	.moustache path {
 		animation: jackolantern 4s ease-in-out infinite;
 		background: shade(gold, 25%);
 		fill: shade(gold, 25%);
@@ -655,7 +674,7 @@ header {
 		transform: rotate(45deg);
 	}
 	.eyes {
-		transform: scaleY(.5);
+		transform: scaleY(0.5);
 	}
 	.mouth {
 		animation: ghost 5s ease-in-out infinite;
@@ -676,7 +695,8 @@ header {
 }
 
 .mod-square {
-	.mouth, .eye {
+	.mouth,
+	.eye {
 		border-radius: 5px;
 	}
 	.creature {
@@ -709,7 +729,7 @@ header {
 
 .mod-nervous {
 	.mouth {
-		animation: nervous $transition*6 ease-in-out infinite;
+		animation: nervous $transition * 6 ease-in-out infinite;
 	}
 }
 
@@ -719,8 +739,8 @@ header {
 	}
 
 	&:hover .face {
-		transform: rotate(180deg) translateY(-5%) scale(.95);
-		transition: transform $transition*.25;
+		transform: rotate(180deg) translateY(-5%) scale(0.95);
+		transition: transform $transition * 0.25;
 	}
 }
 
@@ -729,7 +749,6 @@ header {
 		animation: none;
 	}
 }
-
 
 // Advertisment ======================================================================
 .ad-box {
@@ -758,12 +777,12 @@ header {
 	display: block;
 	font-size: 1.3em;
 	color: $white;
-	margin: .5em 0;
-	transition: color $transition*.5;
+	margin: 0.5em 0;
+	transition: color $transition * 0.5;
 
 	.ad-box:hover & {
 		color: $gold;
-		transition: color $transition*.25;
+		transition: color $transition * 0.25;
 	}
 }
 
@@ -772,55 +791,50 @@ header {
 	color: mix($white, $purple_dark);
 }
 
-
 // Footer ============================================================================
-	footer {
-		padding: 0 1em;
-	}
-
+footer {
+	padding: 0 1em;
+}
 
 // Share =============================================================================
 .share {
 	display: inline-block;
 	font-size: 1em;
-	margin-left: .5em;
+	margin-left: 0.5em;
 }
 
+.share-button {
+	@extend %no-select;
+	@extend %no-drag;
+	display: inline-block;
+	border-radius: $radius;
+	text-decoration: none;
+	box-shadow: $shadow;
+	color: $white;
+	padding: 1rem 0.7em;
+	background: $blue;
+	border: 0;
+	box-shadow: inset 0.15em -0.15em $shadow;
+	transition: background $transition, color $transition;
+}
 
 .share-button {
-		@extend %no-select;
-		@extend %no-drag;
-		display: inline-block;
-		border-radius: $radius;
-		text-decoration: none;
-		box-shadow: $shadow;
-		color: $white;
-		padding: 1rem .7em;
-		background: $blue;
+	position: relative;
+	cursor: pointer;
+	margin-right: 0.25em;
+	padding-left: 2em;
+
+	.twitter-logo {
+		top: 0.525em;
+		left: 0.5em;
+
+		path {
+			fill: $blue_twitter;
+		}
+	}
+
+	&:hover {
+		color: white;
 		border: 0;
-		box-shadow: inset .15em -.15em $shadow;
-		transition:
-			background $transition,
-			color $transition;
 	}
-
-	.share-button {
-		position: relative;
-		cursor: pointer;
-		margin-right: .25em;
-		padding-left: 2em;
-
-		.twitter-logo {
-			top: .525em;
-			left: .5em;
-
-			path {
-				fill: $blue_twitter;
-			}
-		}
-
-		&:hover {
-			color: white;
-			border: 0;
-		}
-	}
+}

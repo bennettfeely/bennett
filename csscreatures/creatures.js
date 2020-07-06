@@ -55,7 +55,7 @@ function randomAnimationTiming(target_seconds) {
 function getColor(string) {
 	var hex = string.match(/(#?([A-Fa-f0-9]){3}(([A-Fa-f0-9]){3})?)/gm);
 	var colors = [
-		"aliceblue|antiquewhite|aqua|aquamarine|azure|beige|bisque|black|blanchedalmond|blue|blueviolet|brown|burlywood|cadetblue|chartreuse|chocolate|coral|cornflowerblue|cornsilk|crimson|cyan|darkblue|darkcyan|darkgoldenrod|darkgray|darkgreen|darkgrey|darkkhaki|darkmagenta|darkolivegreen|darkorange|darkorchid|darkred|darksalmon|darkseagreen|darkslateblue|darkslategray|darkslategrey|darkturquoise|darkviolet|deeppink|deepskyblue|dimgray|dimgrey|dodgerblue|firebrick|floralwhite|forestgreen|fuchsia|gainsboro|ghostwhite|gold|goldenrod|gray|green|greenyellow|grey|honeydew|hotpink|indianred|indigo|ivory|khaki|lavender|lavenderblush|lawngreen|lemonchiffon|lightblue|lightcoral|lightcyan|lightgoldenrodyellow|lightgray|lightgreen|lightgrey|lightpink|lightsalmon|lightseagreen|lightskyblue|lightslategray|lightslategrey|lightsteelblue|lightyellow|lime|limegreen|linen|magenta|maroon|mediumaquamarine|mediumblue|mediumorchid|mediumpurple|mediumseagreen|mediumslateblue|mediumspringgreen|mediumturquoise|mediumvioletred|midnightblue|mintcream|mistyrose|moccasin|navajowhite|navy|oldlace|olive|olivedrab|orange|orangered|orchid|palegoldenrod|palegreen|paleturquoise|palevioletred|papayawhip|peachpuff|peru|pink|plum|powderblue|purple|rebeccapurple|red|rosybrown|royalblue|saddlebrown|salmon|sandybrown|seagreen|seashell|sienna|silver|skyblue|slateblue|slategray|slategrey|snow|springgreen|steelblue|tan|teal|thistle|tomato|transparent|turquoise|violet|wheat|white|whitesmoke|yellow|yellowgreen"
+		"aliceblue|antiquewhite|aqua|aquamarine|azure|beige|bisque|black|blanchedalmond|blue|blueviolet|brown|burlywood|cadetblue|chartreuse|chocolate|coral|cornflowerblue|cornsilk|crimson|cyan|darkblue|darkcyan|darkgoldenrod|darkgray|darkgreen|darkgrey|darkkhaki|darkmagenta|darkolivegreen|darkorange|darkorchid|darkred|darksalmon|darkseagreen|darkslateblue|darkslategray|darkslategrey|darkturquoise|darkviolet|deeppink|deepskyblue|dimgray|dimgrey|dodgerblue|firebrick|floralwhite|forestgreen|fuchsia|gainsboro|ghostwhite|gold|goldenrod|gray|green|greenyellow|grey|honeydew|hotpink|indianred|indigo|ivory|khaki|lavender|lavenderblush|lawngreen|lemonchiffon|lightblue|lightcoral|lightcyan|lightgoldenrodyellow|lightgray|lightgreen|lightgrey|lightpink|lightsalmon|lightseagreen|lightskyblue|lightslategray|lightslategrey|lightsteelblue|lightyellow|lime|limegreen|linen|magenta|maroon|mediumaquamarine|mediumblue|mediumorchid|mediumpurple|mediumseagreen|mediumslateblue|mediumspringgreen|mediumturquoise|mediumvioletred|midnightblue|mintcream|mistyrose|moccasin|navajowhite|navy|oldlace|olive|olivedrab|orange|orangered|orchid|palegoldenrod|palegreen|paleturquoise|palevioletred|papayawhip|peachpuff|peru|pink|plum|powderblue|purple|rebeccapurple|red|rosybrown|royalblue|saddlebrown|salmon|sandybrown|seagreen|seashell|sienna|silver|skyblue|slateblue|slategray|slategrey|snow|springgreen|steelblue|tan|teal|thistle|tomato|transparent|turquoise|violet|wheat|white|whitesmoke|yellow|yellowgreen",
 	];
 
 	var color_name = string.match(RegExp("\\b" + colors + "\\b"));
@@ -209,85 +209,85 @@ function buildCreature(tweet, i) {
 	var mod_array = [
 		{
 			mod: "angry",
-			syn: "furious|mad|shake|shaking"
+			syn: "furious|mad|shake|shaking",
 		},
 		{
 			mod: "camouflage",
-			syn: "camo|ghillie|hidden|military|soldier|troop"
+			syn: "camo|ghillie|hidden|military|soldier|troop",
 		},
 		{
 			mod: "cyclops",
-			syn: "one-eye|one-eyed|monster|wazowski"
+			syn: "one-eye|one-eyed|monster|wazowski",
 		},
 		{
 			mod: "dark",
-			syn: "black|#000|#000000"
+			syn: "black|#000|#000000",
 		},
 		{
 			mod: "ghost",
-			syn: "casper|scary|spooky"
+			syn: "casper|scary|spooky",
 		},
 		{
 			mod: "hungry",
-			syn: "eating|fat|plump|talk|talking"
+			syn: "eating|fat|plump|talk|talking",
 		},
 		{
 			mod: "hyper",
-			syn: "animated|excited|happy|pumped|super|smiley"
+			syn: "animated|excited|happy|pumped|super|smiley",
 		},
 		{
 			mod: "jack-o-lantern",
-			syn: "halloween|pumpkin"
+			syn: "halloween|pumpkin",
 		},
 		{
 			mod: "moustache",
-			syn: "mustache|hairy"
+			syn: "mustache|hairy",
 		},
 		{
 			mod: "nervous",
-			syn: "anxious|scared"
+			syn: "anxious|scared",
 		},
 		{
 			mod: "sad",
-			syn: "crying|depressed|upset"
+			syn: "crying|depressed|upset",
 		},
 		{
 			mod: "sleepy",
-			syn: "asleep|sleep|sleeping|sleepy|tired|rest|resting|quiet"
+			syn: "asleep|sleep|sleeping|sleepy|tired|rest|resting|quiet",
 		},
 		{
 			mod: "square",
-			syn: "box|boxy|minecraft|robot|robotic"
+			syn: "box|boxy|minecraft|robot|robotic",
 		},
 		{
 			mod: "tall",
-			syn: "big|giant|gigantic|huge|skinny|thin"
+			syn: "big|giant|gigantic|huge|skinny|thin",
 		},
 		{
 			mod: "tiny",
-			syn: "baby|dwarf|little|mini|miniature|petite|short|small"
+			syn: "baby|dwarf|little|mini|miniature|petite|short|small",
 		},
 		{
 			mod: "teeth",
-			syn: "smile|smiling|smiley"
+			syn: "smile|smiling|smiley",
 		},
 		{
 			mod: "transparent",
 			syn:
-				"checker|checkerboard|checkered|invisible|see-through|translucent"
+				"checker|checkerboard|checkered|invisible|see-through|translucent",
 		},
 		{
 			mod: "tooth",
-			syn: "hillbilly"
+			syn: "hillbilly",
 		},
 		{
 			mod: "upside-down",
-			syn: "backwards|upsidedown|rollover"
+			syn: "backwards|upsidedown|rollover",
 		},
 		{
 			mod: "wink",
-			syn: "winking"
-		}
+			syn: "winking",
+		},
 	];
 
 	// Search for keywords in the mod_array and add them as classes to .item
@@ -386,7 +386,7 @@ function handleDirectionsToggle() {
 	var creatures = document.querySelector(".creatures");
 
 	for (var i = 0; i < directions_toggle.length; i++) {
-		directions_toggle[i].addEventListener("click", function() {
+		directions_toggle[i].addEventListener("click", function () {
 			// Toggle on and off the directions list by adding a class to <html>
 			document
 				.querySelector("html")
@@ -397,7 +397,7 @@ function handleDirectionsToggle() {
 		});
 	}
 
-	creatures.addEventListener("click", function() {
+	creatures.addEventListener("click", function () {
 		if (
 			document
 				.querySelector("html")
@@ -421,14 +421,14 @@ function autoPause() {
 	document.querySelector("body").appendChild(auto_pause);
 
 	// Listen for when the user leaves the page
-	document.addEventListener("visibilitychange", function() {
+	document.addEventListener("visibilitychange", function () {
 		if (document.hidden) {
 			// Pause all the animaions
 			auto_pause.innerHTML =
 				"* { animation-play-state: paused !important; }";
 		} else {
 			// Restart all the animations
-			setTimeout(function() {
+			setTimeout(function () {
 				auto_pause.innerHTML = "";
 			}, 300);
 		}
