@@ -186,10 +186,7 @@ code {
 .pattern-css {
 	display: none;
 	flex: 1;
-	tab-size: 2;
-	overflow: hidden;
-	min-width: 100%;
-	overflow-x: scroll;
+	overflow-x: auto;
 	padding: 0.1776in;
 }
 

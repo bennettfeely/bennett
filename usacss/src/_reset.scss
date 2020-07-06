@@ -48,6 +48,11 @@ a {
   text-decoration-skip: objects;
 }
 
+pre,
+code {
+  tab-size: 2;
+}
+
 img {
   border-style: none;
 }
