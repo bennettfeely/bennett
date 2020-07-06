@@ -22,9 +22,14 @@ $blue-link: #0366d6;
 $radius-small: 4px;
 $radius-large: 8px;
 
+$serif: Libre Baskerville, Georgia;
+$code: Monaco, monospace;
+
+$transition: 0.1776s;
+
 // Base ================================================================
 body {
-	font: 100%/1.1776 Libre Baskerville, Georgia;
+	font: 100%/1.1776 $serif;
 	background: $white;
 	color: $black;
 	text-align: center;
@@ -62,6 +67,7 @@ p {
 
 a {
 	color: $blue-link;
+	transition: color $transition;
 
 	&:hover {
 		color: shade($blue-link, 50%);
@@ -69,7 +75,7 @@ a {
 }
 
 code {
-	font: 100% Monaco, monospace;
+	font: 100% $code;
 }
 
 // Header ==============================================================
@@ -81,6 +87,7 @@ code {
 	padding: 0.1776in;
 	text-decoration: none;
 	border-radius: $radius-large;
+	transition: color $transition, background-color $transition;
 
 	&.primary {
 		background: $red;
@@ -169,6 +176,7 @@ code {
 	color: $white;
 	border-radius: $radius-small;
 	margin: $radius-large 2ch;
+	transition: color $transition;
 
 	&:hover {
 		color: $gray;
@@ -252,7 +260,7 @@ footer {
 	margin: 0.1776in auto;
 	overflow: hidden;
 	border-radius: $radius-large;
-	font: 80%/1.4 Monaco, monospace;
+	font: 80%/1.4 $code;
 	background: linear-gradient(
 		to bottom right,
 		#dadada,
