@@ -846,7 +846,7 @@ function init() {
 	).addClass("on");
 
 	// Setup copy to clipboard functionality
-	clipBoardize();
+	// clipBoardize();
 
 	// Setup export to codepen button functionality
 	// exportCodePen();
