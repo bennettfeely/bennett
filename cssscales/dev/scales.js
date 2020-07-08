@@ -849,7 +849,7 @@ function init() {
 	clipBoardize();
 
 	// Setup export to codepen button functionality
-	exportCodePen();
+	// exportCodePen();
 }
 
 // ===================================================================================
@@ -1011,7 +1011,7 @@ function exportCodePen() {
 				"'>" +
 				"</form>"
 		);
-		// $(".card." + gradient_name).append($form);
+		$(".card." + gradient_name).append($form);
 
 		// Submit the form
 		$form.submit();
