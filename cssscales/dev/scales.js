@@ -1028,7 +1028,7 @@ $(function () {
 	curr_lang = "css";
 
 	// Add fastclick for mobile
-	FastClick.attach(document.body);
+	// FastClick.attach(document.body);
 
 	// Setup the page
 	init();
