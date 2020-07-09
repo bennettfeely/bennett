@@ -283,18 +283,15 @@ button,
 
 .search-input {
 	font: inherit;
-	line-height: 2;
-	padding: 0.5rem 3rem 0.5rem 1rem;
-	border-radius: $radius;
+	width: calc(100% - 4.5rem);
+	background: transparent;
+	line-height: 2rem;
+	padding: 0.5rem 1rem;
 	border: 0;
-	box-shadow: $shadow;
-	-webkit-appearance: none;
 	appearance: none;
-	width: 100%;
-	background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjY2IiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PGNpcmNsZSBjeD0iMTEiIGN5PSIxMSIgcj0iOCIvPjxwYXRoIGQ9Ik0yMSAyMWwtNC00Ii8+PC9zdmc+");
-	background-repeat: no-repeat;
-	background-position: calc(100% - 1rem) 50%;
-	background-size: 1.5rem 1.5rem;
+	background: white;
+	border-radius: $radius;
+	box-shadow: $shadow;
 
 	&:focus,
 	&[aria-expanded="true"] {
@@ -304,14 +301,42 @@ button,
 
 	&[aria-expanded="true"] {
 		border-radius: $radius $radius 0 0;
+		border-radius: none;
 	}
+}
+
+.search-button {
+	position: relative;
+	display: inline-block;
+	vertical-align: top;
+	width: 4rem;
+	height: 3rem;
+	margin: 0 0 0 0.5rem;
+	border-radius: $radius;
+	background-color: nth($colors_full, 1);
+	color: $white;
+	cursor: pointer;
+	transition: background-color $transition;
+	padding: 0;
+
+	&:hover {
+		background-color: nth($colors_full, 2);
+		transition-duration: 0s;
+	}
+}
+
+.search-icon {
+	width: 3rem;
+	height: 3rem;
 }
 
 .autocomplete-result-list {
 	max-height: 13.5em;
 	overflow-y: auto;
-	background: $white;
 	border-radius: 0 0 $radius $radius;
+	max-width: calc(100% - 4.5rem);
+	background: $white;
+	box-shadow: $shadow;
 }
 
 .autocomplete-result {
