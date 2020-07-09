@@ -678,7 +678,7 @@ canvas {
 }
 
 .marker {
-	$marker-size: 5rem;
+	$marker-size: 6rem;
 	svg {
 		transform: scale3d(0, 0, 0);
 		width: $marker-size;
@@ -713,7 +713,7 @@ canvas {
 			@keyframes ellipse {
 				50% {
 					transform: scale3d(0.8, 0.8, 0.8);
-					opacity: 0.4;
+					opacity: 0.5;
 				}
 			}
 		}
