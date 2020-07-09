@@ -19,13 +19,31 @@
 
 // Base Styles =======================================================================
 body {
-	// Inline --------------------------------------------------- //
-	// background-image: $black;
-	// background-image: linear-gradient(to right, $colors_full);
-	// color: $white;
-	// ---------------------------------------------------------- //
 	font: 500 100%/1.4 Nunito, sans-serif;
-	padding: 0.5rem 0 0;
+	background: #0e1517;
+	color: #fff;
+}
+
+hr {
+	height: 1px;
+	background: linear-gradient(
+		to right,
+		#4169e1,
+		#3280f3,
+		#3d93ec,
+		#5c9bb3,
+		#91a073,
+		#daa520,
+		#f0a511,
+		#ff991e,
+		#ff7240,
+		#f14a43,
+		#dc143c
+	);
+
+	&.tall {
+		height: 0.5rem;
+	}
 }
 
 h1 {
@@ -303,19 +321,17 @@ button,
 }
 
 .search-button {
+	display: inline-block;
 	position: absolute;
 	top: 0;
 	right: 0;
 	width: 3rem;
 	height: 3rem;
 	cursor: pointer;
-	transition: color $transition;
-	padding: 0;
-	border-left: thin solid $off_white;
 	color: $gray;
+	pointer-events: none;
 
 	.search-input:focus + & {
-		transition-duration: 0s;
 		color: $black;
 	}
 
