@@ -121,6 +121,7 @@ function setLocation(location, place_name) {
 
 	// Fill the forecast heading, adding grammatically correct `the` when commonly necessary
 	if (
+		place_name.endsWith("Ocean") ||
 		place_name == "Middle of Nowhere" ||
 		place_name == "North Pole" ||
 		place_name == "South Pole"
