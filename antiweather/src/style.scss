@@ -255,8 +255,6 @@ button,
 	margin: 0.5rem 0 0;
 	border-radius: $radius;
 
-	display: none !important;
-
 	p {
 		margin: 0 0 0.5rem;
 	}
@@ -267,7 +265,7 @@ button,
 
 	@media (min-width: $tablet) {
 		display: block;
-		// width: 150%;
+		width: 150%;
 		z-index: 20;
 		margin: 0;
 	}
@@ -281,99 +279,67 @@ button,
 
 .search-input {
 	font: inherit;
+	line-height: 2;
+	padding: 0.5rem 3rem 0.5rem 1rem;
 	border-radius: $radius;
 	border: 0;
 	box-shadow: $shadow;
-	transition: background-color $transition;
 	-webkit-appearance: none;
 	appearance: none;
-	line-height: 1.5rem;
 	width: 100%;
-	padding: 0.5rem 3rem 0.5rem 1rem;
+	background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjY2IiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PGNpcmNsZSBjeD0iMTEiIGN5PSIxMSIgcj0iOCIvPjxwYXRoIGQ9Ik0yMSAyMWwtNC00Ii8+PC9zdmc+");
+	background-repeat: no-repeat;
+	background-position: calc(100% - 1rem) 50%;
+	background-size: 1.5rem 1.5rem;
 
-	&:focus {
-		box-shadow: inset 0 0 0 0.25rem $blue_light, $shadow;
+	&:focus,
+	&[aria-expanded="true"] {
+		box-shadow: inset 0 0 0 0.25rem $blue_light;
 		outline: 0;
 	}
 
-	&[disabled] {
-		background: white;
-		opacity: 0.5;
+	&[aria-expanded="true"] {
+		border-radius: $radius $radius 0 0;
 	}
 }
 
-.loading-spinner-wrapper {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	position: absolute;
-	top: 0;
-	right: 0.5rem;
-	bottom: 0;
-	z-index: 10;
-	opacity: 0;
-	transform: scale3d(0.9, 0.9, 0.9);
-	pointer-events: none;
-	transition: transform $transition, opacity $transition;
-
-	.loading-spinner {
-		border-color: $black $black transparent transparent;
-	}
-
-	.is-loading & {
-		opacity: 1;
-		transform: scale3d(1, 1, 1);
-	}
-}
-
-.pac-container {
-	font: inherit;
-	font-size: smaller;
-	text-align: left;
-	width: 100%;
-	border-radius: $radius;
-	box-shadow: 0 0.25rem 1rem rgba($black, 0.5);
-	margin-top: 0.5rem;
-	color: $black;
-	border: 0;
-	transform-origin: top left;
-	background: shade($white, 10%);
-	animation: dropdown $transition/2;
-
-	@keyframes dropdown {
-		0% {
-			transform: scale3d(0.9, 0.9, 0.9);
-			opacity: 0;
-		}
-	}
-}
-
-.pac-item {
-	padding: 0 1rem;
-	margin: 0;
-	line-height: 3em;
+.autocomplete-result-list {
+	max-height: 13.5em;
+	overflow-y: auto;
 	background: $white;
-	cursor: pointer;
+	border-radius: 0 0 $radius $radius;
+}
 
-	&:first-child {
-		border: 0;
+.autocomplete-result {
+	list-style: none;
+	font-size: smaller;
+	cursor: pointer;
+	line-height: 1.25;
+	padding: 0.75rem 1rem;
+	text-align: left;
+	border-top: 1px solid rgba($black, 0.15);
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	color: rgba($black, 0.5);
+
+	strong {
+		color: $black;
+		font-weight: bold;
 	}
-	&:last-child {
-		border-bottom: 1px solid $off_white;
+
+	.dash {
+		font-weight: normal;
 	}
 
 	&:hover,
-	&.pac-item-selected {
-		background: mix($blue_light, $white);
+	&[aria-selected="true"] {
+		background-color: $blue_light;
+
+		strong {
+			text-decoration: underline;
+		}
 	}
-}
-
-.pac-matched {
-	background: $blue_light;
-}
-
-.pac-icon {
-	display: none;
 }
 
 // Switch units ======================================================
@@ -456,6 +422,7 @@ input:checked + .unit-toggle {
 		.dash {
 			display: inline-block;
 			padding: 0 0.25rem;
+			font-weight: normal;
 		}
 	}
 	@media (min-width: $tablet) {
@@ -464,12 +431,9 @@ input:checked + .unit-toggle {
 		margin: 0.5rem 0;
 	}
 
-	$colors_buttons: #4169e1, #3d93ec, #5c9bb3, #91a073, #daa520, #f0a511,
-		#ff991e, #ff7240, #f14a43, #dc143c;
-
-	@for $i from 1 through length($colors_buttons) {
+	@for $i from 1 through length($colors_short) {
 		&:nth-child(#{$i}) {
-			@include button(nth($colors_buttons, $i));
+			@include button(nth($colors_short, $i));
 		}
 	}
 
@@ -493,10 +457,6 @@ input:checked + .unit-toggle {
 	opacity: 0.1;
 	transform: scale3d(0.9, 0.9, 0.9);
 	transition: opacity $transition, transform $transition;
-
-	.nearest {
-		display: none;
-	}
 
 	.is-loading & {
 		display: block;

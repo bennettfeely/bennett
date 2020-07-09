@@ -63,70 +63,36 @@ html lang="en"
 					.search-wrapper role="search"
 						.form
 							label.location-finder
-								p 
-									del Enter your location to find out:
-								.search-input-wrapper
-									input#search.search-input type="text" disabled="true" placeholder="Your location..." spellcheck="false" autocomplete="off"
-									.loading-spinner-wrapper
-										.loading-spinner
-							.sorry-folks
-								h2 Update July 8, 2020, 4:00 PM EST
-								p Entering your own location has been temporarily disabled.
-								p You can still check out the current weather from the opposite locations below.
-								/ details
-								/ 	summary 
-								/ 		h3 Read a little
-								/ 	p Antiweather has gone viral for the first time about two years after launching. Which is great! Unfortunately the cost of running Google's Geocoding APIs far exceeds the revenue I'm getting from ads.
-								/ 	p Why it costs <a href="https://developers.google.com/maps/documentation/geocoding/start">50x more</a> to simply get the name of a location (Google) than it does to get detailed weather conditions and forecast for any point on Earth (Dark Sky), I don't know.
-								/ 	p All I know is I've flushed a couple hundred dollars down the drain after this misjudgement.
-								/ 	p I'm hoping to get this site fully functional again very soon. Thank you for your understanding! 
-								button onclick="document.querySelector('.sorry-folks').style.display='none'" &times;
-						p Try these opposite points on Earth:
+								p Enter a location to find out:
+								.search-input-wrapper#autocomplete.autocomplete
+									input#search.search-input.autocomplete-input type="text" placeholder="Your location..." spellcheck="false" autocomplete="off"
+									ul.autocomplete-result-list
+						p Or try these opposite points on Earth:
 						nav.pre-location-wrapper role="navigation"
 							button.pre-location type="button" onclick="getWeather('home', 90, 0, 'North Pole');getWeather('away', -90, 0, 'South Pole');" 
 								span North Pole
-								span.dash &ndash;
+								span.dash ↔
 								span South Pole
-							button.pre-location type="button" onclick="getWeather('home', 40.7127, -74.0060, 'New York, New York');getWeather('away', -40.7127, 105.9939, 'Indian Ocean');" 
-								span New York
-								span.dash &ndash;
-								span Indian Ocean
-							button.pre-location type="button" onclick="getWeather('home', 29.7589, -95.3676, 'Houston, Texas');getWeather('away', -29.7589, 84.6323, 'Indian Ocean');" 
-								span Houston
-								span.dash &ndash;
-								span Indian Ocean
-							button.pre-location type="button" onclick="getWeather('home', 34.0536, -118.2427, 'Los Angeles, California');getWeather('away', -34.0536, 61.7572, 'Atlantic Ocean');" 
-								span Los Angeles
-								span.dash &ndash;
-								span Atlantic Ocean
-							button.pre-location type="button" onclick="getWeather('home', 51.5073, -0.1276, 'London, United Kingdom');getWeather('away', -51.5073, 179.8723, 'Pacific Ocean');" 
-								span London
-								span.dash &ndash;
-								span Pacific Ocean
-							button.pre-location type="button" onclick="getWeather('home', 52.2982526, 104.1270748, 'Irkutsk, Russia');getWeather('away', -53.1627, -70.9081, 'Punta Arenas, Chile');" 
-								span Irkutsk
-								span.dash &ndash;
-								span Punta Arenas
-							button.pre-location type="button" onclick="getWeather('home', -36.8535, 174.7660, 'Auckland, New Zealand');getWeather('away', 37.3886, -5.9953, 'Seville, Spain');" 
+							button.pre-location type="button" onclick="getWeather('home', -36.85, 174.76, 'Auckland, New Zealand');getWeather('away', 37.38, -5.99, 'Seville, Spain');" 
 								span Auckland
-								span.dash &ndash;
-								span Seville
-							button.pre-location type="button" onclick="getWeather('home', -18.1416, 178.4420, 'Suva, Fiji');getWeather('away', 18.1416, -1.5580, 'Timbuktu, Mali');"
-								span Suva
-								span.dash &ndash;
-								span Timbuktu
-							button.pre-location type="button" onclick="getWeather('home', 31.2253, 121.4890, 'Shanghai, China');getWeather('away', -31.3889, -57.9609, 'Salto, Uruguay');" 
+								span.dash ↔
+								span Ronda
+							button.pre-location type="button" onclick="getWeather('home', 25.04, 121.57, 'Taipei, Taiwan');getWeather('away', -25.04, -58.43, 'Asuncion, Paraguay');" 
+								span Taipei
+								span.dash ↔
+								span Asuncion
+							button.pre-location type="button" onclick="getWeather('home', 47.92, 106.92, 'Ulaanbaatar, Mongolia');getWeather('away', -47.92, -73.08, 'Tortel, Chile');" 
+								span Ulaanbaatar
+								span.dash ↔
+								span Tortel
+							button.pre-location type="button" onclick="getWeather('home', 21.31, -157.86, 'Honolulu, Hawaii');getWeather('away', -21.31, 22.14, 'Ghanzi District, Botswana');"
+								span Honolulu
+								span.dash ↔
+								span Ghanzi
+							button.pre-location type="button" onclick="getWeather('home', 31.22, 121.49, 'Shanghai, China');getWeather('away', -31.39, -57.96, 'Salto, Uruguay');" 
 								span Shanghai
-								span.dash &ndash;
+								span.dash ↔
 								span Salto
-							button.pre-location type="button" onclick="getWeather('home', -22.9976, -43.4153, 'Rio de Janeiro, Brazil');getWeather('away', 35.707952,139.725192, 'Tokyo, Japan');" 
-								span Rio de Janeiro
-								span.dash &ndash;
-								span Tokyo
-							/ button.pre-location type="button" onclick="getWeather('home', 23.7593, 90.3788, 'Dhaka, Bangladesh');getWeather('away', -23.7593, -89.6211, 'Pacific Ocean');" 
-							/ 	span Dhaka
-							/ 	span.dash &ndash;
-							/ 	span Pacific Ocean
 						.units-wrapper
 							p Units:
 							input id="c_toggle" type="radio" name="units-toggle" class="c-input" value="si"
@@ -252,7 +218,7 @@ html lang="en"
 				path fill="currentColor" d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"
 			symbol#facebook-icon viewBox="0 0 60.734 60.733"
 				path fill="currentColor" d="M57.378,0.001H3.352C1.502,0.001,0,1.5,0,3.353v54.026c0,1.853,1.502,3.354,3.352,3.354h29.086V37.214h-7.914v-9.167h7.914 v-6.76c0-7.843,4.789-12.116,11.787-12.116c3.355,0,6.232,0.251,7.071,0.36v8.198l-4.854,0.002c-3.805,0-4.539,1.809-4.539,4.462 v5.851h9.078l-1.187,9.166h-7.892v23.52h15.475c1.852,0,3.355-1.503,3.355-3.351V3.351C60.731,1.5,59.23,0.001,57.378,0.001z"
-		script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwmxzDlhMqLhObyOGd8ai-hnxmQO8k1Bs&libraries=places"
+		script src="src/autocomplete.min.js"
 		script src="src/d3.v3.min.js"
 		script src="src/topojson.v1.min.js"
 		script src="src/moment.min.js"

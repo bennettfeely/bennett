@@ -9,17 +9,18 @@ var pump = require("pump");
 var rename = require("gulp-rename");
 var sass = require("gulp-sass");
 var slim = require("gulp-slim");
+var babel = require("gulp-babel");
 var uglify = require("gulp-uglify");
 
 // Browser Sync ======================================================
-gulp.task("sync", function() {
+gulp.task("sync", function () {
 	return browserSync({
 		server: "",
 	});
 });
 
 // Refresh ===========================================================
-gulp.task("refresh", function() {
+gulp.task("refresh", function () {
 	return gulp.src("*").pipe(
 		browserSync.reload({
 			stream: true,
@@ -28,7 +29,7 @@ gulp.task("refresh", function() {
 });
 
 // Compile Markdown ==================================================
-gulp.task("markdown", function() {
+gulp.task("markdown", function () {
 	return gulp
 		.src("src/*.md")
 		.pipe(markdown())
@@ -37,7 +38,7 @@ gulp.task("markdown", function() {
 });
 
 // Compile HTML ======================================================
-gulp.task("html", function() {
+gulp.task("html", function () {
 	return gulp
 		.src("src/*.slim")
 		.pipe(
@@ -62,18 +63,16 @@ gulp.task("html", function() {
 });
 
 // JS ================================================================
-gulp.task("js", function(cb) {
-	pump([gulp.src("src/antiweather.js"), uglify(), gulp.dest("")], cb)
-		.pipe(gulp.dest(""))
-		.pipe(
-			browserSync.reload({
-				stream: true,
-			})
-		);
-});
+// gulp.task("js", function () {
+// 	return gulp.pipe(
+// 		browserSync.reload({
+// 			stream: true,
+// 		})
+// 	);
+// });
 
 // Compile CSS =======================================================
-gulp.task("css", function() {
+gulp.task("css", function () {
 	return gulp
 		.src("src/*.scss")
 		.pipe(sass())
@@ -86,7 +85,7 @@ gulp.task("css", function() {
 		)
 		.pipe(cssmin())
 		.pipe(
-			rename(function(path) {
+			rename(function (path) {
 				path.basename += ".min";
 				path.extname = ".css";
 			})
@@ -100,10 +99,10 @@ gulp.task("css", function() {
 });
 
 // Watch Files For Changes ===========================================
-gulp.task("watch", ["sync"], function() {
+gulp.task("watch", ["sync"], function () {
 	gulp.watch("src/*.md", ["markdown", "html"]);
 	gulp.watch("src/*.slim", ["html"]);
-	gulp.watch("src/antiweather.js", ["js"]);
+	gulp.watch("src/antiweather.js", ["refresh"]);
 	gulp.watch("src/*.scss", ["css"]);
 });
 
