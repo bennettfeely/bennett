@@ -98,6 +98,13 @@ function getLocation() {
 	});
 }
 
+// function forceSearch() {
+// 	var keyboardEvent = new KeyboardEvent("keydown");
+// 	delete keyboardEvent.which;
+// 	keyboardEvent.which = 13;
+// 	document.querySelector(".search-input").dispatchEvent(keyboardEvent);
+// }
+
 // Get antipodes and start search
 function initSearch(lat, lng, home_place_name, away_place_name) {
 	// Convert coords to antipodal coords
