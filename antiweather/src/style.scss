@@ -292,7 +292,7 @@ button,
 	border-radius: $radius;
 	box-shadow: $shadow;
 
-	@media (hover: none) and (pointer: coarse) {
+	@media (pointer: coarse) {
 		width: calc(100% - 4.25rem);
 	}
 
@@ -309,7 +309,7 @@ button,
 .search-button {
 	display: none;
 
-	@media (hover: none) and (pointer: coarse) {
+	@media (pointer: coarse) {
 		position: relative;
 		display: inline-block;
 		vertical-align: top;
@@ -343,7 +343,7 @@ button,
 	background: $white;
 	box-shadow: $shadow;
 
-	@media (hover: none) and (pointer: coarse) {
+	@media (pointer: coarse) {
 		// max-width: calc(100% - 4.5rem);
 	}
 }
