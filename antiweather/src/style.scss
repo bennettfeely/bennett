@@ -293,18 +293,16 @@ button,
 	box-shadow: $shadow;
 
 	@media (hover: none) and (pointer: coarse) {
-		width: calc(100% - 4.5rem);
+		width: calc(100% - 4.25rem);
 	}
 
 	&:focus,
 	&[aria-expanded="true"] {
-		box-shadow: inset 0 0 0 0.25rem $blue_light;
+		box-shadow: $shadow, inset 0 0 0 0.25rem $blue_light;
 		outline: 0;
 	}
 
 	&[aria-expanded="true"] {
-		border-radius: $radius $radius 0 0;
-		border-radius: none;
 	}
 }
 
@@ -317,7 +315,7 @@ button,
 		vertical-align: top;
 		width: 4rem;
 		height: 3rem;
-		margin: 0 0 0 0.5rem;
+		margin: 0 0 0 0.25rem;
 		border-radius: $radius;
 		background-color: nth($colors_full, 1);
 		color: $white;
@@ -330,20 +328,24 @@ button,
 			transition-duration: 0s;
 		}
 	}
-}
 
-.search-icon {
-	width: 3rem;
-	height: 3rem;
+	.search-icon {
+		width: 3rem;
+		height: 3rem;
+	}
 }
 
 .autocomplete-result-list {
-	max-height: 13.5em;
+	max-height: 10.75rem;
+	margin: 0.25rem 0 0;
 	overflow-y: auto;
-	border-radius: 0 0 $radius $radius;
-	max-width: calc(100% - 4.5rem);
+	border-radius: $radius;
 	background: $white;
 	box-shadow: $shadow;
+
+	@media (hover: none) and (pointer: coarse) {
+		// max-width: calc(100% - 4.5rem);
+	}
 }
 
 .autocomplete-result {
@@ -776,6 +778,15 @@ canvas {
 	overflow: hidden;
 	transition: border-top-color $transition;
 	border-color: currentColor;
+	// max-height: calc(100vw - 4rem);
+
+	// .has-weather & {
+	// 	max-height: initial;
+	// }
+
+	// @media (min-width: $tablet) {
+	// 	max-height: initial;
+	// }
 }
 
 // Current Weather Data ==============================================
@@ -1042,16 +1053,17 @@ canvas {
 	background: rgba($black, 1);
 	color: $gray;
 	font-size: smaller;
-	padding: 1rem 1.5rem;
+	padding: 1rem 1.5rem 1.5rem;
 	text-align: center;
 	line-height: 1.75;
-	margin-top: 1px;
+	margin: 1px 0 0;
 
 	@media (min-width: $tablet) {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 		text-align: left;
+		padding: 1rem 1.5rem;
 	}
 
 	p {
@@ -1059,7 +1071,7 @@ canvas {
 		margin: 0 0 0.25rem;
 	}
 
-	a:not(.share-button) {
+	a {
 		color: $white;
 		text-decoration: none;
 		border-bottom: 1px solid $gray;
@@ -1093,82 +1105,74 @@ canvas {
 	vertical-align: top;
 }
 
-.share-icon {
-	$size: 1em;
-	width: 1em;
-	height: 1em;
-	margin-right: 0.5rem;
-	vertical-align: middle;
-}
+// Important message ===================================================
+// .sorry-folks {
+// 	position: relative;
+// 	font-size: smaller;
+// 	margin: 1.5em 0;
+// 	padding: 1em;
+// 	border-radius: $radius;
+// 	border: 1px solid rgba(white, 0.2);
 
-.sorry-folks {
-	position: relative;
-	font-size: smaller;
-	margin: 1.5em 0;
-	padding: 1em;
-	border-radius: $radius;
-	// background: rgba(white, 0.1);
-	border: 1px solid rgba(white, 0.2);
+// 	h2 {
+// 		font-size: 1em;
+// 		font-weight: bold;
+// 		margin: 0;
+// 		color: nth($colors_full, 9);
+// 	}
 
-	h2 {
-		font-size: 1em;
-		font-weight: bold;
-		margin: 0;
-		color: nth($colors_full, 9);
-	}
+// 	h3 {
+// 		display: inline-block;
+// 		font-size: 1em;
+// 		padding-top: 1em;
+// 		@extend %no-select;
+// 	}
 
-	h3 {
-		display: inline-block;
-		font-size: 1em;
-		padding-top: 1em;
-		@extend %no-select;
-	}
+// 	details {
+// 		margin-top: 1em;
+// 		border-top: 1px solid rgba(white, 0.2);
+// 	}
 
-	details {
-		margin-top: 1em;
-		border-top: 1px solid rgba(white, 0.2);
-	}
+// 	summary {
+// 		cursor: pointer;
 
-	summary {
-		cursor: pointer;
+// 		&:focus {
+// 			outline: 0;
+// 		}
 
-		&:focus {
-			outline: 0;
-		}
+// 		&:hover {
+// 			color: nth($colors_full, 8);
+// 		}
+// 	}
 
-		&:hover {
-			color: nth($colors_full, 8);
-		}
-	}
+// 	p {
+// 		user-select: initial;
+// 	}
 
-	p {
-		user-select: initial;
-	}
+// 	a {
+// 		color: nth($colors_full, 3);
+// 	}
 
-	a {
-		color: nth($colors_full, 3);
-	}
+// 	button {
+// 		@extend %no-select;
+// 		font-size: 2em;
+// 		padding: 0;
+// 		line-height: 2rem;
+// 		width: 2rem;
+// 		text-align: center;
+// 		position: absolute;
+// 		top: 0;
+// 		right: 0;
+// 		border-radius: 0 $radius 0 $radius;
+// 	}
+// }
 
-	button {
-		@extend %no-select;
-		font-size: 2em;
-		padding: 0;
-		line-height: 2rem;
-		width: 2rem;
-		text-align: center;
-		position: absolute;
-		top: 0;
-		right: 0;
-		border-radius: 0 $radius 0 $radius;
-	}
-}
+// details {
+// 	h3:after {
+// 		content: " more";
+// 	}
 
-details {
-	h3:after {
-		content: " more";
-	}
-
-	&[open] h3:after {
-		content: " less";
-	}
-}
+// 	&[open] h3:after {
+// 		content: " less";
+// 	}
+// }
