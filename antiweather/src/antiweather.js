@@ -93,6 +93,9 @@ function getLocation() {
 			var home_place_name = result.h;
 			var away_place_name = result.a;
 
+			// Hide the keyboard on touchscreens
+			document.activeElement.blur();
+
 			initSearch(lat, lng, home_place_name, away_place_name);
 		},
 	});

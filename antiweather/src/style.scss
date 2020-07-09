@@ -282,19 +282,15 @@ button,
 
 .search-input {
 	font: inherit;
-	width: 100%;
 	background: transparent;
 	line-height: 2rem;
-	padding: 0.5rem 1rem;
+	padding: 0.5rem 3.5rem 0.5rem 1rem;
 	border: 0;
 	appearance: none;
 	background: $white;
 	border-radius: $radius;
 	box-shadow: $shadow;
-
-	@media (pointer: coarse) {
-		width: calc(100% - 4.25rem);
-	}
+	width: 100%;
 
 	&:focus,
 	&[aria-expanded="true"] {
@@ -307,26 +303,20 @@ button,
 }
 
 .search-button {
-	display: none;
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 3rem;
+	height: 3rem;
+	cursor: pointer;
+	transition: color $transition;
+	padding: 0;
+	border-left: thin solid $off_white;
+	color: $gray;
 
-	@media (pointer: coarse) {
-		position: relative;
-		display: inline-block;
-		vertical-align: top;
-		width: 4rem;
-		height: 3rem;
-		margin: 0 0 0 0.25rem;
-		border-radius: $radius;
-		background-color: nth($colors_full, 1);
-		color: $white;
-		cursor: pointer;
-		transition: background-color $transition;
-		padding: 0;
-
-		&:hover {
-			background-color: nth($colors_full, 2);
-			transition-duration: 0s;
-		}
+	.search-input:focus + & {
+		transition-duration: 0s;
+		color: $black;
 	}
 
 	.search-icon {
@@ -342,10 +332,6 @@ button,
 	border-radius: $radius;
 	background: $white;
 	box-shadow: $shadow;
-
-	@media (pointer: coarse) {
-		// max-width: calc(100% - 4.5rem);
-	}
 }
 
 .autocomplete-result {
