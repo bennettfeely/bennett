@@ -271,6 +271,10 @@ button,
 	}
 }
 
+.form {
+	padding-bottom: 0.25rem;
+}
+
 .search-input-wrapper {
 	display: block;
 	width: 100%;
@@ -344,7 +348,7 @@ button,
 
 // Switch units ======================================================
 .units-wrapper {
-	margin: 0 0 1rem;
+	margin: 0 0 0.5rem;
 
 	input {
 		display: none;
@@ -530,17 +534,17 @@ input:checked + .unit-toggle {
 	position: relative;
 	margin: 1rem 0 0.25rem;
 	text-align: left;
-	padding: 0.5rem;
-	max-width: 18rem;
+	padding: 0.75rem;
+	max-width: 20rem;
 	border-radius: $radius;
 
-	$stripe-width: 0.25rem;
+	$stripe-width: 0.5rem;
 	background: repeating-linear-gradient(
-		45deg,
+		-45deg,
 		$black 0,
 		$black $stripe_width,
-		$black_light $stripe_width,
-		$black_light $stripe-width * 2
+		rgba($black_light, 0.5) $stripe_width,
+		rgba($black_light, 0.5) $stripe-width * 2
 	);
 
 	@media (min-width: $mobile) {
@@ -1012,18 +1016,15 @@ canvas {
 	margin-top: 1px;
 
 	@media (min-width: $tablet) {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
 		text-align: left;
-		line-height: 3rem;
-		padding: 0 1.5rem;
 	}
 
 	p {
 		display: inline-block;
 		margin: 0 0 0.25rem;
-
-		@media (min-width: $mobile) {
-			display: inline-block;
-		}
 	}
 
 	a:not(.share-button) {
@@ -1040,29 +1041,24 @@ canvas {
 }
 
 .share-wrapper {
-	display: block;
-
-	@media (min-width: $mobile) {
-		display: inline-block;
-	}
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 1rem;
 
 	@media (min-width: $tablet) {
-		float: right;
+		margin: 0;
 	}
 }
 
-.share-button {
+.sharing {
 	display: inline-block;
-	padding: 0 0.75rem;
-	line-height: 1.75rem;
-	margin-left: 0.5rem;
+	margin: 0 0.5em;
 }
 
-.twitter {
-	@include button($twitter);
-}
-.facebook {
-	@include button($facebook);
+.facebook-share-button,
+.twitter-share-button {
+	vertical-align: top;
 }
 
 .share-icon {
