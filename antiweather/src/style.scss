@@ -82,11 +82,13 @@ button,
 	color: $white;
 	background: $black_light;
 	cursor: pointer;
-	transition: opacity $transition, background $transition;
 	padding: 0 0.75rem;
 	text-decoration: none;
-	text-shadow: $shadow;
 	line-height: 2rem;
+
+	.is-ready & {
+		transition: opacity $transition, background $transition;
+	}
 
 	@media (min-width: $mobile) {
 		line-height: 2.25rem;
@@ -172,8 +174,11 @@ button,
 	pointer-events: none;
 	box-shadow: $shadow;
 	transform: scale3d(0.9, 0.9, 0.9);
-	transition: transform $transition, opacity $transition;
 	opacity: 0;
+
+	.is-ready & {
+		transition: transform $transition, opacity $transition;
+	}
 
 	.is-loading-home &,
 	.is-loading-away & {
@@ -496,7 +501,10 @@ input:checked + .unit-toggle {
 	overflow: hidden;
 	opacity: 0.1;
 	transform: scale3d(0.9, 0.9, 0.9);
-	transition: opacity $transition, transform $transition;
+
+	.is-ready & {
+		transition: opacity $transition, transform $transition;
+	}
 
 	.is-loading & {
 		display: block;
@@ -656,11 +664,14 @@ input:checked + .unit-toggle {
 	position: relative;
 	flex: 1;
 	border-radius: $radius;
-	transition: transform $transition, opacity $transition;
 	pointer-events: none;
 	text-align: center;
 	pointer-events: auto;
 	opacity: 0.1;
+
+	.is-ready & {
+		transition: transform $transition, opacity $transition;
+	}
 
 	.is-loading-home &,
 	.is-loading-away & {
@@ -682,8 +693,11 @@ input:checked + .unit-toggle {
 	min-height: 17.5rem;
 	padding-bottom: 50%;
 	overflow: hidden;
-	transition: transform $transition;
 	transform-origin: center bottom;
+
+	.is-ready & {
+		transition: transform $transition;
+	}
 
 	@media (min-height: 30rem) {
 		padding-bottom: 75%;
@@ -880,7 +894,7 @@ canvas {
 	margin-bottom: 0.5rem;
 	border-radius: $radius;
 	margin: 0.5rem 0;
-	background: $gray_dark;
+	background: $black_light;
 
 	.has-weather & {
 		display: block;
@@ -1078,7 +1092,10 @@ canvas {
 		text-decoration: none;
 		border-bottom: 1px solid $gray;
 		line-height: 1;
-		transition: border-color $transition;
+
+		.is-ready & {
+			transition: border-color $transition;
+		}
 
 		&:hover {
 			border-color: $white;
