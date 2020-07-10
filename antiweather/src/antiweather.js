@@ -292,10 +292,12 @@ function fillCurrentlyCard(card_data) {
 	// Icon + Temperature
 	if (card_data.temperature !== undefined) {
 		var icon =
-			'<svg><use xlink:href="#' + card_data.icon + '"></use></svg>';
+			'<svg class="currently-icon"><use xlink:href="#' +
+			card_data.icon +
+			'"></use></svg>';
 		var temperature = formatTemp(card_data.temperature);
 		fill(location, "temperature", icon + temperature);
-		fill("quick-" + location, "quick-temperature", temperature);
+		fill("quick-" + location, "quick-temperature", icon + temperature);
 	} else {
 		fill(location, "temperature", icon + "--&deg;");
 		fill("quick-" + location, "quick-temperature", "--&deg;");

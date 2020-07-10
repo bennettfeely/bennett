@@ -565,10 +565,20 @@ input:checked + .unit-toggle {
 }
 
 .quick-temperature {
-	font-size: 3rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 10vw;
 	line-height: 1;
 	padding: 0.25rem 0;
 	font-weight: bold;
+}
+
+.currently-icon {
+	display: inline-block;
+	width: 0.75em;
+	height: 0.75em;
+	vertical-align: middle;
 }
 
 // Advertisment ======================================================
