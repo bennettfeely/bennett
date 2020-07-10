@@ -1,4 +1,4 @@
-console.log("v5");
+console.log("v6");
 
 // -------------------------------------------------------
 // -------------------------------------------------------
@@ -172,19 +172,10 @@ function getWeather(location, lat, lng, pre_placename) {
 
 	// Send request to Dark Sky
 	var unit = document.querySelector('[name="units-toggle"]:checked').value;
-	var request_url =
-		"https://api.darksky.net/forecast/" +
-		dark_sky_api_key +
-		"/" +
-		lat +
-		"," +
-		lng +
-		"?units=" +
-		unit +
-		"&exclude=alerts,hourly,minutely";
+	var req_url = `https://api.darksky.net/forecast/${dark_sky_api_key}/${lat},${lng}?units=${unit}&exclude=alerts,hourly,minutely`;
 
 	JSONP({
-		url: request_url,
+		url: req_url,
 		success: function (data) {
 			console.log(data);
 
@@ -291,10 +282,7 @@ function fillCurrentlyCard(card_data) {
 
 	// Icon + Temperature
 	if (card_data.temperature !== undefined) {
-		var icon =
-			'<svg class="currently-icon"><use xlink:href="#' +
-			card_data.icon +
-			'"></use></svg>';
+		var icon = `<svg class="currently-icon"><use xlink:href="#${card_data.icon}"></use></svg>`;
 		var temperature = formatTemp(card_data.temperature);
 		fill(location, "temperature", icon + temperature);
 		fill("quick-" + location, "quick-temperature", icon + temperature);
@@ -624,12 +612,9 @@ function makeForecastCard(card_data) {
 
 		// Icon
 		if (day_card_data.icon !== undefined) {
-			var icon =
-				'<svg class="forecast-icon"><use xlink:href="#' +
-				day_card_data.icon +
-				'"></use></svg>';
+			var icon = `<svg class="forecast-icon"><use xlink:href="#${day_card_data.icon}"></use></svg>`;
 		} else {
-			var icon = '<svg><use xlink:href="#clear"></use></svg>';
+			var icon = `<svg><use xlink:href="#clear"></use></svg>`;
 		}
 
 		// High Temperature + Card Color
@@ -651,25 +636,22 @@ function makeForecastCard(card_data) {
 		}
 
 		// Make the card
-		// prettier-ignore
-		var forecast_item =
-			'<div class="forecast-item-wrapper full' + class_name + '">' +
-				'<div class="forecast-item">' +
-					'<div class="forecast-day-wrapper">' +
-						'<div class="forecast-day">' + current_day + "</div>" +
-						// + '<div class="forecast-date">' + current_date + '</div>'
-					'</div>' +
-					'<div class="forecast-temperature-wrapper">' + 
-						icon + 
-						'<div class="forecast-temperature high">' +
-							temperature_high +
-						'</div>' +
-						'<div class="forecast-temperature low">' +
-							temperature_low +
-						'</div>' +
-					'</div>' +
-				'</div>' +
-			'</div>';
+		var forecast_item = `<div class="forecast-item-wrapper full ${class_name}">
+				<div class="forecast-item">
+					<div class="forecast-day-wrapper">
+						<div class="forecast-day">${current_day}</div>
+					</div>
+					<div class="forecast-temperature-wrapper"> 
+						${icon} 
+						<div class="forecast-temperature high">
+							${temperature_high}
+						</div>
+						<div class="forecast-temperature low">
+							${temperature_low}
+						</div>
+					</div>
+				</div>
+			</div>`;
 
 		// Add the card to `.forecast-wrapper`
 		append(location, "forecast-wrapper", forecast_item);
