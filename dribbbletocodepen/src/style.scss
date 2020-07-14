@@ -1,0 +1,70 @@
+// Partials ============================================================
+@import "reset";
+@import "functions";
+@import "extensions";
+
+$tablet: 30em;
+
+$black: #1a1a1a;
+$gray: #bababa;
+$white: #fff;
+$offwhite: #eee;
+
+$red: #b22234;
+$blue: #3c3b6e;
+
+$blue-code: #7aa6da;
+$red-code: #d54e53;
+$gray-code: $gray;
+$white-code: $white;
+
+$blue-link: #0366d6;
+
+$radius-small: 4px;
+$radius-large: 8px;
+
+$transition: 0.2s;
+
+// Base ================================================================
+body {
+	font: 100%/1.4 PT Sans, sans-serif;
+	background: $white;
+	color: $black;
+}
+
+.wrapper {
+	max-width: 70em;
+	margin: 0 auto;
+}
+
+.container {
+	padding: 1.5em;
+}
+
+header {
+	padding: 2em 0;
+	border-top: 1em solid $red-code;
+}
+
+main {
+	background: $offwhite;
+}
+
+// Typography ==========================================================
+h1 {
+}
+
+h2 {
+}
+
+// Footer ==============================================================
+table {
+	min-width: 100%;
+	border-collapse: collapse;
+}
+
+th,
+td {
+	border: thin solid black;
+	padding: 0.5em;
+}

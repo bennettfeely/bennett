@@ -1,0 +1,68 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-shadow: none;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smoothing: antialiased;
+  -webkit-text-rendering: optimizeLegibility;
+  text-rendering: optimizeLegibility;
+}
+
+html {
+  line-height: 1.15;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+header,
+nav,
+section,
+article,
+fieldset,
+footer {
+  display: block;
+}
+
+small {
+  font-size: 80%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+small {
+  margin: 0;
+}
+
+a {
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
+  text-decoration-skip: objects;
+}
+
+pre,
+code {
+  tab-size: 2;
+}
+
+img {
+  border-style: none;
+}
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
+input::-webkit-contacts-auto-fill-button {
+  display: none;
+  pointer-events: none;
+  opacity: 0;
+}
