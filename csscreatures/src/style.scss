@@ -32,7 +32,7 @@ $radius: 1rem;
 body {
 	position: relative;
 	background: $purple_dark;
-	background: linear-gradient($purple_dark, $purple);
+	background-image: linear-gradient($purple, $purple_dark);
 	color: $gold;
 	font: 400 100%/1.2 Amatic SC, sans-serif;
 	min-height: 100vh;
@@ -356,11 +356,11 @@ header {
 	padding: 1em;
 
 	// Animation delay
-	@for $i from 1 through 16 {
-		&:nth-child(#{$i}) {
-			animation-delay: $i * 0.15s;
-		}
-	}
+	// @for $i from 1 through 16 {
+	// 	&:nth-child(#{$i}) {
+	// 		animation-delay: $i * 0.15s;
+	// 	}
+	// }
 
 	// Media queries for sizing creatures
 	@for $i from 3 through 8 {
@@ -661,6 +661,20 @@ $colors_list: #1e8fff, #d8a635, #5aa959, #3cb9b9, #5a31bb, #785cbb, #f44336,
 		left: 35%;
 		right: 35%;
 		bottom: 40%;
+	}
+}
+
+.mod-rainbow {
+	.creature {
+		background-image: linear-gradient(
+			#fe4b83,
+			#ff7747,
+			#e3b62f,
+			#b0ef5a,
+			#53f666,
+			#1edfa2,
+			#23acd8
+		);
 	}
 }
 

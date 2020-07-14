@@ -170,7 +170,7 @@ function defaultTweets(message_headline, message_body) {
 			</div>
 		</div>`;
 
-	document.querySelector(".creatures").innerHTML += message;
+	document.querySelector(".creatures-featured").innerHTML += message;
 }
 
 // ===================================================================================
@@ -223,6 +223,10 @@ function buildCreature(tweet, i) {
 		{
 			mod: "nervous",
 			syn: "anxious|scared",
+		},
+		{
+			mod: "rainbow",
+			syn: "colorful|tiedye|colors",
 		},
 		{
 			mod: "sad",
@@ -331,11 +335,11 @@ function buildCreature(tweet, i) {
 		</div>`;
 
 	// Add the creature to the page
-	console.log(document.querySelector(".ad-box").classList);
-	document.querySelector(".ad-box").classList.remove("is-hidden");
-
-	// Add the creature to the page
-	document.querySelector(".creatures").innerHTML += creature;
+	if (i <= 2) {
+		document.querySelector(".creatures-featured").innerHTML += creature;
+	} else {
+		document.querySelector(".creatures-more").innerHTML += creature;
+	}
 }
 
 // ===================================================================================
@@ -357,20 +361,20 @@ function handleDirectionsToggle() {
 		});
 	}
 
-	creatures.addEventListener("click", function () {
-		if (
-			document
-				.querySelector("html")
-				.classList.contains("showing-directions")
-		) {
-			document
-				.querySelector("html")
-				.classList.remove("showing-directions");
+	// creatures.addEventListener("click", function () {
+	// 	if (
+	// 		document
+	// 			.querySelector("html")
+	// 			.classList.contains("showing-directions")
+	// 	) {
+	// 		document
+	// 			.querySelector("html")
+	// 			.classList.remove("showing-directions");
 
-			// Scroll to top of window
-			window.scrollTo(0, 0);
-		}
-	});
+	// 		// Scroll to top of window
+	// 		window.scrollTo(0, 0);
+	// 	}
+	// });
 }
 
 function autoPause() {
