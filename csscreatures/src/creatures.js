@@ -349,37 +349,11 @@ function buildCreature(tweet, i) {
 
 // ===================================================================================
 // Toggle on/off directions list
-function handleDirectionsToggle() {
-	var directions_toggle = document.querySelectorAll(".directions-toggle");
-	var directions_box = document.querySelector(".directions-box");
-	var creatures = document.querySelector(".creatures");
+function toggleDirections() {
+	document.querySelector("html").classList.toggle("is-showing-directions");
 
-	for (var i = 0; i < directions_toggle.length; i++) {
-		directions_toggle[i].addEventListener("click", function () {
-			// Toggle on and off the directions list by adding a class to <html>
-			document
-				.querySelector("html")
-				.classList.toggle("showing-directions");
-
-			// Scroll to top of window
-			window.scrollTo(0, 0);
-		});
-	}
-
-	// creatures.addEventListener("click", function () {
-	// 	if (
-	// 		document
-	// 			.querySelector("html")
-	// 			.classList.contains("showing-directions")
-	// 	) {
-	// 		document
-	// 			.querySelector("html")
-	// 			.classList.remove("showing-directions");
-
-	// 		// Scroll to top of window
-	// 		window.scrollTo(0, 0);
-	// 	}
-	// });
+	// Scroll to top of window
+	window.scrollTo(0, 0);
 }
 
 function autoPause() {

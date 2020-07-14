@@ -47,7 +47,7 @@ html lang="en"
 			.container
 				.content
 					a.logo href="https://bennettfeely.com/csscreatures" CSS Creatures
-					button.directions-toggle
+					button.directions-toggle onclick="toggleDirections()"
 						span Make your own
 						svg.close width="16" height="16" preserveAspectRatio="xMaxYMid" viewBox="0 0 16 16"
 							path d="M 5 5, L 11 11, M 11 5, L 5 11"
@@ -87,17 +87,14 @@ html lang="en"
 					.creatures.creatures-more
 		footer
 			.container
-				h2 CSS Creatures were generated with 100% all-natural HTML and fresh-squeezed CSS.
-				h2 Brought to you by <a href="https://twitter.com/bennettfeely">@bennettfeely</a>. Find this project on <a href="https://github.com/bennettfeely/csscreatures">GitHub</a>.
-				h3
-					.directions-toggle
-						span Make your own
+				h2 CSS Creatures are made with 100% all-natural HTML and fresh-squeezed CSS. Brought to you by <a href="https://twitter.com/bennettfeely">@bennettfeely</a>.
+				.share-wrapper
+					h2 Share this page:
 					.share
-						a.twitter.share-button href="http://twitter.com/share?text=Make%20a%20CSS%20creature%20from%20a%20tweet%20https%3A%2F%2Fbennettfeely.com%2Fcsscreatures"
-							svg.twitter-logo xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 400 400"
-								path d="M153.6 301.6c94.3 0 145.9-78.2 145.9-145.9 0-2.2 0-4.4-.1-6.6 10-7.2 18.7-16.3 25.6-26.6-9.2 4.1-19.1 6.8-29.5 8.1 10.6-6.3 18.7-16.4 22.6-28.4-9.9 5.9-20.9 10.1-32.6 12.4-9.4-10-22.7-16.2-37.4-16.2-28.3 0-51.3 23-51.3 51.3 0 4 .5 7.9 1.3 11.7-42.6-2.1-80.4-22.6-105.7-53.6-4.4 7.6-6.9 16.4-6.9 25.8 0 17.8 9.1 33.5 22.8 42.7-8.4-.3-16.3-2.6-23.2-6.4v.7c0 24.8 17.7 45.6 41.1 50.3-4.3 1.2-8.8 1.8-13.5 1.8-3.3 0-6.5-.3-9.6-.9 6.5 20.4 25.5 35.2 47.9 35.6-17.6 13.8-39.7 22-63.7 22-4.1 0-8.2-.2-12.2-.7 22.6 14.4 49.6 22.9 78.5 22.9"
-							| Share this page
-
+						<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-text="Make a CSS Creature from a tweet" data-url="https://bennettfeely.com/csscreatures" data-related="bennettfeely" data-dnt="true" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+					.share
+						<div id="fb-root"></div>
+						<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v7.0&appId=247433128675302&autoLogAppEvents=1" nonce="rPd9gEHs"></script><div class="fb-like" data-href="https://bennettfeely.com/csscreatures" data-width="" data-layout="button_count" data-action="like" data-size="large" data-share="true"></div>
 	script src="src/creatures.js"
 	script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-35724550-1"
 	script

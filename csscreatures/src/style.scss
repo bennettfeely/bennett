@@ -132,7 +132,7 @@ header {
 		font-size: 3em;
 		line-height: 1;
 
-		.showing-directions & {
+		.is-showing-directions & {
 			transform-origin: top left;
 			transform: scale(0.75);
 		}
@@ -165,7 +165,7 @@ header {
 		font-size: 1em;
 	}
 
-	.showing-directions header & {
+	.is-showing-directions header & {
 		border-radius: $radius $radius 0 0;
 		box-shadow: none;
 
@@ -186,7 +186,7 @@ header {
 		}
 	}
 
-	.showing-directions footer & {
+	.is-showing-directions footer & {
 		box-shadow: inset 0 0 0 2px $blue;
 		background: transparent;
 	}
@@ -216,7 +216,7 @@ header {
 			}
 		}
 
-		.showing-directions & {
+		.is-showing-directions & {
 			display: inline-block;
 		}
 	}
@@ -232,7 +232,7 @@ header {
 		margin: 0;
 	}
 
-	.showing-directions & {
+	.is-showing-directions & {
 		display: block;
 		border-radius: $radius 0 $radius $radius;
 		padding-bottom: 0.3rem;
@@ -279,7 +279,7 @@ header {
 	box-shadow: -0.1em 0 rgba($gold, 0), 0.1em 0 rgba($gold, 0);
 }
 
-.showing-directions {
+.is-showing-directions {
 	$highlight-duration: 12s;
 
 	.handle-highlight,
@@ -333,7 +333,7 @@ header {
 	min-height: 25vh;
 	text-align: center;
 
-	.showing-directions & {
+	.is-showing-directions & {
 		opacity: 0.25;
 
 		a {
@@ -443,7 +443,7 @@ $colors_list: #1e8fff, #d8a635, #5aa959, #3cb9b9, #5a31bb, #785cbb, #f44336,
 		transition-duration: $transition * 0.25;
 	}
 
-	.showing-directions & {
+	.is-showing-directions & {
 		filter: grayscale(1);
 	}
 }
@@ -815,44 +815,20 @@ footer {
 }
 
 // Share =============================================================================
-.share {
-	display: inline-block;
-	font-size: 1em;
-	margin-left: 0.5em;
-}
+.share-wrapper {
+	@media (min-width: $tablet) {
+		display: flex;
+		justify-content: center;
+		align-items: center;
 
-.share-button {
-	@extend %no-select;
-	@extend %no-drag;
-	display: inline-block;
-	border-radius: $radius;
-	text-decoration: none;
-	box-shadow: $shadow;
-	color: $white;
-	padding: 1rem 0.7em;
-	background: $blue;
-	border: 0;
-	box-shadow: inset 0.15em -0.15em $shadow;
-	transition: background $transition, color $transition;
-}
-
-.share-button {
-	position: relative;
-	cursor: pointer;
-	margin-right: 0.25em;
-	padding-left: 2em;
-
-	.twitter-logo {
-		top: 0.525em;
-		left: 0.5em;
-
-		path {
-			fill: $blue_twitter;
+		h2 {
+			margin: 0 0.5em 0 0;
 		}
 	}
+}
 
-	&:hover {
-		color: white;
-		border: 0;
-	}
+.share {
+	display: inline-flex;
+	margin: 0 0.5em;
+	align-items: center;
 }
