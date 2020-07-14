@@ -391,11 +391,6 @@ header {
 	// 	}
 	// }
 
-	&.ad-box,
-	&.default-box {
-		display: inline-block !important;
-	}
-
 	&.is-hidden {
 		display: none !important;
 	}
@@ -774,6 +769,11 @@ $colors_list: #1e8fff, #d8a635, #5aa959, #3cb9b9, #5a31bb, #785cbb, #f44336,
 	justify-content: center;
 	flex-direction: column;
 	padding: 1em;
+	animation: load 0.5s 0.45s ease-out paused both;
+
+	&.is-ready {
+		animation-play-state: running;
+	}
 
 	a {
 		border: 0;

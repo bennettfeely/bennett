@@ -313,10 +313,11 @@ function buildCreature(tweet, i) {
 	// Create a unique id for each creature
 	var creature_id = "creature_" + i;
 
+	var mod_set = mod_set.join(" ");
+	var delay = i * 0.15 + "s";
+
 	// Build the creature
-	var creature = `<div id="${creature_id}" class="item creature-box ${mod_set.join(
-		" "
-	)}">
+	var creature = `<div id="${creature_id}" class="item creature-box ${mod_set}" style="animation-delay:${delay}">
 			<div class="creature" style="${getColor(string)}${randomAnimationTiming(5)}">
 				<div class="face" style="${randomAnimationTiming(5)}">
 					${eyes}
@@ -335,10 +336,14 @@ function buildCreature(tweet, i) {
 		</div>`;
 
 	// Add the creature to the page
-	if (i <= 2) {
-		document.querySelector(".creatures-featured").innerHTML += creature;
+	if (i == 3) {
+		document.querySelector(".ad-box").classList.add("is-ready");
 	} else {
-		document.querySelector(".creatures-more").innerHTML += creature;
+		if (i <= 2) {
+			document.querySelector(".creatures-featured").innerHTML += creature;
+		} else {
+			document.querySelector(".creatures-more").innerHTML += creature;
+		}
 	}
 }
 
