@@ -1,7 +1,3 @@
-// Advertisment ======================================================================
-// var carbon_ad = '<div class="carbon-ad" id="carbonads"><span><span class="carbon-wrap"><a href="//srv.carbonads.net/ads/click/x/GTND42QECWSD6KQJCVS4YKQMCTBIP2QWCVBITZ3JCWYDP27ICKBI55QKC6BIT2QNCVYDEK3EHJNCLSIZZRLCP7I35MNFV?segment=placement:bennettfeelycom;&amp;encredirect=https%3A%2F%2Fslack.com%2Flp%3Fcvosrc%3Ddisplay.carbon.plain%20dev%26utm_source%3Dcarbon%26utm_medium%3Ddisplay%26utm_campaign%3Dplain%20dev%26c3ch%3DCarbon%20Networks%26c3nid%3DPlain%20Dev" class="carbon-img" target="_blank" rel="noopener"><img src="https://assets.servedby-buysellads.com/p/manage/asset/id/32052" alt="" border="0" height="100" width="130" style="max-width: 130px;"></a><a href="//srv.carbonads.net/ads/click/x/GTND42QECWSD6KQJCVS4YKQMCTBIP2QWCVBITZ3JCWYDP27ICKBI55QKC6BIT2QNCVYDEK3EHJNCLSIZZRLCP7I35MNFV?segment=placement:bennettfeelycom;&amp;encredirect=https%3A%2F%2Fslack.com%2Flp%3Fcvosrc%3Ddisplay.carbon.plain%20dev%26utm_source%3Dcarbon%26utm_medium%3Ddisplay%26utm_campaign%3Dplain%20dev%26c3ch%3DCarbon%20Networks%26c3nid%3DPlain%20Dev" class="carbon-text" target="_blank" rel="noopener">All the tools your team needs in one place. Slack: Where work happens.</a></span><a href="http://carbonads.net/?utm_source=bennettfeelycom&amp;utm_medium=ad_via_link&amp;utm_campaign=in_unit&amp;utm_term=carbon" class="carbon-poweredby" target="_blank">ads via Carbon</a><img src="https://slack.sp1.convertro.com/view/vt/v1/slack/0/cvo.gif?cvosrc=display.carbon.plain dev&amp;utm_source=carbon&amp;utm_medium=display&amp;utm_campaign=plain dev" border="0" height="1" width="1" style="display: none;"><img src="https://569-img.c3tag.com/v.gif?cid=569&amp;c3ch=Carbon Networks&amp;c3nid=Plain Dev" border="0" height="1" width="1" style="display: none;"></span></div></div></div>';
-var carbon_ad = "";
-
 // ===================================================================================
 // Prettify Date
 // Copyright (c) 2011 John Resig (ejohn.org)
@@ -67,16 +63,10 @@ function getColor(string) {
 		var color = color_name[0];
 	}
 
-	// Break this
-	// return '';
-
-	console.log(color);
-
-	if (color == undefined) {
-		console.log("undefined!! ^^ ");
-		return "";
+	if (color !== undefined) {
+		return `background-color:${color};`;
 	} else {
-		return "background-color: " + color + "; ";
+		return ``;
 	}
 }
 
@@ -87,7 +77,10 @@ function getTweets() {
 	var random_string = Math.random().toString(36).substring(7);
 
 	var request = new XMLHttpRequest();
-	request.open("GET", "search.php?" + random_string, true);
+	var uri =
+		"https://copypastelist.com/wp-content/themes/plaintheme/csscreatures_server/";
+	request.open("GET", uri + "search.php?" + random_string, true);
+	request.withCredentials = false;
 
 	request.onload = function () {
 		var status = this.status;
@@ -96,14 +89,10 @@ function getTweets() {
 		if (status == 200) {
 			var json = JSON.parse(this.response);
 
-			console.log(json.errors);
-
-			console.log("b");
-
 			if (json.errors !== undefined) {
 				defaultTweets(
 					"Too busy!",
-					"We're really sorry, there's a lot of people visiting right now and we can't keep up. Please come back another time."
+					"We're sorry, there's a lot of people visiting right now and we can't keep up. Please come back another time."
 				);
 			} else {
 				if (json.statuses.length > 0) {
@@ -153,27 +142,7 @@ function parseTweets(json) {
 		for (i = 0, len = json.statuses.length; i < len; ++i) {
 			var tweet = json.statuses[i];
 
-			// Inject an advertisment
-			if (json.statuses.length > 3) {
-				if (i == 2) {
-					// Inset after 2nd tweet
-					document.querySelector(".creatures").innerHTML += carbon_ad;
-				}
-			} else {
-				if (i == 1) {
-					// We only
-					// Inset after 1st tweet
-					document.querySelector(".creatures").innerHTML += carbon_ad;
-				}
-			}
-
-			if (json.statuses.length == 1) {
-				buildCreature(tweet, i);
-
-				document.querySelector(".creatures").innerHTML += carbon_ad;
-			} else {
-				buildCreature(tweet, i);
-			}
+			buildCreature(tweet, i);
 		}
 	} else {
 		defaultTweets();
@@ -183,15 +152,25 @@ function parseTweets(json) {
 // ===================================================================================
 // We don't have tweets, show a message
 function defaultTweets(message_headline, message_body) {
-	var message =
-		'<div class="item default-box creature-box mod-tooth mod-sad"><div class="creature" style="background-color: tomato; animation-duration: 5.33s; animation-delay: -6.11s"><div class="face" style="animation-duration: 6s; animation-delay: -7s"><div class="eyes"><div class="eye" style="animation-duration: 6s; animation-delay: -5s"></div><div class="eye" style="animation-duration: 6s; animation-delay: -5s"></div></div><div class="mouth"><div class="tooth"></div></div></div></div><div class="info"><h2>' +
-		message_headline +
-		"</h2><h3>" +
-		message_body +
-		"</h3></div></div>";
+	var message = `<div class="item default-box creature-box mod-tooth mod-sad">
+			<div class="creature" style="background-color: tomato; animation-duration: 5.33s; animation-delay: -6.11s">
+				<div class="face" style="animation-duration: 6s; animation-delay: -7s">
+					<div class="eyes">
+						<div class="eye" style="animation-duration: 6s; animation-delay: -5s"></div>
+						<div class="eye" style="animation-duration: 6s; animation-delay: -5s"></div>
+					</div>
+					<div class="mouth">
+						<div class="tooth"></div>
+					</div>
+				</div>
+			</div>
+			<div class="info">
+				<h2>${message_headline}</h2>
+				<h3>${message_body}</h3>
+			</div>
+		</div>`;
 
 	document.querySelector(".creatures").innerHTML += message;
-	document.querySelector(".creatures").innerHTML += carbon_ad;
 }
 
 // ===================================================================================
@@ -301,72 +280,55 @@ function buildCreature(tweet, i) {
 	}
 
 	// Eyes
-	var eye =
-		'<div class="eye" style="' + randomAnimationTiming(5) + '"></div>';
-	var eyes = '<div class="eyes">' + eye + eye + "</div>";
+	var eye = `<div class="eye" style="${randomAnimationTiming(5)}"></div>`;
+	var eyes = `<div class="eyes">${eye}${eye}</div>`;
 
 	if (mod_set.indexOf("mod-cyclops") > -1) {
-		var eyes = '<div class="eyes">' + eye + "</div>";
+		var eyes = `<div class="eyes">${eye}</div>`;
 	}
 
 	// Moustache
 	var moustache = "";
 	if (mod_set.indexOf("mod-moustache") > -1) {
-		var moustache =
-			'<svg class="moustache" xmlns="http://www.w3.org/2000/svg" viewBox="83 299 443 121" preserveAspectRatio="none" width="220" height="60"><path d="M407 338C402 336 398 332 395 330 382 318 364 300 338 300 325 300 313 305 305 313 296 305 284 300 271 300 245 300 227 318 215 330 211 332 207 336 202 338 126 377 84 345 84 345 151 462 265 411 295 390 299 388 302 386 305 383 307 386 311 388 314 390 344 411 459 462 526 345Z" fill="#3F1F13"/></svg>';
+		var moustache = `<svg class="moustache" xmlns="http://www.w3.org/2000/svg" viewBox="83 299 443 121" preserveAspectRatio="none" width="220" height="60"><path d="M407 338C402 336 398 332 395 330 382 318 364 300 338 300 325 300 313 305 305 313 296 305 284 300 271 300 245 300 227 318 215 330 211 332 207 336 202 338 126 377 84 345 84 345 151 462 265 411 295 390 299 388 302 386 305 383 307 386 311 388 314 390 344 411 459 462 526 345Z" fill="#3F1F13"/></svg>`;
 	}
 
 	// Mouth
-	var tooth = '<div class="tooth"></div>';
-	var mouth = '<div class="mouth"></div>';
+	var tooth = `<div class="tooth"></div>`;
+	var mouth = `<div class="mouth"></div>`;
 	if (mod_set.indexOf("mod-tooth") > -1) {
-		var mouth = '<div class="mouth">' + tooth + "</div>";
+		var mouth = `<div class="mouth">${tooth}</div>`;
 	}
 	if (
 		mod_set.indexOf("mod-teeth") > -1 ||
 		mod_set.indexOf("mod-jack-o-lantern") > -1
 	) {
-		var mouth = '<div class="mouth">' + tooth + tooth + "</div>";
+		var mouth = `<div class="mouth">${tooth}${tooth}</div>`;
 	}
 
 	// Create a unique id for each creature
 	var creature_id = "creature_" + i;
 
 	// Build the creature
-	var creature =
-		'<div id="' +
-		creature_id +
-		'" class="item creature-box ' +
-		mod_set.join(" ") +
-		'">' +
-		'<div class="creature" style="' +
-		getColor(string) +
-		randomAnimationTiming(5) +
-		'">' +
-		'<div class="face" style="' +
-		randomAnimationTiming(5) +
-		'">' +
-		// + hat
-		eyes +
-		moustache +
-		mouth +
-		"</div>" +
-		"</div>" +
-		'<div class="info">' +
-		"<h3>" +
-		'<a href="https://twitter.com/' +
-		tweet.user.screen_name +
-		"/status/" +
-		tweet.id_str +
-		'">@' +
-		tweet.user.screen_name +
-		"</a>" +
-		"</h3>" +
-		"<h3>" +
-		prettyDate(tweet.created_at) +
-		"</h3>" +
-		"</div>" +
-		"</div>";
+	var creature = `<div id="${creature_id}" class="item creature-box ${mod_set.join(
+		" "
+	)}">
+			<div class="creature" style="${getColor(string)}${randomAnimationTiming(5)}">
+				<div class="face" style="${randomAnimationTiming(5)}">
+					${eyes}
+					${moustache}
+					${mouth}
+				</div>
+			</div>
+			<div class="info">
+			<h3>
+				<a href="https://twitter.com/${tweet.user.screen_name}/status/${tweet.id_str}">
+					\@${tweet.user.screen_name}
+				</a>
+			</h3>
+			<h3>${prettyDate(tweet.created_at)}</h3>
+			</div>
+		</div>`;
 
 	// Add the creature to the page
 	console.log(document.querySelector(".ad-box").classList);

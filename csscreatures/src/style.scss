@@ -149,17 +149,13 @@ header {
 
 .directions-toggle {
 	@extend %no-tap;
+	font-family: inherit;
 	display: inline-block;
 	position: relative;
 	cursor: pointer;
 	padding: 1rem 0.75em;
 	margin-bottom: 1rem;
 	box-shadow: inset 0.3rem -0.3rem $shadow;
-
-	&.off {
-		pointer-events: none;
-		opacity: 0.3;
-	}
 
 	header & {
 		margin-bottom: 0;
@@ -183,6 +179,10 @@ header {
 			right: 100%;
 			border-radius: $radius;
 			box-shadow: $radius $radius $blue;
+		}
+
+		&:focus {
+			outline: none;
 		}
 	}
 
@@ -329,7 +329,7 @@ header {
 }
 
 // Creature structure ================================================================
-.creatures {
+.creatures-wrapper {
 	min-height: 25vh;
 	text-align: center;
 
@@ -340,6 +340,10 @@ header {
 			pointer-events: none;
 		}
 	}
+}
+
+.creatures {
+	display: inline;
 }
 
 .item {
@@ -366,26 +370,26 @@ header {
 	}
 
 	// Limit number of creatures for performance
-	@media (max-width: 14em * 3) {
-		&:nth-last-child(-n + 4) {
-			display: none;
-		}
-	}
-	@media (min-width: 14em * 3) and (max-width: 14em * 4) {
-		&:nth-last-child(1) {
-			display: none;
-		}
-	}
-	@media (min-width: 14em * 4) and (max-width: 14em * 5) {
-		&:nth-last-child(-n + 2) {
-			display: none;
-		}
-	}
-	@media (min-width: 14em * 5) and (max-width: 14em * 5) {
-		&:nth-last-child(-n + 4) {
-			display: none;
-		}
-	}
+	// @media (max-width: 14em * 3) {
+	// 	&:nth-last-child(-n + 4) {
+	// 		display: none;
+	// 	}
+	// }
+	// @media (min-width: 14em * 3) and (max-width: 14em * 4) {
+	// 	&:nth-last-child(1) {
+	// 		display: none;
+	// 	}
+	// }
+	// @media (min-width: 14em * 4) and (max-width: 14em * 5) {
+	// 	&:nth-last-child(-n + 2) {
+	// 		display: none;
+	// 	}
+	// }
+	// @media (min-width: 14em * 5) and (max-width: 14em * 5) {
+	// 	&:nth-last-child(-n + 4) {
+	// 		display: none;
+	// 	}
+	// }
 
 	&.ad-box,
 	&.default-box {
