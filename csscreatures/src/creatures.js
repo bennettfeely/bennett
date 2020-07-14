@@ -37,13 +37,7 @@ function randomAnimationTiming(target_seconds) {
 			(target_seconds / 2 + Math.random() * target_seconds) * 100
 		) / 100;
 
-	return (
-		"animation-duration: " +
-		duration +
-		"s; animation-delay: -" +
-		delay +
-		"s"
-	);
+	return `animation-duration:${duration}s;animation-delay:-${delay}s`;
 }
 
 // ===================================================================================
@@ -80,14 +74,18 @@ function getTweets() {
 	var uri =
 		"https://copypastelist.com/wp-content/themes/plaintheme/csscreatures_server/";
 	request.open("GET", uri + "search.php?" + random_string, true);
-	request.withCredentials = false;
+	// request.withCredentials = false;
 
 	request.onload = function () {
 		var status = this.status;
 
+		console.log(status);
+
 		// Request is good
 		if (status == 200) {
 			var json = JSON.parse(this.response);
+
+			console.log(json);
 
 			if (json.errors !== undefined) {
 				defaultTweets(
@@ -199,6 +197,10 @@ function buildCreature(tweet, i) {
 		{
 			mod: "dark",
 			syn: "black|#000|#000000",
+		},
+		{
+			mod: "frozen",
+			syn: "pause|paused|stopped",
 		},
 		{
 			mod: "ghost",
@@ -357,9 +359,8 @@ function toggleDirections() {
 }
 
 function autoPause() {
-	// CSS animations play when the tab is not in view, we don't need that
-
-	// Create a placeholder <style> tag that we can quickly insert and remove CSS
+	// Create a placeholder <style> tag that we can quickly
+	// insert and remove CSS
 	var auto_pause = document.createElement("style");
 	document.querySelector("body").appendChild(auto_pause);
 
@@ -384,6 +385,5 @@ init();
 
 function init() {
 	getTweets();
-	handleDirectionsToggle();
 	autoPause();
 }
