@@ -88,13 +88,21 @@ html lang="en"
 		footer
 			.container
 				h2 CSS Creatures are made with 100% all-natural HTML and fresh-squeezed CSS. Brought to you by <a href="https://twitter.com/bennettfeely">@bennettfeely</a>.
-				.share-wrapper
-					h2 Share this page:
-					.share
-						<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-text="Make a CSS Creature from a tweet" data-url="https://bennettfeely.com/csscreatures" data-related="bennettfeely" data-dnt="true" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-					.share
-						<div id="fb-root"></div>
-						<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v7.0&appId=247433128675302&autoLogAppEvents=1" nonce="rPd9gEHs"></script><div class="fb-like" data-href="https://bennettfeely.com/csscreatures" data-width="" data-layout="button_count" data-action="like" data-size="large" data-share="true"></div>
+				.footer-split
+					.share-wrapper
+						h2 Share this page:
+						.share
+							<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-text="Make a CSS Creature from a tweet" data-url="https://bennettfeely.com/csscreatures" data-related="bennettfeely" data-dnt="true" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+						.share
+							<div id="fb-root"></div>
+							<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v7.0&appId=247433128675302&autoLogAppEvents=1" nonce="rPd9gEHs"></script><div class="fb-like" data-href="https://bennettfeely.com/csscreatures" data-width="" data-layout="button_count" data-action="like" data-size="large" data-share="true"></div>
+					/ .dark-mode-wrapper
+					/ 	h3 
+					/ 		| Dark Mode 
+					/ 		input#on type="radio" name="dark-mode-toggle" checked="checked"
+					/ 			label for="on" onclick="turnOnDarkMode()" On 
+					/ 		input#off type="radio" name="dark-mode-toggle" for="#off"
+					/ 			label for="off" onclick="turnOffDarkMode()" Off
 	script src="src/creatures.js"
 	script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-35724550-1"
 	script

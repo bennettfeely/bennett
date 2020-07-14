@@ -358,6 +358,16 @@ function toggleDirections() {
 	window.scrollTo(0, 0);
 }
 
+function turnOffDarkMode() {
+	console.log("turnOffDarkMode();");
+	document.querySelector("html").classList.remove("dark-mode");
+}
+
+function turnOnDarkMode() {
+	console.log("turnOnLights();");
+	document.querySelector("html").classList.add("dark-mode");
+}
+
 function autoPause() {
 	// Create a placeholder <style> tag that we can quickly
 	// insert and remove CSS

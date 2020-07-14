@@ -12,8 +12,10 @@ $purple: #181236;
 $purple_dark: shade($purple, 40%);
 $brown: #3f1f13;
 $gold: #edbf68;
+$gold_lighter: tint($gold, 60%);
 $gold_light: tint($gold, 30%);
 $gold_dark: rgba($gold, 0.5);
+$blue_sky: #a3e9ff;
 $blue: #283377;
 $blue_twitter: #1da1f2;
 $blue_dark: shade($blue, 40%);
@@ -31,12 +33,12 @@ $radius: 1rem;
 // Base Styles =======================================================================
 body {
 	position: relative;
-	background: $purple_dark;
-	background-image: linear-gradient($purple, $purple_dark);
-	color: $gold;
 	font: 400 100%/1.2 Amatic SC, sans-serif;
 	min-height: 100vh;
 	text-align: center;
+	background: $purple_dark;
+	background-image: linear-gradient($purple, $purple_dark);
+	color: $gold;
 
 	@media (min-width: $tablet) {
 		padding: 1em;
@@ -73,7 +75,7 @@ a {
 	@extend %no-drag;
 	text-decoration: none;
 	cursor: pointer;
-	color: $gold;
+	color: currentColor;
 	border-bottom: thin dashed $gold_dark;
 
 	&:hover {
@@ -185,40 +187,35 @@ header {
 			outline: none;
 		}
 	}
+}
 
-	.is-showing-directions footer & {
-		box-shadow: inset 0 0 0 2px $blue;
-		background: transparent;
+.close {
+	display: none;
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+	border-radius: $radius $radius 0 0;
+	text-align: center;
+	vertical-align: middle;
+	background: rgba($blue, 0.9);
+	background: linear-gradient(90deg, rgba($blue, 0), $blue 66%);
+
+	path {
+		stroke: currentColor;
+		stroke-width: 1px;
+		stroke-linecap: round;
 	}
 
-	.close {
-		display: none;
-		position: absolute;
-		top: 0;
-		right: 0;
-		width: 100%;
-		height: 100%;
-		border-radius: $radius $radius 0 0;
-		text-align: center;
-		vertical-align: middle;
-		background: rgba($blue, 0.9);
-		background: linear-gradient(90deg, rgba($blue, 0), $blue 66%);
-
+	&:hover {
 		path {
-			stroke: $gold;
-			stroke-width: 1px;
-			stroke-linecap: round;
+			// stroke: currentColor;
 		}
+	}
 
-		&:hover {
-			path {
-				stroke: $gold_light;
-			}
-		}
-
-		.is-showing-directions & {
-			display: inline-block;
-		}
+	.is-showing-directions & {
+		display: inline-block;
 	}
 }
 
@@ -276,7 +273,7 @@ header {
 .personality-highlight {
 	border-radius: 0.25em;
 	font-weight: bold;
-	box-shadow: -0.1em 0 rgba($gold, 0), 0.1em 0 rgba($gold, 0);
+	box-shadow: -0.1em 0 rgba($gold_lighter, 0), 0.1em 0 rgba($gold_lighter, 0);
 }
 
 .is-showing-directions {
@@ -812,9 +809,22 @@ $colors_list: #1e8fff, #d8a635, #5aa959, #3cb9b9, #5a31bb, #785cbb, #f44336,
 // Footer ============================================================================
 footer {
 	padding: 0 1em;
+	text-align: center;
+
+	// @media (min-width: $tablet) {
+	// 	text-align: left;
+	// }
 }
 
 // Share =============================================================================
+.footer-split {
+	@media (min-width: $tablet) {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+}
+
 .share-wrapper {
 	@media (min-width: $tablet) {
 		display: flex;
@@ -833,3 +843,30 @@ footer {
 	align-items: center;
 	vertical-align: top;
 }
+
+// .dark-mode-wrapper {
+// 	white-space: nowrap;
+
+// 	input {
+// 		display: none;
+// 	}
+// 	label {
+// 		display: inline-block;
+// 		opacity: 0.75;
+// 		border-bottom: thin dashed rgba($gold, 0.5);
+// 		margin-left: 0.25em;
+// 		cursor: pointer;
+// 		transition: opacity $transition;
+
+// 		&:hover {
+// 			border-style: solid;
+// 		}
+// 	}
+
+// 	input:checked + label {
+// 		font-weight: bold;
+// 		border-style: solid;
+// 		border-color: $gold;
+// 		opacity: 1;
+// 	}
+// }
