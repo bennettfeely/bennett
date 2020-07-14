@@ -95,6 +95,10 @@ function getTweets() {
 			} else {
 				if (json.statuses.length > 0) {
 					// We have tweets
+
+					// Show the ad
+					document.querySelector(".ad-box").classList.add("is-ready");
+
 					parseTweets(json);
 				} else {
 					// No one has tweeted
@@ -338,14 +342,10 @@ function buildCreature(tweet, i) {
 		</div>`;
 
 	// Add the creature to the page
-	if (i == 3) {
-		document.querySelector(".ad-box").classList.add("is-ready");
+	if (i <= 2) {
+		document.querySelector(".creatures-featured").innerHTML += creature;
 	} else {
-		if (i <= 2) {
-			document.querySelector(".creatures-featured").innerHTML += creature;
-		} else {
-			document.querySelector(".creatures-more").innerHTML += creature;
-		}
+		document.querySelector(".creatures-more").innerHTML += creature;
 	}
 }
 
