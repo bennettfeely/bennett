@@ -226,7 +226,7 @@ function buildCreature(tweet, i) {
 		},
 		{
 			mod: "rainbow",
-			syn: "colorful|tiedye|colors",
+			syn: "colorful|colors|hippie|hippy|tiedye",
 		},
 		{
 			mod: "sad",
