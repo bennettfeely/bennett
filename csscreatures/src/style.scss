@@ -224,11 +224,6 @@ header {
 	position: relative;
 	box-shadow: inset 0.3rem -0.3rem $shadow;
 
-	h2,
-	h3 {
-		margin: 0;
-	}
-
 	.is-showing-directions & {
 		display: block;
 		border-radius: $radius 0 $radius $radius;
@@ -657,16 +652,14 @@ $colors_list: #1e8fff, #d8a635, #5aa959, #3cb9b9, #5a31bb, #785cbb, #f44336,
 }
 
 .mod-rainbow {
-	.creature {
-		background-image: linear-gradient(
-			#fe4b83,
-			#ff7747,
-			#e3b62f,
-			#b0ef5a,
-			#53f666,
-			#1edfa2,
-			#23acd8
-		);
+	$colors: #be3caf, #fe4b83, #ff7747, #e3b62f, #b0ef5a, #53f666, #1edfa2,
+		#23acd8, #4c6fdc;
+
+	&:nth-of-type(odd) .creature {
+		background-image: linear-gradient(60deg, $colors);
+	}
+	&:nth-of-type(even) .creature {
+		background-image: linear-gradient(-120deg, $colors);
 	}
 }
 
