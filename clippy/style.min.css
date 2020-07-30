@@ -1801,3 +1801,30 @@ p {
 .carbon-poweredby:after {
   content: " */";
 }
+
+.sponsorship {
+  font-size: 0.8em;
+  float: right;
+  display: inline-block;
+  background: #2cbc63;
+  margin: 0;
+  padding: 0.5em;
+  border-radius: 2px;
+  color: #000;
+  box-shadow: 0 1px 2px rgba(16, 10, 9, 0.15);
+  background-image: url(https://getcssscan.com/favicon-32x32.png);
+  padding-left: 2.25em;
+  background-size: 20px 20px;
+  background-position: 0.5em 50%;
+  background-repeat: no-repeat;
+  transition: box-shadow 0.375s, background-color 0.375s;
+}
+
+.sponsorship:hover {
+  background-color: #52e48a;
+  box-shadow: 0 2px 4px rgba(16, 10, 9, 0.15);
+}
+
+.sponsorship span {
+  text-decoration: underline;
+}

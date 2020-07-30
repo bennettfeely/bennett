@@ -4,6 +4,9 @@ function sanitizeTweet(tweet, i) {
 	// Remove the handle
 	var text = text.replace("@csstweeting", "");
 
+	// Be nice
+	var text = text.replace("fuck", "").replace("shit", "");
+
 	// Remove URL
 	var text = text.replace(/ *url\([^)]*\) */gi, " u̶r̶l̶(̶)̶");
 

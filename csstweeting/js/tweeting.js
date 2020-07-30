@@ -103,6 +103,16 @@ function parseTweets(json) {
 			var tweet = json.statuses[json.statuses.length - i - 1];
 
 			displayTweet(tweet, i);
+
+			if (i == len - 1) {
+				console.log("done!");
+				console.log(tweet);
+
+				var stylesheet_wrapper = document.querySelector(
+					".stylesheet-wrapper"
+				);
+				stylesheet_wrapper.scrollTop = stylesheet_wrapper.scrollHeight;
+			}
 		}
 	} else {
 		defaultTweets();

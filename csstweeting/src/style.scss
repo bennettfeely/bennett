@@ -44,7 +44,6 @@ body {
 a {
 	color: currentColor;
 	text-decoration: none;
-	transition: color $transition;
 
 	&:hover {
 		text-decoration: underline;
@@ -79,6 +78,14 @@ main {
 	}
 }
 
+.stylesheet-wrapper {
+	position: relative;
+	background: shade($background, 50%);
+	color: $foreground;
+	max-height: 75vh;
+	overflow-y: scroll;
+}
+
 .stylesheet {
 	font-size: 1em;
 	white-space: pre-wrap;
@@ -88,10 +95,6 @@ main {
 	line-height: 1.5;
 	tab-size: 4;
 	hyphens: none;
-	color: $foreground;
-	border-radius: $radius;
-	overflow: hidden;
-	background: shade($background, 50%);
 }
 
 .tweet {
@@ -103,11 +106,12 @@ main {
 
 	&:hover a {
 		color: $blue;
+		text-decoration: underline;
 	}
 }
 
 .tweet-text {
-	margin-top: 1em;
+	// margin-top: 1em;
 }
 
 // Syntax highlighting =================================================

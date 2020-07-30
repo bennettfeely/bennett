@@ -8,26 +8,21 @@ html lang="en"
 		/ The Title
 		title CSS Tweeting
 		/ Android
-		meta name="theme-color" content="#aaaaaa"
+		meta name="theme-color" content="#555"
 		meta name="application-name" content="CSS Tweeting"
-		meta name="description" content="See your own creature appear here by tweeting to @csstweeting!"
+		meta name="description" content="You control how my website looks by tweeting CSS to @csstweeting. Make it as ugly or beautiful as you want."
 		meta name="rating" content="General"
-		meta name="mobile-web-app-capable" content="yes"
 		/ Manifest
-		link rel="manifest" href="manifest.json"
-		link rel="license" href="license.txt"
 		/ Facebook
 		meta property="article:author" content="Bennett Feely"
-		meta property="og:description" content="See your own creature appear here by tweeting to @csstweeting!"
-		meta property="og:image" content="img/csstweeting.png"
-		meta property="og:locale" content="en_US"
+		meta property="og:description" content="You control how my website looks by tweeting CSS to @csstweeting. Make it as ugly or beautiful as you want."
 		meta property="og:site_name" content="CSS Tweeting"
 		meta property="og:title" content="CSS Tweeting"
 		meta property="og:type" content="website"
 		/ Twitter
 		meta name="twitter:card" content="summary"
 		meta name="twitter:creator" content="@bennettfeely"
-		meta name="twitter:description" content="See your own creature appear here by tweeting to @csstweeting!"
+		meta name="twitter:description" content="You control how my website looks by tweeting CSS to @csstweeting. Make it as ugly or beautiful as you want."
 		meta name="twitter:image" content="img/csstweeting.png"
 		meta name="twitter:site" content="@csstweeting"
 		meta name="twitter:title" content="CSS Tweeting"
@@ -38,7 +33,6 @@ html lang="en"
 		link href="img/favicon-16x16.png" rel="icon" type="image/png" sizes="16x16"
 		/ Styles
 		link href="css/style.min.css" rel="stylesheet"
-		meta name="renderer" content="webkit"
 	body
 		main
 			header
@@ -46,9 +40,10 @@ html lang="en"
 					h1 CSS Tweeting
 			iframe.window src="/live.html"
 			section
-				.stylesheet
-					.container
-						p Loading...
+				.stylesheet-wrapper
+					.stylesheet
+						.container
+							p Loading...
 			footer
 				.container
 					p &copy;2020 Bennett Feely
