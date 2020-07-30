@@ -1818,11 +1818,24 @@ p {
   background-position: 0.5em 50%;
   background-repeat: no-repeat;
   transition: box-shadow 0.375s, background-color 0.375s;
+  text-decoration: none;
+}
+
+.sponsorship-side {
+  font-size: 1em;
+  float: none;
+  margin: 0.75rem 0.5rem 0;
+  background-color: #f1f1ec;
 }
 
 .sponsorship:hover {
   background-color: #52e48a;
   box-shadow: 0 2px 4px rgba(16, 10, 9, 0.15);
+  text-decoration: underline;
+}
+
+.sponsorship-side:hover {
+  background-color: #d3d0ca;
 }
 
 .sponsorship span {
