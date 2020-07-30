@@ -1,0 +1,35 @@
+doctype html
+html lang="en"
+	head
+		/ Essentials
+		meta charset="utf-8"
+		meta http-equiv="x-ua-compatible" content="ie=edge"
+		meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"
+		/ The Title
+		title CSS Tweeting Live!
+	body
+		header
+			.container
+				h1 Welcome to CSS Tweeting
+				h2 You control how you want this page to look through tweets.
+		main
+			.container
+				figure
+					img width="550" height="340" src="https://source.unsplash.com/550x340/?beach,city,nature,mountain,tree"
+					figcaption
+						small Random photo from <a href="https://unsplash.com">Unsplash.com</a>
+				p Any CSS you tweet to the account <a href="https://twitter.com/csstweeting">@csstweeting</a> will be applied to this page. Want to make the font all in Comic Sans? Maybe you want to make the background color lime green?
+				p The website uses the Twitter Search API to query tweets sent to @csstweeting. With these tweets wrapped in a style tag, I’m giving you the keys to style this page however you please. Newer CSS tweets are lower on the stylesheet and override earlier tweets.
+				p This concept is a fork of an similar project I made years ago, called <a href="https://bennettfeely.com/csscreatures">CSS Creatures</a>, which allows users to create a little animated creature by tweeting.
+				p Some of the HTML tags on this page you can style include <code>body</code>, <code>header</code>, <code>footer</code>, <code>h1</code>, <code>h2</code>, <code>h3</code>, <code>p</code>, <code>a</code>, <code>ul</code>, <code>li</code>, <code>code</code>, and <code>img</code>.
+		section
+			.container
+				h3 Restricted CSS
+				p For a small bit of sanity, some features in CSS are restricted. This includes two things:
+				ul
+					li <code>url()</code>
+					li <code>content</code> property
+				p Otherwise, you can make this page as ugly or as pretty as you want. It only takes 15-20 seconds after tweeting for your CSS to be applied to this page.
+		.stylesheet-wrapper
+		script src="js/sanitize.js"
+		script src="js/tweeting_live.js"
