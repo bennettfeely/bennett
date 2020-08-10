@@ -1,0 +1,623 @@
+// Partials ============================================================
+@import "reset";
+@import "colors";
+@import "functions";
+
+// Variables ===========================================================
+$mobile: 35em;
+$tablet: 60em;
+$desktop: 80em;
+
+$black: #111;
+$white: #fff;
+
+$black-code-light: #4d4d4c;
+$white-code-light: #ffffff;
+$gray-code-light: shade(#8e908c, 20%);
+$red-code-light: #c82829;
+$orange-code-light: shade(#f5871f, 10%);
+$yellow-code-light: shade(#eab700, 15%);
+$green-code-light: #718c00;
+$blue-code-light: #4271ae;
+$purple-code-light: #8959a8;
+$aqua-code-light: #3e999f;
+
+$black-code-dark: #1d1f21;
+$white-code-dark: #c5c8c6;
+$gray-code-dark: #969896;
+$red-code-dark: #cc6666;
+$orange-code-dark: #de935f;
+$yellow-code-dark: #f0c674;
+$green-code-dark: #b5bd68;
+$blue-code-dark: #81a2be;
+$purple-code-dark: #b294bb;
+$aqua-code-dark: #8abeb7;
+
+$radius: 0.5em;
+$transition: 0.18s;
+
+// Mixins ==============================================================
+@mixin grid($grid-lines, $background) {
+	background-attachment: fixed;
+	background-color: $background;
+	background-image: linear-gradient(
+			90deg,
+			transparent,
+			$background,
+			$background,
+			transparent
+		),
+		repeating-linear-gradient(
+			-45deg,
+			transparent 0,
+			transparent 2.5em,
+			$grid-lines 0,
+			$grid-lines calc(2.5em + 1px)
+		),
+		repeating-linear-gradient(
+			45deg,
+			transparent 0,
+			transparent 2.5em,
+			$grid-lines 0,
+			$grid-lines calc(2.5em + 1px)
+		);
+}
+
+@mixin z-color($color) {
+	.z-layer {
+		color: shade($color, 25%);
+	}
+
+	.z-layer:first-child {
+		color: $color;
+	}
+}
+
+@mixin button($color) {
+	border-color: $color;
+	box-shadow: 0 0 0 0 rgba($color, 0.25);
+
+	strong {
+		color: $color;
+	}
+
+	&:hover {
+		box-shadow: 0 0 0 0.5em rgba($color, 0.25);
+		color: shade($color, 25%);
+		text-decoration: none;
+	}
+}
+
+// Base ================================================================
+body {
+	// @include grid($blue-gray-100, $white);
+	position: relative;
+	font: 100%/1.5 "Nunito", "Helvetica Neue", sans-serif;
+	position: relative;
+	min-height: 200vh;
+}
+
+// Structural Styles ===================================================
+.container {
+	padding: 1.5em;
+}
+.wrapper {
+	max-width: $tablet;
+	margin: 0 auto;
+}
+
+header,
+footer {
+	text-align: center;
+}
+
+main {
+}
+
+.split {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1.5rem;
+}
+
+.split-item {
+	flex: 1 0 20em;
+
+	pre {
+		margin-top: 0;
+		align-self: stretch;
+	}
+}
+
+// Typography ==========================================================
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+pre {
+	margin-bottom: 1rem;
+}
+
+h1 {
+	font-size: 3em;
+	font-weight: 800;
+	line-height: 1;
+}
+
+h2 {
+	font-size: 2em;
+	font-weight: 400;
+}
+
+h3 {
+	font-size: 1.15em;
+	font-weight: 600;
+}
+
+a {
+	text-decoration: none;
+	color: $blue-600;
+
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+.button {
+	display: inline-block;
+	font-size: 1em;
+	padding: 0.5em 1em;
+	border: 1px solid;
+	background: $white;
+	border-radius: $radius;
+	color: $black;
+	overflow: hidden;
+	transition: box-shadow $transition, border-color $transition;
+
+	strong {
+		font-size: 1.25em;
+	}
+
+	.split-item {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		flex: 1 0 auto;
+		align-items: center;
+
+		&:nth-child(2) {
+			border-left: thin solid $green;
+			padding-left: 1em;
+		}
+	}
+}
+
+code,
+pre,
+.preview {
+	border-radius: $radius;
+
+	&.light {
+		border: 1px solid $blue-gray-100;
+	}
+}
+
+pre {
+	font: 100%/1.4 Monaco, monospace;
+	margin: 1em 0;
+	padding: 1rem;
+	white-space: pre-wrap;
+	word-break: break-word;
+
+	code {
+		padding: 0;
+	}
+
+	&.output {
+		font-size: 0.8em;
+		color: rgba($black, 0.5);
+	}
+}
+
+ul,
+ol {
+	margin: 1em 2em;
+}
+
+code {
+	font-size: 1.2em;
+	padding: 0.1em 0.25em;
+	border-radius: $radius / 2;
+}
+
+.dot {
+	width: 0.75em;
+	height: 0.75em;
+	display: inline-block;
+	border-radius: 25%;
+	vertical-align: middle;
+	margin-left: 0.25em;
+	pointer-events: none;
+	user-select: none;
+}
+
+.light {
+	background: $white-code-light;
+	color: $black-code-light;
+
+	.gray-code {
+		color: $gray-code-light;
+	}
+	.red-code {
+		color: $red-code-light;
+	}
+	.orange-code {
+		color: $orange-code-light;
+	}
+	.yellow-code {
+		color: $yellow-code-light;
+	}
+	.green-code {
+		color: $green-code-light;
+	}
+	.blue-code {
+		color: $blue-code-light;
+	}
+	.purple-code {
+		color: $purple-code-light;
+	}
+	.aqua-code {
+		color: $aqua-code-light;
+	}
+}
+
+.dark {
+	@include grid($blue-gray-900, $black-code-dark);
+	color: $white-code-dark;
+
+	::selection {
+		background: $gray-code-dark;
+	}
+
+	.gray-code {
+		color: $gray-code-dark;
+	}
+	.red-code {
+		color: $red-code-dark;
+	}
+	.orange-code {
+		color: $orange-code-dark;
+	}
+	.yellow-code {
+		color: $yellow-code-dark;
+	}
+	.green-code {
+		color: $green-code-dark;
+	}
+	.blue-code {
+		color: $blue-code-dark;
+	}
+	.purple-code {
+		color: $purple-code-dark;
+	}
+	.aqua-code {
+		color: $aqua-code-dark;
+	}
+}
+
+.preview {
+	@include grid($blue-gray-100, $blue-gray-50);
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	flex: 1 0 12em;
+	min-height: 12em;
+	overflow: hidden;
+	padding: 0 1em;
+
+	&.vertical {
+		flex-direction: column;
+		padding: 1em 0;
+	}
+
+	h1 {
+		position: relative;
+		margin: 0;
+
+		&.x-large {
+			font-size: 10em;
+		}
+
+		&.large {
+			font-size: 8em;
+		}
+
+		&.medium {
+			font-size: 4em;
+		}
+
+		&.small {
+			font-size: 3em;
+		}
+	}
+
+	h3 {
+		position: absolute;
+		top: 1rem;
+		right: 1rem;
+		opacity: 0.25;
+	}
+}
+
+// Header ==============================================================
+.header {
+	h1 {
+		font-size: 5em;
+
+		@media (min-width: $mobile) {
+			font-size: 8em;
+		}
+		@media (min-width: $tablet) {
+			font-size: 12em;
+		}
+
+		.z-text {
+			animation: 3s ease-in-out both;
+		}
+
+		[data-z]:nth-child(odd) .z-text {
+			animation-name: start-up-odd;
+
+			@keyframes start-up-odd {
+				0% {
+					transform: rotateX(60deg);
+				}
+				20% {
+					transform: rotateX(-40deg) rotateY(30deg);
+				}
+				60% {
+					transform: rotateX(50deg);
+				}
+			}
+		}
+
+		[data-z]:nth-child(even) .z-text {
+			animation-name: start-up-even;
+
+			@keyframes start-up-even {
+				0% {
+					transform: rotateX(60deg);
+				}
+				20% {
+					transform: rotateX(-40deg) rotateY(-30deg);
+				}
+				60% {
+					transform: rotateX(50deg);
+				}
+			}
+		}
+
+		@for $i from 1 through 8 {
+			[data-z]:nth-child(#{$i}) .z-text {
+				animation-delay: $i * 0.15s;
+			}
+		}
+	}
+
+	h2 {
+		font-size: 1.25em;
+	}
+
+	[data-z] {
+		&:nth-child(1) {
+			@include z-color($amber);
+		}
+		&:nth-child(2) {
+			@include z-color($light-green);
+		}
+		&:nth-child(3) {
+			@include z-color($light-blue);
+		}
+		&:nth-child(4) {
+			@include z-color($red);
+		}
+		&:nth-child(5) {
+			@include z-color($indigo);
+		}
+		&:nth-child(6) {
+			@include z-color($blue-gray);
+		}
+		&:nth-child(7) {
+			@include z-color($teal);
+		}
+		&:nth-child(8) {
+			@include z-color($orange);
+		}
+	}
+}
+
+// Download ============================================================
+.download {
+	.button {
+		@include button($blue);
+	}
+}
+
+// License ============================================================
+.license {
+	.button {
+		@include button($green);
+		text-align: center;
+		min-width: 12em;
+		float: right;
+		margin: 0 0 1.5em 1.5em;
+
+		strong {
+			display: block;
+		}
+
+		h1 {
+			font-size: 2em;
+			margin: 0;
+			color: $green;
+		}
+	}
+}
+
+// Intro ===============================================================
+.intro {
+}
+
+// Initialization ======================================================
+.initialization {
+}
+
+.html-init {
+	pre.light {
+		font-size: 0.8em;
+	}
+
+	.preview {
+		pointer-events: none;
+		user-select: none;
+		min-width: 12em;
+		margin-bottom: 0.75em;
+
+		.z-text {
+			$degrees: 30deg;
+			animation: wobble 12s ease-in-out infinite;
+			transform: rotateY($degrees);
+
+			@keyframes wobble {
+				0%,
+				100% {
+					transform: rotate3d(-1, 1, 0, $degrees);
+				}
+				25% {
+					transform: rotate3d(1, 1, 0, $degrees);
+				}
+				50% {
+					transform: rotate3d(1, -1, 0, $degrees);
+				}
+				75% {
+					transform: rotate3d(-1, -1, 0, $degrees);
+				}
+			}
+
+			.z-layer {
+				@mixin debugger($color) {
+					color: $color;
+					outline: 1px dashed $gray;
+				}
+
+				&:nth-child(1) {
+					@include debugger($amber);
+				}
+				&:nth-child(2) {
+					@include debugger($green);
+				}
+				&:nth-child(3) {
+					@include debugger($indigo);
+				}
+			}
+		}
+	}
+}
+
+// Styling =============================================================
+.styling {
+	.preview {
+		.z-text {
+			/* Apply CSS transforms here */
+			/* Tip: rotateX() == up/down */
+			/*      rotateY() == left/right */
+			transform: rotateX(30deg) rotateY(-30deg);
+		}
+
+		.z-layer {
+			color: $blue-gray-700;
+		}
+
+		.z-layer:first-child {
+			color: $blue-gray-300;
+		}
+	}
+}
+
+// Options =============================================================
+.options {
+	.split {
+		align-items: center;
+	}
+
+	.z-text {
+		transform: rotateX(30deg) rotateY(30deg);
+		transition: transform 1s;
+	}
+
+	.preview {
+		&:hover {
+			.z-text {
+				transform: rotateX(-30deg) rotateY(-30deg);
+			}
+		}
+	}
+}
+
+.depth-option {
+	@include z-color($light-green);
+}
+
+.layers-option {
+	@include z-color($orange);
+}
+
+.fade-option {
+	@include z-color($light-blue);
+}
+
+.direction-option {
+	@include z-color($amber);
+
+	.z-text {
+		background: rgba($orange, 0.25);
+		background: repeating-linear-gradient(
+			45deg,
+			rgba($gray, 0.5) 0,
+			rgba($gray, 0.5) 3px,
+			rgba($gray, 0) 0,
+			rgba($gray, 0) 6px
+		);
+		background: rgba($black, 0.25);
+		padding: 0 1em;
+	}
+
+	[data-z-direction="backwards"] .z-layer:first-child {
+		transform: translateZ(-1px) !important;
+	}
+}
+
+.param {
+	font-weight: 400;
+	opacity: 0.7;
+
+	&:before {
+		content: " : ";
+	}
+}
+
+// Gyro ================================================================
+.gyro {
+	position: fixed;
+	top: 0;
+	left: 0;
+	background: yellow;
+	z-index: 100;
+	font-family: monospace;
+	width: 150px;
+}

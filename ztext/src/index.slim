@@ -1,0 +1,194 @@
+doctype html
+html lang="en"
+	head
+		/ Essentials
+		meta charset="utf-8"
+		meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"
+		title ztext.js
+		meta name="description" content="Quick tool for making responsive and fluid font sizes using the new CSS function clamp()."
+		/ Icons
+		/ link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png"
+		/ link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png"
+		/ link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png"
+		/ link rel="mask-icon" color="#09101d" href="img/safari-pinned-tab.svg"
+		/ meta name="msapplication-TileColor" content="#09101d"
+		/ Styles
+		link href="css/style.min.css" rel="stylesheet"
+		/ Fonts
+		link href="https://fonts.googleapis.com/css2?family=Cousine&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet"
+	body
+		.flip
+		header.header
+			.wrapper
+				.container
+					h1 
+						span data-z="true" data-z-depth=".1em" data-z-event="mouse" data-z-event-rotation="90deg" z
+						span data-z="true" data-z-depth=".1em" data-z-event="mouse" data-z-event-rotation="90deg" t
+						span data-z="true" data-z-depth=".1em" data-z-event="mouse" data-z-event-rotation="90deg" e
+						span data-z="true" data-z-depth=".1em" data-z-event="mouse" data-z-event-rotation="90deg" x
+						span data-z="true" data-z-depth=".1em" data-z-event="mouse" data-z-event-rotation="90deg" t
+						span data-z="true" data-z-depth=".1em" data-z-event="mouse" data-z-event-rotation="90deg" .
+						span data-z="true" data-z-depth=".1em" data-z-event="mouse" data-z-event-rotation="90deg" j
+						span data-z="true" data-z-depth=".1em" data-z-event="mouse" data-z-event-rotation="90deg" s
+					h2 Easy to implement, lightweight 3D text for any website and any font.
+					.gyro
+						div.gyro-x x
+						div.gyro-y y
+						div.gyro-z z
+						div.error error
+		main.main
+			section.download#download
+				.wrapper
+					.container
+						h2 Download
+						a.button.split-item href="js/ztext.min.js" 
+							| <strong>ztext.min.js</strong> &mdash; Minified 1.2 kb
+			section.license
+				.wrapper
+					.container
+						h2 Commercial License
+						a.button href=""
+							.split
+								.split-item
+									| ztext Commercial
+									strong Developer
+									| License
+								.split-item
+									h1 $10
+						p Want to use ztext to develop commercial sites, themes, projects, and applications? The Commercial license is right for you. With this option, your source code is kept proprietary. <a href="">Read more about ztext commercial licensing</a>.
+						p Once purchased, you'll receive a commercial license PDF and will be all set to use ztext in your commercial applications.						
+			section.intro#intro
+				.wrapper
+					.container
+						h2 Get Started
+						p Include <code class="light"><span class="green-code">ztext.min.js</span></code> on your site before the closing <code class="light"><span class="red-code">&lt;/body&gt;</span></code> tag on your HTML file. For example:
+						pre.dark
+							code <span class="red-code">&lt;script src</span>=<span class="green-code">"/path/to/ztext.min.js"</span><span class="red-code">&lt;/script&gt;</span>
+			section.initialization#initialization
+				.wrapper
+					.container
+						h2 Initialization
+						p There are two ways to use ztext. 
+						ol 
+							li <a href="#js-init"> JavaScript</a>, or
+							li <a href="#html-init">HTML attributes</a>
+						p Pick whichever method is easier for you.
+					.container.js-init#js-init
+						h3 Initalize with JavaScript
+						p Use ztext with vanilla JS with <code class="light"><span class="purple-code">new</span> <span class="red-code">Ztextify</span><span class="blue-code">(</span><span class="green-code">elem</span>, <span class="blue-code">{})</span></code>. This constructor accepts two arguments: the HTML element and an options object.
+						pre.dark
+							code
+								<span class="purple-code">var</span> <span class="red-code">element</span> <span class="blue">=</b> <span class="yellow-code">document</span>.<span class="red-code">querySelector</span><span class="blue-code">(</span><span class="green-code">'h1'</span><span class="blue-code">)</span>;<br>
+								<span class="purple-code">var</span> <span class="red-code">ztxt</span> <span class="blue-code">=</span> <span class="purple-code">new</span> <span class="red-code">Ztextify</span><span class="blue-code">(</span><span class="green-code">element</span><span class="blue-code">,</span> <span class="blue-code">{</span><br>
+									| &nbsp;&nbsp;&nbsp;<span class="gray-code">// Options</span><br>
+									| &nbsp;&nbsp;&nbsp;<span class="blue-code">depth</span>: <span class="green-code">'30px'</span>,<br>
+									| &nbsp;&nbsp;&nbsp;<span class="blue-code">layers</span>: <span class="orange-code">10</span>,<br>
+									| &nbsp;&nbsp;&nbsp;<span class="blue-code">fade</span>: <span class="orange-code">true</span><br>
+								<span class="blue-code">})</span>;
+					.container.html-init#html-init
+						h3 Initalize with HTML attributes
+						p ztext will look for any HTML element with the <code class="light"><span class="yellow-code">data-z</span></code> attribute and will apply a 3D effect to it.
+						p Take this code for example:
+						.split
+							.split-item
+								pre.dark
+									code <span class="red-code">&lt;h1</span> <span class="yellow-code">data-z data-z-layers</span>=<span class="green-code">"3"</span> <span class="yellow-code">data-z-depth</span>=<span class="green-code">".5em"</span><span class="red-code">></span>A<span class="red-code">&lt;/h1></span>
+								p Structually, ztext turns that into this:
+								pre.light
+									<code class="gray-code">&lt;h1&gt;<br>&nbsp;&nbsp;&nbsp;&lt;span class="z-text"&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span class="z-layers"&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span class="z-layer"&gt;A&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span class="z-layer"&gt;A&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span class="z-layer"&gt;A&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&lt;/span&gt;<br>&lt;/h1&gt;</code>
+							.split-item.preview
+								h3 Preview
+								h1.x-large data-z="true" data-z-layers="3" data-z-depth=".5em" A
+			section.styling#styling
+				.wrapper
+					.container
+						h2 Styling
+						p Start with the following CSS snippet and style ztext any way you want.
+						.split
+							.split-item
+								pre.dark
+									<code>
+										<span class="red-code">.z-text</span> {
+										<br>   <span class="gray-code">/* Tip: Apply CSS transforms here */</span>
+										<br>   <span class="gray-code">/* rotateX() == up/down */</span>
+										<br>   <span class="gray-code">/* rotateY() == left/right */</span>
+										<br>   <span class="yellow-code">transform</span>: <span class="blue-code">rotateX</span>(<span class="orange-code">-20deg</span>);
+										<br>}
+										<br>
+										<br><span class="red-code">.z-layer</span> {
+										<br>   <span class="yellow-code">color</span>: <span class="aqua-code">#455a64</span>;<span class="dot" style="background:#455a64"></span>
+										<br>}
+										<br>
+										<br><span class="red-code">.z-layer:first-child</span> {
+										<br>   <span class="yellow-code">color</span>: <span class="aqua-code">#90a4ae</span>;<span class="dot" style="background:#90a4ae"></span>
+										<br>}
+									</code>
+							.split-item.preview
+								h1.large data-z="true" CSS
+			section.options#options
+				.wrapper
+					.container.option.depth-option#depth
+						h2 Options
+						.split
+							.split-item.preview
+								h1.medium data-z="true" 1rem
+								h1.medium data-z="true" data-z-depth="60px" data-z-layers="30" 60px
+							.split-item
+								h3
+									a href="#depth" depth
+									small.param CSS length value
+								p
+									| The depth of the effect on the z-axis. Accepts any valid CSS length value except for %. Default: 
+									code.light "1rem"
+					.container.option.layers-option#layers
+						.split
+							.split-item.preview
+								h1.large data-z="true" data-z-layers="10" data-z-depth=".25em" 10
+								h1.large data-z="true" data-z-depth=".5em" data-z-layers="2" 2
+							.split-item
+								h3
+									a href="#layers" layers
+									small.param integer
+								p
+									| Number of layers that make up the effect. Default: 
+									code.light 10
+					.container.option.fade-option#fade
+						.split
+							.split-item.preview
+								h1.medium data-z="true" false
+								h1.medium data-z="true" data-z-fade="true" true
+							.split-item
+								h3
+									a href="#fade" fade
+									small.param boolean
+								p
+									| Make the text fade away. Default: 
+									code.light false
+					.container.option.direction-option#direction
+						.split
+							.split-item.preview.vertical
+								h1.small data-z="true" data-z-depth=".5em" both
+								h1.small data-z="true" data-z-depth=".5em" data-z-direction="backwards" backwards
+								h1.small data-z="true" data-z-depth=".5em" data-z-direction="forwards" forwards
+							.split-item
+								h3
+									a href="#direction" direction
+									small.param "both" | "backwards" | "forwards"
+								p
+									| The direction the effect is to be applied. Default: 
+									code.light "both"
+					.container#event
+						h3
+							a href="#event" event
+							small.param "none" | "gyro" | "mouse"
+						p
+							| Make text rotate in response to tilting the device or to the user's mouse position. Default: 
+							code.light "none"
+					.container#eventRotation
+						h3
+							a href="#eventRotation" eventRotation
+							small.param CSS rotation value
+						p
+							| The maximum rotation to be applied when mouse or gyroscope events are enabled. Default: 
+							code.light "45deg"
+		script src="src/js/ztext.js"
