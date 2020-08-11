@@ -141,8 +141,8 @@ function draw(z) {
 			y_sum = 0;
 
 			window.addEventListener("deviceorientation", function (e) {
-				var x = e.gamma;
-				var y = e.beta;
+				var x = e.beta;
+				var y = e.gamma;
 
 				if (x !== 0 && y !== 0) {
 					// Get baseline values
