@@ -148,23 +148,23 @@ function draw(z) {
 					};
 				}
 
-				var x_diff = (x - baseline.x) / 45;
-				var y_diff = (y - baseline.y) / 45;
+				// var x_diff = (x - baseline.x) / 45;
+				// var y_diff = (y - baseline.y) / 45;
 
 				var x_diff = x / 45;
 				if (x_diff < -1) {
-					var x_pct = -1;
+					var x_diff = -1;
 				}
 				if (x_diff > 1) {
-					var x_pct = 1;
+					var x_diff = 1;
 				}
 
 				var y_diff = y / 45;
 				if (y_diff < -1) {
-					var y_pct = -1;
+					var y_diff = -1;
 				}
 				if (y_diff > 1) {
-					var y_pct = 1;
+					var y_diff = 1;
 				}
 
 				tilt(x_pct, y_pct);
