@@ -131,7 +131,10 @@ function draw(z) {
 	// Capture device gyroscope readings and tilt zLayers
 	if (event === "gyro") {
 		if (window.DeviceOrientationEvent) {
-			baseline = undefined;
+			baseline = {
+				x: 0,
+				y: 0,
+			};
 
 			window.addEventListener("deviceorientation", function (e) {
 				console.log("listenin!");
@@ -140,15 +143,15 @@ function draw(z) {
 				var y = e.beta;
 
 				// Get baseline values
-				if (baseline == undefined) {
+				if (baseline.x !== 0 && baseline.y !== 0) {
 					baseline = {
 						x: x,
 						y: y,
 					};
 				}
 
-				var x_diff = x - baseline.x / 45;
-				var y_diff = y - baseline.y / 45;
+				var x_diff = (x - baseline.x) / 45;
+				var y_diff = (y - baseline.y) / 45;
 
 				document.querySelector(".x_debug").innerHTML = "x: " + x;
 				document.querySelector(".y_debug").innerHTML = "y: " + y;
