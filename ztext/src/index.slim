@@ -22,14 +22,14 @@ html lang="en"
 			.wrapper
 				.container
 					h1 
-						span data-z="true" data-z-depth=".1em" data-z-event="mouse" data-z-event-rotation="90deg" z
-						span data-z="true" data-z-depth=".1em" data-z-event="mouse" data-z-event-rotation="90deg" t
-						span data-z="true" data-z-depth=".1em" data-z-event="mouse" data-z-event-rotation="90deg" e
-						span data-z="true" data-z-depth=".1em" data-z-event="mouse" data-z-event-rotation="90deg" x
-						span data-z="true" data-z-depth=".1em" data-z-event="mouse" data-z-event-rotation="90deg" t
-						span data-z="true" data-z-depth=".1em" data-z-event="mouse" data-z-event-rotation="90deg" .
-						span data-z="true" data-z-depth=".1em" data-z-event="mouse" data-z-event-rotation="90deg" j
-						span data-z="true" data-z-depth=".1em" data-z-event="mouse" data-z-event-rotation="90deg" s
+						span data-z="true" data-z-depth=".1em" data-z-event="gyro" data-z-event-rotation="90deg" z
+						span data-z="true" data-z-depth=".1em" data-z-event="gyro" data-z-event-rotation="90deg" t
+						span data-z="true" data-z-depth=".1em" data-z-event="gyro" data-z-event-rotation="90deg" e
+						span data-z="true" data-z-depth=".1em" data-z-event="gyro" data-z-event-rotation="90deg" x
+						span data-z="true" data-z-depth=".1em" data-z-event="gyro" data-z-event-rotation="90deg" t
+						span data-z="true" data-z-depth=".1em" data-z-event="gyro" data-z-event-rotation="90deg" .
+						span data-z="true" data-z-depth=".1em" data-z-event="gyro" data-z-event-rotation="90deg" j
+						span data-z="true" data-z-depth=".1em" data-z-event="gyro" data-z-event-rotation="90deg" s
 					h2 Easy to implement, lightweight 3D text for any website and any font.
 					.gyro
 						div.gyro-x x
@@ -178,12 +178,19 @@ html lang="en"
 									| The direction the effect is to be applied. Default: 
 									code.light "both"
 					.container#event
-						h3
-							a href="#event" event
-							small.param "none" | "gyro" | "mouse"
-						p
-							| Make text rotate in response to tilting the device or to the user's mouse position. Default: 
-							code.light "none"
+						.split
+							.split-item.preview
+							.split-item
+								h3
+									a href="#event" event
+									small.param "none" | "gyro" | "mouse"
+								p
+									| Control text rotation with JavaScript. Default: 
+									code.light "none"
+								p 
+									| The 
+									code.light "gyro"
+									|  event makes the text tilt in response to the device tilting. It uses the DeviceOrientation API which requires https. On iOS Safari, this unfortunately requires a permission.
 					.container#eventRotation
 						h3
 							a href="#eventRotation" eventRotation

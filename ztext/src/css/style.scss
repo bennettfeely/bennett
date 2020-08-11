@@ -43,8 +43,7 @@ $transition: 0.18s;
 	background-image: linear-gradient(
 			90deg,
 			transparent,
-			$background,
-			$background,
+			rgba($background, 0.8),
 			transparent
 		),
 		repeating-linear-gradient(
