@@ -613,9 +613,14 @@ code {
 // Gyro ================================================================
 .gyro {
 	position: fixed;
-	top: 0;
+	bottom: 0;
+	width: 100%;
+	white-space: nowrap;
+	right: 0;
 	left: 0;
-	background: yellow;
+	background: rgba(black, 0.95);
+	color: $white;
+	padding: 10px;
 	z-index: 100;
 	font-family: monospace;
 	width: 150px;
