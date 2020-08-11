@@ -146,9 +146,11 @@ function draw(z) {
 
 				if (x !== 0 && y !== 0) {
 					// Get baseline values
-					i++;
-					x_sum += x;
-					y_sum += y;
+					if (i < 100) {
+						i++;
+						x_sum += x;
+						y_sum += y;
+					}
 
 					var x_avg = x_sum / i;
 					var y_avg = y_sum / i;
