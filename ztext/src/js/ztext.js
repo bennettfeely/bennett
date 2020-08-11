@@ -141,17 +141,14 @@ function draw(z) {
 				var y = e.beta;
 
 				// Get baseline values
-				// if (baseline.x !== 0 && baseline.y !== 0) {
-				// 	baseline = {
-				// 		x: x,
-				// 		y: y,
-				// 	};
-				// }
+				if (baseline.x !== 0 && baseline.y !== 0) {
+					baseline = {
+						x: x,
+						y: y,
+					};
+				}
 
-				// var x_diff = (x - baseline.x) / 45;
-				// var y_diff = (y - baseline.y) / 45;
-
-				var x_pct = x / 45;
+				var x_diff = (x - baseline.x) / 45;
 				if (x_pct < -1) {
 					var x_pct = -1;
 				}
@@ -159,7 +156,7 @@ function draw(z) {
 					var x_pct = 1;
 				}
 
-				var y_pct = y / 45;
+				var y_diff = (y - baseline.y) / 45;
 				if (y_pct < -1) {
 					var y_pct = -1;
 				}
