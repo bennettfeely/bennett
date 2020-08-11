@@ -615,7 +615,6 @@ code {
 	position: fixed;
 	bottom: 0;
 	width: 100vw;
-	white-space: nowrap;
 	right: 0;
 	left: 0;
 	background: rgba(black, 0.95);
@@ -623,6 +622,5 @@ code {
 	padding: 10px;
 	z-index: 100;
 	font-family: monospace;
-	width: 150px;
 	text-align: left;
 }
