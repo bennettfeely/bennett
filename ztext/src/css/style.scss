@@ -366,40 +366,41 @@ code {
 		}
 
 		.z-text {
-			animation: 3s ease-in-out both;
+			// animation: 3s ease-in-out both;
+			transform: rotateX(-45deg);
 		}
 
-		[data-z]:nth-child(odd) .z-text {
-			animation-name: start-up-odd;
+		// [data-z]:nth-child(odd) .z-text {
+		// 	animation-name: start-up-odd;
 
-			@keyframes start-up-odd {
-				0% {
-					transform: rotateX(60deg);
-				}
-				20% {
-					transform: rotateX(-40deg) rotateY(30deg);
-				}
-				60% {
-					transform: rotateX(50deg);
-				}
-			}
-		}
+		// 	@keyframes start-up-odd {
+		// 		0% {
+		// 			transform: rotateX(60deg);
+		// 		}
+		// 		20% {
+		// 			transform: rotateX(-40deg) rotateY(30deg);
+		// 		}
+		// 		60% {
+		// 			transform: rotateX(50deg);
+		// 		}
+		// 	}
+		// }
 
-		[data-z]:nth-child(even) .z-text {
-			animation-name: start-up-even;
+		// [data-z]:nth-child(even) .z-text {
+		// 	animation-name: start-up-even;
 
-			@keyframes start-up-even {
-				0% {
-					transform: rotateX(60deg);
-				}
-				20% {
-					transform: rotateX(-40deg) rotateY(-30deg);
-				}
-				60% {
-					transform: rotateX(50deg);
-				}
-			}
-		}
+		// 	@keyframes start-up-even {
+		// 		0% {
+		// 			transform: rotateX(60deg);
+		// 		}
+		// 		20% {
+		// 			transform: rotateX(-40deg) rotateY(-30deg);
+		// 		}
+		// 		60% {
+		// 			transform: rotateX(50deg);
+		// 		}
+		// 	}
+		// }
 
 		@for $i from 1 through 8 {
 			[data-z]:nth-child(#{$i}) .z-text {

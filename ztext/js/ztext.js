@@ -116,6 +116,11 @@ function draw(z) {
 			x_tilt +
 			event_rotation_unit +
 			")";
+
+		document.querySelector(".x_tilt_debug").innerHTML =
+			x_tilt + event_rotation_unit;
+		document.querySelector(".y_tilt_debug").innerHTML =
+			y_tilt + event_rotation_unit;
 	}
 
 	// Capture mouse move events and tilt .z-layers
