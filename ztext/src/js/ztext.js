@@ -173,7 +173,7 @@ function draw(z) {
 						var y_pct = 1;
 					}
 
-					tilt(-x_pct / 2, -y_pct / 2);
+					tilt(x_pct / 2, y_pct / 2);
 
 					document.querySelector(".x_debug").innerHTML = "x: " + x;
 					document.querySelector(".y_debug").innerHTML = "y: " + y;
