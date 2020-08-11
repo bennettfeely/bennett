@@ -131,14 +131,7 @@ function draw(z) {
 	// Capture device gyroscope readings and tilt zLayers
 	if (event === "gyro") {
 		if (window.DeviceOrientationEvent) {
-			baseline = false;
-
-			function baseline(x, y) {
-				x_baseline = x;
-				y_baseline = y;
-
-				baseline = true;
-			}
+			baseline = undefined;
 
 			window.addEventListener("deviceorientation", function (e) {
 				console.log("listenin!");
@@ -146,18 +139,22 @@ function draw(z) {
 				var x = e.gamma;
 				var y = e.beta;
 
-				if (baseline === false) {
-					baseline(x, y);
+				// Get baseline values
+				if (baseline == undefined) {
+					baseline = {
+						x: x,
+						y: y,
+					};
 				}
 
-				var x_pct = x_baseline - x;
-				var y_pct = y_baseline - y;
+				var x_pct = x - baseline.x;
+				var y_pct = y - baseline.y;
 
 				document.querySelector(".x_debug").innerHTML = x;
 				document.querySelector(".y_debug").innerHTML = y;
 
-				document.querySelector(".x_baseline_debug").innerHTML = x_baseline;
-				document.querySelector(".y_baseline_debug").innerHTML = y_baseline;
+				document.querySelector(".x_baseline_debug").innerHTML = baseline.x;
+				document.querySelector(".y_baseline_debug").innerHTML = baseline.y;
 
 				document.querySelector(".x_pct_debug").innerHTML = x_pct;
 				document.querySelector(".y_pct_debug").innerHTML = y_pct;
