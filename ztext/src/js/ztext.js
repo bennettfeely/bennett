@@ -155,7 +155,7 @@ function draw(z) {
 					var x_avg = x_sum / i;
 					var y_avg = y_sum / i;
 
-					var x_pct = x / 45;
+					var x_pct = (x_avg - x) / 45;
 
 					if (x_pct < -1) {
 						var x_pct = -1;
@@ -164,7 +164,7 @@ function draw(z) {
 						var x_pct = 1;
 					}
 
-					var y_pct = y / 45;
+					var y_pct = (y_avg - y) / 45;
 
 					if (y_pct < -1) {
 						var y_pct = -1;
