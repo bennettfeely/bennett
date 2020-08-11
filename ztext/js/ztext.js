@@ -131,31 +131,39 @@ function draw(z) {
 	// Capture device gyroscope readings and tilt zLayers
 	if (event === "gyro") {
 		if (window.DeviceOrientationEvent) {
-			console.log("aaaa!");
+			baseline = false;
 
-			var x_debug = document.querySelector(".gyro-x");
-			var y_debug = document.querySelector(".gyro-y");
-			var z_debug = document.querySelector(".gyro-z");
+			function baseline(x, y) {
+				x_baseline = x;
+				y_baseline = y;
 
-			x_debug.innerHTML = "x: ...";
-			y_debug.innerHTML = "y: ...";
-			z_debug.innerHTML = "z: ...";
+				baseline = true;
+			}
 
-			window.addEventListener(
-				"deviceorientation",
-				function (e) {
-					console.log("listenin!");
+			window.addEventListener("deviceorientation", function (e) {
+				console.log("listenin!");
 
-					var rotateDegrees = e.alpha;
-					var leftToRight = e.gamma;
-					var frontToBack = e.beta;
+				var x = e.gamma;
+				var y = e.beta;
 
-					x_debug.innerHTML = "x: " + leftToRight;
-					y_debug.innerHTML = "y: " + frontToBack;
-					z_debug.innerHTML = "z: " + rotateDegrees;
-				},
-				false
-			);
+				if (baseline == false) {
+					baseline(x, y);
+				}
+
+				var x_pct = x_baseline - x;
+				var y_pct = y_baseline - y;
+
+				document.querySelector(".x_debug").innerHTML = "x: " + x;
+				document.querySelector(".y_debug").innerHTML = "y: " + y;
+
+				document.querySelector(".x_baseline_debug").innerHTML =
+					"x_baseline: " + x_baseline;
+				document.querySelector(".y_baseline_debug").innerHTML =
+					"y_baseline: " + y_baseline;
+
+				document.querySelector(".x_pct_debug").innerHTML = "x_pct: " + x_pct;
+				document.querySelector(".y_pct_debug").innerHTML = "y_pct: " + y_pct;
+			});
 		}
 	}
 }
