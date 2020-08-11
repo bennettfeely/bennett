@@ -137,8 +137,6 @@ function draw(z) {
 			};
 
 			window.addEventListener("deviceorientation", function (e) {
-				console.log("listenin!");
-
 				var x = e.gamma;
 				var y = e.beta;
 
@@ -153,14 +151,30 @@ function draw(z) {
 				var x_diff = (x - baseline.x) / 45;
 				var y_diff = (y - baseline.y) / 45;
 
+				var x_diff = x / 45;
+				if (x_pct < -1) {
+					var x_pct = -1;
+				}
+				if (x_pct > 1) {
+					var x_pct = 1;
+				}
+
+				var y_diff = y / 45;
+				if (y_pct < -1) {
+					var y_pct = -1;
+				}
+				if (y_pct > 1) {
+					var y_pct = 1;
+				}
+
+				tilt(x_pct, y_pct);
+
 				document.querySelector(".x_debug").innerHTML = "x: " + x;
 				document.querySelector(".y_debug").innerHTML = "y: " + y;
-
 				document.querySelector(".x_baseline_debug").innerHTML =
 					"x_baseline: " + baseline.x;
 				document.querySelector(".y_baseline_debug").innerHTML =
 					"y_baseline: " + baseline.y;
-
 				document.querySelector(".x_diff_debug").innerHTML = "x_diff: " + x_diff;
 				document.querySelector(".y_diff_debug").innerHTML = "y_diff: " + y_diff;
 			});
