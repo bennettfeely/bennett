@@ -152,8 +152,8 @@ function draw(z) {
 						y_sum += y;
 					}
 
-					var x_avg = x_sum / i;
-					var y_avg = y_sum / i;
+					var x_avg = -(x_sum / i);
+					var y_avg = -(y_sum / i);
 
 					var x_pct = (x_avg - x) / 45;
 
@@ -173,7 +173,7 @@ function draw(z) {
 						var y_pct = 1;
 					}
 
-					tilt(-x_pct / 2, y_pct / 2);
+					tilt(x_pct / 2, y_pct / 2);
 
 					document.querySelector(".x_debug").innerHTML = "x: " + x;
 					document.querySelector(".y_debug").innerHTML = "y: " + y;
@@ -183,7 +183,7 @@ function draw(z) {
 					document.querySelector(".y_avg_debug").innerHTML = "y_avg: " + y_avg;
 
 					document.querySelector(".x_pct_debug").innerHTML =
-						"x_pct: " + -x_pct / 2;
+						"x_pct: " + x_pct / 2;
 					document.querySelector(".y_pct_debug").innerHTML =
 						"y_pct: " + y_pct / 2;
 				}
