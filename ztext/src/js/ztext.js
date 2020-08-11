@@ -141,8 +141,8 @@ function draw(z) {
 			y_sum = 0;
 
 			window.addEventListener("deviceorientation", function (e) {
-				var x = e.beta;
-				var y = e.gamma;
+				var x = e.gamma;
+				var y = e.beta;
 
 				if (x !== 0 && y !== 0) {
 					// Get baseline values
@@ -182,8 +182,8 @@ function draw(z) {
 					document.querySelector(".x_avg_debug").innerHTML = "x_avg: " + x_avg;
 					document.querySelector(".y_avg_debug").innerHTML = "y_avg: " + y_avg;
 
-					// document.querySelector(".x_pct_debug").innerHTML = "x_pct: " + x_pct;
-					// document.querySelector(".y_pct_debug").innerHTML = "y_pct: " + y_pct;
+					document.querySelector(".x_pct_debug").innerHTML = "x_pct: " + x_pct;
+					document.querySelector(".y_pct_debug").innerHTML = "y_pct: " + y_pct;
 				}
 			});
 		}
