@@ -141,30 +141,30 @@ function draw(z) {
 				var y = e.beta;
 
 				// Get baseline values
-				if (baseline.x !== 0 && baseline.y !== 0) {
-					baseline = {
-						x: x,
-						y: y,
-					};
-				}
+				// if (baseline.x !== 0 && baseline.y !== 0) {
+				// 	baseline = {
+				// 		x: x,
+				// 		y: y,
+				// 	};
+				// }
 
 				// var x_diff = (x - baseline.x) / 45;
 				// var y_diff = (y - baseline.y) / 45;
 
-				var x_diff = x / 45;
-				if (x_diff < -1) {
-					var x_diff = -1;
+				var x_pct = x / 45;
+				if (x_pct < -1) {
+					var x_pct = -1;
 				}
-				if (x_diff > 1) {
-					var x_diff = 1;
+				if (x_pct > 1) {
+					var x_pct = 1;
 				}
 
-				var y_diff = y / 45;
-				if (y_diff < -1) {
-					var y_diff = -1;
+				var y_pct = y / 45;
+				if (y_pct < -1) {
+					var y_pct = -1;
 				}
-				if (y_diff > 1) {
-					var y_diff = 1;
+				if (y_pct > 1) {
+					var y_pct = 1;
 				}
 
 				tilt(x_pct, y_pct);
@@ -175,8 +175,8 @@ function draw(z) {
 					"x_baseline: " + baseline.x;
 				document.querySelector(".y_baseline_debug").innerHTML =
 					"y_baseline: " + baseline.y;
-				document.querySelector(".x_diff_debug").innerHTML = "x_diff: " + x_diff;
-				document.querySelector(".y_diff_debug").innerHTML = "y_diff: " + y_diff;
+				document.querySelector(".x_pct_debug").innerHTML = "x_pct: " + x_pct;
+				document.querySelector(".y_pct_debug").innerHTML = "y_pct: " + y_pct;
 			});
 		}
 	}
