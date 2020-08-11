@@ -151,7 +151,7 @@ function draw(z) {
 					y_sum += y;
 
 					var x_avg = x_sum / i;
-					var x_avg = y_sum / i;
+					var y_avg = y_sum / i;
 
 					var x_pct = x / 45;
 
