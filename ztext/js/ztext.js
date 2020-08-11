@@ -153,14 +153,14 @@ function draw(z) {
 				var x_pct = x_baseline - x;
 				var y_pct = y_baseline - y;
 
-				document.querySelector(".x_debug").innerHTML = x: 
-				document.querySelector(".y_debug").innerHTML = y: 
+				document.querySelector(".x_debug").innerHTML = x;
+				document.querySelector(".y_debug").innerHTML = y;
 
-				document.querySelector(".x_baseline_debug").innerHTML = x_baseline; 
-				document.querySelector(".y_baseline_debug").innerHTML = y_baseline; 
+				document.querySelector(".x_baseline_debug").innerHTML = x_baseline;
+				document.querySelector(".y_baseline_debug").innerHTML = y_baseline;
 
-				document.querySelector(".x_pct_debug").innerHTML = x_pct; 
-				document.querySelector(".y_pct_debug").innerHTML = y_pct; 
+				document.querySelector(".x_pct_debug").innerHTML = x_pct;
+				document.querySelector(".y_pct_debug").innerHTML = y_pct;
 			});
 		}
 	}
