@@ -147,8 +147,8 @@ function draw(z) {
 					};
 				}
 
-				var x_pct = x - baseline.x;
-				var y_pct = y - baseline.y;
+				var x_diff = x - baseline.x / 45;
+				var y_diff = y - baseline.y / 45;
 
 				document.querySelector(".x_debug").innerHTML = "x: " + x;
 				document.querySelector(".y_debug").innerHTML = "y: " + y;
@@ -158,10 +158,8 @@ function draw(z) {
 				document.querySelector(".y_baseline_debug").innerHTML =
 					"y_baseline: " + baseline.y;
 
-				document.querySelector(".x_pct_debug").innerHTML =
-					"x_baseline: " + x_pct;
-				document.querySelector(".y_pct_debug").innerHTML =
-					"y_baseline: " + y_pct;
+				document.querySelector(".x_diff_debug").innerHTML = "x_diff: " + x_diff;
+				document.querySelector(".y_diff_debug").innerHTML = "y_diff: " + y_diff;
 			});
 		}
 	}
