@@ -614,7 +614,7 @@ code {
 .gyro {
 	position: fixed;
 	bottom: 0;
-	width: 100%;
+	width: 100vw;
 	white-space: nowrap;
 	right: 0;
 	left: 0;
@@ -624,4 +624,5 @@ code {
 	z-index: 100;
 	font-family: monospace;
 	width: 150px;
+	text-align: left;
 }
