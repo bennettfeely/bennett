@@ -22,25 +22,15 @@ html lang="en"
 			.wrapper
 				.container
 					h1 
-						span data-z="true" data-z-depth=".1em" data-z-event="gyro" data-z-event-rotation="90deg" z
-						span data-z="true" data-z-depth=".1em" data-z-event="gyro" data-z-event-rotation="90deg" t
-						span data-z="true" data-z-depth=".1em" data-z-event="gyro" data-z-event-rotation="90deg" e
-						span data-z="true" data-z-depth=".1em" data-z-event="gyro" data-z-event-rotation="90deg" x
-						span data-z="true" data-z-depth=".1em" data-z-event="gyro" data-z-event-rotation="90deg" t
-						span data-z="true" data-z-depth=".1em" data-z-event="gyro" data-z-event-rotation="90deg" .
-						span data-z="true" data-z-depth=".1em" data-z-event="gyro" data-z-event-rotation="90deg" j
-						span data-z="true" data-z-depth=".1em" data-z-event="gyro" data-z-event-rotation="90deg" s
-					h2 Easy to implement, lightweight 3D text for any website and any font.
-					.gyro
-						.x_debug x: 
-						.y_debug y: 
-						.i_debug i: 
-						.x_avg_debug x_avg: 
-						.y_avg_debug y_avg: 
-						.x_pct_debug x_%: 
-						.y_pct_debug y_%: 
-						.x_tilt_debug x_tilt: 
-						.y_tilt_debug y_tilt: 
+						span data-z="true" data-z-depth=".1em" data-z-event="pointer" data-z-event-rotation="90deg" z
+						span data-z="true" data-z-depth=".1em" data-z-event="pointer" data-z-event-rotation="90deg" t
+						span data-z="true" data-z-depth=".1em" data-z-event="pointer" data-z-event-rotation="90deg" e
+						span data-z="true" data-z-depth=".1em" data-z-event="pointer" data-z-event-rotation="90deg" x
+						span data-z="true" data-z-depth=".1em" data-z-event="pointer" data-z-event-rotation="90deg" t
+						span data-z="true" data-z-depth=".1em" data-z-event="pointer" data-z-event-rotation="90deg" .
+						span data-z="true" data-z-depth=".1em" data-z-event="pointer" data-z-event-rotation="90deg" j
+						span data-z="true" data-z-depth=".1em" data-z-event="pointer" data-z-event-rotation="90deg" s
+					h2 Easy to implement, lightweight 3D for any website and any font.
 		main.main
 			section.download#download
 				.wrapper
@@ -60,7 +50,7 @@ html lang="en"
 									| License
 								.split-item
 									h1 $10
-						p Want to use ztext to develop commercial sites, themes, projects, and applications? The Commercial license is right for you. With this option, your source code is kept proprietary. <a href="">Read more about ztext commercial licensing</a>.
+						p Want to use ztext to develop commercial sites, themes, projects, and applications? Or just want to support the creator of ztext? The Commercial license is right for you. Your source code is kept proprietary with this option. <a href="">Read more about ztext commercial licensing</a>.
 						p Once purchased, you'll receive a commercial license PDF and will be all set to use ztext in your commercial applications.						
 			section.intro#intro
 				.wrapper
@@ -72,14 +62,34 @@ html lang="en"
 			section.initialization#initialization
 				.wrapper
 					.container
-						h2 Initialization
-						p There are two ways to use ztext. 
-						ol 
-							li <a href="#js-init"> JavaScript</a>, or
-							li <a href="#html-init">HTML attributes</a>
-						p Pick whichever method is easier for you.
+						.split
+							.split-item.shrink
+								h2 Initialization
+								p There are two ways to use ztext. Pick whichever method is easier for you.
+								ol 
+									li <a href="#html-init">HTML attributes</a>
+									li <a href="#js-init">JavaScript</a>
+							.split-item
+								h3 How it works
+								p Ztext gives the illusion of volume, turning 2D HTML into 3D. There's no need to spend hours fiddling with <code class="light"><span class="red-code">&lt;canvas&gt;</span></code> or forcing users to download multi-megabyte WebGL libraries.
+								p <a class="external" href="https://caniuse.com/#feat=transforms3d">Over 97% of users</a> use a web browser that supports CSS 3D transforms, which ztext needs to work. In unsupported browsers, ztext gracefully turns off.
+					.container.html-init#html-init
+						h3 Initialize with HTML attributes
+						p With this method, ztext will look for any HTML element with the <code class="light"><span class="yellow-code">data-z</span></code> attribute and will apply a 3D effect to it.
+						p Take this code for example:
+						.split
+							.split-item
+								pre.dark
+									code <span class="red-code">&lt;h1</span> <span class="yellow-code">data-z data-z-layers</span>=<span class="green-code">"3"</span> <span class="yellow-code">data-z-depth</span>=<span class="green-code">".5em"</span><span class="red-code">></span>A<span class="red-code">&lt;/h1></span>
+								p Structurally, ztext turns that code into this:
+								pre.light
+									<code class="gray-code">&lt;h1 data-z data-z-layers="3" data-z-depth=".5em"&gt;<br>&nbsp;&nbsp;&nbsp;&lt;span class="z-text"&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span class="z-layers"&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span class="z-layer"&gt;A&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span class="z-layer"&gt;A&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span class="z-layer"&gt;A&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&lt;/span&gt;<br>&lt;/h1&gt;</code>
+								p The duplicate layers are visible to users but ztext makes them hidden from screen readers and other forms of user interaction as much as possible.
+							.split-item.preview
+								h3 Preview
+								h1.x-large data-z="true" data-z-layers="3" data-z-depth=".5em" A
 					.container.js-init#js-init
-						h3 Initalize with JavaScript
+						h3 Initialize with JavaScript
 						p Use ztext with vanilla JS with <code class="light"><span class="purple-code">new</span> <span class="red-code">Ztextify</span><span class="blue-code">(</span><span class="green-code">elem</span>, <span class="blue-code">{})</span></code>. This constructor accepts two arguments: the HTML element and an options object.
 						pre.dark
 							code
@@ -90,34 +100,26 @@ html lang="en"
 									| &nbsp;&nbsp;&nbsp;<span class="blue-code">layers</span>: <span class="orange-code">10</span>,<br>
 									| &nbsp;&nbsp;&nbsp;<span class="blue-code">fade</span>: <span class="orange-code">true</span><br>
 								<span class="blue-code">})</span>;
-					.container.html-init#html-init
-						h3 Initalize with HTML attributes
-						p ztext will look for any HTML element with the <code class="light"><span class="yellow-code">data-z</span></code> attribute and will apply a 3D effect to it.
-						p Take this code for example:
-						.split
-							.split-item
-								pre.dark
-									code <span class="red-code">&lt;h1</span> <span class="yellow-code">data-z data-z-layers</span>=<span class="green-code">"3"</span> <span class="yellow-code">data-z-depth</span>=<span class="green-code">".5em"</span><span class="red-code">></span>A<span class="red-code">&lt;/h1></span>
-								p Structually, ztext turns that into this:
-								pre.light
-									<code class="gray-code">&lt;h1&gt;<br>&nbsp;&nbsp;&nbsp;&lt;span class="z-text"&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span class="z-layers"&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span class="z-layer"&gt;A&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span class="z-layer"&gt;A&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span class="z-layer"&gt;A&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&lt;/span&gt;<br>&lt;/h1&gt;</code>
-							.split-item.preview
-								h3 Preview
-								h1.x-large data-z="true" data-z-layers="3" data-z-depth=".5em" A
 			section.styling#styling
 				.wrapper
 					.container
 						h2 Styling
-						p Start with the following CSS snippet and style ztext any way you want.
+						p Start with this CSS snippet and style ztext any way you want. It's easy to integrate with CSS animations and transitions.
 						.split
 							.split-item
 								pre.dark
-									<code>
+									code
 										<span class="red-code">.z-text</span> {
 										<br>   <span class="gray-code">/* Tip: Apply CSS transforms here */</span>
 										<br>   <span class="gray-code">/* rotateX() == up/down */</span>
 										<br>   <span class="gray-code">/* rotateY() == left/right */</span>
-										<br>   <span class="yellow-code">transform</span>: <span class="blue-code">rotateX</span>(<span class="orange-code">-20deg</span>);
+										<br>   <span class="yellow-code">transform</span>: <span class="blue-code">rotateY</span>(<span class="orange-code">-30deg</span>);
+										<br>   <span class="yellow-code">font-family</span>: <span class="green-code">"Georgia"</span>, <span class="orange-code">serif</span>;
+										<br>   <span class="yellow-code">transition</span>: transform <span class="orange-code">1s</span>;
+										<br>}
+										<br>
+										<br><span class="red-code">[data-z]:hover .z-text</span> {
+										<br>   <span class="yellow-code">transform</span>: <span class="blue-code">rotateY</span>(<span class="orange-code">30deg</span>);
 										<br>}
 										<br>
 										<br><span class="red-code">.z-layer</span> {
@@ -127,9 +129,51 @@ html lang="en"
 										<br><span class="red-code">.z-layer:first-child</span> {
 										<br>   <span class="yellow-code">color</span>: <span class="aqua-code">#90a4ae</span>;<span class="dot" style="background:#90a4ae"></span>
 										<br>}
-									</code>
 							.split-item.preview
 								h1.large data-z="true" CSS
+
+			section.more#more
+				.wrapper
+					.container
+						h2 But wait, there's more!
+						p Ztext isn't just for text. Add a third dimension to SVG, emojis, and images.
+						.split
+							.split-item
+								.toggle-menu
+									input#svg-toggle type="radio" name="tab-toggle"
+									label.toggle.button for="svg-toggle" SVG
+									input#img-toggle type="radio" name="tab-toggle" checked="true"
+									label.toggle.button for="img-toggle" Images
+									input#emoji-toggle type="radio" name="tab-toggle"
+									label.toggle.button for="emoji-toggle" Emoji
+								pre.dark
+									h3 HTML
+									.tab-item.svg-code-tab style="display: none"
+										code SVG code here
+									.tab-item.img-code-tab
+										code 
+											<span class="red-code">&lt;span <span class="yellow-code">data-z</span>&gt;</span>
+											<br>   <span class="red-code">&lt;img</span> <span class="yellow-code">width</span>=<span class="green-code">"150"</span> <span class="yellow-code">height</span>=<span class="green-code">"120"</span> <span class="yellow-code">src</span>=<span class="green-code">"grace.jpg"</span><span class="red-code">></span>
+											<br><span class="red-code">&lt;span&gt;</span>
+									.tab-item.emoji-code-tab style="display: none"
+										code <span class="red-code">&lt;span</span> <span class="yellow-code">data-z</span><span class="red-code">&gt;</span>😂🔥🍔<span class="red-code">&lt;/span&gt;</span>
+								pre.dark
+									h3 CSS
+									code
+										<span class="red-code">.z-layer</span> {
+										<br>   <span class="yellow-code">filter</span>: <span class="blue-code">brightness</span>(<span class="orange-code">0.5</span>);
+										<br>}
+										<br>
+										<br><span class="red-code">.z-layer:first-child</span> {
+										<br>   <span class="yellow-code">filter</span>: <span class="blue-code">brightness</span>(<span class="orange-code">1</span>);
+										<br>}
+							.split-item.preview
+								span.svg data-z="true" data-z-layers="30" data-z-depth="50px"
+									svg width="500" height="500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"
+										path d="M153.62 301.59c94.34 0 145.94-78.16 145.94-145.94 0-2.22 0-4.43-.15-6.63A104.36 104.36 0 00325 122.47a102.38 102.38 0 01-29.46 8.07 51.47 51.47 0 0022.55-28.37 102.79 102.79 0 01-32.57 12.45 51.34 51.34 0 00-87.41 46.78A145.62 145.62 0 0192.4 107.81a51.33 51.33 0 0015.88 68.47A50.91 50.91 0 0185 169.86v.65a51.31 51.31 0 0041.15 50.28 51.21 51.21 0 01-23.16.88 51.35 51.35 0 0047.92 35.62 102.92 102.92 0 01-63.7 22 104.41 104.41 0 01-12.21-.74 145.21 145.21 0 0078.62 23" stroke="#1da1f2" stroke-width="10px" fill="none"
+								span.img data-z="true" data-z-depth="30px"
+									img data-z="true" src="img/grace.jpg" width="500" height="400"
+								span.emoji data-z="true" data-z-layers="25" data-z-depth="50px" 😂🔥🍔
 			section.options#options
 				.wrapper
 					.container.option.depth-option#depth
@@ -182,25 +226,32 @@ html lang="en"
 								p
 									| The direction the effect is to be applied. Default: 
 									code.light "both"
-					.container#event
+					.container.option.event-option#event
 						.split
-							.split-item.preview
+							.split-item.preview.vertical.static
+								h1.medium data-z="true" data-z-event="none" none
+								h1.medium data-z="true" data-z-event="pointer" pointer
 							.split-item
 								h3
 									a href="#event" event
-									small.param "none" | "gyro" | "mouse"
+									small.param "none" | "pointer"
 								p
 									| Control text rotation with JavaScript. Default: 
 									code.light "none"
 								p 
 									| The 
-									code.light "gyro"
-									|  event makes the text tilt in response to the device tilting. It uses the DeviceOrientation API which requires https. On iOS Safari, this unfortunately requires a permission.
-					.container#eventRotation
-						h3
-							a href="#eventRotation" eventRotation
-							small.param CSS rotation value
-						p
-							| The maximum rotation to be applied when mouse or gyroscope events are enabled. Default: 
-							code.light "45deg"
+									code.light "pointer"
+									|  event makes the text tilt in response to <code>mousemove</code> and <code>touchmove</code> events on the window. This adds to instead of overriding rotations applied to <code>.z-text</code> with CSS.
+					.container.option.event-rotation-option#eventRotation
+						.split
+							.split-item.preview.static
+								h1.small data-z="true" data-z-event="pointer" data-z-eventRotation="20deg" 20deg
+								h1.small data-z="true" data-z-event="pointer" data-z-eventRotation="120deg" 120deg
+							.split-item
+								h3
+									a href="#eventRotation" eventRotation
+									small.param CSS rotation value
+								p
+									| With the <code class="light">event</code> option enabled, set the maximum rotation to be applied. Default: 
+									code.light "45deg"
 		script src="src/js/ztext.js"

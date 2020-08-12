@@ -38,12 +38,13 @@ $transition: 0.18s;
 
 // Mixins ==============================================================
 @mixin grid($grid-lines, $background) {
-	background-attachment: fixed;
+	// background-attachment: fixed;
 	background-color: $background;
 	background-image: linear-gradient(
 			90deg,
 			transparent,
-			rgba($background, 0.8),
+			$background 20%,
+			$background 80%,
 			transparent
 		),
 		repeating-linear-gradient(
@@ -89,7 +90,7 @@ $transition: 0.18s;
 
 // Base ================================================================
 body {
-	// @include grid($blue-gray-100, $white);
+	@include grid($blue-gray-100, $white);
 	position: relative;
 	font: 100%/1.5 "Nunito", "Helvetica Neue", sans-serif;
 	position: relative;
@@ -121,6 +122,10 @@ main {
 
 .split-item {
 	flex: 1 0 20em;
+
+	&.shrink {
+		flex: 0 1 20em;
+	}
 
 	pre {
 		margin-top: 0;
@@ -163,12 +168,20 @@ a {
 	&:hover {
 		text-decoration: underline;
 	}
+
+	&.external {
+		&:after {
+			content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 0 16 16' width='10' height='10'%3E%3Cpath d='M 3 1 L 11 1 L 11 9 M 11 1 L 1 11' fill='none' stroke='%231e88e5' stroke-linecap='round' stroke-width='1.5' stroke-linejoin='round'%3E%3C/path%3E%3C/svg%3E");
+			opacity: 0.75;
+		}
+	}
 }
 
 .button {
 	display: inline-block;
 	font-size: 1em;
 	padding: 0.5em 1em;
+	margin: 0 0 1em;
 	border: 1px solid;
 	background: $white;
 	border-radius: $radius;
@@ -206,19 +219,24 @@ pre,
 }
 
 pre {
+	position: relative;
 	font: 100%/1.4 Monaco, monospace;
 	margin: 1em 0;
 	padding: 1rem;
 	white-space: pre-wrap;
 	word-break: break-word;
 
-	code {
-		padding: 0;
+	h3 {
+		user-select: none;
+		pointer-events: none;
+		position: absolute;
+		top: 1rem;
+		right: 1rem;
+		opacity: 0.25;
 	}
 
-	&.output {
-		font-size: 0.8em;
-		color: rgba($black, 0.5);
+	code {
+		padding: 0;
 	}
 }
 
@@ -229,7 +247,7 @@ ol {
 
 code {
 	font-size: 1.2em;
-	padding: 0.1em 0.25em;
+	padding: 0 0.25em;
 	border-radius: $radius / 2;
 }
 
@@ -275,7 +293,7 @@ code {
 }
 
 .dark {
-	@include grid($blue-gray-900, $black-code-dark);
+	background: $black-code-dark;
 	color: $white-code-dark;
 
 	::selection {
@@ -309,7 +327,7 @@ code {
 }
 
 .preview {
-	@include grid($blue-gray-100, $blue-gray-50);
+	background: $blue-gray-50;
 	position: relative;
 	display: flex;
 	align-items: center;
@@ -533,18 +551,119 @@ code {
 .styling {
 	.preview {
 		.z-text {
-			/* Apply CSS transforms here */
-			/* Tip: rotateX() == up/down */
-			/*      rotateY() == left/right */
-			transform: rotateX(30deg) rotateY(-30deg);
+			/* Tip: Apply CSS transforms here */
+			/* rotateX() == up/down */
+			/* rotateY() == left/right */
+			transform: rotateY(-30deg);
+			font-family: "Georgia", serif;
+			transition: transform 1s;
+		}
+
+		[data-z]:hover .z-text {
+			transform: rotateY(30deg);
 		}
 
 		.z-layer {
-			color: $blue-gray-700;
+			color: #455a64;
 		}
 
 		.z-layer:first-child {
-			color: $blue-gray-300;
+			color: #90a4ae;
+		}
+	}
+}
+
+// Styling =============================================================
+.more {
+	.toggle {
+		@include button($amber);
+		margin: 0 0.75em 0.5em 0;
+		padding: 0.2em 0.5em;
+		cursor: pointer;
+	}
+
+	input[type="radio"] {
+		display: none;
+
+		&:checked + .toggle {
+			color: $black-code-dark;
+		}
+	}
+
+	.tab-item {
+		margin: 0 0 1em;
+	}
+	pre {
+		padding: 1em 5em 1em 1em;
+	}
+	.preview {
+		display: block;
+		padding: 1em;
+		text-align: center;
+		align-self: flex-start;
+
+		.z-text {
+			animation: wobble 12s ease-in-out infinite;
+		}
+
+		.z-layer {
+			filter: brightness(0.75);
+
+			&:first-child {
+				filter: brightness(1);
+			}
+		}
+
+		.svg,
+		.emoji,
+		.img {
+			display: inline-block;
+			width: 50%;
+			height: auto;
+			vertical-align: middle;
+		}
+
+		.svg,
+		.img {
+			width: 50%;
+			height: auto;
+			min-width: 7.5em;
+		}
+
+		.svg {
+			svg {
+				width: 100%;
+				height: auto;
+			}
+
+			.z-text {
+				transform: rotateX(30deg) rotateY(30deg);
+				animation-delay: -4s;
+			}
+		}
+
+		.img {
+			img {
+				width: 100%;
+				height: auto;
+				border-radius: 3px;
+			}
+
+			.z-text {
+				transform: rotateX(-30deg) rotateY(-30deg);
+				animation-delay: -8s;
+			}
+		}
+
+		.emoji {
+			font-size: 5em;
+			line-height: 1.2;
+			width: 100%;
+			padding: 0.25em 0 0;
+
+			.z-text {
+				transform: rotateX(30deg) rotateY(-30deg);
+			}
 		}
 	}
 }
@@ -553,6 +672,16 @@ code {
 .options {
 	.split {
 		align-items: center;
+
+		p:last-child {
+			margin: 0;
+		}
+	}
+
+	.split-item {
+		.option {
+			margin: 1.5em 0;
+		}
 	}
 
 	.z-text {
@@ -561,10 +690,22 @@ code {
 	}
 
 	.preview {
+		align-self: stretch;
+
 		&:hover {
 			.z-text {
 				transform: rotateX(-30deg) rotateY(-30deg);
 			}
+		}
+	}
+
+	.static {
+		.z-text {
+			transform: none;
+		}
+
+		&:hover .z-text {
+			transform: none;
 		}
 	}
 }
@@ -600,6 +741,18 @@ code {
 	[data-z-direction="backwards"] .z-layer:first-child {
 		transform: translateZ(-1px) !important;
 	}
+}
+
+.fade-option {
+	@include z-color($light-blue);
+}
+
+.event-option {
+	@include z-color($pink-300);
+}
+
+.event-rotation-option {
+	@include z-color($lime);
 }
 
 .param {

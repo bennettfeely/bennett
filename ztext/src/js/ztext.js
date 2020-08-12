@@ -5,7 +5,7 @@ zDefaults = {
 	layers: 10,
 	perspective: "1000px",
 	transform: "",
-	event: "gyro",
+	event: "none",
 	eventRotation: "45deg",
 };
 
@@ -17,6 +17,8 @@ zs.forEach((z) => {
 
 // Apply the effect
 function draw(z) {
+	console.log(z.dataset);
+
 	// Grab or compute all the parameters
 	var depth = z.dataset.zDepth || zDefaults.depth;
 	var depth_unit = depth.match(/[a-z]+/)[0];
@@ -29,14 +31,16 @@ function draw(z) {
 	var transform = z.dataset.zTransform || zDefaults.transform;
 	var event = z.dataset.zEvent || zDefaults.event;
 
-	var event_rotation = z.dataset.zEventRotation || zDefaults.eventRotation;
+	var event_rotation = z.dataset.zEventrotation || zDefaults.eventRotation;
 	var event_rotation_unit = event_rotation.match(/[a-z]+/)[0];
 	var event_rotation_numeral = parseFloat(
 		event_rotation.replace(event_rotation_unit, "")
 	);
 
+	console.log(z.dataset.zEventRotation);
+
 	// Grab the text and replace it with a new structure
-	var text = z.innerText;
+	var text = z.innerHTML;
 	z.innerHTML = "";
 	z.style.display = "inline-block";
 	z.style.position = "relative";
@@ -64,7 +68,7 @@ function draw(z) {
 
 		var zLayer = document.createElement("span");
 		zLayer.setAttribute("class", "z-layer");
-		zLayer.textContent = text;
+		zLayer.innerHTML = text;
 		zLayer.style.display = "inline-block";
 
 		// Shift the layer on the z axis
@@ -107,87 +111,34 @@ function draw(z) {
 	function tilt(x_pct, y_pct) {
 		var x_tilt = x_pct * event_rotation_numeral;
 		var y_tilt = -y_pct * event_rotation_numeral;
+		var unit = event_rotation_unit;
 
 		zLayers.style.transform =
-			"rotateX(" +
-			y_tilt +
-			event_rotation_unit +
-			") rotateY(" +
-			x_tilt +
-			event_rotation_unit +
-			")";
-
-		document.querySelector(".x_tilt_debug").innerHTML =
-			x_tilt + event_rotation_unit;
-		document.querySelector(".y_tilt_debug").innerHTML =
-			y_tilt + event_rotation_unit;
+			"rotateX(" + y_tilt + unit + ") rotateY(" + x_tilt + unit + ")";
 	}
 
 	// Capture mouse move events and tilt .z-layers
-	if (event === "mouse") {
-		window.addEventListener("mousemove", (e) => {
-			var x_pct = e.clientX / window.innerWidth - 0.5;
-			var y_pct = e.clientY / window.innerHeight - 0.5;
+	if (event === "pointer") {
+		window.addEventListener(
+			"mousemove",
+			(e) => {
+				var x_pct = e.clientX / window.innerWidth - 0.5;
+				var y_pct = e.clientY / window.innerHeight - 0.5;
 
-			tilt(x_pct, y_pct);
-		});
-	}
+				tilt(x_pct, y_pct);
+			},
+			false
+		);
 
-	// Capture device gyroscope readings and tilt zLayers
-	if (event === "gyro") {
-		if (window.DeviceOrientationEvent) {
-			i = 0;
-			x_sum = 0;
-			y_sum = 0;
+		window.addEventListener(
+			"touchmove",
+			function (e) {
+				var x_pct = e.touches[0].clientX / window.innerWidth - 0.5;
+				var y_pct = e.touches[0].clientY / window.innerHeight - 0.5;
 
-			window.addEventListener("deviceorientation", function (e) {
-				var x = e.gamma;
-				var y = e.beta;
-
-				if (x !== 0 && y !== 0) {
-					// Get baseline values
-					if (i < 100) {
-						i++;
-						x_sum += x;
-						y_sum += y;
-					}
-
-					var x_avg = x_sum / i;
-					var y_avg = y_sum / i;
-
-					var x_pct = (x_avg - x) / 45;
-
-					if (x_pct < -1) {
-						var x_pct = -1;
-					}
-					if (x_pct > 1) {
-						var x_pct = 1;
-					}
-
-					var y_pct = (y_avg - y) / 45;
-
-					if (y_pct < -1) {
-						var y_pct = -1;
-					}
-					if (y_pct > 1) {
-						var y_pct = 1;
-					}
-
-					tilt(x_pct / 2, y_pct / 2);
-
-					document.querySelector(".x_debug").innerHTML = "x: " + x;
-					document.querySelector(".y_debug").innerHTML = "y: " + y;
-
-					document.querySelector(".i_debug").innerHTML = "i: " + i;
-					document.querySelector(".x_avg_debug").innerHTML = "x_avg: " + x_avg;
-					document.querySelector(".y_avg_debug").innerHTML = "y_avg: " + y_avg;
-
-					document.querySelector(".x_pct_debug").innerHTML =
-						"x_pct: " + x_pct / 2;
-					document.querySelector(".y_pct_debug").innerHTML =
-						"y_pct: " + y_pct / 2;
-				}
-			});
-		}
+				tilt(x_pct, y_pct);
+			},
+			false
+		);
 	}
 }
