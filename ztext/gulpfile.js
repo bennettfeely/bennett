@@ -9,6 +9,9 @@ var rename = require("gulp-rename");
 var sass = require("gulp-sass");
 var slim = require("gulp-slim");
 
+var uglify = require("gulp-uglify");
+var pipeline = require("readable-stream").pipeline;
+
 // Browser Sync ======================================================
 gulp.task("sync", function () {
 	return browserSync({
@@ -56,10 +59,31 @@ gulp.task("js", function () {
 		.src("src/js/*.js")
 		.pipe(gulp.dest("js"))
 		.pipe(
+			rename(function (path) {
+				path.basename += ".min";
+				path.extname = ".js";
+			})
+		)
+		.pipe(gulp.dest("js"))
+		.pipe(
 			browserSync.reload({
 				stream: true,
 			})
 		);
+});
+
+gulp.task("uglify", function () {
+	return pipeline(
+		gulp.src("js/*.js"),
+		uglify(),
+		gulp.pipe(
+			rename(function (path) {
+				path.basename += ".min";
+				path.extname = ".css";
+			})
+		),
+		gulp.dest("js")
+	);
 });
 
 // Compile CSS =======================================================
@@ -92,7 +116,7 @@ gulp.task("scss", function () {
 // Watch Files For Changes ===========================================
 gulp.task("watch", ["sync"], function () {
 	gulp.watch("src/*.slim", ["html"]);
-	gulp.watch("src/js/*.js", ["js"]);
+	gulp.watch("src/js/*.js", ["js", "uglify"]);
 	gulp.watch("src/css/*.scss", ["scss"]);
 });
 

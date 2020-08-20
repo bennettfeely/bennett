@@ -33,19 +33,19 @@ $blue-code-dark: #81a2be;
 $purple-code-dark: #b294bb;
 $aqua-code-dark: #8abeb7;
 
-$radius: 0.5em;
-$transition: 0.18s;
+$radius: 0.5rem;
+$transition: 0.2s;
+$degrees: 30deg;
 
 // Mixins ==============================================================
 @mixin grid($grid-lines, $background) {
-	// background-attachment: fixed;
 	background-color: $background;
 	background-image: linear-gradient(
 			90deg,
-			transparent,
-			$background 20%,
-			$background 80%,
-			transparent
+			rgba($background, 0),
+			$background 25%,
+			$background 75%,
+			rgba($background, 0)
 		),
 		repeating-linear-gradient(
 			-45deg,
@@ -68,6 +68,7 @@ $transition: 0.18s;
 		color: shade($color, 25%);
 	}
 
+	&[data-z],
 	.z-layer:first-child {
 		color: $color;
 	}
@@ -85,6 +86,23 @@ $transition: 0.18s;
 		box-shadow: 0 0 0 0.5em rgba($color, 0.25);
 		color: shade($color, 25%);
 		text-decoration: none;
+	}
+}
+
+// Animation ===========================================================
+@keyframes wobble {
+	0%,
+	100% {
+		transform: rotate3d(-1, 1, 0, $degrees);
+	}
+	25% {
+		transform: rotate3d(1, 1, 0, $degrees);
+	}
+	50% {
+		transform: rotate3d(1, -1, 0, $degrees);
+	}
+	75% {
+		transform: rotate3d(-1, -1, 0, $degrees);
 	}
 }
 
@@ -109,7 +127,15 @@ body {
 header,
 footer {
 	text-align: center;
+
+	.licensing & {
+		text-align: left;
+	}
 }
+
+// header {
+// 	touch-action: manipulation;
+// }
 
 main {
 }
@@ -123,12 +149,15 @@ main {
 .split-item {
 	flex: 1 0 20em;
 
+	&.collapse {
+		flex: 0 1;
+	}
+
 	&.shrink {
 		flex: 0 1 20em;
 	}
 
 	pre {
-		margin-top: 0;
 		align-self: stretch;
 	}
 }
@@ -140,8 +169,7 @@ h3,
 h4,
 h5,
 h6,
-p,
-pre {
+p {
 	margin-bottom: 1rem;
 }
 
@@ -177,6 +205,16 @@ a {
 	}
 }
 
+ul,
+ol,
+blockquote {
+	margin: 1em 2em;
+}
+
+blockquote {
+	font-style: italic;
+}
+
 .button {
 	display: inline-block;
 	font-size: 1em;
@@ -208,6 +246,77 @@ a {
 	}
 }
 
+.codepen-edit {
+	display: block;
+	margin: 0.5em 0 0;
+	line-height: 1;
+	user-select: none;
+	white-space: normal;
+
+	// &:after {
+	// 	display: block;
+	// 	content: attr(id);
+	// 	color: red;
+	// }
+
+	&.overlay {
+		width: initial;
+		position: absolute;
+		bottom: 1em;
+		right: 1em;
+	}
+}
+
+.codepen-form {
+	text-align: right;
+	width: 100%;
+
+	.options & {
+		text-align: left;
+	}
+}
+
+.codepen-button {
+	display: inline-flex;
+	align-items: center;
+	border: 0;
+	padding: 0.5em 0.75em;
+	border-radius: $radius * 0.5;
+	cursor: pointer;
+	color: $white;
+	transition: opacity $transition;
+	background: rgba($blue-gray, 0.2);
+	opacity: 0.5;
+
+	pre:hover &,
+	.option:hover & {
+		opacity: 0.75;
+
+		&:hover {
+			text-decoration: underline;
+			opacity: 1;
+		}
+	}
+
+	&:before {
+		content: "";
+		display: inline-block;
+		width: 1em;
+		height: 1em;
+		margin: 0 0.5em 0 0;
+		background-size: cover;
+		background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="20 0 26 26" fill="none" stroke="%23fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"%3E%3Cpath d="M22 16.7L33 24l11-7.3V9.3L33 2L22 9.3V16.7z M44 16.7L33 9.3l-11 7.4 M22 9.3l11 7.3 l11-7.3 M33 2v7.3 M33 16.7V24"/%3E%3C/svg%3E%0A');
+	}
+
+	.options & {
+		color: $black;
+
+		&:before {
+			background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="20 0 26 26" fill="none" stroke="%23000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"%3E%3Cpath d="M22 16.7L33 24l11-7.3V9.3L33 2L22 9.3V16.7z M44 16.7L33 9.3l-11 7.4 M22 9.3l11 7.3 l11-7.3 M33 2v7.3 M33 16.7V24"/%3E%3C/svg%3E%0A');
+		}
+	}
+}
+
 code,
 pre,
 .preview {
@@ -221,33 +330,31 @@ pre,
 pre {
 	position: relative;
 	font: 100%/1.4 Monaco, monospace;
-	margin: 1em 0;
 	padding: 1rem;
 	white-space: pre-wrap;
 	word-break: break-word;
 
 	h3 {
+		display: inline-block;
+		font: inherit;
+		float: right;
+		opacity: 0.5;
 		user-select: none;
 		pointer-events: none;
-		position: absolute;
-		top: 1rem;
-		right: 1rem;
-		opacity: 0.25;
 	}
 
 	code {
 		padding: 0;
 	}
-}
 
-ul,
-ol {
-	margin: 1em 2em;
+	.pre-subdivision {
+		position: relative;
+	}
 }
 
 code {
 	font-size: 1.2em;
-	padding: 0 0.25em;
+	padding: 0 0.25em 0.1em;
 	border-radius: $radius / 2;
 }
 
@@ -336,6 +443,7 @@ code {
 	min-height: 12em;
 	overflow: hidden;
 	padding: 0 1em;
+	margin: 1rem 0;
 
 	&.vertical {
 		flex-direction: column;
@@ -382,56 +490,13 @@ code {
 		@media (min-width: $tablet) {
 			font-size: 12em;
 		}
-
-		.z-text {
-			// animation: 3s ease-in-out both;
-			// transform: rotateX(20deg);
-		}
-
-		// [data-z]:nth-child(odd) .z-text {
-		// 	animation-name: start-up-odd;
-
-		// 	@keyframes start-up-odd {
-		// 		0% {
-		// 			transform: rotateX(60deg);
-		// 		}
-		// 		20% {
-		// 			transform: rotateX(-40deg) rotateY(30deg);
-		// 		}
-		// 		60% {
-		// 			transform: rotateX(50deg);
-		// 		}
-		// 	}
-		// }
-
-		// [data-z]:nth-child(even) .z-text {
-		// 	animation-name: start-up-even;
-
-		// 	@keyframes start-up-even {
-		// 		0% {
-		// 			transform: rotateX(60deg);
-		// 		}
-		// 		20% {
-		// 			transform: rotateX(-40deg) rotateY(-30deg);
-		// 		}
-		// 		60% {
-		// 			transform: rotateX(50deg);
-		// 		}
-		// 	}
-		// }
-
-		@for $i from 1 through 8 {
-			[data-z]:nth-child(#{$i}) .z-text {
-				animation-delay: $i * 0.15s;
-			}
-		}
 	}
 
 	h2 {
 		font-size: 1.25em;
 	}
 
-	[data-z] {
+	span {
 		&:nth-child(1) {
 			@include z-color($amber);
 		}
@@ -457,12 +522,94 @@ code {
 			@include z-color($orange);
 		}
 	}
+
+	.z-text {
+		transform: rotateX(20deg);
+	}
 }
 
 // Download ============================================================
 .download {
 	.button {
 		@include button($blue);
+	}
+}
+
+// Tips ================================================================
+.tip-jar-wrapper {
+	display: inline-block;
+	width: 10rem;
+	float: left;
+	margin: 0 1em 1em 0;
+}
+
+.tip-jar {
+	display: flex;
+	align-items: center;
+	border: 1px solid $blue;
+	font-size: 1.5em;
+	padding: 0.25em 0.5em;
+	border-radius: $radius;
+	color: $blue-gray-300;
+	background: $white;
+	box-shadow: 0 0 0 0rem rgba($blue, 0.25);
+	transition: box-shadow $transition;
+
+	&:hover {
+		box-shadow: 0 0 0 0.25rem rgba($blue, 0.25);
+		color: $blue;
+	}
+
+	&:focus-within {
+		box-shadow: 0 0 0 0.25rem rgba($blue, 0.5);
+	}
+
+	.tip {
+		width: 100%;
+		border: 0;
+		font: inherit;
+		text-align: right;
+
+		&:focus {
+			outline: 0;
+		}
+	}
+}
+
+::placeholder {
+	color: $blue-gray-300;
+}
+
+.tip-button {
+	display: flex;
+	align-items: center;
+	padding: 0.5em 0.75em;
+	border-radius: $radius;
+	margin: 0.5em 0 0;
+	font-weight: bold;
+	border: 1px solid $blue;
+	color: $blue;
+	box-shadow: 0 0 0 0rem rgba($blue, 0.25);
+	cursor: pointer;
+	transition: background-color $transition, box-shadow $transition;
+
+	&:hover {
+		box-shadow: 0 0 0 0.25rem rgba($blue, 0.25);
+		text-decoration: none;
+		background: rgba($blue, 0.125);
+	}
+
+	&:active {
+		box-shadow: 0 0 0 0.25rem rgba($blue, 0.5);
+		transition: 0s;
+	}
+
+	img {
+		max-height: 1.25em;
+		flex: 1;
+		margin: 0 0.75em 0 0;
+		border-right: 1px solid rgba($black, 0.25);
+		padding: 0 0.75em 0 0;
 	}
 }
 
@@ -493,39 +640,30 @@ code {
 
 // Initialization ======================================================
 .initialization {
+	.split {
+		align-items: flex-start;
+	}
 }
 
 .html-init {
+	pre {
+		margin: 0 0 1em;
+	}
+
 	pre.light {
-		font-size: 0.8em;
+		font-size: 0.85em;
 	}
 
 	.preview {
 		pointer-events: none;
 		user-select: none;
 		min-width: 12em;
-		margin-bottom: 0.75em;
+		padding: 3em 0;
+		margin: 0 0 1em;
 
 		.z-text {
-			$degrees: 30deg;
 			animation: wobble 12s ease-in-out infinite;
 			transform: rotateY($degrees);
-
-			@keyframes wobble {
-				0%,
-				100% {
-					transform: rotate3d(-1, 1, 0, $degrees);
-				}
-				25% {
-					transform: rotate3d(1, 1, 0, $degrees);
-				}
-				50% {
-					transform: rotate3d(1, -1, 0, $degrees);
-				}
-				75% {
-					transform: rotate3d(-1, -1, 0, $degrees);
-				}
-			}
 
 			.z-layer {
 				@mixin debugger($color) {
@@ -543,127 +681,249 @@ code {
 					@include debugger($indigo);
 				}
 			}
+
+			&:before {
+				position: absolute;
+				top: -50%;
+				right: -50%;
+				width: 100%;
+				height: 100%;
+				content: "";
+				border-left: 2px solid $green;
+				border-bottom: 2px solid $red;
+			}
+			&:after {
+				display: block;
+				content: "";
+				position: absolute;
+				top: 50%;
+				left: calc(50% - 1px);
+				height: 100%;
+				background: $light-blue;
+				width: 2px;
+				transform-origin: center top;
+				transform: rotateX(90deg);
+			}
 		}
 	}
 }
 
 // Styling =============================================================
-.styling {
-	.preview {
-		.z-text {
-			/* Tip: Apply CSS transforms here */
-			/* rotateX() == up/down */
-			/* rotateY() == left/right */
-			transform: rotateY(-30deg);
-			font-family: "Georgia", serif;
-			transition: transform 1s;
-		}
+.styling-example-primary {
+	.z-text {
+		/* Tip: Apply CSS transforms here */
+		/* rotateX() == up/down */
+		/* rotateY() == left/right */
+		transform: rotateX(15deg) rotateY(-30deg);
+		font-family: "Georgia", serif;
+	}
 
-		[data-z]:hover .z-text {
-			transform: rotateY(30deg);
-		}
+	[data-z],
+	.z-layer:first-child {
+		color: #90a4ae;
+	}
 
-		.z-layer {
-			color: #455a64;
-		}
-
-		.z-layer:first-child {
-			color: #90a4ae;
-		}
+	.z-layer {
+		color: #455a64;
 	}
 }
+
+// .styling-example-alternating {
+// 	.z-text {
+// 		transform: rotateX(-15deg) rotateY(-15deg);
+// 	}
+
+// 	.z-layer:nth-child(odd) {
+// 		color: $red;
+// 	}
+// 	.z-layer:nth-child(even) {
+// 		color: $blue;
+// 	}
+// }
+
+// .styling-example-tricolor {
+// 	.z-text {
+// 		transform: rotateX(-15deg) rotateY(-15deg);
+// 	}
+
+// 	.z-layer:first-child {
+// 		color: $blue;
+// 	}
+// 	.z-layer:nth-child(2) {
+// 		color: $white;
+// 	}
+// 	.z-layer:nth-child(3) {
+// 		color: $red;
+// 	}
+// }
 
 // Styling =============================================================
 .more {
-	.toggle {
-		@include button($amber);
-		margin: 0 0.75em 0.5em 0;
-		padding: 0.2em 0.5em;
+	button:not(.codepen-button) {
+		font: 100%/1 Nunito, sans-serif;
+		display: inline-block;
+		border-radius: $radius;
+		background: $blue-gray-100;
+		color: $blue-gray-800;
+		border: 0;
+		padding: 0.75em 1em;
 		cursor: pointer;
-	}
+		transition: opacity $transition;
 
-	input[type="radio"] {
-		display: none;
-
-		&:checked + .toggle {
+		&:hover {
+			background: $blue-gray-200;
 			color: $black-code-dark;
 		}
+
+		&:active {
+			background: $blue-gray-400;
+		}
+	}
+	.toggle {
+		position: relative;
+		margin: 0 0 0.5em 0.5em;
+
+		&.is-on:not(.codepen-button) {
+			background: $black-code-dark;
+			color: $white-code-dark;
+			margin-bottom: 0;
+			padding: 0.75em 1em 1.25em;
+			border-radius: $radius $radius 0 0;
+
+			&:focus {
+				outline: 0;
+			}
+
+			&:before,
+			&:after {
+				display: block;
+				content: "";
+				position: absolute;
+				bottom: 0;
+				width: $radius * 4;
+				height: $radius * 4;
+				border-radius: $radius * 2;
+				background: transparent;
+			}
+
+			&:before {
+				right: 100%;
+				box-shadow: $radius * 2 $radius * 2 $black-code-dark;
+			}
+
+			&:after {
+				left: 100%;
+				box-shadow: -$radius * 2 $radius * 2 $black-code-dark;
+			}
+		}
 	}
 
-	.tab-item {
-		margin: 0 0 1em;
-	}
 	pre {
-		padding: 1em 5em 1em 1em;
+		margin: 0 0 0.25em;
 	}
+
+	.tab {
+		display: none;
+
+		&.is-on {
+			display: block;
+		}
+	}
+
 	.preview {
-		display: block;
-		padding: 1em;
-		text-align: center;
+		display: flex;
+		flex-wrap: wrap;
+		padding: 2.75em 1em 1em;
 		align-self: flex-start;
+	}
+
+	.pause {
+		position: absolute;
+		top: 0.5em;
+		right: 0.5em;
+		background: transparent;
+		opacity: 0.25;
+		cursor: default;
+		pointer-events: none;
+
+		&.is-on {
+			pointer-events: auto;
+			opacity: 1;
+			cursor: pointer;
+			background: $blue-gray-100;
+
+			&:hover {
+				color: $black-code-dark;
+			}
+		}
+
+		&:before {
+			width: 1em;
+			height: 1em * 1.2;
+			content: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="10" height="12" preserveAspectRatio="none" viewBox="0 0 10 10"%3E%3Cpath d="M.5 .5 3.5 .5 L 3.5 9.5 L .5 9.5 Z M 6.5 .5 L 9.5 .5 L 9.5 9.5 L 6.5 9.5 Z" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"%3E%3C/path%3E%3C/svg%3E');
+			margin-right: 0.25em;
+			opacity: 0.5;
+		}
+	}
+
+	.z-layer {
+		filter: brightness(0.7);
+
+		&:first-child {
+			filter: brightness(1);
+		}
+	}
+
+	.svg-code-example,
+	.img-code-example,
+	.emoji-code-example {
+		flex: 1 0 6em;
 
 		.z-text {
-			animation: wobble 12s ease-in-out infinite;
+			animation: wobble 6s ease-in-out paused infinite;
 		}
 
-		.z-layer {
-			filter: brightness(0.75);
-
-			&:first-child {
-				filter: brightness(1);
-			}
-		}
-
-		.svg,
-		.emoji,
-		.img {
-			display: inline-block;
-			width: 50%;
-			height: auto;
-			vertical-align: middle;
-		}
-
-		.svg,
-		.img {
-			width: 50%;
-			height: auto;
-			min-width: 7.5em;
-		}
-
-		.svg {
-			svg {
-				width: 100%;
-				height: auto;
-			}
-
+		&.is-on {
 			.z-text {
-				transform: rotateX(30deg) rotateY(30deg);
-				animation-delay: -4s;
+				animation-play-state: running;
 			}
 		}
+	}
 
-		.img {
-			img {
-				width: 100%;
-				height: auto;
-				border-radius: 3px;
-			}
-
-			.z-text {
-				transform: rotateX(-30deg) rotateY(-30deg);
-				animation-delay: -8s;
-			}
-		}
-
-		.emoji {
-			font-size: 5em;
-			line-height: 1.2;
+	.svg-code-example {
+		svg {
 			width: 100%;
-			padding: 0.25em 0 0;
+			height: auto;
+		}
 
-			.z-text {
-				transform: rotateX(30deg) rotateY(-30deg);
-			}
+		.z-text {
+			animation-delay: -1s;
+		}
+	}
+
+	.img-code-example {
+		img {
+			width: 100%;
+			padding: 0.5em;
+			height: auto;
+			border-radius: 3px;
+		}
+
+		.z-text {
+			animation-delay: -2s;
+		}
+	}
+
+	.emoji-code-example {
+		text-align: center;
+		flex: 1 0 100%;
+		font-size: 5em;
+		line-height: 1.2;
+		letter-spacing: 0.2em;
+		padding: 0.2em 0;
+
+		.z-text {
+			animation-delay: -0.5s;
 		}
 	}
 }
@@ -685,16 +945,18 @@ code {
 	}
 
 	.z-text {
-		transform: rotateX(30deg) rotateY(30deg);
+		transform: rotateX($degrees) rotateY($degrees);
 		transition: transform 1s;
 	}
 
 	.preview {
 		align-self: stretch;
+		padding: 1.5em 1.5em 3em;
+		margin: 0;
 
 		&:hover {
 			.z-text {
-				transform: rotateX(-30deg) rotateY(-30deg);
+				transform: rotateX(-$degrees) rotateY(-$degrees);
 			}
 		}
 	}
@@ -711,10 +973,14 @@ code {
 }
 
 .depth-option {
-	@include z-color($light-green);
+	@include z-color($amber);
 }
 
 .layers-option {
+	@include z-color($teal);
+}
+
+.perspective-option {
 	@include z-color($orange);
 }
 
@@ -723,19 +989,12 @@ code {
 }
 
 .direction-option {
-	@include z-color($amber);
+	@include z-color($yellow-600);
 
 	.z-text {
-		background: rgba($orange, 0.25);
-		background: repeating-linear-gradient(
-			45deg,
-			rgba($gray, 0.5) 0,
-			rgba($gray, 0.5) 3px,
-			rgba($gray, 0) 0,
-			rgba($gray, 0) 6px
-		);
-		background: rgba($black, 0.25);
-		padding: 0 1em;
+		background: rgba($blue-gray, 0.5);
+		padding: 0 0.5em;
+		border-radius: 0.25rem;
 	}
 
 	[data-z-direction="backwards"] .z-layer:first-child {
@@ -743,16 +1002,16 @@ code {
 	}
 }
 
-.fade-option {
-	@include z-color($light-blue);
-}
-
 .event-option {
-	@include z-color($pink-300);
+	@include z-color($light-green);
 }
 
 .event-rotation-option {
-	@include z-color($lime);
+	@include z-color($deep-orange-400);
+}
+
+.event-direction-option {
+	@include z-color($indigo-400);
 }
 
 .param {
@@ -764,17 +1023,7 @@ code {
 	}
 }
 
-// Gyro ================================================================
-.gyro {
-	position: fixed;
-	bottom: 0;
-	width: 100vw;
-	right: 0;
-	left: 0;
-	background: rgba(black, 0.95);
-	color: $white;
-	padding: 10px;
-	z-index: 100;
-	font-family: monospace;
-	text-align: left;
+// Terms ===============================================================
+.terms {
+	background: $blue-gray-50;
 }
