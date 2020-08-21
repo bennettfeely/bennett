@@ -1,9 +1,6 @@
 /*!
  * Ztext 0.0.1
  *
- * Licensed GPLv3 for open source use
- * or Ztext Commercial License for commercial use
- *
  * Copyright 2020 Bennett Feely
  * https://bennettfeely.com/ztext
  */

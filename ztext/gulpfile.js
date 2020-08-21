@@ -1,16 +1,16 @@
 // Include plugins ===================================================
-var gulp = require("gulp");
-var autoprefixer = require("gulp-autoprefixer");
-var browserSync = require("browser-sync");
-var cssmin = require("gulp-cssmin");
-var htmlmin = require("gulp-htmlmin");
-var pump = require("pump");
-var rename = require("gulp-rename");
-var sass = require("gulp-sass");
-var slim = require("gulp-slim");
+const gulp = require("gulp");
+const autoprefixer = require("gulp-autoprefixer");
+const browserSync = require("browser-sync");
+const cssmin = require("gulp-cssmin");
+const htmlmin = require("gulp-htmlmin");
+const pump = require("pump");
+const rename = require("gulp-rename");
+const sass = require("gulp-sass");
+const slim = require("gulp-slim");
 
-var uglify = require("gulp-uglify");
-var pipeline = require("readable-stream").pipeline;
+const terser = require("gulp-terser");
+const size = require("gulp-size");
 
 // Browser Sync ======================================================
 gulp.task("sync", function () {
@@ -57,7 +57,7 @@ gulp.task("html", function () {
 gulp.task("js", function () {
 	return gulp
 		.src("src/js/*.js")
-		.pipe(gulp.dest("js"))
+		.pipe(terser())
 		.pipe(
 			rename(function (path) {
 				path.basename += ".min";
@@ -66,24 +66,15 @@ gulp.task("js", function () {
 		)
 		.pipe(gulp.dest("js"))
 		.pipe(
+			size({
+				showFiles: true,
+			})
+		)
+		.pipe(
 			browserSync.reload({
 				stream: true,
 			})
 		);
-});
-
-gulp.task("uglify", function () {
-	return pipeline(
-		gulp.src("js/*.js"),
-		uglify(),
-		gulp.pipe(
-			rename(function (path) {
-				path.basename += ".min";
-				path.extname = ".css";
-			})
-		),
-		gulp.dest("js")
-	);
 });
 
 // Compile CSS =======================================================
@@ -116,7 +107,7 @@ gulp.task("scss", function () {
 // Watch Files For Changes ===========================================
 gulp.task("watch", ["sync"], function () {
 	gulp.watch("src/*.slim", ["html"]);
-	gulp.watch("src/js/*.js", ["js", "uglify"]);
+	gulp.watch("src/js/*.js", ["js"]);
 	gulp.watch("src/css/*.scss", ["scss"]);
 });
 

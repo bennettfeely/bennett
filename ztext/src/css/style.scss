@@ -253,12 +253,6 @@ blockquote {
 	user-select: none;
 	white-space: normal;
 
-	&:after {
-		display: block;
-		content: attr(class);
-		color: red;
-	}
-
 	&.overlay {
 		width: initial;
 		position: absolute;
@@ -1020,16 +1014,4 @@ code {
 	&:before {
 		content: " : ";
 	}
-}
-
-.blach-blach {
-	@include z-color($red);
-}
-
-aside {
-	position: fixed;
-	width: 20px;
-	height: 20px;
-	background: red;
-	margin: -10px;
 }

@@ -19,7 +19,7 @@ var wobble = `
 var codepen = [
 	{
 		selector: ".codepen-edit-0",
-		text: "ALLDONE",
+		text: "Edit on CodePen",
 		html: `<h1>
 	<span data-z data-z-layers="3" data-z-depth="0.5em">A</span>
 </h1>`,
@@ -52,7 +52,7 @@ var codepen = [
 
 	{
 		selector: ".codepen-edit-1",
-		text: "ALLDONE",
+		text: "Edit",
 		html: `<h1>
 	<span class="hero-text">Hello</span>
   <span class="hero-text">World</span>
@@ -83,7 +83,7 @@ var codepen = [
 
 	{
 		selector: ".codepen-edit-2",
-		text: "ALLDONE",
+		text: "Edit",
 		html: `<h1>
 	<span data-z>CSS</span>
 </h1>`,
@@ -108,7 +108,7 @@ var codepen = [
 
 	{
 		selector: ".codepen-edit-3",
-		text: "ALLDONE",
+		text: "Edit",
 		html: `<span data-z data-z-layers="15" data-z-depth="50px">
 	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="200" height="200">
 		<path d="M153.62 301.59c94.34 0 145.94-78.16 145.94-145.94 0-2.22 0-4.43-.15-6.63A104.36 104.36 0 00325 122.47a102.38 102.38 0 01-29.46 8.07 51.47 51.47 0 0022.55-28.37 102.79 102.79 0 01-32.57 12.45 51.34 51.34 0 00-87.41 46.78A145.62 145.62 0 0192.4 107.81a51.33 51.33 0 0015.88 68.47A50.91 50.91 0 0185 169.86v.65a51.31 51.31 0 0041.15 50.28 51.21 51.21 0 01-23.16.88 51.35 51.35 0 0047.92 35.62 102.92 102.92 0 01-63.7 22 104.41 104.41 0 01-12.21-.74 145.21 145.21 0 0078.62 23" stroke="#1da1f2" stroke-width="10px" fill="none" />
@@ -139,7 +139,7 @@ body {
 
 	{
 		selector: ".codepen-edit-4",
-		text: "ALLDONE",
+		text: "Edit",
 		html: `<span data-z data-z-depth="40px">
    <img width="150" height="120" src="https://bennettfeely.com/ztext/img/grace.jpg" alt="Photo of Grace">
 <span>`,
@@ -168,7 +168,7 @@ body {
 
 	{
 		selector: ".codepen-edit-5",
-		text: "ALLDONE",
+		text: "Edit",
 		html: `<span data-z data-z-layers="20" data-z-depth="50px">😂🔥🍔</span>`,
 		css:
 			`/* CodePen styles */
@@ -196,7 +196,7 @@ body {
 
 	{
 		selector: ".codepen-edit-6",
-		text: "ALLDONE",
+		text: "Edit",
 		html: `<h1>
   <span data-z>1rem</span>
 </h1>
@@ -227,7 +227,7 @@ body {
 
 	{
 		selector: ".codepen-edit-7",
-		text: "ALLDONE",
+		text: "Edit",
 		html: `<h1>
 	<span data-z data-z-layers="20" data-z-depth=".25em">10</span>
 </h1>
@@ -258,7 +258,7 @@ body {
 
 	{
 		selector: ".codepen-edit-8",
-		text: "ALLDONE",
+		text: "Edit",
 		html: `<h1>
 	<span data-z data-z-perspective="none">none</span>
 </h1>
@@ -294,7 +294,7 @@ body {
 
 	{
 		selector: ".codepen-edit-9",
-		text: "ALLDONE",
+		text: "Edit",
 		html: `<h1>
 	<span data-z data-z-fade="true" data-z-layers="10" data-z-depth=".25em">fade</span>
 </h1>`,
@@ -321,7 +321,7 @@ body {
 
 	{
 		selector: ".codepen-edit-10",
-		text: "ALLDONE",
+		text: "Edit",
 		html: `<h1>
 	<span data-z data-z-depth=".5em">both</span>
 </h1>
@@ -365,7 +365,7 @@ body:hover .z-text {
 
 	{
 		selector: ".codepen-edit-11",
-		text: "ALLDONE",
+		text: "Edit",
 		html: `<h1>
 	<span data-z data-z-event="pointer">pointer</span>
 </h1>`,
@@ -388,7 +388,7 @@ body:hover .z-text {
 
 	{
 		selector: ".codepen-edit-12",
-		text: "ALLDONE",
+		text: "Edit",
 		html: `<h1>
 	<span data-z data-z-event="pointer" data-z-eventRotation="20deg">20deg</span>
 </h1>
@@ -415,7 +415,7 @@ body:hover .z-text {
 
 	{
 		selector: ".codepen-edit-13",
-		text: "ALLDONE",
+		text: "Edit",
 		html: `<h1>
 	<span data-z data-z-event="pointer" data-z-eventDirection="default">default</span>
 </h1>
