@@ -279,17 +279,13 @@ blockquote {
 	cursor: pointer;
 	color: $white;
 	transition: opacity $transition;
-	background: rgba(tint($black-code-dark, 25%), 0.25);
+	background: rgba($blue-gray, 0.25);
 	opacity: 0.5;
 
-	pre:hover &,
-	.option:hover & {
-		opacity: 0.75;
-
-		&:hover {
-			text-decoration: underline;
-			opacity: 1;
-		}
+	&:hover,
+	&:focus {
+		text-decoration: underline;
+		opacity: 1;
 	}
 
 	&:before {
@@ -746,7 +742,7 @@ code {
 
 // Styling =============================================================
 .more {
-	button:not(.codepen-button) {
+	.toggle {
 		font: 100%/1 Nunito, sans-serif;
 		display: inline-block;
 		border-radius: $radius;
@@ -755,7 +751,8 @@ code {
 		border: 0;
 		padding: 0.75em 1em;
 		cursor: pointer;
-		transition: opacity $transition;
+		position: relative;
+		margin: 0 0 0.5em 0.5em;
 
 		&:hover {
 			background: $blue-gray-200;
@@ -765,12 +762,8 @@ code {
 		&:active {
 			background: $blue-gray-400;
 		}
-	}
-	.toggle {
-		position: relative;
-		margin: 0 0 0.5em 0.5em;
 
-		&.is-on:not(.codepen-button) {
+		&.is-on {
 			background: $black-code-dark;
 			color: $white-code-dark;
 			margin-bottom: 0;
@@ -825,31 +818,38 @@ code {
 	}
 
 	.pause {
-		position: absolute;
-		top: 0.5em;
-		right: 0.5em;
+		border: 0;
 		background: transparent;
-		opacity: 0.25;
+		position: absolute;
+		top: $radius;
+		right: $radius;
 		cursor: default;
 		pointer-events: none;
-
-		&.is-on {
-			pointer-events: auto;
-			opacity: 1;
-			cursor: pointer;
-			background: $blue-gray-100;
-
-			&:hover {
-				color: $black-code-dark;
-			}
-		}
+		border: 0;
+		color: $gray;
+		padding: 0.75em 1em;
+		border-radius: $radius / 2;
 
 		&:before {
 			width: 1em;
 			height: 1em * 1.2;
 			content: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="10" height="12" preserveAspectRatio="none" viewBox="0 0 10 10"%3E%3Cpath d="M.5 .5 3.5 .5 L 3.5 9.5 L .5 9.5 Z M 6.5 .5 L 9.5 .5 L 9.5 9.5 L 6.5 9.5 Z" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"%3E%3C/path%3E%3C/svg%3E');
-			margin-right: 0.25em;
-			opacity: 0.5;
+			margin-right: 0.5em;
+			opacity: 0.25;
+		}
+
+		&.is-on {
+			pointer-events: auto;
+			cursor: pointer;
+			color: $gray-700;
+
+			&:hover {
+				background: $blue-gray-100;
+			}
+
+			&:before {
+				opacity: 0.5;
+			}
 		}
 	}
 
