@@ -29,6 +29,12 @@ html lang="en"
 						span data-z="true" data-z-depth=".15em" data-z-event="pointer" data-z-eventRotation="75deg" j
 						span data-z="true" data-z-depth=".15em" data-z-event="pointer" data-z-eventRotation="75deg" s
 					h2 Easy to implement, 3D typography for the web. Works with any font.
+					.share.twitter-shade
+						a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-text="ztext.js - Easy to implement, 3D typography for any font for the web." data-url="https://bennettfeely.com/ztext" data-related="bennettfeely" data-show-count="false" Tweet
+						script async="true" src="https://platform.twitter.com/widgets.js" charset="utf-8"
+					.share.facebook-share
+						.fb-like data-href="https://bennettfeely.com/ztext" data-width="" data-layout="button_count" data-action="like" data-size="large" data-share="true"
+						
 		main.main
 			.wrapper
 				.split
@@ -38,8 +44,8 @@ html lang="en"
 								h2 Download
 								a.button.split-item href="js/ztext.min.js" 
 									strong ztext.min.js 
-									| &mdash; Minified 2.65 kb
-								p Download <a href="src/js/ztext.js">ztext.js unminified</a>, or view this project on <a href="https://github.com/bennettfeely/bennett/tree/master/ztext">GitHub</a>.
+									| &mdash; Minified 2.8 kb
+								p View this project on <a href="https://github.com/bennettfeely/bennett/tree/master/ztext">GitHub</a>. View <a href="https://github.com/bennettfeely/bennett/blob/master/ztext/src/js/ztext.js">ztext.js unminified</a>. Released under <a href="https://github.com/bennettfeely/bennett/blob/master/ztext/LICENSE">MIT License</a>.
 					.split-item
 						section.tips#tips
 							.container
@@ -51,7 +57,7 @@ html lang="en"
 									a.tip-button.button href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=9YZX9KJVUDWXW&currency_code=USD&amount=10&source=url" 
 										img src="img/paypal.svg" width="124" height="33" alt="PayPal"
 										strong Tip
-								p Are you using ztext and happy with it? Your kind support keeps JS libraries like this free for others.
+								p Are you using ztext and happy with it? Your kind support keeps open-source JS libraries like this free for others.
 			section.intro#intro
 				.wrapper
 					.container
@@ -73,7 +79,7 @@ html lang="en"
 							.split-item
 								h3 How it works
 								p Ztext gives the illusion of volume by creating layers from an HTML element. There's no need to spend hours fiddling with <code class="light"><span class="red-code">&lt;canvas&gt;</span></code> or forcing users to download multi-megabyte WebGL libraries. Content remains fully selectable and accessible.
-								p <a class="external" href="https://caniuse.com/#feat=transforms3d">Over 97% of users</a> use a web browser that supports CSS 3D transforms, which ztext needs to work. In unsupported browsers, ztext gracefully turns off.
+								p <a class="external" href="https://caniuse.com/#feat=transforms3d">Over 96% of users</a> use a web browser that supports the CSS <code class="light"><span class="yellow-code">transform-style</span></code> property, which ztext needs to work. In unsupported browsers, ztext gracefully turns off.
 			section.html-init#html-init
 				.wrapper
 					.container
@@ -315,6 +321,8 @@ html lang="en"
 			footer
 				.wrapper
 					.container &copy; 2020 Bennett Feely (<a href="https://twitter.com/bennettfeely">@bennettfeely</a>)
+		#fb-root
+		script async="true" defer="true" crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v8.0&appId=261257780581807" nonce="PHc3kpRj"
 		script src="js/ztext.min.js"
 		script src="js/demo.min.js"
 		script src="js/codepen.min.js"

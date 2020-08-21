@@ -1,3 +1,4 @@
+// Prefill data
 var wobble = `
 @keyframes wobble {
 	0%,
@@ -441,29 +442,11 @@ body:hover .z-text {
 	},
 ];
 
+// Build and append buttons
 codepen.forEach((pen) => {
 	var selector = document.querySelector(pen.selector);
 
-	// css	: "html { color: red; }",
-	// css_external          : "http://yoursite.com/style.css", // semi-colon separate multiple files
-	// css_pre_processor     : "none" || "less" || "scss" || "sass" || "stylus",
-	// css_prefix            : "autoprefixer" || "prefixfree" || "neither",
-	// css_starter           : "normalize" || "reset" || "neither",
-	// description           : "It's about stuff.",
-	// editors               : "101", // Set which editors are open. In this example HTML open, CSS closed, JS open
-	// head                  : "<meta name='viewport' content='width=device-width'>",
-	// html                  : "<div>HTML here.</div>",
-	// html_classes          : "loading",
-	// html_pre_processor    : "none" || "slim" || "haml" || "markdown",
-	// js                    : "alert('test');",
-	// js_external           : "http://yoursite.com/script.js" // semi-colon separate multiple files
-	// js_pre_processor      : "none" || "coffeescript" || "babel" || "livescript" || "typescript",
-	// layout                : "left", // top | left | right
-	// parent                : id // If supplied, the Pen will save as a fork of this id. Note it's not the slug, but ID. You can find the ID of a Pen with `window.CP.pen.id` in the browser console.
-	// private               : false, // true || false - When the Pen is saved, it will save as Private if logged in user has that privledge, otherwise it will save as public
-	// tags                  : ["tag1", "tag2"], // an array of strings
-	// title                 : "New Pen",
-
+	// Append script tag to HTML prefill
 	var script_tag =
 		'\n\n<script src="https://bennettfeely.com/ztext/js/ztext.min.js"></script>';
 
@@ -474,19 +457,21 @@ codepen.forEach((pen) => {
 		description: "Ztext.js test, from https://bennettfeely.com/ztext",
 		html: pen.html + script_tag,
 		js: pen.js,
-		// js_external: "https://bennettfeely.com/ztext/js/ztext.js",
 		tags: ["ztext", "ztext.js", "3D", "bennettfeely"],
 		title: "ztext.js test",
 	};
 
+	// Escape quotes for use in form value
 	var JSONstring = JSON.stringify(data)
 		.replace(/"/g, "&quot;")
 		.replace(/'/g, "&apos;");
 
+	// Create the form
 	var form = `<form class="codepen-form" action="https://codepen.io/pen/define" method="POST" target="_blank">
 			<input type="hidden" name="data" value='${JSONstring}'>
 			<button class="codepen-button">${pen.text}</button>
 		</form>`;
 
+	// Append the form to wrapper element
 	selector.innerHTML += form;
 });

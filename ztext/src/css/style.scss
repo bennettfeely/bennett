@@ -219,7 +219,7 @@ blockquote {
 	display: inline-block;
 	font-size: 1em;
 	padding: 0.5em 1em;
-	margin: 0 0 1em;
+	margin: 0 0 0.5em;
 	border: 1px solid;
 	background: $white;
 	border-radius: $radius;
@@ -347,6 +347,7 @@ pre {
 }
 
 code {
+	display: inline-block;
 	font-size: 1.2em;
 	padding: 0 0.25em 0.1em;
 	border-radius: $radius / 2;
@@ -522,10 +523,20 @@ code {
 	}
 }
 
+.share {
+	display: inline-block;
+	vertical-align: top;
+	margin: 0 5px;
+}
+
 // Download ============================================================
 .download {
 	.button {
 		@include button($blue);
+	}
+
+	p {
+		margin-bottom: 0;
 	}
 }
 
@@ -604,27 +615,6 @@ code {
 		margin: 0 0.75em 0 0;
 		border-right: 1px solid rgba($black, 0.25);
 		padding: 0 0.75em 0 0;
-	}
-}
-
-// License ============================================================
-.license {
-	.button {
-		@include button($green);
-		text-align: center;
-		min-width: 12em;
-		float: right;
-		margin: 0 0 1.5em 1.5em;
-
-		strong {
-			display: block;
-		}
-
-		h1 {
-			font-size: 2em;
-			margin: 0;
-			color: $green;
-		}
 	}
 }
 

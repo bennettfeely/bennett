@@ -1,6 +1,5 @@
 /*!
- * Ztext 0.0.1
- *
+ * ztext v0.0.1
  * Copyright 2020 Bennett Feely
  * https://bennettfeely.com/ztext
  */
@@ -36,7 +35,7 @@ zs.forEach((z) => {
 	draw(z, options);
 });
 
-// JS Constructor
+// JS constructor
 function Ztextify(selector, options) {
 	var zs = document.querySelectorAll(selector);
 
@@ -49,14 +48,12 @@ function draw(z, options) {
 	var z_engaged = options.zEngaged || z_default.zEngaged;
 
 	if (z_engaged !== "false") {
-		// TODO: Accept 0 value
 		var depth = options.depth || z_default.depth;
 		var depth_unit = depth.match(/[a-z]+/)[0];
 		var depth_numeral = parseFloat(depth.replace(depth_unit, ""));
 
 		var direction = options.direction || z_default.direction;
 
-		// TODO: Accept 0 value
 		var event = options.event || z_default.event;
 		var event_rotation = options.eventRotation || z_default.eventRotation;
 		var event_rotation_unit = event_rotation.match(/[a-z]+/)[0];
@@ -75,13 +72,14 @@ function draw(z, options) {
 		z.innerHTML = "";
 		z.style.display = "inline-block";
 		z.style.position = "relative";
-		z.style.transformStyle = "preserve-3d";
+		z.style.webkitPerspective = perspective;
 		z.style.perspective = perspective;
 
 		// Create a wrapper span that will hold all the layers
 		var zText = document.createElement("span");
 		zText.setAttribute("class", "z-text");
 		zText.style.display = "inline-block";
+		zText.style.webkitTransformStyle = "preserve-3d";
 		zText.style.transformStyle = "preserve-3d";
 
 		// Create a layer for transforms from JS to be applied
@@ -89,7 +87,6 @@ function draw(z, options) {
 		var zLayers = document.createElement("span");
 		zLayers.setAttribute("class", "z-layers");
 		zLayers.style.display = "inline-block";
-		zLayers.style.transformStyle = "preserve-3d";
 
 		zText.append(zLayers);
 
@@ -112,7 +109,10 @@ function draw(z, options) {
 			if (direction === "forwards") {
 				var zTranslation = -(pct * depth_numeral) + depth_numeral;
 			}
-			zLayer.style.transform = "translateZ(" + zTranslation + depth_unit + ")";
+
+			var transform = "translateZ(" + zTranslation + depth_unit + ")";
+			zLayer.style.webkitTransform = transform;
+			zLayer.style.transform = transform;
 
 			// Manipulate duplicate layers
 			if (i >= 1) {
@@ -124,6 +124,9 @@ function draw(z, options) {
 				// Hide duplicate layres from screen readers and user interation
 				zLayer.setAttribute("aria-hidden", "true");
 				zLayer.style.pointerEvents = "none";
+				zLayer.style.mozUserSelect = "none";
+				zLayer.style.msUserSelect = "none";
+				zLayer.style.webkitUserSelect = "none";
 				zLayer.style.userSelect = "none";
 
 				// Incrementally fade layers if option is enabled
@@ -151,8 +154,10 @@ function draw(z, options) {
 			var y_tilt = -y_pct * event_rotation_numeral * event_direction_adj;
 			var unit = event_rotation_unit;
 
-			zLayers.style.transform =
+			var transform =
 				"rotateX(" + y_tilt + unit + ") rotateY(" + x_tilt + unit + ")";
+			zLayers.style.transform = transform;
+			zLayers.style.webkitTransform = transform;
 		}
 
 		// Capture mousemove and touchmove events and rotate .z-layers
