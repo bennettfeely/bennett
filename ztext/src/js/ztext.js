@@ -23,7 +23,7 @@ z_default = {
 // Get all elements with the data-z attribute
 var zs = document.querySelectorAll("[data-z]");
 zs.forEach((z) => {
-	// Sanitize attribute values
+	// Make uniform option keys
 	options = {
 		depth: z.dataset.zDepth || z_default.depth,
 		direction: z.dataset.zDirection || z_default.direction,
@@ -36,30 +36,19 @@ zs.forEach((z) => {
 		zEngaged: z.dataset.z || z_default.z,
 	};
 
-	console.log(z.dataset);
-
 	draw(z, options);
 });
 
-// TODO:
+// JS Constructor
+function Ztextify(selector, options) {
+	var zs = document.querySelectorAll(selector);
 
-// zPerspective.... what's going on with that?
-// Get the constructor working
-// Refractor CSS?
-// make tabs look more like tabs
+	zs.forEach((z) => {
+		draw(z, options);
+	});
+}
 
-// function Ztextify(element, options) {
-// 	var zs = documment.querySelectorAll(element);
-
-// 	zs.forEach((z) => {
-// 		draw(z, options);
-// 	});
-// }
-
-// Apply the effect
 function draw(z, options) {
-	// Grab or compute all the parameters
-
 	var z_engaged = options.zEngaged || z_default.zEngaged;
 
 	if (z_engaged !== "false") {
@@ -107,10 +96,10 @@ function draw(z, options) {
 
 		zText.append(zLayers);
 
-		// Create layers
 		for (i = 0; i < layers; i++) {
 			let pct = i / layers;
 
+			// Create a layer
 			var zLayer = document.createElement("span");
 			zLayer.setAttribute("class", "z-layer");
 			zLayer.innerHTML = text;
@@ -130,11 +119,12 @@ function draw(z, options) {
 
 			// Manipulate duplicate layers
 			if (i >= 1) {
-				// Overlay duplicate layers on top of eachother
+				// Overlay duplicate layers on top of each other
 				zLayer.style.position = "absolute";
 				zLayer.style.top = 0;
 				zLayer.style.left = 0;
-				// Prevent duplicate layers from being selected
+
+				// Hide duplicate layres from screen readers and user interation
 				zLayer.setAttribute("aria-hidden", "true");
 				zLayer.style.pointerEvents = "none";
 				zLayer.style.userSelect = "none";
@@ -168,19 +158,7 @@ function draw(z, options) {
 				"rotateX(" + y_tilt + unit + ") rotateY(" + x_tilt + unit + ")";
 		}
 
-		function isInView(el) {
-			const rect = el.getBoundingClientRect();
-			const windowHeight = window.innerHeight;
-			const windowWidth = window.innerWidth;
-
-			const vertInView =
-				rect.top <= windowHeight && rect.top + rect.height >= 0;
-			const horInView = rect.left <= windowWidth && rect.left + rect.width >= 0;
-
-			return vertInView && horInView;
-		}
-
-		// Capture mouse move events and tilt .z-layers
+		// Capture mousemove and touchmove events and rotate .z-layers
 		if (event === "pointer") {
 			window.addEventListener(
 				"mousemove",
@@ -195,7 +173,7 @@ function draw(z, options) {
 
 			window.addEventListener(
 				"touchmove",
-				function (e) {
+				(e) => {
 					var x_pct = e.touches[0].clientX / window.innerWidth - 0.5;
 					var y_pct = e.touches[0].clientY / window.innerHeight - 0.5;
 

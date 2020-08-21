@@ -83,7 +83,10 @@ html lang="en"
 							.split-item
 								pre.dark
 									h3 HTML
-									code <span class="red-code">&lt;h1</span> <span class="yellow-code">data-z</span> <span class="yellow-code">data-z-layers</span>=<span class="green-code">"3"</span> <span class="yellow-code">data-z-depth</span>=<span class="green-code">"0.5em"</span><span class="red-code">></span>A<span class="red-code">&lt;/h1></span>
+									code 
+										<span class="red-code">&lt;h1&gt;</span>
+										<br>   <span class="red-code">&lt;span</span> <span class="yellow-code">data-z</span> <span class="yellow-code">data-z-layers</span>=<span class="green-code">"3"</span> <span class="yellow-code">data-z-depth</span>=<span class="green-code">"0.5em"</span><span class="red-code">></span>A<span class="red-code">&lt;/span&gt;</span>
+										<br><span class="red-code">&lt;/h1&gt;</span>
 									.codepen-edit.codepen-edit-0
 								p Structurally, ztext turns that code into this:
 								pre.light
@@ -93,17 +96,16 @@ html lang="en"
 								.preview
 									h3 Preview
 									h1.x-large data-z="true" data-z-layers="3" data-z-depth=".5em" A
-								p The duplicate layers are visible to users but ztext makes them hidden from screen readers and other forms of user interaction as much as possible.
+								p The duplicate layers are visible to users but ztext makes them hidden from screen readers and other forms of user interaction.
 			section.js-init#js-init
 				.wrapper
 					.container
 						h3 Initialize with JavaScript
-						p Use ztext with vanilla JS with <code class="light"><span class="purple-code">new</span> <span class="red-code">Ztextify</span><span class="blue-code">(</span><span class="green-code">element</span>, <span class="blue-code">{})</span></code>. This constructor accepts two arguments: the HTML element and an options object.
+						p Use ztext with vanilla JS with <code class="light"><span class="purple-code">new</span> <span class="red-code">Ztextify</span><span class="blue-code">(</span><span class="green-code">selector</span>, <span class="blue-code">{})</span></code>. This constructor accepts two arguments: the HTML element and an options object.
 						pre.dark
 							h3 JS
 							code
-								<span class="purple-code">var</span> <span class="red-code">element</span> <span class="blue">=</b> <span class="yellow-code">document</span>.<span class="red-code">querySelector</span><span class="blue-code">(</span><span class="green-code">"h1"</span><span class="blue-code">)</span>;<br>
-								<span class="purple-code">var</span> <span class="red-code">ztxt</span> <span class="blue-code">=</span> <span class="purple-code">new</span> <span class="red-code">Ztextify</span><span class="blue-code">(</span><span class="green-code">element</span><span class="blue-code">,</span> <span class="blue-code">{</span>
+								<span class="purple-code">var</span> <span class="red-code">ztxt</span> <span class="blue-code">=</span> <span class="purple-code">new</span> <span class="red-code">Ztextify</span><span class="blue-code">(</span><span class="green-code">".hero-text"</span><span class="blue-code">,</span> <span class="blue-code">{</span>
 									<br>   <span class="blue-code">depth</span>: <span class="green-code">"30px"</span>,
 									<br>   <span class="blue-code">layers</span>: <span class="orange-code">8</span>,
 									<br>   <span class="blue-code">fade</span>: <span class="orange-code">true</span>,
@@ -122,7 +124,8 @@ html lang="en"
 								pre.dark
 									h3 CSS
 									code
-										<span class="red-code">[data-z]</span> {
+										<span class="red-code">h1</span> {
+										<br>   <span class="yellow-code">font</span>: <span class="orange-code">bold</span> <span class="orange-code">5em</span> <span class="green-code">"Georgia"</span>, <span class="orange-code">serif</span>;
 										<br>   <span class="yellow-code">color</span>: <span class="aqua-code">#90a4ae</span>;<span class="dot" style="background:#90a4ae"></span>
 										<br>}
 										<br>
@@ -132,28 +135,14 @@ html lang="en"
 										<br>   <span class="gray-code">/* rotateX() == up/down */</span>
 										<br>   <span class="gray-code">/* rotateY() == left/right */</span>
 										<br>   <span class="yellow-code">transform</span>: <span class="blue-code">rotateX</span>(<span class="orange-code">15deg</span>) <span class="blue-code">rotateY</span>(<span class="orange-code">-30deg</span>);
-										<br>   <span class="yellow-code">font-family</span>: <span class="green-code">"Georgia"</span>, <span class="orange-code">serif</span>;
 										<br>}
 										<br>
-										<br><span class="red-code">.z-layer</span> {
+										<br><span class="red-code">.z-layer:not(:first-child)</span> {
 										<br>   <span class="yellow-code">color</span>: <span class="aqua-code">#455a64</span>;<span class="dot" style="background:#455a64"></span>
-										<br>}
-										<br>
-										<br><span class="red-code">.z-layer:first-child</span> {
-										<br>   <span class="yellow-code">color</span>: <span class="aqua-code">#90a4ae</span>;<span class="dot" style="background:#90a4ae"></span>
 										<br>}
 										.codepen-edit.codepen-edit-2.overlay
 							.split-item.preview.styling-example-primary
 								h1.large data-z="true" CSS
-					/ .container
-					/ 	h3 Other styling ideas
-					/ 	.preview.styling-example-alternating
-					/ 		h1.large data-z="true" data-z-layers="5" data-z-depth=".5em" A
-					/ 	pre.dark
-
-					/ 	.preview.styling-example-tricolor
-					/ 		h1.large data-z="true" data-z-layers="3" data-z-depth=".5em" A
-					/ 	pre.dark
 			section.more#more
 				.wrapper
 					.container
@@ -171,10 +160,10 @@ html lang="en"
 									.tab.svg-code-tab
 										code 
 											<span class="red-code">&lt;span <span class="yellow-code">data-z</span></span> <span class="yellow-code">data-z-layers</span>=<span class="green-code">"15"</span> <span class="yellow-code">data-z-depth</span>=<span class="green-code">"50px"</span><span class="red-code">&gt;</span>
-											<br>   <span class="red-code">&lt;svg</span> <span class="yellow-code">xmlns</span>=<span class="green-code">"http://www.w3.org/2000/svg"</span> <span class="yellow-code">viewBox</span>=<span class="green-code">"0 0 100 100"</span> <span class="yellow-code">width</span>=<span class="green-code">"100"</span> <span class="yellow-code">height</span>=<span class="green-code">"100"</span><span class="red-code">></span>
-											<br>       <span class="red-code">&lt;path</span> <span class="yellow-code">d</span>=<span class="green-code">"..."</span><span><span class="red-code">&gt;</span>
-											<br>    <span class="red-code">&lt;svg&gt;</span>
-											<br><span class="red-code">&lt;span&gt;</span>
+											<br>   <span class="red-code">&lt;svg</span> <span class="yellow-code">xmlns</span>=<span class="green-code">"http://www.w3.org/2000/svg"</span> <span class="yellow-code">viewBox</span>=<span class="green-code">"0 0 400 400"</span> <span class="yellow-code">width</span>=<span class="green-code">"200"</span> <span class="yellow-code">height</span>=<span class="green-code">"200"</span><span class="red-code">></span>
+											<br>       <span class="red-code">&lt;path</span> <span class="yellow-code">d</span>=<span class="green-code">"..."</span><span><span class="red-code"> /&gt;</span>
+											<br>    <span class="red-code">&lt;/svg&gt;</span>
+											<br><span class="red-code">&lt;/span&gt;</span>
 											.codepen-edit.codepen-edit-3
 									.tab.img-code-tab
 										code 
@@ -184,7 +173,7 @@ html lang="en"
 											.codepen-edit.codepen-edit-4
 									.tab.emoji-code-tab.is-on
 										code 
-											<span class="red-code">&lt;span</span> <span class="yellow-code">data-z</span> <span class="yellow-code">data-z-layers</span>=<span class="green-code">"20"</span><span class="red-code">&gt;</span>😂🔥🍔<span class="red-code">&lt;/span&gt;</span>
+											<span class="red-code">&lt;span</span> <span class="yellow-code">data-z</span> <span class="yellow-code">data-z-layers</span>=<span class="green-code">"20"</span> <span class="yellow-code">data-z-depth</span>=<span class="green-code">"50px"</span><span class="red-code">&gt;</span>😂🔥🍔<span class="red-code">&lt;/span&gt;</span>
 											.codepen-edit.codepen-edit-5
 								pre.dark
 									h3 CSS
@@ -199,17 +188,15 @@ html lang="en"
 							.split-item.preview
 								button.button.pause Pause
 								span.svg-code-example data-z="true" data-z-layers="15" data-z-depth="50px"
-									svg width="500" height="500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"
+									svg width="200" height="200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"
 										path d="M153.62 301.59c94.34 0 145.94-78.16 145.94-145.94 0-2.22 0-4.43-.15-6.63A104.36 104.36 0 00325 122.47a102.38 102.38 0 01-29.46 8.07 51.47 51.47 0 0022.55-28.37 102.79 102.79 0 01-32.57 12.45 51.34 51.34 0 00-87.41 46.78A145.62 145.62 0 0192.4 107.81a51.33 51.33 0 0015.88 68.47A50.91 50.91 0 0185 169.86v.65a51.31 51.31 0 0041.15 50.28 51.21 51.21 0 01-23.16.88 51.35 51.35 0 0047.92 35.62 102.92 102.92 0 01-63.7 22 104.41 104.41 0 01-12.21-.74 145.21 145.21 0 0078.62 23" stroke="#1da1f2" stroke-width="10px" fill="none"
 								span.img-code-example data-z="true" data-z-depth="40px"
 									img src="img/grace.jpg" width="500" height="400" alt="Photo of Grace"
 								span.emoji-code-example data-z="true" data-z-layers="20" data-z-depth="50px" 😂🔥🍔
 			section.options#options
 				.wrapper
-					.container
-						h2 Options
-						p All these options are, well, optional. A simple <code class="light"><span class="yellow-code">data-z</span></code> attribute added to an HTML element or setting via JS through <code class="light"><span class="purple-code">new</span> <span class="red-code">Ztextify</span><span class="blue-code">(</span><span class="green-code">element</span><span class="blue-code">)</span></code> is enough to use ztext.
 					.container.option.depth-option#depth
+						h2 Options
 						.split
 							.split-item.preview
 								h1.medium data-z="true" 1rem
@@ -244,7 +231,12 @@ html lang="en"
 							.split-item
 								h3
 									a href="#perspective" perspective
-									small.param CSS length value or "none"
+									small.param CSS length value, "none", or "inherit"
+
+
+									// TODO WHAT'S INHERIT??!?!?
+
+
 								p
 									| Set distance from the viewer. Default: 
 									code.light 500px

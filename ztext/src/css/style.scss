@@ -253,11 +253,11 @@ blockquote {
 	user-select: none;
 	white-space: normal;
 
-	// &:after {
-	// 	display: block;
-	// 	content: attr(id);
-	// 	color: red;
-	// }
+	&:after {
+		display: block;
+		content: attr(class);
+		color: red;
+	}
 
 	&.overlay {
 		width: initial;
@@ -906,7 +906,6 @@ code {
 			width: 100%;
 			padding: 0.5em;
 			height: auto;
-			border-radius: 3px;
 		}
 
 		.z-text {
@@ -951,7 +950,7 @@ code {
 
 	.preview {
 		align-self: stretch;
-		padding: 1.5em 1.5em 3em;
+		padding: 1.5em;
 		margin: 0;
 
 		&:hover {
@@ -1023,7 +1022,14 @@ code {
 	}
 }
 
-// Terms ===============================================================
-.terms {
-	background: $blue-gray-50;
+.blach-blach {
+	@include z-color($red);
+}
+
+aside {
+	position: fixed;
+	width: 20px;
+	height: 20px;
+	background: red;
+	margin: -10px;
 }
