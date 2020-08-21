@@ -87,6 +87,8 @@ function draw(z, options) {
 		var zLayers = document.createElement("span");
 		zLayers.setAttribute("class", "z-layers");
 		zLayers.style.display = "inline-block";
+		zLayers.style.webkitTransformStyle = "preserve-3d";
+		zLayers.style.transformStyle = "preserve-3d";
 
 		zText.append(zLayers);
 
@@ -123,7 +125,9 @@ function draw(z, options) {
 
 				// Hide duplicate layres from screen readers and user interation
 				zLayer.setAttribute("aria-hidden", "true");
+
 				zLayer.style.pointerEvents = "none";
+
 				zLayer.style.mozUserSelect = "none";
 				zLayer.style.msUserSelect = "none";
 				zLayer.style.webkitUserSelect = "none";
@@ -156,8 +160,8 @@ function draw(z, options) {
 
 			var transform =
 				"rotateX(" + y_tilt + unit + ") rotateY(" + x_tilt + unit + ")";
-			zLayers.style.transform = transform;
 			zLayers.style.webkitTransform = transform;
+			zLayers.style.transform = transform;
 		}
 
 		// Capture mousemove and touchmove events and rotate .z-layers

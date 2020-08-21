@@ -279,7 +279,7 @@ blockquote {
 	cursor: pointer;
 	color: $white;
 	transition: opacity $transition;
-	background: rgba($blue-gray, 0.2);
+	background: rgba(tint($black-code-dark, 25%), 0.25);
 	opacity: 0.5;
 
 	pre:hover &,
@@ -347,10 +347,13 @@ pre {
 }
 
 code {
-	display: inline-block;
 	font-size: 1.2em;
 	padding: 0 0.25em 0.1em;
 	border-radius: $radius / 2;
+
+	p & {
+		display: inline-block;
+	}
 }
 
 .dot {
