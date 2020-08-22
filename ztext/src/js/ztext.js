@@ -1,9 +1,8 @@
 /*!
- * ztext v0.0.1
- * Copyright 2020 Bennett Feely
+ * ztext.js v0.0.1
  * https://bennettfeely.com/ztext
+ * Licensed MIT © Zeno Rocha
  */
-
 z_default = {
 	depth: "1rem",
 	direction: "both",

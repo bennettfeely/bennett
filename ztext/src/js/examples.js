@@ -17,10 +17,14 @@ var wobble = `
 }
 `;
 
-var codepen = [
+var menus = [
 	{
-		selector: ".codepen-edit-0",
-		text: "Edit on CodePen",
+		selector: ".menu-0",
+		text: "Edit in CodePen",
+		copy: {
+			enabled: true,
+			target: "#copy-0",
+		},
 		html: `<h1>
 	<span data-z data-z-layers="3" data-z-depth="0.5em">A</span>
 </h1>`,
@@ -48,12 +52,15 @@ var codepen = [
 	color: #3f51b5;
 }
 ` + wobble,
-		js: ``,
+		js: "",
 	},
-
 	{
-		selector: ".codepen-edit-1",
-		text: "Edit",
+		selector: ".menu-1",
+		text: "Edit in CodePen",
+		copy: {
+			enabled: true,
+			target: "#copy-1",
+		},
 		html: `<h1>
 	<span class="hero-text">Hello</span>
   <span class="hero-text">World</span>
@@ -81,10 +88,13 @@ var codepen = [
 	eventRotation: "90deg"
 });`,
 	},
-
 	{
-		selector: ".codepen-edit-2",
-		text: "Edit",
+		selector: ".menu-2",
+		text: "Edit in CodePen",
+		copy: {
+			enabled: true,
+			target: "#copy-2",
+		},
 		html: `<h1>
 	<span data-z>CSS</span>
 </h1>`,
@@ -104,19 +114,22 @@ var codepen = [
 .z-layer:not(:first-child) {
 	color: #455a64;
 }`,
-		js: ``,
+		js: "",
 	},
-
 	{
-		selector: ".codepen-edit-3",
+		selector: ".menu-3",
 		text: "Edit",
+		copy: {
+			enabled: true,
+			target: "#copy-3",
+		},
 		html: `<span data-z data-z-layers="15" data-z-depth="50px">
 	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="200" height="200">
 		<path d="M153.62 301.59c94.34 0 145.94-78.16 145.94-145.94 0-2.22 0-4.43-.15-6.63A104.36 104.36 0 00325 122.47a102.38 102.38 0 01-29.46 8.07 51.47 51.47 0 0022.55-28.37 102.79 102.79 0 01-32.57 12.45 51.34 51.34 0 00-87.41 46.78A145.62 145.62 0 0192.4 107.81a51.33 51.33 0 0015.88 68.47A50.91 50.91 0 0185 169.86v.65a51.31 51.31 0 0041.15 50.28 51.21 51.21 0 01-23.16.88 51.35 51.35 0 0047.92 35.62 102.92 102.92 0 01-63.7 22 104.41 104.41 0 01-12.21-.74 145.21 145.21 0 0078.62 23" stroke="#1da1f2" stroke-width="10px" fill="none" />
 	</svg>
 </span>`,
 		css:
-			`/* CodePen styles */
+			`/* menu styles */
 body {
 	margin: 30px;
 }
@@ -135,17 +148,20 @@ body {
    filter: brightness(1);
 }
 ` + wobble,
-		js: ``,
+		js: "",
 	},
-
 	{
-		selector: ".codepen-edit-4",
+		selector: ".menu-4",
 		text: "Edit",
+		copy: {
+			enabled: true,
+			target: "#copy-4",
+		},
 		html: `<span data-z data-z-depth="40px">
    <img width="150" height="120" src="https://bennettfeely.com/ztext/img/grace.jpg" alt="Photo of Grace">
 <span>`,
 		css:
-			`/* CodePen styles */
+			`/* menu styles */
 body {
 	margin: 30px;
 }
@@ -164,15 +180,18 @@ body {
    filter: brightness(1);
 }
 ` + wobble,
-		js: ``,
+		js: "",
 	},
-
 	{
-		selector: ".codepen-edit-5",
+		selector: ".menu-5",
 		text: "Edit",
+		copy: {
+			enabled: true,
+			target: "#copy-5",
+		},
 		html: `<span data-z data-z-layers="20" data-z-depth="50px">😂🔥🍔</span>`,
 		css:
-			`/* CodePen styles */
+			`/* menu styles */
 body {
 	font: 5em sans-serif;
 	margin: 30px;
@@ -192,12 +211,15 @@ body {
    filter: brightness(1);
 }
 ` + wobble,
-		js: ``,
+		js: "",
 	},
-
 	{
-		selector: ".codepen-edit-6",
+		selector: ".menu-6",
 		text: "Edit",
+		copy: {
+			enabled: false,
+			target: "",
+		},
 		html: `<h1>
   <span data-z>1rem</span>
 </h1>
@@ -223,12 +245,15 @@ body {
 .z-layer:not(:first-child) {
 	color: #bf9105;
 }`,
-		js: ``,
+		js: "",
 	},
-
 	{
-		selector: ".codepen-edit-7",
+		selector: ".menu-7",
 		text: "Edit",
+		copy: {
+			enabled: false,
+			target: "#copy-7",
+		},
 		html: `<h1>
 	<span data-z data-z-layers="20" data-z-depth=".25em">10</span>
 </h1>
@@ -254,12 +279,15 @@ body {
 .z-layer:not(:first-child) {
 	color: #007166;
 }`,
-		js: ``,
+		js: "",
 	},
-
 	{
-		selector: ".codepen-edit-8",
+		selector: ".menu-8",
 		text: "Edit",
+		copy: {
+			enabled: false,
+			target: "#copy-8",
+		},
 		html: `<h1>
 	<span data-z data-z-perspective="none">none</span>
 </h1>
@@ -290,12 +318,15 @@ body {
 	color: #bf7200;
 }
 `,
-		js: ``,
+		js: "",
 	},
-
 	{
-		selector: ".codepen-edit-9",
+		selector: ".menu-9",
 		text: "Edit",
+		copy: {
+			enabled: false,
+			target: "#copy-9",
+		},
 		html: `<h1>
 	<span data-z data-z-fade="true" data-z-layers="10" data-z-depth=".25em">fade</span>
 </h1>`,
@@ -317,12 +348,15 @@ body {
 .z-layer:not(:first-child) {
 	color: #027fb7;
 }`,
-		js: ``,
+		js: "",
 	},
-
 	{
-		selector: ".codepen-edit-10",
+		selector: ".menu-10",
 		text: "Edit",
+		copy: {
+			enabled: false,
+			target: "#copy-10",
+		},
 		html: `<h1>
 	<span data-z data-z-depth=".5em">both</span>
 </h1>
@@ -361,12 +395,15 @@ body:hover .z-text {
 	color: #bea228;
 }
 `,
-		js: ``,
+		js: "",
 	},
-
 	{
-		selector: ".codepen-edit-11",
+		selector: ".menu-11",
 		text: "Edit",
+		copy: {
+			enabled: false,
+			target: "#copy-11",
+		},
 		html: `<h1>
 	<span data-z data-z-event="pointer">pointer</span>
 </h1>`,
@@ -384,12 +421,15 @@ body:hover .z-text {
 .z-layer:not(:first-child) {
 	color: #689238;
 }`,
-		js: ``,
+		js: "",
 	},
-
 	{
-		selector: ".codepen-edit-12",
+		selector: ".menu-12",
 		text: "Edit",
+		copy: {
+			enabled: false,
+			target: "#copy-12",
+		},
 		html: `<h1>
 	<span data-z data-z-event="pointer" data-z-eventRotation="20deg">20deg</span>
 </h1>
@@ -411,12 +451,15 @@ body:hover .z-text {
 .z-layer:not(:first-child) {
 	color: #bf5433;
 }`,
-		js: ``,
+		js: "",
 	},
-
 	{
-		selector: ".codepen-edit-13",
+		selector: ".menu-13",
 		text: "Edit",
+		copy: {
+			enabled: false,
+			target: "#copy-13",
+		},
 		html: `<h1>
 	<span data-z data-z-event="pointer" data-z-eventDirection="default">default</span>
 </h1>
@@ -438,25 +481,43 @@ body:hover .z-text {
 .z-layer:not(:first-child) {
 	color: #454f90;
 }`,
-		js: ``,
+		js: "",
 	},
 ];
 
+function selectText(element) {
+	var node = document.querySelector(element);
+
+	if (document.body.createTextRange) {
+		const range = document.body.createTextRange();
+		range.moveToElementText(node);
+		range.select();
+	} else if (window.getSelection) {
+		const selection = window.getSelection();
+		const range = document.createRange();
+		range.selectNodeContents(node);
+		selection.removeAllRanges();
+		selection.addRange(range);
+	} else {
+		console.warn("Could not select text in node: Unsupported browser.");
+	}
+}
+
 // Build and append buttons
-codepen.forEach((pen) => {
-	var selector = document.querySelector(pen.selector);
+menus.forEach((menu) => {
+	var selector = document.querySelector(menu.selector);
 
 	// Append script tag to HTML prefill
 	var script_tag =
 		'\n\n<script src="https://bennettfeely.com/ztext/js/ztext.min.js"></script>';
 
 	var data = {
-		css: pen.css,
+		css: menu.css,
 		css_prefix: "autoprefixer",
 		css_starter: "reset",
-		description: "Ztext.js test, from https://bennettfeely.com/ztext",
-		html: pen.html + script_tag,
-		js: pen.js,
+		description: "ztext.js test, from https://bennettfeely.com/ztext",
+		html: menu.html + script_tag,
+		js: menu.js,
 		tags: ["ztext", "ztext.js", "3D", "bennettfeely"],
 		title: "ztext.js test",
 	};
@@ -469,9 +530,38 @@ codepen.forEach((pen) => {
 	// Create the form
 	var form = `<form class="codepen-form" action="https://codepen.io/pen/define" method="POST" target="_blank">
 			<input type="hidden" name="data" value='${JSONstring}'>
-			<button class="codepen-button">${pen.text}</button>
+			<button class="codepen-button">${menu.text}</button>
 		</form>`;
 
-	// Append the form to wrapper element
+	// Add a copy button
+	if (menu.copy.enabled == true) {
+		// Create copy button and append it to menu
+		var copy = `<button class="copy-button" data-clipboard-target="${menu.copy.target}">Copy</button>`;
+		selector.innerHTML += copy;
+
+		// Create clipboard functionality
+		var clipboard = new ClipboardJS(menu.selector + " .copy-button");
+
+		// If it worked, change text of button temporarily
+		clipboard.on("success", function (e) {
+			var trigger = e.trigger;
+			var target = document.querySelector(menu.copy.target);
+
+			trigger.innerHTML = "Copied!";
+
+			trigger.classList.add("is-on");
+			target.classList.add("is-on");
+
+			// Reset the button text and class
+			setTimeout(() => {
+				trigger.innerHTML = "Copy";
+				trigger.classList.remove("is-on");
+				target.classList.remove("is-on");
+			}, 2000);
+
+			e.clearSelection();
+		});
+	}
+
 	selector.innerHTML += form;
 });

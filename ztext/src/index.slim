@@ -78,7 +78,7 @@ html lang="en"
 									li <a href="#js-init">JavaScript</a>
 							.split-item
 								h3 How it works
-								p Ztext gives the illusion of volume by creating layers from an HTML element. There's no need to spend hours fiddling with <code class="light"><span class="red-code">&lt;canvas&gt;</span></code> or forcing users to download multi-megabyte WebGL libraries. Content remains fully selectable and accessible.
+								p Ztext gives the illusion of volume by creating layers from an HTML element. There's no need to spend hours fiddling with <code class="light"><span class="red-code">&lt;canvas&gt;</span></code> or forcing users to download multi-megabyte WebGL libraries. With ztext, content remains fully selectable and accessible.
 								p <a class="external" href="https://caniuse.com/#feat=transforms3d">Over 96% of users</a> use a web browser that supports the CSS <code class="light"><span class="yellow-code">transform-style</span></code> property, which ztext needs to work. In unsupported browsers, ztext gracefully turns off.
 			section.html-init#html-init
 				.wrapper
@@ -90,14 +90,14 @@ html lang="en"
 							.split-item
 								pre.dark
 									h3 HTML
-									code 
+									code#copy-0
 										<span class="red-code">&lt;h1&gt;</span>
 										<br>   <span class="red-code">&lt;span</span> <span class="yellow-code">data-z</span> <span class="yellow-code">data-z-layers</span>=<span class="green-code">"3"</span> <span class="yellow-code">data-z-depth</span>=<span class="green-code">"0.5em"</span><span class="red-code">></span>A<span class="red-code">&lt;/span&gt;</span>
 										<br><span class="red-code">&lt;/h1&gt;</span>
-									.codepen-edit.codepen-edit-0
+									.menu.menu-0.right-align
 								p Structurally, ztext turns that code into this:
 								pre.light
-									code 
+									code
 										span &lt;h1 data-z data-z-layers="3" data-z-depth="0.5em"&gt;<br>&nbsp;&nbsp;&nbsp;&lt;span class="z-text"&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span class="z-layers"&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span class="z-layer"&gt;A&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span class="z-layer"&gt;A&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span class="z-layer"&gt;A&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/span&gt;<br>&nbsp;&nbsp;&nbsp;&lt;/span&gt;<br>&lt;/h1&gt;
 							.split-item
 								.preview
@@ -108,10 +108,10 @@ html lang="en"
 				.wrapper
 					.container
 						h3 Initialize with JavaScript
-						p Use ztext with vanilla JS with <code class="light"><span class="purple-code">new</span> <span class="red-code">Ztextify</span><span class="blue-code">(</span><span class="green-code">selector</span>, <span class="blue-code">{})</span></code>. This constructor accepts two arguments: the HTML element and an options object.
+						p Use ztext with vanilla JS with <code class="light"><span class="purple-code">new</span> <span class="red-code">Ztextify</span><span class="blue-code">(</span><span class="green-code">selector</span>, <span class="blue-code">{})</span></code>. This constructor accepts two arguments: the HTML element selector and an options object.
 						pre.dark
 							h3 JS
-							code
+							code#copy-1
 								<span class="purple-code">var</span> <span class="red-code">ztxt</span> <span class="blue-code">=</span> <span class="purple-code">new</span> <span class="red-code">Ztextify</span><span class="blue-code">(</span><span class="green-code">".hero-text"</span><span class="blue-code">,</span> <span class="blue-code">{</span>
 									<br>   <span class="blue-code">depth</span>: <span class="green-code">"30px"</span>,
 									<br>   <span class="blue-code">layers</span>: <span class="orange-code">8</span>,
@@ -120,7 +120,7 @@ html lang="en"
 									<br>   <span class="blue-code">event</span>: <span class="green-code">"pointer"</span>,
 									<br>   <span class="blue-code">eventRotation</span>: <span class="green-code">"90deg"</span>
 								<br><span class="blue-code">})</span>;
-								.codepen-edit.codepen-edit-1.overlay
+								.menu.menu-1.right-align
 			section.styling#styling
 				.wrapper
 					.container
@@ -130,7 +130,7 @@ html lang="en"
 							.split-item
 								pre.dark
 									h3 CSS
-									code
+									code#copy-2
 										<span class="red-code">h1</span> {
 										<br>   <span class="yellow-code">font</span>: <span class="orange-code">bold</span> <span class="orange-code">5em</span> <span class="green-code">"Georgia"</span>, <span class="orange-code">serif</span>;
 										<br>   <span class="yellow-code">color</span>: <span class="aqua-code">#90a4ae</span>;<span class="dot" style="background:#90a4ae"></span>
@@ -147,7 +147,7 @@ html lang="en"
 										<br><span class="red-code">.z-layer:not(:first-child)</span> {
 										<br>   <span class="yellow-code">color</span>: <span class="aqua-code">#455a64</span>;<span class="dot" style="background:#455a64"></span>
 										<br>}
-										.codepen-edit.codepen-edit-2.overlay
+										.menu.menu-2.right-align
 							.split-item.preview.styling-example-primary
 								h1.large data-z="true" CSS
 			section.more#more
@@ -165,32 +165,28 @@ html lang="en"
 								pre.dark
 									h3 HTML
 									.tab.svg-code-tab
-										code 
+										code#copy-3
 											<span class="red-code">&lt;span <span class="yellow-code">data-z</span></span> <span class="yellow-code">data-z-layers</span>=<span class="green-code">"15"</span> <span class="yellow-code">data-z-depth</span>=<span class="green-code">"50px"</span><span class="red-code">&gt;</span>
 											<br>   <span class="red-code">&lt;svg</span> <span class="yellow-code">xmlns</span>=<span class="green-code">"http://www.w3.org/2000/svg"</span> <span class="yellow-code">viewBox</span>=<span class="green-code">"0 0 400 400"</span> <span class="yellow-code">width</span>=<span class="green-code">"200"</span> <span class="yellow-code">height</span>=<span class="green-code">"200"</span><span class="red-code">></span>
 											<br>       <span class="red-code">&lt;path</span> <span class="yellow-code">d</span>=<span class="green-code">"..."</span><span><span class="red-code"> /&gt;</span>
 											<br>    <span class="red-code">&lt;/svg&gt;</span>
 											<br><span class="red-code">&lt;/span&gt;</span>
-											.codepen-edit.codepen-edit-3
+											.menu.menu-3.right-align
 									.tab.img-code-tab
-										code 
+										code#copy-4
 											<span class="red-code">&lt;span <span class="yellow-code">data-z</span> <span class="yellow-code">data-z-depth</span>=<span class="green-code">"40px"</span>&gt;</span>
 											<br>   <span class="red-code">&lt;img</span> <span class="yellow-code">width</span>=<span class="green-code">"150"</span> <span class="yellow-code">height</span>=<span class="green-code">"120"</span> <span class="yellow-code">src</span>=<span class="green-code">"images/grace.jpg"</span> <span class="yellow-code">alt</span>=<span class="green-code">"Photo of Grace"</span><span class="red-code">></span>
 											<br><span class="red-code">&lt;span&gt;</span>
-											.codepen-edit.codepen-edit-4
+											.menu.menu-4.right-align
 									.tab.emoji-code-tab.is-on
-										code 
+										code#copy-5
 											<span class="red-code">&lt;span</span> <span class="yellow-code">data-z</span> <span class="yellow-code">data-z-layers</span>=<span class="green-code">"20"</span> <span class="yellow-code">data-z-depth</span>=<span class="green-code">"50px"</span><span class="red-code">&gt;</span>😂🔥🍔<span class="red-code">&lt;/span&gt;</span>
-											.codepen-edit.codepen-edit-5
+											.menu.menu-5.right-align
 								pre.dark
 									h3 CSS
 									code
-										<span class="red-code">.z-layer</span> {
+										<span class="red-code">.z-layer:not(:first-child)</span> {
 										<br>   <span class="yellow-code">filter</span>: <span class="blue-code">brightness</span>(<span class="orange-code">0.7</span>);
-										<br>}
-										<br>
-										<br><span class="red-code">.z-layer:first-child</span> {
-										<br>   <span class="yellow-code">filter</span>: <span class="blue-code">brightness</span>(<span class="orange-code">1</span>);
 										<br>}
 							.split-item.preview
 								button.button.pause Pause
@@ -215,7 +211,7 @@ html lang="en"
 								p
 									| The depth of the effect on the z-axis. Accepts any valid CSS length value except for %. Default: 
 									code.light "1rem"
-								.codepen-edit.codepen-edit-6
+								.menu.menu-6
 					.container.option.layers-option#layers
 						.split
 							.split-item.preview
@@ -228,7 +224,7 @@ html lang="en"
 								p
 									| Number of layers that make up the effect. Be careful adding too many layers, which can negatively affect performance. Default: 
 									code.light 10
-								.codepen-edit.codepen-edit-7
+								.menu.menu-7
 					.container.option.perspective-option#perspective
 						.split
 							.split-item.preview.vertical
@@ -247,7 +243,7 @@ html lang="en"
 								p
 									| Set distance from the viewer. Default: 
 									code.light 500px
-								.codepen-edit.codepen-edit-8
+								.menu.menu-8
 					.container.option.fade-option#fade
 						.split
 							.split-item.preview
@@ -259,7 +255,7 @@ html lang="en"
 								p
 									| Make the text fade away. Default: 
 									code.light false
-								.codepen-edit.codepen-edit-9
+								.menu.menu-9
 					.container.option.direction-option#direction
 						.split
 							.split-item.preview.vertical
@@ -273,7 +269,7 @@ html lang="en"
 								p
 									| The direction the effect is to be applied. Default: 
 									code.light "both"
-								.codepen-edit.codepen-edit-10
+								.menu.menu-10
 					.container.option.event-option#event
 						.split
 							.split-item.preview.vertical.static
@@ -290,8 +286,8 @@ html lang="en"
 									| The 
 									code.light "pointer"
 									|  event makes the text tilt in response to <code>mousemove</code> and <code>touchmove</code> events on the window.
-									p This will not override rotations already applied to <code>.z-text</code> with CSS, it will add to those rotations.
-								.codepen-edit.codepen-edit-11
+									p This will not override rotations already applied to <code class="light">.z-text</code> with CSS, it will add to those rotations.
+								.menu.menu-11
 					.container.option.event-rotation-option#eventRotation
 						.split
 							.split-item.preview.static
@@ -304,7 +300,7 @@ html lang="en"
 								p
 									| With the <code class="light">event</code> option enabled, set the maximum rotation to be applied. Default: 
 									code.light "45deg"
-								.codepen-edit.codepen-edit-12
+								.menu.menu-12
 					.container.option.event-direction-option#eventDirection
 						.split
 							.split-item.preview.static.vertical
@@ -317,12 +313,13 @@ html lang="en"
 								p
 									| With the <code class="light">event</code> option enabled, whether the rotation faces toward the target point or away from it. Default: 
 									code.light "default"
-								.codepen-edit.codepen-edit-13
-			footer
-				.wrapper
-					.container &copy; 2020 Bennett Feely (<a href="https://twitter.com/bennettfeely">@bennettfeely</a>)
+								.menu.menu-13
+		footer.footer
+			.wrapper
+				.container &copy; 2020 Bennett Feely (<a href="https://twitter.com/bennettfeely">@bennettfeely</a>)
 		#fb-root
 		script async="true" defer="true" crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v8.0&appId=261257780581807" nonce="PHc3kpRj"
 		script src="js/ztext.min.js"
+		script src="js/clipboard.min.js"
 		script src="js/demo.min.js"
-		script src="js/codepen.min.js"
+		script src="src/js/examples.js"
