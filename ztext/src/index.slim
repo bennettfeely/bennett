@@ -283,24 +283,21 @@ html lang="en"
 									a href="#event" event
 									small.param "none" | "pointer" | "scroll" | "scrollX" | "scrollY"
 								p
-									| Control text rotation with JavaScript.
+									| Control text rotation with JavaScript. Default: 
+									code.light "none"
 								p This does not override rotations applied with CSS to <code class="light">.z-text</code>. It will add to those rotations. This allows you to set a start rotation with CSS.
 								p 
-									| Default: 
-									code.light "none"
-								p 
-									| A value of 
 									code.light "pointer"
-									|  makes text tilt in response to <code>mousemove</code> and <code>touchmove</code> events on the window.
+									|  rotates text in response to the <code>mousemove</code> and <code>touchmove</code> events.
 								p 
 									code.light "scroll"
-									|  makes text tilt in response to the <code>scroll</code> event, making text face toward the center of the viewport.
+									|  rotates text toward the center of the viewport.
 								p 
 									code.light "scrollX"
-									|  makes text face toward the horizontal center of the viewport.
+									|  rotates text toward the horizontal center of the viewport.
 								p 
 									code.light "scrollY"
-									|  makes text face toward the vertical center of the viewport.
+									|  rotates text toward the vertical center of the viewport.
 								.menu.menu-11
 					.container.option.event-rotation-option#eventRotation
 						.split
