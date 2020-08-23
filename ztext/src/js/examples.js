@@ -129,7 +129,7 @@ var menus = [
 	</svg>
 </span>`,
 		css:
-			`/* menu styles */
+			`/* CodePen styles */
 body {
 	margin: 30px;
 }
@@ -161,7 +161,7 @@ body {
    <img width="150" height="120" src="https://bennettfeely.com/ztext/img/grace.jpg" alt="Photo of Grace">
 <span>`,
 		css:
-			`/* menu styles */
+			`/* CodePen styles */
 body {
 	margin: 30px;
 }
@@ -191,7 +191,7 @@ body {
 		},
 		html: `<span data-z data-z-layers="20" data-z-depth="50px">😂🔥🍔</span>`,
 		css:
-			`/* menu styles */
+			`/* CodePen styles */
 body {
 	font: 5em sans-serif;
 	margin: 30px;
@@ -406,15 +406,37 @@ body:hover .z-text {
 		},
 		html: `<h1>
 	<span data-z data-z-event="pointer">pointer</span>
-</h1>`,
-		css: `h1 {
+</h1>
+
+<h1>
+	<span data-z data-z-event="scroll">scroll</span>
+</h1>
+
+<h1>
+	<span data-z data-z-event="scrollX">scroll</span>
+</h1>
+
+<h1>
+	<span data-z data-z-event="scrollY">scroll</span>
+</h1>
+
+`,
+		css: `/* CodePen styles */
+body {
+	margin: 25vw 25vh;
+	min-height: 150vh;
+	min-width: 150vw;
+}
+
+/* Demo styles */
+h1 {
 	font: bold 10vw sans-serif;
 	color: #8bc34a;
 	margin: 30px;
 }
 
 .z-text {
-	transform: rotateY(-15deg);
+	transform: rotateX(-15deg);
 	transition: transform 1s;
 }
 
@@ -435,7 +457,7 @@ body:hover .z-text {
 </h1>
 
 <h1>
-	<span data-z data-z-event="pointer" data-z-eventRotation="120deg">120deg</span>
+	<span data-z data-z-event="pointer" data-z-eventRotation="60deg">60deg</span>
 </h1>`,
 		css: `h1 {
 	font: bold 10vw sans-serif;

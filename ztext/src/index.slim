@@ -20,14 +20,14 @@ html lang="en"
 			.wrapper
 				.container
 					h1 
-						span data-z="true" data-z-depth=".15em" data-z-event="pointer" data-z-eventRotation="75deg" z
-						span data-z="true" data-z-depth=".15em" data-z-event="pointer" data-z-eventRotation="75deg" t
-						span data-z="true" data-z-depth=".15em" data-z-event="pointer" data-z-eventRotation="75deg" e
-						span data-z="true" data-z-depth=".15em" data-z-event="pointer" data-z-eventRotation="75deg" x
-						span data-z="true" data-z-depth=".15em" data-z-event="pointer" data-z-eventRotation="75deg" t
-						span data-z="true" data-z-depth=".15em" data-z-event="pointer" data-z-eventRotation="75deg" .
-						span data-z="true" data-z-depth=".15em" data-z-event="pointer" data-z-eventRotation="75deg" j
-						span data-z="true" data-z-depth=".15em" data-z-event="pointer" data-z-eventRotation="75deg" s
+						span data-z="true" data-z-depth=".15em" data-z-event="pointer" data-z-eventRotation="40deg" z
+						span data-z="true" data-z-depth=".15em" data-z-event="pointer" data-z-eventRotation="40deg" t
+						span data-z="true" data-z-depth=".15em" data-z-event="pointer" data-z-eventRotation="40deg" e
+						span data-z="true" data-z-depth=".15em" data-z-event="pointer" data-z-eventRotation="40deg" x
+						span data-z="true" data-z-depth=".15em" data-z-event="pointer" data-z-eventRotation="40deg" t
+						span data-z="true" data-z-depth=".15em" data-z-event="pointer" data-z-eventRotation="40deg" .
+						span data-z="true" data-z-depth=".15em" data-z-event="pointer" data-z-eventRotation="40deg" j
+						span data-z="true" data-z-depth=".15em" data-z-event="pointer" data-z-eventRotation="40deg" s
 					h2 Easy to implement, 3D typography for the web. Works with every font.
 					.share.twitter-shade
 						a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-text="ztext.js - Easy to implement, 3D typography for any font for the web." data-url="https://bennettfeely.com/ztext" data-related="bennettfeely" data-show-count="false" Tweet
@@ -275,31 +275,45 @@ html lang="en"
 							.split-item.preview.vertical.static
 								h1.medium data-z="true" data-z-event="none" none
 								h1.medium data-z="true" data-z-event="pointer" pointer
+								h1.medium data-z="true" data-z-event="scroll" scroll
+								/ h1.medium data-z="true" data-z-event="scrollX" scrollX
+								/ h1.medium data-z="true" data-z-event="scrollY" scrollY
 							.split-item
 								h3
 									a href="#event" event
-									small.param "none" | "pointer"
+									small.param "none" | "pointer" | "scroll" | "scrollX" | "scrollY"
 								p
-									| Control text rotation with JavaScript. Default: 
+									| Control text rotation with JavaScript.
+								p This does not override rotations applied with CSS to <code class="light">.z-text</code>. It will add to those rotations. This allows you to set a start rotation with CSS.
+								p 
+									| Default: 
 									code.light "none"
 								p 
-									| The 
+									| A value of 
 									code.light "pointer"
-									|  event makes the text tilt in response to <code>mousemove</code> and <code>touchmove</code> events on the window.
-									p This will not override rotations already applied to <code class="light">.z-text</code> with CSS, it will add to those rotations.
+									|  makes text tilt in response to <code>mousemove</code> and <code>touchmove</code> events on the window.
+								p 
+									code.light "scroll"
+									|  makes text tilt in response to the <code>scroll</code> event, making text face toward the center of the viewport.
+								p 
+									code.light "scrollX"
+									|  makes text face toward the horizontal center of the viewport.
+								p 
+									code.light "scrollY"
+									|  makes text face toward the vertical center of the viewport.
 								.menu.menu-11
 					.container.option.event-rotation-option#eventRotation
 						.split
 							.split-item.preview.static
-								h1.small data-z="true" data-z-event="pointer" data-z-eventRotation="20deg" 20deg
-								h1.small data-z="true" data-z-event="pointer" data-z-eventRotation="120deg" 120deg
+								h1.small data-z="true" data-z-event="pointer" data-z-eventRotation="20deg" 10deg
+								h1.small data-z="true" data-z-event="pointer" data-z-eventRotation="60deg" 60deg
 							.split-item
 								h3
 									a href="#eventRotation" eventRotation
 									small.param CSS rotation value
 								p
 									| With the <code class="light">event</code> option enabled, set the maximum rotation to be applied. Default: 
-									code.light "45deg"
+									code.light "30deg"
 								.menu.menu-12
 					.container.option.event-direction-option#eventDirection
 						.split

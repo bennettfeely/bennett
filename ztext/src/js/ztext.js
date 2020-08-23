@@ -7,7 +7,7 @@ z_default = {
 	depth: "1rem",
 	direction: "both",
 	event: "none",
-	eventRotation: "45deg",
+	eventRotation: "30deg",
 	eventDirection: "default",
 	fade: false,
 	layers: 10,
@@ -147,16 +147,30 @@ function draw(z, options) {
 
 		// Rotate .z-text as a function of x and y coordinates
 		function tilt(x_pct, y_pct) {
+			// Clamp values function
+			Number.prototype.clamp = function (min, max) {
+				return Math.min(Math.max(this, min), max);
+			};
+
+			// Switch neg/pos values if eventDirection is reversed
 			if (event_direction == "reverse") {
 				var event_direction_adj = -1;
 			} else {
 				var event_direction_adj = 1;
 			}
 
+			// Multiply pct rotation by eventRotation and eventDirection
 			var x_tilt = x_pct * event_rotation_numeral * event_direction_adj;
 			var y_tilt = -y_pct * event_rotation_numeral * event_direction_adj;
+
+			// Keep values in bounds [-1, 1]
+			var x_clamped = x_tilt.clamp(-1, 1);
+			var y_clamped = y_tilt.clamp(-1, 1);
+
+			// Add unit to transform value
 			var unit = event_rotation_unit;
 
+			// Rotate .z-layers
 			var transform =
 				"rotateX(" + y_tilt + unit + ") rotateY(" + x_tilt + unit + ")";
 			zLayers.style.webkitTransform = transform;
@@ -168,8 +182,8 @@ function draw(z, options) {
 			window.addEventListener(
 				"mousemove",
 				(e) => {
-					var x_pct = e.clientX / window.innerWidth - 0.5;
-					var y_pct = e.clientY / window.innerHeight - 0.5;
+					var x_pct = (e.clientX / window.innerWidth - 0.5) * 2;
+					var y_pct = (e.clientY / window.innerHeight - 0.5) * 2;
 
 					tilt(x_pct, y_pct);
 				},
@@ -179,10 +193,63 @@ function draw(z, options) {
 			window.addEventListener(
 				"touchmove",
 				(e) => {
-					var x_pct = e.touches[0].clientX / window.innerWidth - 0.5;
-					var y_pct = e.touches[0].clientY / window.innerHeight - 0.5;
+					var x_pct = (e.touches[0].clientX / window.innerWidth - 0.5) * 2;
+					var y_pct = (e.touches[0].clientY / window.innerHeight - 0.5) * 2;
 
 					tilt(x_pct, y_pct);
+				},
+				false
+			);
+		}
+
+		// Capture scroll event and rotate .z-layers
+		if (event == "scroll") {
+			window.addEventListener(
+				"scroll",
+				(e) => {
+					var bounds = z.getBoundingClientRect();
+
+					var center_x = bounds.left + bounds.width / 2 - window.innerWidth / 2;
+					var center_y =
+						bounds.top + bounds.height / 2 - window.innerHeight / 2;
+
+					var x_pct = (center_x / window.innerWidth) * -2;
+					var y_pct = (center_y / window.innerHeight) * -2;
+
+					tilt(x_pct, y_pct);
+				},
+				false
+			);
+		}
+
+		if (event == "scrollY") {
+			window.addEventListener(
+				"scroll",
+				(e) => {
+					var bounds = z.getBoundingClientRect();
+
+					var center_y =
+						bounds.top + bounds.height / 2 - window.innerHeight / 2;
+
+					var y_pct = (center_y / window.innerHeight) * -2;
+
+					tilt(0, y_pct);
+				},
+				false
+			);
+		}
+
+		if (event == "scrollX") {
+			window.addEventListener(
+				"scroll",
+				(e) => {
+					var bounds = z.getBoundingClientRect();
+
+					var center_x = bounds.left + bounds.width / 2 - window.innerWidth / 2;
+
+					var x_pct = (center_x / window.innerWidth) * -2;
+
+					tilt(x_pct, 0);
 				},
 				false
 			);

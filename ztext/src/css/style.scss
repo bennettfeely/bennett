@@ -282,11 +282,15 @@ code {
 	border-radius: $radius / 2;
 
 	&.is-on {
-		animation: copy-target 2s;
+		animation: copier 2s;
 
-		@keyframes copy-target {
+		@keyframes copier {
 			0% {
-				filter: brightness(3);
+				filter: brightness(5);
+				background: $black-code-dark;
+			}
+			100% {
+				background: rgba($black-code-dark, 0);
 			}
 		}
 	}
@@ -418,8 +422,7 @@ code {
 		opacity: 1;
 	}
 
-	&:active,
-	&.is-on {
+	&:active {
 		opacity: 1;
 	}
 
@@ -435,23 +438,7 @@ code {
 
 .copy-button {
 	&.is-on {
-		transition: 0s;
-		opacity: 1;
-		animation: pop 2s;
-
-		@keyframes pop {
-			15% {
-				transform: translateY(-20%) rotate(5deg);
-			}
-			30% {
-				transform: rotate(-10deg);
-				transform-origin: center left;
-			}
-			45% {
-				transform: rotate(5deg);
-				transform-origin: center right;
-			}
-		}
+		animation: copier 2s;
 	}
 
 	&:before {
@@ -511,6 +498,8 @@ code {
 
 // Header ==============================================================
 .header {
+	touch-action: none;
+
 	h1 {
 		font-size: 5em;
 
@@ -795,16 +784,16 @@ code {
 			background: $blue-gray-400;
 		}
 
+		&:focus {
+			outline: 0;
+		}
+
 		&.is-on {
 			background: $black-code-dark;
 			color: $white-code-dark;
 			margin-bottom: 0;
 			padding: 0.75em 1em 1.25em;
 			border-radius: $radius $radius 0 0;
-
-			&:focus {
-				outline: 0;
-			}
 
 			&:before,
 			&:after {
@@ -860,7 +849,7 @@ code {
 		border: 0;
 		color: $gray;
 		padding: 0.75em 1em;
-		border-radius: $radius / 2;
+		border-radius: $radius;
 
 		&:before {
 			width: 1em;
