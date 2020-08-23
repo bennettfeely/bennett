@@ -39,13 +39,10 @@ $degrees: 30deg;
 
 // Mixins ==============================================================
 @mixin z-color($color) {
-	.z-layer {
-		color: shade($color, 25%);
-	}
+	color: $color;
 
-	&[data-z],
-	.z-layer:first-child {
-		color: $color;
+	.z-layer:not(:first-child) {
+		color: shade($color, 25%);
 	}
 }
 
@@ -501,7 +498,9 @@ code {
 	touch-action: none;
 
 	h1 {
-		font-size: 5em;
+		white-space: nowrap;
+		display: inline;
+		font-size: 20vw;
 
 		@media (min-width: $mobile) {
 			font-size: 8em;
@@ -509,13 +508,7 @@ code {
 		@media (min-width: $tablet) {
 			font-size: 12em;
 		}
-	}
 
-	h2 {
-		font-size: 1.25em;
-	}
-
-	span {
 		&:nth-child(1) {
 			@include z-color($amber);
 		}
@@ -540,6 +533,11 @@ code {
 		&:nth-child(8) {
 			@include z-color($orange);
 		}
+	}
+
+	h2 {
+		font-size: 1.25em;
+		margin: 1em 0;
 	}
 
 	.z-text {
