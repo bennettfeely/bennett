@@ -204,55 +204,50 @@ function draw(z, options) {
 
 		// Capture scroll event and rotate .z-layers
 		if (event == "scroll") {
-			window.addEventListener(
-				"scroll",
-				(e) => {
-					var bounds = z.getBoundingClientRect();
+			function scroll() {
+				var bounds = z.getBoundingClientRect();
 
-					var center_x = bounds.left + bounds.width / 2 - window.innerWidth / 2;
-					var center_y =
-						bounds.top + bounds.height / 2 - window.innerHeight / 2;
+				var center_x = bounds.left + bounds.width / 2 - window.innerWidth / 2;
+				var center_y = bounds.top + bounds.height / 2 - window.innerHeight / 2;
 
-					var x_pct = (center_x / window.innerWidth) * -2;
-					var y_pct = (center_y / window.innerHeight) * -2;
+				var x_pct = (center_x / window.innerWidth) * -2;
+				var y_pct = (center_y / window.innerHeight) * -2;
 
-					tilt(x_pct, y_pct);
-				},
-				false
-			);
+				tilt(x_pct, y_pct);
+			}
+
+			scroll();
+			window.addEventListener("scroll", scroll, false);
 		}
 
 		if (event == "scrollY") {
-			window.addEventListener(
-				"scroll",
-				(e) => {
-					var bounds = z.getBoundingClientRect();
+			function scrollY() {
+				var bounds = z.getBoundingClientRect();
 
-					var center_y =
-						bounds.top + bounds.height / 2 - window.innerHeight / 2;
+				var center_y = bounds.top + bounds.height / 2 - window.innerHeight / 2;
 
-					var y_pct = (center_y / window.innerHeight) * -2;
+				var y_pct = (center_y / window.innerHeight) * -2;
 
-					tilt(0, y_pct);
-				},
-				false
-			);
+				tilt(0, y_pct);
+			}
+
+			scrollY();
+			window.addEventListener("scroll", scrollY, false);
 		}
 
 		if (event == "scrollX") {
-			window.addEventListener(
-				"scroll",
-				(e) => {
-					var bounds = z.getBoundingClientRect();
+			function scrollX() {
+				var bounds = z.getBoundingClientRect();
 
-					var center_x = bounds.left + bounds.width / 2 - window.innerWidth / 2;
+				var center_x = bounds.left + bounds.width / 2 - window.innerWidth / 2;
 
-					var x_pct = (center_x / window.innerWidth) * -2;
+				var x_pct = (center_x / window.innerWidth) * -2;
 
-					tilt(x_pct, 0);
-				},
-				false
-			);
+				tilt(x_pct, 0);
+			}
+
+			scrollX();
+			window.addEventListener("scroll", scrollX, false);
 		}
 	}
 }

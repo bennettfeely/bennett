@@ -413,19 +413,19 @@ body:hover .z-text {
 </h1>
 
 <h1>
-	<span data-z data-z-event="scrollX">scroll</span>
+	<span data-z data-z-event="scrollX">scrollX</span>
 </h1>
 
 <h1>
-	<span data-z data-z-event="scrollY">scroll</span>
+	<span data-z data-z-event="scrollY">scrollY</span>
 </h1>
 
 `,
 		css: `/* CodePen styles */
 body {
-	margin: 25vw 25vh;
 	min-height: 150vh;
 	min-width: 150vw;
+	margin: 25vmin;
 }
 
 /* Demo styles */
