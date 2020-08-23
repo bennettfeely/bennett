@@ -978,23 +978,33 @@ code {
 }
 
 .depth-option {
-	@include z-color($amber);
+	.preview {
+		@include z-color($amber);
+	}
 }
 
 .layers-option {
-	@include z-color($teal);
+	.preview {
+		@include z-color($teal);
+	}
 }
 
 .perspective-option {
-	@include z-color($orange);
+	.preview {
+		@include z-color($orange);
+	}
 }
 
 .fade-option {
-	@include z-color($light-blue);
+	.preview {
+		@include z-color($light-blue);
+	}
 }
 
 .direction-option {
-	@include z-color($yellow-600);
+	.preview {
+		@include z-color($yellow-600);
+	}
 
 	.z-text {
 		background: rgba($blue-gray, 0.5);
@@ -1008,15 +1018,21 @@ code {
 }
 
 .event-option {
-	@include z-color($light-green);
+	.preview {
+		@include z-color($light-green);
+	}
 }
 
 .event-rotation-option {
-	@include z-color($deep-orange-400);
+	.preview {
+		@include z-color($deep-orange-400);
+	}
 }
 
 .event-direction-option {
-	@include z-color($indigo-400);
+	.preview {
+		@include z-color($indigo-400);
+	}
 }
 
 .param {

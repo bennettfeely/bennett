@@ -30,7 +30,7 @@ var menus = [
 </h1>`,
 		css:
 			`h1 {
-	font: bold 20vw sans-serif;
+	font-size: 20vw;
 	margin: 30px;
 	color: #ffc107;
 }
@@ -66,7 +66,7 @@ var menus = [
   <span class="hero-text">World</span>
 </h1>`,
 		css: `h1 {
-	font: bold 10vw sans-serif;
+	font-size: 10vw;
 	color: #f44336;
 	margin: 30px;
 }
@@ -193,7 +193,7 @@ body {
 		css:
 			`/* CodePen styles */
 body {
-	font: 5em sans-serif;
+	font-size: 5em;
 	margin: 30px;
 }
 
@@ -228,7 +228,7 @@ body {
   <span data-z data-z-layers="25" data-z-depth="60px">60px</span>
 </h1>`,
 		css: `h1 {
-	font: bold 10vw sans-serif;
+	font-size: 10vw;
 	color: #ffc107;
 	margin: 30px;
 }
@@ -262,7 +262,7 @@ body {
 	<span data-z data-z-depth=".5em" data-z-layers="2">2</span>
 </h1>`,
 		css: `h1 {
-	font: bold 10vw sans-serif;
+	font-size: 10vw;
 	color: #009688;
 	margin: 30px;
 }
@@ -300,7 +300,7 @@ body {
 	<span data-z data-z-perspective="500px">500px</span>
 </h1>`,
 		css: `h1 {
-	font: bold 10vw sans-serif;
+	font-size: 10vw;
 	color: #ff9800;
 	margin: 30px;
 }
@@ -331,7 +331,7 @@ body {
 	<span data-z data-z-fade="true" data-z-layers="10" data-z-depth=".25em">fade</span>
 </h1>`,
 		css: `h1 {
-	font: bold 10vw sans-serif;
+	font-size: 10vw;
 	color: #03a9f4;
 	margin: 30px;
 }
@@ -369,7 +369,7 @@ body {
 	<span data-z data-z-direction="forwards" data-z-depth=".5em">forwards</span>
 </h1>`,
 		css: `h1 {
-	font: bold 10vw sans-serif;
+	font-size: 10vw;
 	color: #fdd835;
 	margin: 30px;
 }
@@ -430,7 +430,7 @@ body {
 
 /* Demo styles */
 h1 {
-	font: bold 10vw sans-serif;
+	font-size: 10vw;
 	color: #8bc34a;
 	margin: 30px;
 }
@@ -460,7 +460,7 @@ h1 {
 	<span data-z data-z-event="pointer" data-z-eventRotation="60deg">60deg</span>
 </h1>`,
 		css: `h1 {
-	font: bold 10vw sans-serif;
+	font-size: 10vw;
 	color: #fe7043;
 	margin: 30px;
 }
@@ -490,7 +490,7 @@ h1 {
 	<span data-z data-z-event="pointer" data-z-eventDirection="reverse">reverse</span>
 </h1>`,
 		css: `h1 {
-	font: bold 10vw sans-serif;
+	font-size: 10vw;
 	color: #5c6ac0;
 	margin: 30px;
 }
@@ -535,8 +535,8 @@ menus.forEach((menu) => {
 
 	var data = {
 		css: menu.css,
-		css_prefix: "autoprefixer",
-		css_starter: "reset",
+		css_prefix: "neither",
+		css_starter: "neither",
 		description: "ztext.js test, from https://bennettfeely.com/ztext",
 		html: menu.html + script_tag,
 		js: menu.js,
