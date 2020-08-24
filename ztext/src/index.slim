@@ -50,7 +50,7 @@ html lang="en"
 								h2 Download
 								a.button.split-item href="js/ztext.min.js" 
 									strong ztext.min.js 
-									| &mdash; Minified 2.8 kb
+									| &mdash; Minified 3.85 kb
 								p View this project on <a href="https://github.com/bennettfeely/bennett/tree/master/ztext">GitHub</a>. View <a href="https://github.com/bennettfeely/bennett/blob/master/ztext/src/js/ztext.js">ztext.js unminified</a>. Released under <a href="https://github.com/bennettfeely/bennett/blob/master/ztext/LICENSE">MIT License</a>.
 					.split-item
 						section.tips#tips
@@ -59,8 +59,8 @@ html lang="en"
 								.tip-jar-wrapper
 									label.tip-jar
 										| $
-										input.tip type="text" placeholder="10"
-									a.tip-button.button href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=9YZX9KJVUDWXW&currency_code=USD&amount=10&source=url" 
+										input.tip type="text"  inputmode="numeric" placeholder="10"
+									a.tip-button.button href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=9YZX9KJVUDWXW&currency_code=USD&amount=10&item_name=ztext.js&source=url" 
 										img src="img/paypal.svg" width="124" height="33" alt="PayPal"
 										strong Tip
 								p Are you using ztext and happy with it? Your kind support keeps open-source JS libraries like this free for others.
@@ -165,7 +165,6 @@ html lang="en"
 						.split
 							.split-item
 								.toggle-menu
-									| Example: 
 									button.toggle data-show="svg" SVG
 									button.toggle data-show="img" Image
 									button.toggle.is-on data-show="emoji" Emoji
@@ -229,7 +228,7 @@ html lang="en"
 									a href="#layers" layers
 									small.param integer
 								p
-									| Number of layers that make up the effect. Be careful adding too many layers, which can negatively affect performance. Default: 
+									| Number of layers that make up the effect. Default: 
 									code.light 10
 								.menu.menu-7
 					.container.option.perspective-option#perspective
@@ -242,11 +241,6 @@ html lang="en"
 								h3
 									a href="#perspective" perspective
 									small.param CSS length value, "none", or "inherit"
-
-
-									// TODO WHAT'S INHERIT??!?!?
-
-
 								p
 									| Set distance from the viewer. Default: 
 									code.light 500px
@@ -329,7 +323,7 @@ html lang="en"
 									a href="#eventRotationDirection" eventDirection
 									small.param "default" | "reverse"
 								p
-									| With the <code class="light">event</code> option enabled, whether the rotation faces toward the target point or away from it. Default: 
+									| With the <code class="light">event</code> option enabled, choose whether the rotation faces toward the target point (default) or away from it (reverse). Default: 
 									code.light "default"
 								.menu.menu-13
 		footer.footer

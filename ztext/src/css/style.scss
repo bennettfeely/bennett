@@ -127,14 +127,14 @@ main {
 }
 
 .split-item {
-	flex: 1 0 20em;
+	flex: 1 0 15em;
 
 	&.collapse {
 		flex: 0 1;
 	}
 
 	&.shrink {
-		flex: 0 1 20em;
+		flex: 0 1 15em;
 	}
 }
 
@@ -265,10 +265,6 @@ pre {
 
 	.pre-subdivision {
 		position: relative;
-	}
-
-	&.is-on {
-		animation: highlight 1s;
 	}
 }
 
@@ -761,7 +757,14 @@ code {
 
 // Styling =============================================================
 .more {
+	.toggle-menu {
+		overflow: hidden;
+		margin-bottom: -0.5em;
+		padding-bottom: 0.5em;
+	}
 	.toggle {
+		-webkit-tap-highlight-color: transparent;
+
 		font: 100%/1 Nunito, sans-serif;
 		display: inline-block;
 		border-radius: $radius;
@@ -784,6 +787,10 @@ code {
 
 		&:focus {
 			outline: 0;
+		}
+
+		&:first-child {
+			margin-left: 0;
 		}
 
 		&.is-on {
@@ -967,6 +974,8 @@ code {
 	}
 
 	.static {
+		touch-action: none;
+
 		.z-text {
 			transform: none;
 		}
