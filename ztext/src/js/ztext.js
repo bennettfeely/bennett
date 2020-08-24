@@ -1,7 +1,7 @@
 /*!
  * ztext.js v0.0.1
  * https://bennettfeely.com/ztext
- * Licensed MIT © Zeno Rocha
+ * Licensed MIT | Copyright 2020 Bennett Feely
  */
 z_default = {
 	depth: "1rem",
@@ -15,7 +15,7 @@ z_default = {
 	z: true,
 };
 
-// Get all elements with the data-z attribute
+// Get all elements with the [data-z] attribute
 var zs = document.querySelectorAll("[data-z]");
 zs.forEach((z) => {
 	// Make uniform option keys
@@ -31,7 +31,7 @@ zs.forEach((z) => {
 		zEngaged: z.dataset.z || z_default.z,
 	};
 
-	draw(z, options);
+	zDraw(z, options);
 });
 
 // JS constructor
@@ -39,11 +39,11 @@ function Ztextify(selector, options) {
 	var zs = document.querySelectorAll(selector);
 
 	zs.forEach((z) => {
-		draw(z, options);
+		zDraw(z, options);
 	});
 }
 
-function draw(z, options) {
+function zDraw(z, options) {
 	var z_engaged = options.zEngaged || z_default.zEngaged;
 
 	if (z_engaged !== "false") {
@@ -145,13 +145,7 @@ function draw(z, options) {
 		// Finish adding everything to the original element
 		z.append(zText);
 
-		// Rotate .z-text as a function of x and y coordinates
 		function tilt(x_pct, y_pct) {
-			// Clamp values function
-			Number.prototype.clamp = function (min, max) {
-				return Math.min(Math.max(this, min), max);
-			};
-
 			// Switch neg/pos values if eventDirection is reversed
 			if (event_direction == "reverse") {
 				var event_direction_adj = -1;
@@ -164,13 +158,13 @@ function draw(z, options) {
 			var y_tilt = -y_pct * event_rotation_numeral * event_direction_adj;
 
 			// Keep values in bounds [-1, 1]
-			var x_clamped = x_tilt.clamp(-1, 1);
-			var y_clamped = y_tilt.clamp(-1, 1);
+			var x_clamped = Math.min(Math.max(x_tilt, -1), 1);
+			var y_clamped = Math.min(Math.max(y_tilt, -1), 1);
 
 			// Add unit to transform value
 			var unit = event_rotation_unit;
 
-			// Rotate .z-layers
+			// Rotate .z-layers as a function of x and y coordinates
 			var transform =
 				"rotateX(" + y_tilt + unit + ") rotateY(" + x_tilt + unit + ")";
 			zLayers.style.webkitTransform = transform;
@@ -204,7 +198,7 @@ function draw(z, options) {
 
 		// Capture scroll event and rotate .z-layers
 		if (event == "scroll") {
-			function scroll() {
+			function zScroll() {
 				var bounds = z.getBoundingClientRect();
 
 				var center_x = bounds.left + bounds.width / 2 - window.innerWidth / 2;
@@ -217,11 +211,11 @@ function draw(z, options) {
 			}
 
 			scroll();
-			window.addEventListener("scroll", scroll, false);
+			window.addEventListener("scroll", zScroll, false);
 		}
 
 		if (event == "scrollY") {
-			function scrollY() {
+			function zScrollY() {
 				var bounds = z.getBoundingClientRect();
 
 				var center_y = bounds.top + bounds.height / 2 - window.innerHeight / 2;
@@ -232,11 +226,11 @@ function draw(z, options) {
 			}
 
 			scrollY();
-			window.addEventListener("scroll", scrollY, false);
+			window.addEventListener("scroll", zScrollY, false);
 		}
 
 		if (event == "scrollX") {
-			function scrollX() {
+			function zScrollX() {
 				var bounds = z.getBoundingClientRect();
 
 				var center_x = bounds.left + bounds.width / 2 - window.innerWidth / 2;
@@ -247,7 +241,7 @@ function draw(z, options) {
 			}
 
 			scrollX();
-			window.addEventListener("scroll", scrollX, false);
+			window.addEventListener("scroll", zScrollX, false);
 		}
 	}
 }
