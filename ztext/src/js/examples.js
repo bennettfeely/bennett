@@ -85,7 +85,7 @@ var menus = [
 	fade: true,
 	direction: "both",
 	event: "pointer",
-	eventRotation: "90deg"
+	eventRotation: "35deg"
 });`,
 	},
 	{
