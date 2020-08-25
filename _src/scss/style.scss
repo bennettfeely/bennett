@@ -241,12 +241,14 @@ header {
 		color: var(--link-color);
 		padding: 0.5em 1.5em;
 		border-radius: var(--radius-medium);
-		transition: background var(--transition-hover),
-			color var(--transition-hover);
+		transition: background var(--transition), color var(--transition),
+			box-shadow var(--transition);
+		box-shadow: inset 0 0 0 0.1em var(--blue-a), 0 0 0 0 transparent;
 
 		&:hover {
 			background: var(--blue-a);
 			color: var(--link-color-hover);
+			box-shadow: inset 0 0 0 0.1em transparent, 0 0 0 0.25em var(--blue-a);
 		}
 	}
 }
