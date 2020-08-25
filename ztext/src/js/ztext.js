@@ -3,24 +3,25 @@
  * https://bennettfeely.com/ztext
  * Licensed MIT | (c) 2020 Bennett Feely
  */
-z_default = {
-	depth: "1rem",
-	direction: "both",
-	event: "none",
-	eventRotation: "30deg",
-	eventDirection: "default",
-	fade: false,
-	layers: 10,
-	perspective: "500px",
-	z: true,
-};
-
 if (
 	CSS.supports("-moz-transform-style", "preserve-3d") ||
 	CSS.supports("-ms-transform-style", "preserve-3d") ||
 	CSS.supports("-webkit-transform-style", "preserve-3d") ||
 	CSS.supports("transform-style", "preserve-3d")
 ) {
+	// Default values
+	z_default = {
+		depth: "1rem",
+		direction: "both",
+		event: "none",
+		eventRotation: "30deg",
+		eventDirection: "default",
+		fade: false,
+		layers: 10,
+		perspective: "500px",
+		z: true,
+	};
+
 	// Get all elements with the [data-z] attribute
 	var zs = document.querySelectorAll("[data-z]");
 	zs.forEach((z) => {
