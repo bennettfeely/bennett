@@ -59,3 +59,32 @@ pause.addEventListener("click", (e) => {
 
 	pause.classList.remove("is-on");
 });
+
+var steps = [
+	"#header",
+	"#html-init",
+	"#styling",
+	"#more",
+	// "#depth",
+	// "#layers",
+	// "#perspective",
+	// "#fade",
+	// "#direction",
+	// "#event",
+	// "#eventRotation",
+	// "#event-direction",
+	"#header",
+];
+
+step = 0;
+document.onkeypress = function (e) {
+	e = e || window.event;
+
+	if (e.keyCode == "110") {
+		var current_step = steps[step++];
+
+		console.log(current_step);
+
+		window.location.href = current_step;
+	}
+};
