@@ -76,6 +76,7 @@ body {
 	font: 100%/1.5 Nunito, sans-serif;
 	color: var(--text-color);
 	background: var(--background);
+	background: var(--sky-300);
 	overflow-x: hidden;
 }
 
@@ -365,7 +366,7 @@ $space: 5em;
 	width: 100%;
 	height: auto;
 	border-radius: var(--radius-small);
-	box-shadow: 0 0.5em 1.5em var(--black-a);
+	// box-shadow: 0 0.5em 1.5em var(--black-a);
 
 	@media (min-width: $tablet) {
 		display: block;
@@ -376,10 +377,10 @@ $space: 5em;
 }
 
 .project-link:hover .screenshot {
-	box-shadow: 0 0.5em 3em var(--gray);
+	// box-shadow: 0 0.5em 3em var(--gray);
 
 	@at-root .dark & {
-		box-shadow: 0 0.5em 3em var(--sky-100);
+		// box-shadow: 0 0.5em 1.5em var(--sky-100);
 	}
 }
 
