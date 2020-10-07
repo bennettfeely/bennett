@@ -2,11 +2,11 @@
 @charset "UTF-8";
 
 // Normalize ===========================================================
-@import "../partials/normalize";
-@import "../partials/reset";
-@import "../partials/extensions";
-@import "../partials/functions";
-@import "../partials/palette";
+@import "partials/normalize";
+@import "partials/reset";
+@import "partials/extensions";
+@import "partials/functions";
+@import "partials/palette";
 
 // Variables ===========================================================
 $tablet: 40em;

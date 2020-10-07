@@ -1,8 +1,0 @@
-.mosaic-effect {
-	$url : url(photo.jpg);
-
-	background-image: $url, $url;
-	background-size: cover, 5% 5%;
-	background-position: center;
-  background-blend-mode: overlay;
-}

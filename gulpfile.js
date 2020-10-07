@@ -1,121 +1,106 @@
-gulp = require("gulp");
-jade = require("gulp-jade");
-slim = require("gulp-slim");
-htmlmin = require("gulp-htmlmin");
-sass = require("gulp-sass");
-autoprefixer = require("gulp-autoprefixer");
-cssnano = require("gulp-cssnano");
-browserSync = require("browser-sync");
-rename = require("gulp-rename");
-jsImport = require("gulp-js-import");
-uglify = require("gulp-uglify");
-concat = require("gulp-concat");
+const gulp = require("gulp");
+const git = require("gulp-git");
+const clean = require("gulp-clean");
+const slim = require("gulp-slim");
+const htmlmin = require("gulp-htmlmin");
+const sass = require("gulp-sass");
+const autoprefixer = require("gulp-autoprefixer");
+const cssnano = require("gulp-cssnano");
+const browserSync = require("browser-sync");
+const rename = require("gulp-rename");
 
-pump = require("pump");
-path = require("path");
-fs = require("fs");
-del = require("del");
+// Repos as folders ----------------------------------------------------
+let repos = [
+	"antiweather",
+	"clippy",
+	"csscreatures",
+	"csspiechart",
+	"flexplorer",
+	"gradients",
+	"image-effects",
+	"scales",
+	"soteria",
+	"trumptalk",
+	"usacss",
+	"ztext",
+];
 
-// Compile Jade to HTML ==================================================================
-gulp.task("slim", function () {
-  return gulp
-    .src("_src/*.slim")
-    .pipe(
-      slim({
-        pretty: true,
-      })
-    )
-    .pipe(
-      htmlmin({
-        collapseWhitespace: true,
-        removeComments: true,
-        minifyCSS: true,
-        minifyJS: true,
-      })
-    )
-    .pipe(gulp.dest(""))
-    .pipe(
-      browserSync.reload({
-        stream: true,
-      })
-    );
+gulp.task("clean", () => {
+	return gulp.src(repos, { read: false }).pipe(clean());
 });
 
-gulp.task("jade", function () {
-  return gulp
-    .src("_src/index.jade")
-    .pipe(
-      jade({
-        pretty: true,
-      })
-    )
-    .pipe(
-      htmlmin({
-        collapseWhitespace: true,
-        removeComments: true,
-        minifyCSS: true,
-        minifyJS: true,
-      })
-    )
-    .pipe(gulp.dest("./"))
-    .pipe(
-      browserSync.reload({
-        stream: true,
-      })
-    );
+gulp.task("clone", async () => {
+	repos.forEach((repo) => {
+		let git_url = "https://github.com/bennettfeely/" + repo;
+
+		git.clone(git_url, (err) => {
+			if (err) throw err;
+		});
+	});
 });
 
-// Compile CSS ===========================================================================
-gulp.task("scss", function () {
-  return gulp
-    .src("_src/scss/*.scss")
-    .pipe(sass())
-    .on("error", sass.logError)
-    .pipe(
-      autoprefixer({
-        browsers: ["last 2 versions"],
-        cascade: false,
-      })
-    )
-    .pipe(cssnano())
-    .pipe(
-      rename(function (path) {
-        path.basename += ".min";
-        path.extname = ".css";
-      })
-    )
-    .pipe(gulp.dest("./"))
-    .pipe(
-      browserSync.reload({
-        stream: true,
-      })
-    );
+gulp.task("build", gulp.series("clean", "clone"));
+
+// Homepage ------------------------------------------------------------
+gulp.task("sync", () => {
+	return browserSync({
+		server: "",
+	});
 });
 
-// Browser sync ==========================================================================
-gulp.task("sync", function () {
-  return browserSync({
-    server: "",
-  });
+gulp.task("slim", () => {
+	return gulp
+		.src("_src/*.slim")
+		.pipe(
+			slim({
+				pretty: true,
+			})
+		)
+		.pipe(
+			htmlmin({
+				collapseWhitespace: true,
+				removeComments: true,
+				minifyCSS: true,
+				minifyJS: true,
+			})
+		)
+		.pipe(gulp.dest("./"))
+		.pipe(
+			browserSync.reload({
+				stream: true,
+			})
+		);
 });
 
-// Init ==================================================================================
-gulp.task("default", function () {
-  gulp.run("sync");
+gulp.task("scss", () => {
+	return gulp
+		.src("_src/scss/*.scss")
+		.pipe(sass())
+		.on("error", sass.logError)
+		.pipe(
+			autoprefixer({
+				browsers: ["last 2 versions"],
+				cascade: false,
+			})
+		)
+		.pipe(cssnano())
+		.pipe(
+			rename(function (path) {
+				path.basename += ".min";
+				path.extname = ".css";
+			})
+		)
+		.pipe(gulp.dest("./"))
+		.pipe(
+			browserSync.reload({
+				stream: true,
+			})
+		);
+});
 
-  gulp.watch(["_src/*.jade"], function () {
-    return gulp.run("jade");
-  });
+gulp.task("default", () => {
+	gulp.series("sync");
 
-  gulp.watch(["_src/*.slim"], function () {
-    return gulp.run("slim");
-  });
-
-  gulp.watch(["_src/articles/*/*.jade"], function () {
-    return gulp.run("jade-article");
-  });
-
-  gulp.watch("_src/scss/*.scss", function () {
-    return gulp.run("scss");
-  });
+	gulp.watch(["_src/*.slim"], gulp.series(["slim"]));
+	gulp.watch(["_src/scss/*.scss"], gulp.series(["scss"]));
 });
