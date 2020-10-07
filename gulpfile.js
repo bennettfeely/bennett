@@ -1,6 +1,6 @@
 const gulp = require("gulp");
 const git = require("gulp-git");
-const clean = require("gulp-clean");
+const del = require("del");
 const slim = require("gulp-slim");
 const htmlmin = require("gulp-htmlmin");
 const sass = require("gulp-sass");
@@ -26,7 +26,7 @@ let repos = [
 ];
 
 gulp.task("clean", () => {
-	return gulp.src(repos, { read: false }).pipe(clean());
+	return del(repos);
 });
 
 gulp.task("clone", async () => {
