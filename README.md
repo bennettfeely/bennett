@@ -4,7 +4,9 @@ This repo is my personal site at https://bennettfeely.com.
 
 ## Personal Projects
 
-These projects used to be subfolders in this repo, but now they are in their own respective repos. Give 'em a star!
+These used to be subfolders in this repo (which is why this repo has so many stars).
+
+Each project is now in its own respective repo. Give 'em a star!
 
 | Repo link                                                      | Live demo                                      | Description                                     |
 | :------------------------------------------------------------- | :--------------------------------------------- | :---------------------------------------------- |
