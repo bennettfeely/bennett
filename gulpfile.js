@@ -6,7 +6,7 @@ const htmlmin = require("gulp-htmlmin");
 const sass = require("gulp-sass");
 const autoprefixer = require("gulp-autoprefixer");
 const cssnano = require("gulp-cssnano");
-const browserSync = require("browser-sync");
+const browserSync = require("browser-sync").create();
 const rename = require("gulp-rename");
 
 // Repos as folders ----------------------------------------------------
@@ -42,11 +42,15 @@ gulp.task("clone", async () => {
 gulp.task("build", gulp.series("clean", "clone"));
 
 // Homepage ------------------------------------------------------------
-gulp.task("sync", () => {
-	return browserSync({
-		server: "",
-	});
-});
+// gulp.task("sync", () => {
+// 	console.log("sync");
+
+// 	return browserSync.init({
+// 		server: {
+// 			baseDir: "",
+// 		},
+// 	});
+// });
 
 gulp.task("slim", () => {
 	return gulp
@@ -99,7 +103,11 @@ gulp.task("scss", () => {
 });
 
 gulp.task("default", () => {
-	gulp.series("sync");
+	browserSync.init({
+		server: {
+			baseDir: "./",
+		},
+	});
 
 	gulp.watch(["_src/*.slim"], gulp.series(["slim"]));
 	gulp.watch(["_src/scss/*.scss"], gulp.series(["scss"]));

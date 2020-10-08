@@ -28,16 +28,11 @@ blockquote {
 	padding: 0;
 }
 
-html {
-	scroll-behavior: smooth;
-}
-
 body {
 	text-rendering: optimizeLegibility;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
 	font-smoothing: antialiased;
 	font-variant-ligatures: common-ligatures;
+	scroll-behavior: smooth;
 }
 
 input[type="range"] {

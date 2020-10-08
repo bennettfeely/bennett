@@ -50,24 +50,13 @@ $space-large: 5rem;
 	);
 
 	// Light Mode
-	--background: var(--white);
-	--toggle-background: var(--white);
-	--text-color: var(--black);
+	--background: var(--black);
+	--text-color: var(--white);
 	--text-color-a: var(--gray);
 	--link-color: var(--blue);
-	--link-color-hover: var(--blue-dark);
+	--link-color-hover: var(--blue-light);
 	--link-color-visited: var(--purple);
-	--link-color-visited-hover: var(--purple-dark);
-}
-
-.dark {
-	// Dark Mode
-	--toggle-background: var(--sky-100);
-	--text-color: var(--offwhite);
-	--link-color: var(--blue);
-	--link-color-hover: var(--blue);
-	--link-color-visited: var(--purple-muted);
-	--link-color-visited-hover: var(--purple-muted);
+	--link-color-visited-hover: var(--purple);
 }
 
 // Structual styles ====================================================
@@ -75,8 +64,8 @@ body {
 	position: relative;
 	font: 100%/1.5 Nunito, sans-serif;
 	color: var(--text-color);
-	background: var(--background);
-	background: var(--sky-300);
+	background-color: var(--sky-300);
+	background-image: var(--background-gradient);
 	overflow-x: hidden;
 }
 
@@ -88,7 +77,7 @@ body {
 
 	@media (min-width: $tablet) {
 		max-width: 42em;
-		padding-top: 5em;
+		padding-top: 3em;
 	}
 
 	@media (min-width: $desktop) {
