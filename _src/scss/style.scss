@@ -50,11 +50,11 @@ $space-large: 5rem;
 	);
 
 	// Light Mode
-	--background: var(--black);
-	--text-color: var(--white);
+	--background: var(--white);
+	--text-color: var(--black);
 	--text-color-a: var(--gray);
 	--link-color: var(--blue);
-	--link-color-hover: var(--blue-light);
+	--link-color-hover: var(--blue);
 	--link-color-visited: var(--purple);
 	--link-color-visited-hover: var(--purple);
 }
@@ -64,8 +64,6 @@ body {
 	position: relative;
 	font: 100%/1.5 Nunito, sans-serif;
 	color: var(--text-color);
-	background-color: var(--sky-300);
-	background-image: var(--background-gradient);
 	overflow-x: hidden;
 }
 
@@ -355,7 +353,8 @@ $space: 5em;
 	width: 100%;
 	height: auto;
 	border-radius: var(--radius-small);
-	// box-shadow: 0 0.5em 1.5em var(--black-a);
+	box-shadow: 0 2.5em 5em var(--offwhite);
+	box-shadow: 0 2em 2em -1em var(--offwhite);
 
 	@media (min-width: $tablet) {
 		display: block;
@@ -366,11 +365,7 @@ $space: 5em;
 }
 
 .project-link:hover .screenshot {
-	// box-shadow: 0 0.5em 3em var(--gray);
-
-	@at-root .dark & {
-		// box-shadow: 0 0.5em 1.5em var(--sky-100);
-	}
+	box-shadow: 0 1em 2em var(--offwhite);
 }
 
 .line {
@@ -380,7 +375,7 @@ $space: 5em;
 		width: $space * 2;
 		height: 1px;
 		background: var(--text-color);
-		opacity: 0.15;
+		opacity: 0.25;
 		pointer-events: none;
 		top: 50%;
 		transition: opacity var(--transition);
