@@ -1,10 +1,10 @@
 # Bennett Feely
 
-This repo is my personal site at https://bennettfeely.com.
+This repo is my personal site at https://bennettfeely.com
 
-## Personal Projects
+## Projects
 
-These used to be subfolders in this repo (which is why this repo has so many stars).
+There used to be subfolders in this repo (which is why this repo has so many stars).
 
 Each project is now in its own respective repo. Give 'em a star!
 
