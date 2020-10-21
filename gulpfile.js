@@ -12,6 +12,7 @@ const rename = require("gulp-rename");
 // Repos as folders ----------------------------------------------------
 let repos = [
 	"antiweather",
+	"brain",
 	"clippy",
 	"csscreatures",
 	"csspiechart",
