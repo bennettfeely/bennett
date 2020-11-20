@@ -4,7 +4,7 @@ This repo is my personal site at https://bennettfeely.com
 
 ## Projects
 
-There used to be subfolders in this repo (which is why this repo has so many stars).
+Projects were previously in subfolders in this one repo (which is why this repo has so many stars).
 
 Each project is now in its own respective repo. Give 'em a star!
 
@@ -25,8 +25,7 @@ Each project is now in its own respective repo. Give 'em a star!
 
 ## Select Client Projects
 
-| Repo link                                            | Live demo                                | Description                               |
-| :--------------------------------------------------- | :--------------------------------------- | :---------------------------------------- |
-| [soteria](https://github.com/bennettfeely/soteria)   | [Live](https://bennettfeely.com/soteria) | Website for a startup                     |
-| [braincom](https://github.com/bennettfeely/braincom) | Unavailable                              | Placeholder site                          |
-| Unavailable                                          | [Live](https://genesismarriage.org/)     | Website for the Archdiocese of Cincinnati |
+| Repo link                                            | Live demo                                | Description           |
+| :--------------------------------------------------- | :--------------------------------------- | :-------------------- |
+| [soteria](https://soteriaradar.netlify.app/)         | [Live](https://bennettfeely.com/soteria) | Website for a startup |
+| [braincom](https://github.com/bennettfeely/braincom) | Unavailable                              | Placeholder site      |
