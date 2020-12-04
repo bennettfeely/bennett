@@ -28,7 +28,7 @@ $space-large: 5rem;
 	--gray: #909099;
 
 	--blue: #1e90ff;
-	--blue-a: rgb(30, 144, 255, 0.1);
+	--blue-a: rgb(30, 144, 255, 0.3);
 	--blue-dark: #005cb8;
 	--blue-light: #52c3fb;
 	--purple: #a029de;
@@ -75,7 +75,6 @@ body {
 
 	@media (min-width: $tablet) {
 		max-width: 42em;
-		padding-top: 3em;
 	}
 
 	@media (min-width: $desktop) {
@@ -96,7 +95,7 @@ body {
 
 .container {
 	position: relative;
-	margin: 1.5rem;
+	padding: 2rem;
 
 	.header-wrapper &,
 	.footer-wrapper & {
@@ -153,11 +152,28 @@ img {
 }
 
 .outline {
-	display: inline-block;
-	border: thin solid rgba(128, 128, 128, 0.4);
+	position: relative;
 	color: var(--text-color);
-	padding: 0.5em 1em;
 	border-radius: var(--radius-large);
+
+	&:before {
+		display: block;
+		content: "";
+		position: absolute;
+		top: 50%;
+		left: 0;
+		right: 0;
+		height: 1px;
+		background: var(--black-a);
+	}
+
+	span {
+		position: relative;
+		display: inline-block;
+		z-index: 10;
+		background: var(--background);
+		padding: .5em 1em;
+	}
 }
 
 // Header ==============================================================
@@ -207,7 +223,7 @@ header {
 // Jobs ================================================================
 .job-wrapper {
 	max-width: 40em;
-	margin: 2em auto 0;
+	margin: 0 auto 0;
 	text-align: center;
 
 	.outline {
@@ -252,17 +268,6 @@ li {
 	list-style: none;
 }
 
-.works,
-.projects,
-.contacts {
-	margin: 1rem 0;
-}
-
-.works {
-	@media (min-width: $tablet) {
-		margin-bottom: 5em;
-	}
-}
 
 // Links ===============================================================
 .project-link,
@@ -535,16 +540,11 @@ $spread: 1.5em;
 }
 
 // Contact =========================================================
-.contact-wrapper {
-	padding: 1.5rem 0;
-}
-
 .contacts {
 	@media (min-width: $tablet) {
 		display: flex;
 		flex-wrap: wrap;
 		border: none;
-		margin: 1.5rem 0;
 	}
 }
 
@@ -578,154 +578,4 @@ $spread: 1.5em;
 	@extend %no-select;
 	cursor: default;
 	margin: 0 0 1.5rem;
-}
-
-.dark-toggle {
-	@extend %no-select;
-	cursor: pointer;
-	background: var(--toggle-background);
-	transition: opacity var(--transition), background var(--transition);
-
-	strong {
-		color: var(--blue);
-	}
-
-	.footer-wrapper:hover & {
-		box-shadow: 0 0.5em 1em var(--black-a);
-		color: var(--offwhite);
-		opacity: 1;
-		background: var(--sky-100);
-	}
-
-	&:focus {
-		outline: 0;
-	}
-}
-
-// Stars ===============================================================
-
-.stars-wrapper,
-.stars {
-	display: none;
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	overflow: hidden;
-
-	.dark & {
-		display: block;
-	}
-}
-.stars-wrapper {
-	background: var(--background-gradient);
-}
-
-.stars {
-	.dark & {
-		animation: twinkle var(--duration) ease-in-out infinite;
-	}
-
-	&:nth-child(2) {
-		animation-delay: calc(var(--duration) * -0.33);
-	}
-	&:nth-child(3) {
-		animation-delay: calc(var(--duration) * -0.66);
-	}
-
-	@keyframes twinkle {
-		25% {
-			opacity: 0;
-		}
-	}
-}
-
-.star {
-	fill: white;
-
-	&:nth-child(3n) {
-		opacity: 0.8;
-	}
-	&:nth-child(7n) {
-		opacity: 0.6;
-	}
-	&:nth-child(13n) {
-		opacity: 0.4;
-	}
-	&:nth-child(19n) {
-		opacity: 0.2;
-	}
-}
-
-.comet {
-	position: absolute;
-	left: calc(50% - 75px);
-
-	.dark & {
-		animation: 10s linear infinite both;
-	}
-
-	&.comet-a {
-		top: 50vh;
-		animation-name: comet-a;
-		animation-delay: 1s;
-	}
-
-	&.comet-b {
-		top: 50%;
-		animation-name: comet-b;
-		animation-delay: 6.6s;
-	}
-
-	&.comet-c {
-		top: calc(100% - 50vh);
-		animation-name: comet-c;
-		animation-delay: 7.6s;
-	}
-
-	@keyframes comet-a {
-		0% {
-			transform: rotate(-135deg) translate3d(50vmax, 0, 0);
-			opacity: 0;
-		}
-		20% {
-			opacity: 1;
-		}
-		40%,
-		100% {
-			transform: rotate(-135deg) translate3d(-50vmax, 0, 0);
-			opacity: 0;
-		}
-	}
-
-	@keyframes comet-b {
-		0% {
-			transform: rotate(35deg) translate3d(50vmax, 0, 0);
-			opacity: 0;
-		}
-		20% {
-			opacity: 1;
-		}
-		40%,
-		100% {
-			transform: rotate(35deg) translate3d(-50vmax, 0, 0);
-			opacity: 0;
-		}
-	}
-
-	@keyframes comet-c {
-		0% {
-			transform: rotate(120deg) translate3d(50vmax, 0, 0);
-			opacity: 0;
-		}
-		20% {
-			opacity: 1;
-		}
-		40%,
-		100% {
-			transform: rotate(120deg) translate3d(-50vmax, 0, 0);
-			opacity: 0;
-		}
-	}
 }
