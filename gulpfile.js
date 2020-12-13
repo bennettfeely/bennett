@@ -22,7 +22,8 @@ let repos = [
 	"scales",
 	"soteria",
 	"trumptalk",
-	"usacss",
+	"usa-css",
+	"usa-2200",
 	"ztext",
 ];
 
