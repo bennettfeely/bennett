@@ -23,7 +23,7 @@ let repos = [
 	"soteria",
 	"trumptalk",
 	"usa-css",
-	"usa-2200",
+	// "usa-2200", // problem being this is build in parcel
 	"ztext",
 ];
 
