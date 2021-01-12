@@ -1,6 +1,6 @@
 # Bennett Feely
 
-This repo is my personal site at https://bennettfeely.com
+This repo is now my personal site at https://bennettfeely.com
 
 ## Projects
 
@@ -19,13 +19,13 @@ Each project is now in its own respective repo. Give 'em a star!
 | [image-effects](https://github.com/bennettfeely/image-effects) | [Live](https://bennettfeely.com/image-effects) | Complex image effects with CSS                  |
 | [scales](https://github.com/bennettfeely/scales)               | [Live](https://bennettfeely.com/scales)        | Color scales reproduced as CSS gradients        |
 | [trumptalk](https://github.com/bennettfeely/trumptalk)         | [Live](https://bennettfeely.com/trumptalk)     | Generate a President Trump Inaugural Address    |
-| [usacss](https://github.com/bennettfeely/usacss)               | [Live](https://bennettfeely.com/usacss)        | The most American CSS stylesheet                |
+| [usa-css](https://github.com/bennettfeely/usa-css)             | [Live](https://bennettfeely.com/usacss)        | The most American CSS stylesheet                |
 | [youtubedecade](https://github.com/bennettfeely/youtubedecade) | [Live](https://bennettfeely.com/youtubedecade) | Most-viewed videos posted exactly 10 years ago. |
 | [ztext](https://github.com/bennettfeely/ztext)                 | [Live](https://bennettfeely.com/ztext)         | Easy to implement, 3D typography for the web.   |
 
 ## Select Client Projects
 
-| Repo link                                            | Live demo                                | Description           |
-| :--------------------------------------------------- | :--------------------------------------- | :-------------------- |
-| [soteria](https://soteriaradar.netlify.app/)         | [Live](https://bennettfeely.com/soteria) | Website for a startup |
-| [braincom](https://github.com/bennettfeely/braincom) | Unavailable                              | Placeholder site      |
+| Repo link                                            | Live demo                                 | Description           |
+| :--------------------------------------------------- | :---------------------------------------- | :-------------------- |
+| [soteria](https://github.com/bennettfeely/soteria)   | [Live](https://soteriaradar.netlify.app/) | Website for a startup |
+| [braincom](https://github.com/bennettfeely/braincom) | Unavailable                               | Placeholder site      |

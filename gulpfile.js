@@ -20,10 +20,10 @@ let repos = [
 	"gradients",
 	"image-effects",
 	"scales",
-	"soteria",
+	// "soteria",
 	"trumptalk",
 	"usa-css",
-	// "usa-2200", // problem being this is build in parcel
+	// "usa-2200", // problem being this is built in parcel
 	"ztext",
 ];
 
