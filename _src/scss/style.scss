@@ -172,7 +172,7 @@ img {
 		display: inline-block;
 		z-index: 10;
 		background: var(--background);
-		padding: .5em 1em;
+		padding: 0.5em 1em;
 	}
 }
 
@@ -267,7 +267,6 @@ li {
 	position: relative;
 	list-style: none;
 }
-
 
 // Links ===============================================================
 .project-link,
@@ -558,12 +557,20 @@ $spread: 1.5em;
 }
 
 .email-link {
-	span {
-		user-select: initial;
-	}
+	cursor: text;
 
 	strong {
 		user-select: none;
+	}
+
+	input {
+		border: 0;
+		background: transparent;
+
+		&:focus {
+			outline: 0;
+			border-radius: var(--radius-small);
+		}
 	}
 }
 
