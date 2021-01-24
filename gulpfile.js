@@ -9,6 +9,25 @@ const cssnano = require("gulp-cssnano");
 const browserSync = require("browser-sync").create();
 const rename = require("gulp-rename");
 
+// Resize screenshots
+var gm = require("gulp-gm");
+var newer = require("gulp-newer");
+var imagemin = require("gulp-imagemin");
+
+gulp.task("resize", function () {
+	gulp
+		.src("_img/screenshots/*.*")
+		.pipe(newer("small"))
+		.pipe(
+			gm(function (gmfile) {
+				gmfile.setFormat("jpg").quality(90);
+				return gmfile.resize(60, 45);
+			})
+		)
+		.pipe(imagemin())
+		.pipe(gulp.dest("small"));
+});
+
 // Repos as folders ----------------------------------------------------
 let repos = [
 	"antiweather",
