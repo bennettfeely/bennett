@@ -564,8 +564,10 @@ $spread: 1.5em;
 	}
 
 	input {
-		border: 0;
 		background: transparent;
+		text-align: center;
+		border: 0;
+		width: 11em;
 
 		&:focus {
 			outline: 0;
