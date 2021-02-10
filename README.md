@@ -1,6 +1,6 @@
 # Bennett Feely
 
-This repo is now my personal site at https://bennettfeely.com
+This repo is now solely my personal homepage at https://bennettfeely.com
 
 ## Projects
 
